@@ -30,6 +30,16 @@ export class CidadeAddComponent extends AbstractAddComponent<Cidade, CidadeDto, 
 	this.estadoService.findAll().subscribe(data => {
 	  this.estados = this.estadoService.makeEntityArrayFromDtoArray(data);
     });  
+
+    this.entity.estado = new Estado();
+  }
+
+  onSubmit() {
+	this.estadoService.findById(this.entity.estado.id).subscribe(data => {
+	  this.entity.estado = this.estadoService.makeEntityFromDto(data);
+    });
+	
+	super.onSubmit();
   }
 
 }
