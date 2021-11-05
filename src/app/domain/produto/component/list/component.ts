@@ -2,27 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../abstract/component/list/component';
-import { ProdutoService } from '../../service/service';
+
 import { Produto } from '../../entity/entity';
+import { ProdutoDto } from '../../dto/dto';
+import { ProdutoService } from '../../service/service';
 
 @Component({
   selector: 'app-produto-list',
   templateUrl: './component.html',
   styleUrls: ['./component.css']
 })
-export class ProdutoListComponent extends AbstractListComponent<Produto, ProdutoService> implements OnInit {
+export class ProdutoListComponent extends AbstractListComponent<Produto, ProdutoDto, ProdutoService> implements OnInit {
 
-  constructor(protected entityService: ProdutoService,
+  constructor(protected service: ProdutoService,
     protected router: Router) {
-	super(entityService, router, 'produtos');
+	super(service, router, 'produtos');
   }
 
   ngOnInit() {
 	super.ngOnInitSuper();
-  }
-
-  getEntityString(entity: Produto): string {
-	return entity.nome;
   }
 
 }

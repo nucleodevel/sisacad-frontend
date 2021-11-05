@@ -1,36 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AbstractService } from '../../service/service';
 import { AbstractEntity } from '../../entity/entity';
+import { AbstractDto } from '../../dto/dto';
+import { AbstractService } from '../../service/service';
 
-export abstract class AbstractListComponent<E extends AbstractEntity, S extends AbstractService<E>> {
+export abstract class AbstractListComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 	
-  protected entityService: S;
+  protected service: S;
   protected router: Router;
 
   routerPrefix: string;
 
   entities!: E[];
 
-  constructor(entityService: S, router: Router, routerPrefix: string) {
-	this.entityService = entityService;
+  constructor(service: S, router: Router, routerPrefix: string) {
+	this.service = service;
 	this.router = router;
 	this.routerPrefix = routerPrefix;
   }
 
-  abstract getEntityString(entity: E): string;
-
   ngOnInitSuper() {
-    this.entityService.findAll().subscribe(data => {
-      this.entities = data;
-    });
+	this.reloadData();  
   }
 
   reloadData() {
-    this.entityService.findAll().subscribe(data => {
-      this.entities = data;
-    });
+	this.service.findAll().subscribe(data => {
+	  this.entities = this.service.makeEntityArrayFromDtoArray(data);
+    });  
   }
 
   view(id: number){
@@ -42,7 +39,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, S extends 
   }
 
   remove(id: number){
-    this.entityService.delete(id)
+    this.service.delete(id)
       .subscribe(
         data => {
           console.log(data);
@@ -52,7 +49,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, S extends 
   }
 
   askRemove(entity: E) {
-	if (confirm('Remover "' + this.getEntityString(entity) + '"?')) {
+	if (confirm('Remover "' + this.service.getEntityString(entity) + '"?')) {
       this.remove(entity.id);
     }
   }

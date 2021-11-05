@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../abstract/component/edit/component';
-import { ProdutoService } from '../../service/service';
+
 import { Produto } from '../../entity/entity';
+import { ProdutoDto } from '../../dto/dto';
+import { ProdutoService } from '../../service/service';
 
 @Component({
   selector: 'app-produto-edit',
   templateUrl: './component.html',
   styleUrls: ['./component.css']
 })
-export class ProdutoEditComponent extends AbstractEditComponent<Produto, ProdutoService> implements OnInit {
+export class ProdutoEditComponent extends AbstractEditComponent<Produto, ProdutoDto, ProdutoService> implements OnInit {
 
-  constructor(protected entityService: ProdutoService,
+  constructor(protected service: ProdutoService,
     protected router: Router, protected route: ActivatedRoute) {
-	super(entityService, router, route, 'produtos');
+	super(service, router, route, 'produtos');
   }
 
   ngOnInit() {

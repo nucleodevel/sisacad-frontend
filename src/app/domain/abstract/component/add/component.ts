@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AbstractService } from '../../service/service';
 import { AbstractEntity } from '../../entity/entity';
+import { AbstractDto } from '../../dto/dto';
+import { AbstractService } from '../../service/service';
 
-export abstract class AbstractAddComponent<E extends AbstractEntity, S extends AbstractService<E>> {
+export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 
-  protected entityService: S;
+  protected service: S;
   protected router: Router;
   protected route: ActivatedRoute;
 
@@ -14,21 +15,21 @@ export abstract class AbstractAddComponent<E extends AbstractEntity, S extends A
 
   entity!: E;
 
-  constructor(entityService: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
-	this.entityService = entityService;
+  constructor(service: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
+	this.service = service;
 	this.router = router;
 	this.route = route;
 	this.routerPrefix = routerPrefix;
   }
 
-  abstract newEntityInstance(): E;
-
   ngOnInitSuper() {
-    this.entity = this.newEntityInstance();
+    this.entity = this.service.newEntityInstance();
   }
 
   onSubmit() {
-    this.entityService.insert(this.entity).subscribe(result => this.list());
+	var dto = this.service.newDtoInstance();
+	dto.copyFromEntity(this.entity);
+    this.service.insert(dto).subscribe(result => this.list());
   }
 
   list(){

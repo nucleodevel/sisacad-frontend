@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AbstractService } from '../../service/service';
 import { AbstractEntity } from '../../entity/entity';
+import { AbstractDto } from '../../dto/dto';
+import { AbstractService } from '../../service/service';
 
-export abstract class AbstractEditComponent<E extends AbstractEntity, S extends AbstractService<E>> {
+export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 
-  protected entityService: S;
+  protected service: S;
   protected router: Router;
   protected route: ActivatedRoute;
 
@@ -15,8 +16,8 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, S extends 
   id!: number;
   entity!: E;
 
-  constructor(entityService: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
-	this.entityService = entityService;
+  constructor(service: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
+	this.service = service;
 	this.router = router;
 	this.route = route;
 	this.routerPrefix = routerPrefix;
@@ -25,15 +26,16 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, S extends 
   ngOnInitSuper() {
     this.id = this.route.snapshot.params['id'];
     
-    this.entityService.findById(this.id)
-      .subscribe(data => {
-        console.log(data)
-        this.entity = data;
-      }, error => console.log(error));
+    this.service.findById(this.id).subscribe(data => {
+      console.log(data)
+      this.entity = this.service.makeEntityFromDto(data);
+    }, error => console.log(error));
   }
 
   onSubmit() {
-    this.entityService.update(this.id, this.entity).subscribe(result => this.list());
+	var dto = this.service.newDtoInstance();
+	dto.copyFromEntity(this.entity);
+    this.service.update(this.id, dto).subscribe(result => this.list());
   }
 
   list(){
