@@ -1,6 +1,7 @@
 <div class="card my-5">
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+		
 			<div class="form-group">
 				<label for="name">Nome</label> <input type="text"
 					[(ngModel)]="entity.nome" class="form-control" id="nome"
@@ -8,17 +9,32 @@
 				<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
 					is required</div>
 			</div>
+			
 			<div class="form-group">
-				<label for="name">Preço</label> <input type="text"
-					[(ngModel)]="entity.preco" class="form-control" id="preco"
-					name="preco" placeholder="Enter your price" required #preco="ngModel">
-				<div [hidden]="!preco.pristine" class="alert alert-danger">Preço
+				<select [(ngModel)]="entity.especie" class="form-control" name="especie" required
+					#especie="ngModel" [compareWith]="compareEspecie">
+					<option *ngFor="let especie of especies"
+						[ngValue]="especie">{{especie.descricao}}</option>
+				</select>
+				<div [hidden]="!especie.pristine" class="alert alert-danger">Espécie
 					is required</div>
 			</div>
+			
+			<div class="form-group">
+				<select [(ngModel)]="entity.raca" class="form-control" name="raca" required
+					#raca="ngModel" [compareWith]="compareRaca">
+					<option *ngFor="let raca of racas"
+						[ngValue]="raca">{{raca.descricao}}</option>
+				</select>
+				<div [hidden]="!raca.pristine" class="alert alert-danger">Raça
+					is required</div>
+			</div>
+			
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"
 				style="margin-right: 10px">Cancelar</button>
+				
 		</form>
 	</div>
 </div>

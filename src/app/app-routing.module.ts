@@ -21,6 +21,11 @@ import { EstadoViewComponent } from './domain/estado/component/view/component';
 import { EstadoAddComponent } from './domain/estado/component/add/component';
 import { EstadoEditComponent } from './domain/estado/component/edit/component';
 
+import { PetListComponent } from './domain/pet/component/list/component';
+import { PetViewComponent } from './domain/pet/component/view/component';
+import { PetAddComponent } from './domain/pet/component/add/component';
+import { PetEditComponent } from './domain/pet/component/edit/component';
+
 import { ProdutoListComponent } from './domain/produto/component/list/component';
 import { ProdutoViewComponent } from './domain/produto/component/view/component';
 import { ProdutoAddComponent } from './domain/produto/component/add/component';
@@ -55,6 +60,12 @@ const routes: Routes = [
   { path: 'estados/view/:id', component: EstadoViewComponent },
   { path: 'estados/add', component: EstadoAddComponent },
   { path: 'estados/edit/:id', component: EstadoEditComponent },
+
+  { path: 'pets', component: PetListComponent },
+  { path: 'pets/list', component: PetListComponent },
+  { path: 'pets/view/:id', component: PetViewComponent },
+  { path: 'pets/add', component: PetAddComponent },
+  { path: 'pets/edit/:id', component: PetEditComponent },
 
   { path: 'produtos', component: ProdutoListComponent },
   { path: 'produtos/list', component: ProdutoListComponent },

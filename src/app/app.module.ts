@@ -30,6 +30,12 @@ import { EstadoAddComponent } from './domain/estado/component/add/component';
 import { EstadoEditComponent } from './domain/estado/component/edit/component';
 import { EstadoService } from './domain/estado/service/service';
 
+import { PetListComponent } from './domain/pet/component/list/component';
+import { PetViewComponent } from './domain/pet/component/view/component';
+import { PetAddComponent } from './domain/pet/component/add/component'; 
+import { PetEditComponent } from './domain/pet/component/edit/component';
+import { PetService } from './domain/pet/service/service';
+
 import { ProdutoListComponent } from './domain/produto/component/list/component';
 import { ProdutoViewComponent } from './domain/produto/component/view/component';
 import { ProdutoAddComponent } from './domain/produto/component/add/component'; 
@@ -66,6 +72,11 @@ import { RacaService } from './domain/raca/service/service';
     EstadoAddComponent,
     EstadoEditComponent,
 
+    PetListComponent,
+    PetViewComponent,
+    PetAddComponent,
+    PetEditComponent,
+
     ProdutoListComponent,
     ProdutoViewComponent,
     ProdutoAddComponent,
@@ -88,6 +99,7 @@ import { RacaService } from './domain/raca/service/service';
 	CidadeService,
 	EspecieService,
 	EstadoService,
+	PetService,
 	ProdutoService,
 	RacaService,
   ],
