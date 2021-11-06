@@ -42,4 +42,8 @@ export class CidadeAddComponent extends AbstractAddComponent<Cidade, CidadeDto, 
 	super.onSubmit();
   }
 
+  estadoChanged(estado: Estado) {
+	this.entity.estado = estado;
+  }
+
 }

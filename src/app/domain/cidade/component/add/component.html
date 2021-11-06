@@ -9,9 +9,11 @@
 					is required</div>
 			</div>
 			<div class="form-group">
-				<label for="name">Estado</label><input type="text"
-					[(ngModel)]="entity.estado.id" class="form-control" id="estado"
-					name="estado" placeholder="Enter your estado" required #name="ngModel">
+				<label for="name">Estado</label> <select [(ngModel)]="entity.estado"
+					(ngModelChange)="estadoChanged($event)" name="estado">
+					<option *ngFor="let estado of estados"
+						[ngValue]="estado">{{estado.nome}}</option>
+				</select>
 				<div [hidden]="!name.pristine" class="alert alert-danger">Estado
 					is required</div>
 			</div>

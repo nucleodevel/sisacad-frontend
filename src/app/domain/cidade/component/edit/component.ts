@@ -40,4 +40,13 @@ export class CidadeEditComponent extends AbstractEditComponent<Cidade, CidadeDto
 	super.onSubmit();
   }
 
+  onSelect(event: Event) {
+    alert(event);
+  }
+
+  estadoChanged(estado: Estado) {
+	this.entity.estado = estado;
+    //alert(this.entity.estado.nome); // here you will able to see whole object in console
+  }
+
 }
