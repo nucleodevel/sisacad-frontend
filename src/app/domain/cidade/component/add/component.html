@@ -1,26 +1,30 @@
 <div class="card my-5">
 	<div class="card-body">
-		<form (ngSubmit)="onSubmit()" #entityAdd="ngForm">
+		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+		
 			<div class="form-group">
 				<label for="name">Nome</label> <input type="text"
 					[(ngModel)]="entity.nome" class="form-control" id="nome"
-					name="nome" placeholder="Enter your name" required #name="ngModel">
-				<div [hidden]="!name.pristine" class="alert alert-danger">Nome
+					name="nome" placeholder="Enter your name" required #nome="ngModel">
+				<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
 					is required</div>
 			</div>
+			
 			<div class="form-group">
-				<label for="name">Estado</label> <select [(ngModel)]="entity.estado"
-					(ngModelChange)="estadoChanged($event)" name="estado">
+				<select [(ngModel)]="entity.estado" class="form-control" name="estado" required
+					#estado="ngModel" [compareWith]="compareEstado">
 					<option *ngFor="let estado of estados"
 						[ngValue]="estado">{{estado.nome}}</option>
 				</select>
-				<div [hidden]="!name.pristine" class="alert alert-danger">Estado
+				<div [hidden]="!estado.pristine" class="alert alert-danger">Estado
 					is required</div>
 			</div>
-			<button type="submit" [disabled]="!entityAdd.form.valid"
+			
+			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"
 				style="margin-right: 10px">Cancelar</button>
+				
 		</form>
 	</div>
 </div>

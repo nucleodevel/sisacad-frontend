@@ -29,21 +29,11 @@ export class CidadeAddComponent extends AbstractAddComponent<Cidade, CidadeDto, 
 	
 	this.estadoService.findAll().subscribe(data => {
 	  this.estados = this.estadoService.makeEntityArrayFromDtoArray(data);
-    });  
-
-    this.entity.estado = new Estado();
-  }
-
-  onSubmit() {
-	this.estadoService.findById(this.entity.estado.id).subscribe(data => {
-	  this.entity.estado = this.estadoService.makeEntityFromDto(data);
     });
-	
-	super.onSubmit();
   }
 
-  estadoChanged(estado: Estado) {
-	this.entity.estado = estado;
+  compareEstado(o1: Estado, o2: Estado) {
+	return o1 && o2 ? o1.id === o2.id: o1 == o2;
   }
 
 }

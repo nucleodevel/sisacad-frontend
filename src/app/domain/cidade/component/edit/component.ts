@@ -16,7 +16,7 @@ import { EstadoService } from '../../../estado/service/service';
   styleUrls: ['./component.css']
 })
 export class CidadeEditComponent extends AbstractEditComponent<Cidade, CidadeDto, CidadeService> implements OnInit {
-    
+	
   estados!: Estado[];
 
   constructor(protected service: CidadeService, protected router: Router, 
@@ -32,21 +32,8 @@ export class CidadeEditComponent extends AbstractEditComponent<Cidade, CidadeDto
     });
   }
 
-  onSubmit() {
-	this.estadoService.findById(this.entity.estado.id).subscribe(data => {
-	  this.entity.estado = this.estadoService.makeEntityFromDto(data);
-    });
-	
-	super.onSubmit();
-  }
-
-  onSelect(event: Event) {
-    alert(event);
-  }
-
-  estadoChanged(estado: Estado) {
-	this.entity.estado = estado;
-    //alert(this.entity.estado.nome); // here you will able to see whole object in console
+  compareEstado(o1: Estado, o2: Estado) {
+	return o1 && o2 ? o1.id === o2.id: o1 == o2;
   }
 
 }
