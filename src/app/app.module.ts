@@ -18,6 +18,18 @@ import { CidadeAddComponent } from './domain/cidade/component/add/component';
 import { CidadeEditComponent } from './domain/cidade/component/edit/component';
 import { CidadeService } from './domain/cidade/service/service';
 
+import { ClienteListComponent } from './domain/cliente/component/list/component';
+import { ClienteViewComponent } from './domain/cliente/component/view/component';
+import { ClienteAddComponent } from './domain/cliente/component/add/component'; 
+import { ClienteEditComponent } from './domain/cliente/component/edit/component';
+import { ClienteService } from './domain/cliente/service/service';
+
+import { EnderecoListComponent } from './domain/endereco/component/list/component';
+import { EnderecoViewComponent } from './domain/endereco/component/view/component';
+import { EnderecoAddComponent } from './domain/endereco/component/add/component'; 
+import { EnderecoEditComponent } from './domain/endereco/component/edit/component';
+import { EnderecoService } from './domain/endereco/service/service';
+
 import { EspecieListComponent } from './domain/especie/component/list/component';
 import { EspecieViewComponent } from './domain/especie/component/view/component';
 import { EspecieAddComponent } from './domain/especie/component/add/component'; 
@@ -29,6 +41,12 @@ import { EstadoViewComponent } from './domain/estado/component/view/component';
 import { EstadoAddComponent } from './domain/estado/component/add/component'; 
 import { EstadoEditComponent } from './domain/estado/component/edit/component';
 import { EstadoService } from './domain/estado/service/service';
+
+import { PessoaListComponent } from './domain/pessoa/component/list/component';
+import { PessoaViewComponent } from './domain/pessoa/component/view/component';
+import { PessoaAddComponent } from './domain/pessoa/component/add/component'; 
+import { PessoaEditComponent } from './domain/pessoa/component/edit/component';
+import { PessoaService } from './domain/pessoa/service/service';
 
 import { PetListComponent } from './domain/pet/component/list/component';
 import { PetViewComponent } from './domain/pet/component/view/component';
@@ -62,6 +80,16 @@ import { RacaService } from './domain/raca/service/service';
     CidadeAddComponent,
     CidadeEditComponent,
 
+    ClienteListComponent,
+    ClienteViewComponent,
+    ClienteAddComponent,
+    ClienteEditComponent,
+
+    EnderecoListComponent,
+    EnderecoViewComponent,
+    EnderecoAddComponent,
+    EnderecoEditComponent,
+
     EspecieListComponent,
     EspecieViewComponent,
     EspecieAddComponent,
@@ -71,6 +99,11 @@ import { RacaService } from './domain/raca/service/service';
     EstadoViewComponent,
     EstadoAddComponent,
     EstadoEditComponent,
+
+    PessoaListComponent,
+    PessoaViewComponent,
+    PessoaAddComponent,
+    PessoaEditComponent,
 
     PetListComponent,
     PetViewComponent,
@@ -97,8 +130,11 @@ import { RacaService } from './domain/raca/service/service';
   providers: [
 	CategoriaService,
 	CidadeService,
+	ClienteService,
+	EnderecoService,
 	EspecieService,
 	EstadoService,
+	PessoaService,
 	PetService,
 	ProdutoService,
 	RacaService,

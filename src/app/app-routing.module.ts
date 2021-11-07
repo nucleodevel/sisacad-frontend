@@ -11,6 +11,16 @@ import { CidadeViewComponent } from './domain/cidade/component/view/component';
 import { CidadeAddComponent } from './domain/cidade/component/add/component';
 import { CidadeEditComponent } from './domain/cidade/component/edit/component';
 
+import { ClienteListComponent } from './domain/cliente/component/list/component';
+import { ClienteViewComponent } from './domain/cliente/component/view/component';
+import { ClienteAddComponent } from './domain/cliente/component/add/component';
+import { ClienteEditComponent } from './domain/cliente/component/edit/component';
+
+import { EnderecoListComponent } from './domain/endereco/component/list/component';
+import { EnderecoViewComponent } from './domain/endereco/component/view/component';
+import { EnderecoAddComponent } from './domain/endereco/component/add/component';
+import { EnderecoEditComponent } from './domain/endereco/component/edit/component';
+
 import { EspecieListComponent } from './domain/especie/component/list/component';
 import { EspecieViewComponent } from './domain/especie/component/view/component';
 import { EspecieAddComponent } from './domain/especie/component/add/component';
@@ -20,6 +30,11 @@ import { EstadoListComponent } from './domain/estado/component/list/component';
 import { EstadoViewComponent } from './domain/estado/component/view/component';
 import { EstadoAddComponent } from './domain/estado/component/add/component';
 import { EstadoEditComponent } from './domain/estado/component/edit/component';
+
+import { PessoaListComponent } from './domain/pessoa/component/list/component';
+import { PessoaViewComponent } from './domain/pessoa/component/view/component';
+import { PessoaAddComponent } from './domain/pessoa/component/add/component';
+import { PessoaEditComponent } from './domain/pessoa/component/edit/component';
 
 import { PetListComponent } from './domain/pet/component/list/component';
 import { PetViewComponent } from './domain/pet/component/view/component';
@@ -49,6 +64,18 @@ const routes: Routes = [
   { path: 'cidades/add', component: CidadeAddComponent },
   { path: 'cidades/edit/:id', component: CidadeEditComponent },
 
+  { path: 'clientes', component: ClienteListComponent },
+  { path: 'clientes/list', component: ClienteListComponent },
+  { path: 'clientes/view/:id', component: ClienteViewComponent },
+  { path: 'clientes/add', component: ClienteAddComponent },
+  { path: 'clientes/edit/:id', component: ClienteEditComponent },
+
+  { path: 'enderecos', component: EnderecoListComponent },
+  { path: 'enderecos/list', component: EnderecoListComponent },
+  { path: 'enderecos/view/:id', component: EnderecoViewComponent },
+  { path: 'enderecos/add', component: EnderecoAddComponent },
+  { path: 'enderecos/edit/:id', component: EnderecoEditComponent },
+
   { path: 'especies', component: EspecieListComponent },
   { path: 'especies/list', component: EspecieListComponent },
   { path: 'especies/view/:id', component: EspecieViewComponent },
@@ -60,6 +87,12 @@ const routes: Routes = [
   { path: 'estados/view/:id', component: EstadoViewComponent },
   { path: 'estados/add', component: EstadoAddComponent },
   { path: 'estados/edit/:id', component: EstadoEditComponent },
+
+  { path: 'pessoas', component: PessoaListComponent },
+  { path: 'pessoas/list', component: PessoaListComponent },
+  { path: 'pessoas/view/:id', component: PessoaViewComponent },
+  { path: 'pessoas/add', component: PessoaAddComponent },
+  { path: 'pessoas/edit/:id', component: PessoaEditComponent },
 
   { path: 'pets', component: PetListComponent },
   { path: 'pets/list', component: PetListComponent },

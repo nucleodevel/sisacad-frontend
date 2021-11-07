@@ -1,0 +1,29 @@
+<div class="card my-5">
+	<div class="card-body">
+		<a routerLink="/{{ routerPrefix }}/add" class="btn btn-success"
+			style="margin-bottom: 10px">Novo</a>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Pessoa</th>
+					<th scope="col">Tipo</th>
+					<th scope="col">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let entity of entities">
+					<td>{{ entity.id }}</td>
+					<td>{{ entity.pessoa.nome }}</td>
+					<td>{{ entity.tipo }}</td>
+					<td><a routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"
+						class="btn btn-info" style="margin-left: 10px">Ver</a> <a
+						routerLink="/{{ routerPrefix }}/edit/{{ entity.id }}"
+						class="btn btn-warning" style="margin-left: 10px">Editar</a>
+						<button (click)="askRemove(entity)" class="btn btn-danger"
+							style="margin-left: 10px">Remover</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
