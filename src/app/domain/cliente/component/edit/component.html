@@ -3,14 +3,13 @@
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 		
 			<div class="form-group">
-			    <label for="name">Pessoa</label> 
-				<input type="text" [(ngModel)]="entity.pessoa.nome" class="form-control" name="pessoa"
-					#pessoa="ngModel" disabled />
+			    <label for="pessoa">Pessoa</label> 
+				<input type="text" value="{{entity.pessoa.nome}}" class="form-control" name="pessoa"
+					disabled />
 			</div>
 		
 			<div class="form-group">
-				<label for="name">Tipo</label> 
-				
+				<label for="tipo">Tipo</label> 				
 				<select [(ngModel)]="entity.tipo" class="form-control" name="tipo" required
 					#tipo="ngModel">
 					<option *ngFor="let item of clienteTipo | keyvalue" [value]="item['key']">{{item['value']}}</option>

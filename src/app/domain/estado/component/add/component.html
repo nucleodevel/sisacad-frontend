@@ -2,7 +2,7 @@
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-group">
-				<label for="name">Nome</label> <input type="text"
+				<label for="nome">Nome</label> <input type="text"
 					[(ngModel)]="entity.nome" class="form-control" id="nome"
 					name="nome" placeholder="Enter your name" required #nome="ngModel">
 				<div [hidden]="!nome.pristine" class="alert alert-danger">Nome

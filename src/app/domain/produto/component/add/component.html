@@ -2,14 +2,14 @@
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-group">
-				<label for="name">Nome</label> <input type="text"
+				<label for="nome">Nome</label> <input type="text"
 					[(ngModel)]="entity.nome" class="form-control" id="nome"
 					name="nome" placeholder="Enter your name" required #nome="ngModel">
 				<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
 					is required</div>
 			</div>
 			<div class="form-group">
-				<label for="name">Preço</label> <input type="text"
+				<label for="preco">Preço</label> <input type="text"
 					[(ngModel)]="entity.preco" class="form-control" id="preco"
 					name="preco" placeholder="Enter your price" required #preco="ngModel">
 				<div [hidden]="!preco.pristine" class="alert alert-danger">Preço

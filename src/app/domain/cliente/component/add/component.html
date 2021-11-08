@@ -3,7 +3,7 @@
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			
 			<div class="form-group">
-			    <label for="name">Pessoa</label> 
+			    <label for="pessoa">Pessoa</label> 
 				<select [(ngModel)]="entity.pessoa" class="form-control" name="pessoa" required
 					#pessoa="ngModel" [compareWith]="comparePessoa">
 					<option *ngFor="let pessoa of pessoas"
@@ -14,8 +14,7 @@
 			</div>
 		
 			<div class="form-group">
-				<label for="name">Tipo</label> 
-				
+				<label for="tipo">Tipo</label> 				
 				<select [(ngModel)]="entity.tipo" class="form-control" name="tipo" required
 					#tipo="ngModel">
 					<option *ngFor="let item of clienteTipo | keyvalue" [value]="item['key']">{{item['value']}}</option>
