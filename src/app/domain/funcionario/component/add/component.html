@@ -3,6 +3,7 @@
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			
 			<div class="form-group">
+			    <label for="name">Pessoa</label> 
 				<select [(ngModel)]="entity.pessoa" class="form-control" name="pessoa" required
 					#pessoa="ngModel" [compareWith]="comparePessoa">
 					<option *ngFor="let pessoa of pessoas"
