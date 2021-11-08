@@ -31,6 +31,11 @@ import { EstadoViewComponent } from './domain/estado/component/view/component';
 import { EstadoAddComponent } from './domain/estado/component/add/component';
 import { EstadoEditComponent } from './domain/estado/component/edit/component';
 
+import { FuncionarioListComponent } from './domain/funcionario/component/list/component';
+import { FuncionarioViewComponent } from './domain/funcionario/component/view/component';
+import { FuncionarioAddComponent } from './domain/funcionario/component/add/component';
+import { FuncionarioEditComponent } from './domain/funcionario/component/edit/component';
+
 import { PessoaListComponent } from './domain/pessoa/component/list/component';
 import { PessoaViewComponent } from './domain/pessoa/component/view/component';
 import { PessoaAddComponent } from './domain/pessoa/component/add/component';
@@ -87,6 +92,12 @@ const routes: Routes = [
   { path: 'estados/view/:id', component: EstadoViewComponent },
   { path: 'estados/add', component: EstadoAddComponent },
   { path: 'estados/edit/:id', component: EstadoEditComponent },
+
+  { path: 'funcionarios', component: FuncionarioListComponent },
+  { path: 'funcionarios/list', component: FuncionarioListComponent },
+  { path: 'funcionarios/view/:id', component: FuncionarioViewComponent },
+  { path: 'funcionarios/add', component: FuncionarioAddComponent },
+  { path: 'funcionarios/edit/:id', component: FuncionarioEditComponent },
 
   { path: 'pessoas', component: PessoaListComponent },
   { path: 'pessoas/list', component: PessoaListComponent },

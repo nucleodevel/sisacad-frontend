@@ -42,6 +42,12 @@ import { EstadoAddComponent } from './domain/estado/component/add/component';
 import { EstadoEditComponent } from './domain/estado/component/edit/component';
 import { EstadoService } from './domain/estado/service/service';
 
+import { FuncionarioListComponent } from './domain/funcionario/component/list/component';
+import { FuncionarioViewComponent } from './domain/funcionario/component/view/component';
+import { FuncionarioAddComponent } from './domain/funcionario/component/add/component'; 
+import { FuncionarioEditComponent } from './domain/funcionario/component/edit/component';
+import { FuncionarioService } from './domain/funcionario/service/service';
+
 import { PessoaListComponent } from './domain/pessoa/component/list/component';
 import { PessoaViewComponent } from './domain/pessoa/component/view/component';
 import { PessoaAddComponent } from './domain/pessoa/component/add/component'; 
@@ -100,6 +106,11 @@ import { RacaService } from './domain/raca/service/service';
     EstadoAddComponent,
     EstadoEditComponent,
 
+    FuncionarioListComponent,
+    FuncionarioViewComponent,
+    FuncionarioAddComponent,
+    FuncionarioEditComponent,
+
     PessoaListComponent,
     PessoaViewComponent,
     PessoaAddComponent,
@@ -134,6 +145,7 @@ import { RacaService } from './domain/raca/service/service';
 	EnderecoService,
 	EspecieService,
 	EstadoService,
+	FuncionarioService,
 	PessoaService,
 	PetService,
 	ProdutoService,

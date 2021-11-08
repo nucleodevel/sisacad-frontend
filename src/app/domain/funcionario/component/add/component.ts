@@ -3,28 +3,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../abstract/component/add/component';
 
-import { Cliente } from '../../entity/entity';
-import { ClienteDto } from '../../dto/dto';
-import { ClienteService } from '../../service/service';
+import { Funcionario } from '../../entity/entity';
+import { FuncionarioDto } from '../../dto/dto';
+import { FuncionarioService } from '../../service/service';
 
-import { ClienteTipo } from '../../enum/cliente-tipo';
+import { FuncionarioFuncao } from '../../enum/funcionario-funcao';
 
 import { Pessoa } from '../../../pessoa/entity/entity';
 import { PessoaService } from '../../../pessoa/service/service';
 
 @Component({
-  selector: 'app-cliente-add',
+  selector: 'app-funcionario-add',
   templateUrl: './component.html',
   styleUrls: ['./component.css']
 })
-export class ClienteAddComponent extends AbstractAddComponent<Cliente, ClienteDto, ClienteService> implements OnInit {
+export class FuncionarioAddComponent extends AbstractAddComponent<Funcionario, FuncionarioDto, FuncionarioService> implements OnInit {
 	
   pessoas!: Pessoa[];
-  clienteTipo = ClienteTipo;
+  funcionarioFuncao = FuncionarioFuncao;
 
-  constructor(protected service: ClienteService, protected router: Router, 
+  constructor(protected service: FuncionarioService, protected router: Router, 
       protected route: ActivatedRoute, protected pessoaService: PessoaService) {
-	super(service, router, route, 'clientes');
+	super(service, router, route, 'funcionarios');
   }
 
   ngOnInit() {

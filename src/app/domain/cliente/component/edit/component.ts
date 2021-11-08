@@ -7,6 +7,8 @@ import { Cliente } from '../../entity/entity';
 import { ClienteDto } from '../../dto/dto';
 import { ClienteService } from '../../service/service';
 
+import { ClienteTipo } from '../../enum/cliente-tipo';
+
 import { Pessoa } from '../../../pessoa/entity/entity';
 import { PessoaService } from '../../../pessoa/service/service';
 
@@ -18,6 +20,7 @@ import { PessoaService } from '../../../pessoa/service/service';
 export class ClienteEditComponent extends AbstractEditComponent<Cliente, ClienteDto, ClienteService> implements OnInit {
 	
   pessoas!: Pessoa[];
+  clienteTipo = ClienteTipo;
 
   constructor(protected service: ClienteService, protected router: Router, 
       protected route: ActivatedRoute, protected pessoaService: PessoaService) {

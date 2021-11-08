@@ -13,9 +13,12 @@
 			</div>
 		
 			<div class="form-group">
-				<label for="name">Tipo</label> <input type="text"
-					[(ngModel)]="entity.tipo" class="form-control" id="tipo"
-					name="tipo" placeholder="Enter your tipo" required #tipo="ngModel">
+				<label for="name">Tipo</label> 
+				
+				<select [(ngModel)]="entity.tipo" class="form-control" name="tipo" required
+					#tipo="ngModel">
+					<option *ngFor="let item of clienteTipo | keyvalue" [value]="item['key']">{{item['value']}}</option>
+				</select>
 				<div [hidden]="!tipo.pristine" class="alert alert-danger">Tipo
 					is required</div>
 			</div>
