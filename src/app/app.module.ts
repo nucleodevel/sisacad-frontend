@@ -1,155 +1,72 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CategoriaListComponent } from './domain/categoria/component/list/component';
-import { CategoriaViewComponent } from './domain/categoria/component/view/component';
-import { CategoriaAddComponent } from './domain/categoria/component/add/component'; 
-import { CategoriaEditComponent } from './domain/categoria/component/edit/component';
-import { CategoriaService } from './domain/categoria/service/service';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-import { CidadeListComponent } from './domain/cidade/component/list/component';
-import { CidadeViewComponent } from './domain/cidade/component/view/component';
-import { CidadeAddComponent } from './domain/cidade/component/add/component'; 
-import { CidadeEditComponent } from './domain/cidade/component/edit/component';
-import { CidadeService } from './domain/cidade/service/service';
+import { CursoListComponent } from './domain/curso/component/list/component';
+import { CursoViewComponent } from './domain/curso/component/view/component';
+import { CursoAddComponent } from './domain/curso/component/add/component'; 
+import { CursoEditComponent } from './domain/curso/component/edit/component';
+import { CursoService } from './domain/curso/service/service';
 
-import { ClienteListComponent } from './domain/cliente/component/list/component';
-import { ClienteViewComponent } from './domain/cliente/component/view/component';
-import { ClienteAddComponent } from './domain/cliente/component/add/component'; 
-import { ClienteEditComponent } from './domain/cliente/component/edit/component';
-import { ClienteService } from './domain/cliente/service/service';
+import { DisciplinaListComponent } from './domain/disciplina/component/list/component';
+import { DisciplinaViewComponent } from './domain/disciplina/component/view/component';
+import { DisciplinaAddComponent } from './domain/disciplina/component/add/component'; 
+import { DisciplinaEditComponent } from './domain/disciplina/component/edit/component';
+import { DisciplinaService } from './domain/disciplina/service/service';
 
-import { EnderecoListComponent } from './domain/endereco/component/list/component';
-import { EnderecoViewComponent } from './domain/endereco/component/view/component';
-import { EnderecoAddComponent } from './domain/endereco/component/add/component'; 
-import { EnderecoEditComponent } from './domain/endereco/component/edit/component';
-import { EnderecoService } from './domain/endereco/service/service';
+import { DocenteListComponent } from './domain/docente/component/list/component';
+import { DocenteViewComponent } from './domain/docente/component/view/component';
+import { DocenteAddComponent } from './domain/docente/component/add/component'; 
+import { DocenteEditComponent } from './domain/docente/component/edit/component';
+import { DocenteService } from './domain/docente/service/service';
 
-import { EspecieListComponent } from './domain/especie/component/list/component';
-import { EspecieViewComponent } from './domain/especie/component/view/component';
-import { EspecieAddComponent } from './domain/especie/component/add/component'; 
-import { EspecieEditComponent } from './domain/especie/component/edit/component';
-import { EspecieService } from './domain/especie/service/service';
-
-import { EstadoListComponent } from './domain/estado/component/list/component';
-import { EstadoViewComponent } from './domain/estado/component/view/component';
-import { EstadoAddComponent } from './domain/estado/component/add/component'; 
-import { EstadoEditComponent } from './domain/estado/component/edit/component';
-import { EstadoService } from './domain/estado/service/service';
-
-import { FuncionarioListComponent } from './domain/funcionario/component/list/component';
-import { FuncionarioViewComponent } from './domain/funcionario/component/view/component';
-import { FuncionarioAddComponent } from './domain/funcionario/component/add/component'; 
-import { FuncionarioEditComponent } from './domain/funcionario/component/edit/component';
-import { FuncionarioService } from './domain/funcionario/service/service';
-
-import { PessoaListComponent } from './domain/pessoa/component/list/component';
-import { PessoaViewComponent } from './domain/pessoa/component/view/component';
-import { PessoaAddComponent } from './domain/pessoa/component/add/component'; 
-import { PessoaEditComponent } from './domain/pessoa/component/edit/component';
-import { PessoaService } from './domain/pessoa/service/service';
-
-import { PetListComponent } from './domain/pet/component/list/component';
-import { PetViewComponent } from './domain/pet/component/view/component';
-import { PetAddComponent } from './domain/pet/component/add/component'; 
-import { PetEditComponent } from './domain/pet/component/edit/component';
-import { PetService } from './domain/pet/service/service';
-
-import { ProdutoListComponent } from './domain/produto/component/list/component';
-import { ProdutoViewComponent } from './domain/produto/component/view/component';
-import { ProdutoAddComponent } from './domain/produto/component/add/component'; 
-import { ProdutoEditComponent } from './domain/produto/component/edit/component';
-import { ProdutoService } from './domain/produto/service/service';
-
-import { RacaListComponent } from './domain/raca/component/list/component';
-import { RacaViewComponent } from './domain/raca/component/view/component';
-import { RacaAddComponent } from './domain/raca/component/add/component'; 
-import { RacaEditComponent } from './domain/raca/component/edit/component';
-import { RacaService } from './domain/raca/service/service';
+import { VestibularListComponent } from './domain/vestibular/component/list/component';
+import { VestibularViewComponent } from './domain/vestibular/component/view/component';
+import { VestibularAddComponent } from './domain/vestibular/component/add/component'; 
+import { VestibularEditComponent } from './domain/vestibular/component/edit/component';
+import { VestibularService } from './domain/vestibular/service/service';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    CategoriaListComponent,
-    CategoriaViewComponent,
-    CategoriaAddComponent,
-    CategoriaEditComponent,
+    CursoListComponent,
+    CursoViewComponent,
+    CursoAddComponent,
+    CursoEditComponent,
 
-    CidadeListComponent,
-    CidadeViewComponent,
-    CidadeAddComponent,
-    CidadeEditComponent,
+    DisciplinaListComponent,
+    DisciplinaViewComponent,
+    DisciplinaAddComponent,
+    DisciplinaEditComponent,
 
-    ClienteListComponent,
-    ClienteViewComponent,
-    ClienteAddComponent,
-    ClienteEditComponent,
+    DocenteListComponent,
+    DocenteViewComponent,
+    DocenteAddComponent,
+    DocenteEditComponent,
 
-    EnderecoListComponent,
-    EnderecoViewComponent,
-    EnderecoAddComponent,
-    EnderecoEditComponent,
-
-    EspecieListComponent,
-    EspecieViewComponent,
-    EspecieAddComponent,
-    EspecieEditComponent,
-
-    EstadoListComponent,
-    EstadoViewComponent,
-    EstadoAddComponent,
-    EstadoEditComponent,
-
-    FuncionarioListComponent,
-    FuncionarioViewComponent,
-    FuncionarioAddComponent,
-    FuncionarioEditComponent,
-
-    PessoaListComponent,
-    PessoaViewComponent,
-    PessoaAddComponent,
-    PessoaEditComponent,
-
-    PetListComponent,
-    PetViewComponent,
-    PetAddComponent,
-    PetEditComponent,
-
-    ProdutoListComponent,
-    ProdutoViewComponent,
-    ProdutoAddComponent,
-    ProdutoEditComponent,
-
-    RacaListComponent,
-    RacaViewComponent,
-    RacaAddComponent,
-    RacaEditComponent,
+    VestibularListComponent,
+    VestibularViewComponent,
+    VestibularAddComponent,
+    VestibularEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
-	CategoriaService,
-	CidadeService,
-	ClienteService,
-	EnderecoService,
-	EspecieService,
-	EstadoService,
-	FuncionarioService,
-	PessoaService,
-	PetService,
-	ProdutoService,
-	RacaService,
+	CursoService,
+	DisciplinaService,
+	DocenteService,
+	VestibularService,
   ],
   bootstrap: [AppComponent]
 })
