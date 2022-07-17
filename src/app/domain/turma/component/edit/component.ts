@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { AbstractEditComponent } from '../../../abstract/component/edit/component';
+
+import { Turma } from '../../entity/entity';
+import { TurmaDto } from '../../dto/dto';
+import { TurmaService } from '../../service/service';
+
+import { OfertaCurso } from '../../../oferta-curso/entity/entity';
+import { OfertaCursoService } from '../../../oferta-curso/service/service';
+
+@Component({
+  selector: 'app-turma-edit',
+  templateUrl: './component.html',
+  styleUrls: ['./component.css']
+})
+export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, TurmaService> implements OnInit {
+	
+  listaOfertaCurso!: OfertaCurso[];
+
+  constructor(protected service: TurmaService, protected router: Router, 
+      protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
+	super(service, router, route, 'turma');
+  }
+
+  ngOnInit() {
+	super.ngOnInitSuper();
+	
+	this.ofertaCursoService.findAll().subscribe(data => {
+	  this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
+    });
+  }
+
+  compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {
+	return o1.compare(o2);
+  }
+
+}

@@ -1,0 +1,21 @@
+<div class="card my-5">
+	<div class="card-body">
+		<hr />
+		<div *ngIf="entity">
+			<div>
+				<label><b>ID: </b></label> {{ entity.id }}
+			</div>
+			<div>
+				<label><b>Ano de início: </b></label> {{ entity.anoInicio }}
+			</div>
+			<div>
+				<label><b>Ano de término: </b></label> {{ entity.anoTermino }}
+			</div>
+			<div>
+				<label><b>Curso: </b></label> {{ entity.curso.toString() }}
+			</div>
+		</div>
+		<button (click)="list()" type="button" class="btn btn-danger"
+			style="margin-right: 10px">Voltar</button> <br>
+	</div>
+</div>

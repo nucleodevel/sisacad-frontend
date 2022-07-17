@@ -31,8 +31,4 @@ export class DisciplinaService extends AbstractService<Disciplina, DisciplinaDto
 
     return entity;
   }
-
-  getEntityString(entity: Disciplina): string {
-	return entity.nome;
-  }
 }

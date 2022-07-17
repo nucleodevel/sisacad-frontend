@@ -19,8 +19,6 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
   
   abstract makeEntityFromDto(dto: DTO): E;
 
-  abstract getEntityString(entity: E): string;
-
   public makeEntityArrayFromDtoArray(dtos: DTO[]) {
 	var entities: E[];
 	entities = [];

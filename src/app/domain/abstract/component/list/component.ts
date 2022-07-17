@@ -49,7 +49,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
   }
 
   askRemove(entity: E) {
-	if (confirm('Remover "' + this.service.getEntityString(entity) + '"?')) {
+	if (confirm('Remover "' + entity.toString() + '"?')) {
       this.remove(entity.id);
     }
   }

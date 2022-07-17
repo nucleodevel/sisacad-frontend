@@ -1,0 +1,42 @@
+<div class="card my-5">
+	<div class="card-body">
+		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+		
+			<div class="form-group">
+				<label for="ano">Ano</label> <input type="text"
+					[(ngModel)]="entity.ano" class="form-control" id="ano"
+					name="ano" placeholder="Enter your name" required #ano="ngModel">
+				<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
+					is required</div>
+			</div>
+			
+			<div class="form-group">
+			    <label for="vestibular">Vestibular</label>
+				<select [(ngModel)]="entity.vestibular" class="form-control" name="vestibular" required
+					#vestibular="ngModel" [compareWith]="compareVestibular">
+					<option *ngFor="let vestibular of listaVestibular"
+						[ngValue]="vestibular">{{vestibular.toString()}}</option>
+				</select>
+				<div [hidden]="!vestibular.pristine" class="alert alert-danger">Vestibular
+					is required</div>
+			</div>
+			
+			<div class="form-group">
+			    <label for="estruturaCurricular">Estrutura Curricular</label>
+				<select [(ngModel)]="entity.estruturaCurricular" class="form-control" name="estruturaCurricular" required
+					#estruturaCurricular="ngModel" [compareWith]="compareEstruturaCurricular">
+					<option *ngFor="let estruturaCurricular of listaEstruturaCurricular"
+						[ngValue]="estruturaCurricular">{{estruturaCurricular}}</option>
+				</select>
+				<div [hidden]="!estruturaCurricular.pristine" class="alert alert-danger">Estrutura Curricular
+					is required</div>
+			</div>
+			
+			<button type="submit" [disabled]="!entityForm.form.valid"
+				class="btn btn-success" style="margin-right: 10px">Salvar</button>
+			<button (click)="list()" type="button" class="btn btn-danger"
+				style="margin-right: 10px">Cancelar</button>
+				
+		</form>
+	</div>
+</div>

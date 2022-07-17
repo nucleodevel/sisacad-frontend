@@ -31,8 +31,4 @@ export class DocenteService extends AbstractService<Docente, DocenteDto> {
 
     return entity;
   }
-
-  getEntityString(entity: Docente): string {
-	return entity.nome;
-  }
 }

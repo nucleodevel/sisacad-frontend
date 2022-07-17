@@ -31,8 +31,4 @@ export class VestibularService extends AbstractService<Vestibular, VestibularDto
 
     return entity;
   }
-
-  getEntityString(entity: Vestibular): string {
-	return entity.ano;
-  }
 }

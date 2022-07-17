@@ -16,6 +16,21 @@ import { DocenteViewComponent } from './domain/docente/component/view/component'
 import { DocenteAddComponent } from './domain/docente/component/add/component';
 import { DocenteEditComponent } from './domain/docente/component/edit/component';
 
+import { EstruturaCurricularListComponent } from './domain/estrutura-curricular/component/list/component';
+import { EstruturaCurricularViewComponent } from './domain/estrutura-curricular/component/view/component';
+import { EstruturaCurricularAddComponent } from './domain/estrutura-curricular/component/add/component';
+import { EstruturaCurricularEditComponent } from './domain/estrutura-curricular/component/edit/component';
+
+import { OfertaCursoListComponent } from './domain/oferta-curso/component/list/component';
+import { OfertaCursoViewComponent } from './domain/oferta-curso/component/view/component';
+import { OfertaCursoAddComponent } from './domain/oferta-curso/component/add/component';
+import { OfertaCursoEditComponent } from './domain/oferta-curso/component/edit/component';
+
+import { TurmaListComponent } from './domain/turma/component/list/component';
+import { TurmaViewComponent } from './domain/turma/component/view/component';
+import { TurmaAddComponent } from './domain/turma/component/add/component';
+import { TurmaEditComponent } from './domain/turma/component/edit/component';
+
 import { VestibularListComponent } from './domain/vestibular/component/list/component';
 import { VestibularViewComponent } from './domain/vestibular/component/view/component';
 import { VestibularAddComponent } from './domain/vestibular/component/add/component';
@@ -39,6 +54,24 @@ const routes: Routes = [
   { path: 'docente/view/:id', component: DocenteViewComponent },
   { path: 'docente/add', component: DocenteAddComponent },
   { path: 'docente/edit/:id', component: DocenteEditComponent },
+
+  { path: 'estrutura-curricular', component: EstruturaCurricularListComponent },
+  { path: 'estrutura-curricular/list', component: EstruturaCurricularListComponent },
+  { path: 'estrutura-curricular/view/:id', component: EstruturaCurricularViewComponent },
+  { path: 'estrutura-curricular/add', component: EstruturaCurricularAddComponent },
+  { path: 'estrutura-curricular/edit/:id', component: EstruturaCurricularEditComponent },
+
+  { path: 'oferta-curso', component: OfertaCursoListComponent },
+  { path: 'oferta-curso/list', component: OfertaCursoListComponent },
+  { path: 'oferta-curso/view/:id', component: OfertaCursoViewComponent },
+  { path: 'oferta-curso/add', component: OfertaCursoAddComponent },
+  { path: 'oferta-curso/edit/:id', component: OfertaCursoEditComponent },
+
+  { path: 'turma', component: TurmaListComponent },
+  { path: 'turma/list', component: TurmaListComponent },
+  { path: 'turma/view/:id', component: TurmaViewComponent },
+  { path: 'turma/add', component: TurmaAddComponent },
+  { path: 'turma/edit/:id', component: TurmaEditComponent },
 
   { path: 'vestibular', component: VestibularListComponent },
   { path: 'vestibular/list', component: VestibularListComponent },

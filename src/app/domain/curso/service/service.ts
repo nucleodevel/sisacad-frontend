@@ -31,8 +31,4 @@ export class CursoService extends AbstractService<Curso, CursoDto> {
 
     return entity;
   }
-
-  getEntityString(entity: Curso): string {
-	return entity.nome;
-  }
 }
