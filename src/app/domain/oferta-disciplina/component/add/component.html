@@ -1,0 +1,34 @@
+<div class="card my-5">
+	<div class="card-body">
+		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+			
+			<div class="form-group">
+			    <label for="disciplina">Disciplina</label>
+				<select [(ngModel)]="entity.disciplina" class="form-control" name="disciplina" required
+					#disciplina="ngModel" [compareWith]="compareDisciplina">
+					<option *ngFor="let disciplina of listaDisciplina"
+						[ngValue]="disciplina">{{disciplina.toString()}}</option>
+				</select>
+				<div [hidden]="!disciplina.pristine" class="alert alert-danger">Disciplina
+					is required</div>
+			</div>
+			
+			<div class="form-group">
+			    <label for="docente">Docente</label>
+				<select [(ngModel)]="entity.docente" class="form-control" name="docente" required
+					#docente="ngModel" [compareWith]="compareDocente">
+					<option *ngFor="let docente of listaDocente"
+						[ngValue]="docente">{{docente.toString()}}</option>
+				</select>
+				<div [hidden]="!docente.pristine" class="alert alert-danger">Docente
+					is required</div>
+			</div>
+			
+			<button type="submit" [disabled]="!entityForm.form.valid"
+				class="btn btn-success" style="margin-right: 10px">Salvar</button>
+			<button (click)="list()" type="button" class="btn btn-danger"
+				style="margin-right: 10px">Cancelar</button>
+				
+		</form>
+	</div>
+</div>

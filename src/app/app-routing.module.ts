@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AulaListComponent } from './domain/aula/component/list/component';
+import { AulaViewComponent } from './domain/aula/component/view/component';
+import { AulaAddComponent } from './domain/aula/component/add/component';
+import { AulaEditComponent } from './domain/aula/component/edit/component';
+
 import { CursoListComponent } from './domain/curso/component/list/component';
 import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component';
@@ -26,6 +31,11 @@ import { OfertaCursoViewComponent } from './domain/oferta-curso/component/view/c
 import { OfertaCursoAddComponent } from './domain/oferta-curso/component/add/component';
 import { OfertaCursoEditComponent } from './domain/oferta-curso/component/edit/component';
 
+import { OfertaDisciplinaListComponent } from './domain/oferta-disciplina/component/list/component';
+import { OfertaDisciplinaViewComponent } from './domain/oferta-disciplina/component/view/component';
+import { OfertaDisciplinaAddComponent } from './domain/oferta-disciplina/component/add/component';
+import { OfertaDisciplinaEditComponent } from './domain/oferta-disciplina/component/edit/component';
+
 import { TurmaListComponent } from './domain/turma/component/list/component';
 import { TurmaViewComponent } from './domain/turma/component/view/component';
 import { TurmaAddComponent } from './domain/turma/component/add/component';
@@ -37,6 +47,12 @@ import { VestibularAddComponent } from './domain/vestibular/component/add/compon
 import { VestibularEditComponent } from './domain/vestibular/component/edit/component';
 
 const routes: Routes = [
+  { path: 'aula', component: AulaListComponent },
+  { path: 'aula/list', component: AulaListComponent },
+  { path: 'aula/view/:id', component: AulaViewComponent },
+  { path: 'aula/add', component: AulaAddComponent },
+  { path: 'aula/edit/:id', component: AulaEditComponent },
+
   { path: 'curso', component: CursoListComponent },
   { path: 'curso/list', component: CursoListComponent },
   { path: 'curso/view/:id', component: CursoViewComponent },
@@ -66,6 +82,12 @@ const routes: Routes = [
   { path: 'oferta-curso/view/:id', component: OfertaCursoViewComponent },
   { path: 'oferta-curso/add', component: OfertaCursoAddComponent },
   { path: 'oferta-curso/edit/:id', component: OfertaCursoEditComponent },
+
+  { path: 'oferta-disciplina', component: OfertaDisciplinaListComponent },
+  { path: 'oferta-disciplina/list', component: OfertaDisciplinaListComponent },
+  { path: 'oferta-disciplina/view/:id', component: OfertaDisciplinaViewComponent },
+  { path: 'oferta-disciplina/add', component: OfertaDisciplinaAddComponent },
+  { path: 'oferta-disciplina/edit/:id', component: OfertaDisciplinaEditComponent },
 
   { path: 'turma', component: TurmaListComponent },
   { path: 'turma/list', component: TurmaListComponent },

@@ -2,8 +2,6 @@ import { AbstractDto } from '../../abstract/dto/dto';
 import { Turma } from '../entity/entity';
 
 export class TurmaDto extends AbstractDto<Turma> {
-  anoInicio!: number;
-  anoTermino!: number;
   ofertaCurso!: number;
 
   copyFromEntity(entity: Turma) {

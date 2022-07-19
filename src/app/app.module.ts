@@ -7,6 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AulaListComponent } from './domain/aula/component/list/component';
+import { AulaViewComponent } from './domain/aula/component/view/component';
+import { AulaAddComponent } from './domain/aula/component/add/component'; 
+import { AulaEditComponent } from './domain/aula/component/edit/component';
+import { AulaService } from './domain/aula/service/service';
+
 import { CursoListComponent } from './domain/curso/component/list/component';
 import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component'; 
@@ -37,6 +43,12 @@ import { OfertaCursoAddComponent } from './domain/oferta-curso/component/add/com
 import { OfertaCursoEditComponent } from './domain/oferta-curso/component/edit/component';
 import { OfertaCursoService } from './domain/oferta-curso/service/service';
 
+import { OfertaDisciplinaListComponent } from './domain/oferta-disciplina/component/list/component';
+import { OfertaDisciplinaViewComponent } from './domain/oferta-disciplina/component/view/component';
+import { OfertaDisciplinaAddComponent } from './domain/oferta-disciplina/component/add/component'; 
+import { OfertaDisciplinaEditComponent } from './domain/oferta-disciplina/component/edit/component';
+import { OfertaDisciplinaService } from './domain/oferta-disciplina/service/service';
+
 import { TurmaListComponent } from './domain/turma/component/list/component';
 import { TurmaViewComponent } from './domain/turma/component/view/component';
 import { TurmaAddComponent } from './domain/turma/component/add/component'; 
@@ -52,6 +64,11 @@ import { VestibularService } from './domain/vestibular/service/service';
 @NgModule({
   declarations: [
     AppComponent,
+
+    AulaListComponent,
+    AulaViewComponent,
+    AulaAddComponent,
+    AulaEditComponent,
 
     CursoListComponent,
     CursoViewComponent,
@@ -78,6 +95,11 @@ import { VestibularService } from './domain/vestibular/service/service';
     OfertaCursoAddComponent,
     OfertaCursoEditComponent,
 
+    OfertaDisciplinaListComponent,
+    OfertaDisciplinaViewComponent,
+    OfertaDisciplinaAddComponent,
+    OfertaDisciplinaEditComponent,
+
     TurmaListComponent,
     TurmaViewComponent,
     TurmaAddComponent,
@@ -96,11 +118,13 @@ import { VestibularService } from './domain/vestibular/service/service';
     NgbModule,
   ],
   providers: [
+	AulaService,
 	CursoService,
 	DisciplinaService,
 	DocenteService,
 	EstruturaCurricularService,
 	OfertaCursoService,
+	OfertaDisciplinaService,
 	TurmaService,
 	VestibularService,
   ],
