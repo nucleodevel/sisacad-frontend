@@ -31,6 +31,12 @@ import { CursoAddComponent } from './domain/curso/component/add/component';
 import { CursoEditComponent } from './domain/curso/component/edit/component';
 import { CursoService } from './domain/curso/service/service';
 
+import { DiscenteListComponent } from './domain/discente/component/list/component';
+import { DiscenteViewComponent } from './domain/discente/component/view/component';
+import { DiscenteAddComponent } from './domain/discente/component/add/component'; 
+import { DiscenteEditComponent } from './domain/discente/component/edit/component';
+import { DiscenteService } from './domain/discente/service/service';
+
 import { DisciplinaListComponent } from './domain/disciplina/component/list/component';
 import { DisciplinaViewComponent } from './domain/disciplina/component/view/component';
 import { DisciplinaAddComponent } from './domain/disciplina/component/add/component'; 
@@ -103,6 +109,11 @@ import { VestibularService } from './domain/vestibular/service/service';
     CursoAddComponent,
     CursoEditComponent,
 
+    DiscenteListComponent,
+    DiscenteViewComponent,
+    DiscenteAddComponent,
+    DiscenteEditComponent,
+
     DisciplinaListComponent,
     DisciplinaViewComponent,
     DisciplinaAddComponent,
@@ -155,6 +166,7 @@ import { VestibularService } from './domain/vestibular/service/service';
 	AvaliacaoService,
 	AvaliacaoVestibulandoService,
 	CursoService,
+	DiscenteService,
 	DisciplinaService,
 	DocenteService,
 	EstruturaCurricularService,

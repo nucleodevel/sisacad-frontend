@@ -21,6 +21,11 @@ import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component';
 import { CursoEditComponent } from './domain/curso/component/edit/component';
 
+import { DiscenteListComponent } from './domain/discente/component/list/component';
+import { DiscenteViewComponent } from './domain/discente/component/view/component';
+import { DiscenteAddComponent } from './domain/discente/component/add/component';
+import { DiscenteEditComponent } from './domain/discente/component/edit/component';
+
 import { DisciplinaListComponent } from './domain/disciplina/component/list/component';
 import { DisciplinaViewComponent } from './domain/disciplina/component/view/component';
 import { DisciplinaAddComponent } from './domain/disciplina/component/add/component';
@@ -85,6 +90,12 @@ const routes: Routes = [
   { path: 'curso/view/:id', component: CursoViewComponent },
   { path: 'curso/add', component: CursoAddComponent },
   { path: 'curso/edit/:id', component: CursoEditComponent },
+
+  { path: 'discente', component: DiscenteListComponent },
+  { path: 'discente/list', component: DiscenteListComponent },
+  { path: 'discente/view/:id', component: DiscenteViewComponent },
+  { path: 'discente/add', component: DiscenteAddComponent },
+  { path: 'discente/edit/:id', component: DiscenteEditComponent },
 
   { path: 'disciplina', component: DisciplinaListComponent },
   { path: 'disciplina/list', component: DisciplinaListComponent },

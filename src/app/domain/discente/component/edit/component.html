@@ -1,0 +1,23 @@
+<div class="card my-5">
+	<div class="card-body">
+		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+			
+			<div class="form-group">
+			    <label for="vestibulando">Vestibulando</label>
+				<select [(ngModel)]="entity.vestibulando" class="form-control" name="vestibulando" required
+					#vestibulando="ngModel" [compareWith]="compareVestibulando">
+					<option *ngFor="let vestibulando of listaVestibulando"
+						[ngValue]="vestibulando">{{vestibulando.toString()}}</option>
+				</select>
+				<div [hidden]="!vestibulando.pristine" class="alert alert-danger">Vestibulando
+					is required</div>
+			</div>
+			
+			<button type="submit" [disabled]="!entityForm.form.valid"
+				class="btn btn-success" style="margin-right: 10px">Salvar</button>
+			<button (click)="list()" type="button" class="btn btn-danger"
+				style="margin-right: 10px">Cancelar</button>
+				
+		</form>
+	</div>
+</div>
