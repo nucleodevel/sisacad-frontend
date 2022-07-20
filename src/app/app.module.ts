@@ -67,6 +67,18 @@ import { OfertaDisciplinaAddComponent } from './domain/oferta-disciplina/compone
 import { OfertaDisciplinaEditComponent } from './domain/oferta-disciplina/component/edit/component';
 import { OfertaDisciplinaService } from './domain/oferta-disciplina/service/service';
 
+import { ParticipacaoAulaListComponent } from './domain/participacao-aula/component/list/component';
+import { ParticipacaoAulaViewComponent } from './domain/participacao-aula/component/view/component';
+import { ParticipacaoAulaAddComponent } from './domain/participacao-aula/component/add/component'; 
+import { ParticipacaoAulaEditComponent } from './domain/participacao-aula/component/edit/component';
+import { ParticipacaoAulaService } from './domain/participacao-aula/service/service';
+
+import { ParticipacaoAvaliacaoListComponent } from './domain/participacao-avaliacao/component/list/component';
+import { ParticipacaoAvaliacaoViewComponent } from './domain/participacao-avaliacao/component/view/component';
+import { ParticipacaoAvaliacaoAddComponent } from './domain/participacao-avaliacao/component/add/component'; 
+import { ParticipacaoAvaliacaoEditComponent } from './domain/participacao-avaliacao/component/edit/component';
+import { ParticipacaoAvaliacaoService } from './domain/participacao-avaliacao/service/service';
+
 import { TurmaListComponent } from './domain/turma/component/list/component';
 import { TurmaViewComponent } from './domain/turma/component/view/component';
 import { TurmaAddComponent } from './domain/turma/component/add/component'; 
@@ -139,6 +151,16 @@ import { VestibularService } from './domain/vestibular/service/service';
     OfertaDisciplinaAddComponent,
     OfertaDisciplinaEditComponent,
 
+    ParticipacaoAulaListComponent,
+    ParticipacaoAulaViewComponent,
+    ParticipacaoAulaAddComponent,
+    ParticipacaoAulaEditComponent,
+
+    ParticipacaoAvaliacaoListComponent,
+    ParticipacaoAvaliacaoViewComponent,
+    ParticipacaoAvaliacaoAddComponent,
+    ParticipacaoAvaliacaoEditComponent,
+
     TurmaListComponent,
     TurmaViewComponent,
     TurmaAddComponent,
@@ -172,6 +194,8 @@ import { VestibularService } from './domain/vestibular/service/service';
 	EstruturaCurricularService,
 	OfertaCursoService,
 	OfertaDisciplinaService,
+	ParticipacaoAulaService,
+	ParticipacaoAvaliacaoService,
 	TurmaService,
 	VestibulandoService,
 	VestibularService,

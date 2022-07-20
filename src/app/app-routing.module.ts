@@ -51,6 +51,16 @@ import { OfertaDisciplinaViewComponent } from './domain/oferta-disciplina/compon
 import { OfertaDisciplinaAddComponent } from './domain/oferta-disciplina/component/add/component';
 import { OfertaDisciplinaEditComponent } from './domain/oferta-disciplina/component/edit/component';
 
+import { ParticipacaoAulaListComponent } from './domain/participacao-aula/component/list/component';
+import { ParticipacaoAulaViewComponent } from './domain/participacao-aula/component/view/component';
+import { ParticipacaoAulaAddComponent } from './domain/participacao-aula/component/add/component';
+import { ParticipacaoAulaEditComponent } from './domain/participacao-aula/component/edit/component';
+
+import { ParticipacaoAvaliacaoListComponent } from './domain/participacao-avaliacao/component/list/component';
+import { ParticipacaoAvaliacaoViewComponent } from './domain/participacao-avaliacao/component/view/component';
+import { ParticipacaoAvaliacaoAddComponent } from './domain/participacao-avaliacao/component/add/component';
+import { ParticipacaoAvaliacaoEditComponent } from './domain/participacao-avaliacao/component/edit/component';
+
 import { TurmaListComponent } from './domain/turma/component/list/component';
 import { TurmaViewComponent } from './domain/turma/component/view/component';
 import { TurmaAddComponent } from './domain/turma/component/add/component';
@@ -126,6 +136,18 @@ const routes: Routes = [
   { path: 'oferta-disciplina/view/:id', component: OfertaDisciplinaViewComponent },
   { path: 'oferta-disciplina/add', component: OfertaDisciplinaAddComponent },
   { path: 'oferta-disciplina/edit/:id', component: OfertaDisciplinaEditComponent },
+
+  { path: 'participacao-aula', component: ParticipacaoAulaListComponent },
+  { path: 'participacao-aula/list', component: ParticipacaoAulaListComponent },
+  { path: 'participacao-aula/view/:id', component: ParticipacaoAulaViewComponent },
+  { path: 'participacao-aula/add', component: ParticipacaoAulaAddComponent },
+  { path: 'participacao-aula/edit/:id', component: ParticipacaoAulaEditComponent },
+
+  { path: 'participacao-avaliacao', component: ParticipacaoAvaliacaoListComponent },
+  { path: 'participacao-avaliacao/list', component: ParticipacaoAvaliacaoListComponent },
+  { path: 'participacao-avaliacao/view/:id', component: ParticipacaoAvaliacaoViewComponent },
+  { path: 'participacao-avaliacao/add', component: ParticipacaoAvaliacaoAddComponent },
+  { path: 'participacao-avaliacao/edit/:id', component: ParticipacaoAvaliacaoEditComponent },
 
   { path: 'turma', component: TurmaListComponent },
   { path: 'turma/list', component: TurmaListComponent },
