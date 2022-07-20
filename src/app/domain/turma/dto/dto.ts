@@ -6,6 +6,7 @@ export class TurmaDto extends AbstractDto<Turma> {
 
   copyFromEntity(entity: Turma) {
 	this.id = entity.id;
+	
 	if (entity.ofertaCurso != null) {
 	  this.ofertaCurso = entity.ofertaCurso.id;
 	}	

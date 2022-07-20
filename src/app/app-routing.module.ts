@@ -6,6 +6,11 @@ import { AulaViewComponent } from './domain/aula/component/view/component';
 import { AulaAddComponent } from './domain/aula/component/add/component';
 import { AulaEditComponent } from './domain/aula/component/edit/component';
 
+import { AvaliacaoListComponent } from './domain/avaliacao/component/list/component';
+import { AvaliacaoViewComponent } from './domain/avaliacao/component/view/component';
+import { AvaliacaoAddComponent } from './domain/avaliacao/component/add/component';
+import { AvaliacaoEditComponent } from './domain/avaliacao/component/edit/component';
+
 import { CursoListComponent } from './domain/curso/component/list/component';
 import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component';
@@ -52,6 +57,12 @@ const routes: Routes = [
   { path: 'aula/view/:id', component: AulaViewComponent },
   { path: 'aula/add', component: AulaAddComponent },
   { path: 'aula/edit/:id', component: AulaEditComponent },
+
+  { path: 'avaliacao', component: AvaliacaoListComponent },
+  { path: 'avaliacao/list', component: AvaliacaoListComponent },
+  { path: 'avaliacao/view/:id', component: AvaliacaoViewComponent },
+  { path: 'avaliacao/add', component: AvaliacaoAddComponent },
+  { path: 'avaliacao/edit/:id', component: AvaliacaoEditComponent },
 
   { path: 'curso', component: CursoListComponent },
   { path: 'curso/list', component: CursoListComponent },

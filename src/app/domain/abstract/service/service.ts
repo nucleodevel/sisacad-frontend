@@ -39,12 +39,12 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
     return this.http.get<DTO[]>(this.apiUrl);
   }
 
-  public insert(entity: DTO) {
-    return this.http.post<DTO>(this.apiUrl, entity);
+  public insert(dto: DTO) {
+    return this.http.post<DTO>(this.apiUrl, dto);
   }
 
-  public update(id: number, entity: DTO) {
-    return this.http.put<DTO>(this.apiUrl + '/' + id, entity);
+  public update(id: number, dto: DTO) {
+    return this.http.put<DTO>(this.apiUrl + '/' + id, dto);
   }
 
   public delete(id: number) {

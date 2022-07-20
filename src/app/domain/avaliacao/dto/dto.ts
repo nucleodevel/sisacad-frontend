@@ -1,14 +1,16 @@
 import { AbstractDto } from '../../abstract/dto/dto';
-import { Aula } from '../entity/entity';
+import { Avaliacao } from '../entity/entity';
 
-export class AulaDto extends AbstractDto<Aula> {
+export class AvaliacaoDto extends AbstractDto<Avaliacao> {
+  descricao!: string;
   inicio!: number;
   termino!: number;
   ofertaDisciplina!: number;
 
-  copyFromEntity(entity: Aula) {
+  copyFromEntity(entity: Avaliacao) {
 	this.id = entity.id;
 	
+	this.descricao = entity.descricao;
 	this.inicio = entity.inicio;
 	this.termino = entity.termino;
 	

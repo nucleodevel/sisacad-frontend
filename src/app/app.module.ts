@@ -13,6 +13,12 @@ import { AulaAddComponent } from './domain/aula/component/add/component';
 import { AulaEditComponent } from './domain/aula/component/edit/component';
 import { AulaService } from './domain/aula/service/service';
 
+import { AvaliacaoListComponent } from './domain/avaliacao/component/list/component';
+import { AvaliacaoViewComponent } from './domain/avaliacao/component/view/component';
+import { AvaliacaoAddComponent } from './domain/avaliacao/component/add/component'; 
+import { AvaliacaoEditComponent } from './domain/avaliacao/component/edit/component';
+import { AvaliacaoService } from './domain/avaliacao/service/service';
+
 import { CursoListComponent } from './domain/curso/component/list/component';
 import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component'; 
@@ -70,6 +76,11 @@ import { VestibularService } from './domain/vestibular/service/service';
     AulaAddComponent,
     AulaEditComponent,
 
+    AvaliacaoListComponent,
+    AvaliacaoViewComponent,
+    AvaliacaoAddComponent,
+    AvaliacaoEditComponent,
+
     CursoListComponent,
     CursoViewComponent,
     CursoAddComponent,
@@ -119,6 +130,7 @@ import { VestibularService } from './domain/vestibular/service/service';
   ],
   providers: [
 	AulaService,
+	AvaliacaoService,
 	CursoService,
 	DisciplinaService,
 	DocenteService,

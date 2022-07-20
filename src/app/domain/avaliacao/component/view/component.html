@@ -1,0 +1,24 @@
+<div class="card my-5">
+	<div class="card-body">
+		<hr />
+		<div *ngIf="entity">
+			<div>
+				<label><b>ID: </b></label> {{ entity.id }}
+			</div>
+			<div>
+				<label><b>Descrição: </b></label> {{ entity.descricao }}
+			</div>
+			<div>
+				<label><b>Início: </b></label> {{ entity.inicio }}
+			</div>
+			<div>
+				<label><b>Término: </b></label> {{ entity.termino }}
+			</div>
+			<div>
+				<label><b>Oferta de Disciplina: </b></label> {{ entity.ofertaDisciplina.toString() }}
+			</div>
+		</div>
+		<button (click)="list()" type="button" class="btn btn-danger"
+			style="margin-right: 10px">Voltar</button> <br>
+	</div>
+</div>

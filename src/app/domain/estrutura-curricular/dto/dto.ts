@@ -8,8 +8,10 @@ export class EstruturaCurricularDto extends AbstractDto<EstruturaCurricular> {
 
   copyFromEntity(entity: EstruturaCurricular) {
 	this.id = entity.id;
+	
 	this.anoInicio = entity.anoInicio;
 	this.anoTermino = entity.anoTermino;
+	
 	if (entity.curso != null) {
 	  this.curso = entity.curso.id;
 	}	

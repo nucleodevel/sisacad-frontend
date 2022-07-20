@@ -9,6 +9,7 @@ export class OfertaCursoDto extends AbstractDto<OfertaCurso> {
 
   copyFromEntity(entity: OfertaCurso) {
 	this.id = entity.id;
+	
 	this.ano = entity.ano;
 	
 	if (entity.vestibular != null) {
