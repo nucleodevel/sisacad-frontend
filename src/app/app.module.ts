@@ -19,6 +19,12 @@ import { AvaliacaoAddComponent } from './domain/avaliacao/component/add/componen
 import { AvaliacaoEditComponent } from './domain/avaliacao/component/edit/component';
 import { AvaliacaoService } from './domain/avaliacao/service/service';
 
+import { AvaliacaoVestibulandoListComponent } from './domain/avaliacao-vestibulando/component/list/component';
+import { AvaliacaoVestibulandoViewComponent } from './domain/avaliacao-vestibulando/component/view/component';
+import { AvaliacaoVestibulandoAddComponent } from './domain/avaliacao-vestibulando/component/add/component'; 
+import { AvaliacaoVestibulandoEditComponent } from './domain/avaliacao-vestibulando/component/edit/component';
+import { AvaliacaoVestibulandoService } from './domain/avaliacao-vestibulando/service/service';
+
 import { CursoListComponent } from './domain/curso/component/list/component';
 import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component'; 
@@ -87,6 +93,11 @@ import { VestibularService } from './domain/vestibular/service/service';
     AvaliacaoAddComponent,
     AvaliacaoEditComponent,
 
+    AvaliacaoVestibulandoListComponent,
+    AvaliacaoVestibulandoViewComponent,
+    AvaliacaoVestibulandoAddComponent,
+    AvaliacaoVestibulandoEditComponent,
+
     CursoListComponent,
     CursoViewComponent,
     CursoAddComponent,
@@ -142,6 +153,7 @@ import { VestibularService } from './domain/vestibular/service/service';
   providers: [
 	AulaService,
 	AvaliacaoService,
+	AvaliacaoVestibulandoService,
 	CursoService,
 	DisciplinaService,
 	DocenteService,

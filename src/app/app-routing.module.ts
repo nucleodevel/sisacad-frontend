@@ -11,6 +11,11 @@ import { AvaliacaoViewComponent } from './domain/avaliacao/component/view/compon
 import { AvaliacaoAddComponent } from './domain/avaliacao/component/add/component';
 import { AvaliacaoEditComponent } from './domain/avaliacao/component/edit/component';
 
+import { AvaliacaoVestibulandoListComponent } from './domain/avaliacao-vestibulando/component/list/component';
+import { AvaliacaoVestibulandoViewComponent } from './domain/avaliacao-vestibulando/component/view/component';
+import { AvaliacaoVestibulandoAddComponent } from './domain/avaliacao-vestibulando/component/add/component';
+import { AvaliacaoVestibulandoEditComponent } from './domain/avaliacao-vestibulando/component/edit/component';
+
 import { CursoListComponent } from './domain/curso/component/list/component';
 import { CursoViewComponent } from './domain/curso/component/view/component';
 import { CursoAddComponent } from './domain/curso/component/add/component';
@@ -68,6 +73,12 @@ const routes: Routes = [
   { path: 'avaliacao/view/:id', component: AvaliacaoViewComponent },
   { path: 'avaliacao/add', component: AvaliacaoAddComponent },
   { path: 'avaliacao/edit/:id', component: AvaliacaoEditComponent },
+
+  { path: 'avaliacao-vestibulando', component: AvaliacaoVestibulandoListComponent },
+  { path: 'avaliacao-vestibulando/list', component: AvaliacaoVestibulandoListComponent },
+  { path: 'avaliacao-vestibulando/view/:id', component: AvaliacaoVestibulandoViewComponent },
+  { path: 'avaliacao-vestibulando/add', component: AvaliacaoVestibulandoAddComponent },
+  { path: 'avaliacao-vestibulando/edit/:id', component: AvaliacaoVestibulandoEditComponent },
 
   { path: 'curso', component: CursoListComponent },
   { path: 'curso/list', component: CursoListComponent },
