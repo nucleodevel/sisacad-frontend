@@ -61,6 +61,12 @@ import { TurmaAddComponent } from './domain/turma/component/add/component';
 import { TurmaEditComponent } from './domain/turma/component/edit/component';
 import { TurmaService } from './domain/turma/service/service';
 
+import { VestibulandoListComponent } from './domain/vestibulando/component/list/component';
+import { VestibulandoViewComponent } from './domain/vestibulando/component/view/component';
+import { VestibulandoAddComponent } from './domain/vestibulando/component/add/component'; 
+import { VestibulandoEditComponent } from './domain/vestibulando/component/edit/component';
+import { VestibulandoService } from './domain/vestibulando/service/service';
+
 import { VestibularListComponent } from './domain/vestibular/component/list/component';
 import { VestibularViewComponent } from './domain/vestibular/component/view/component';
 import { VestibularAddComponent } from './domain/vestibular/component/add/component'; 
@@ -116,6 +122,11 @@ import { VestibularService } from './domain/vestibular/service/service';
     TurmaAddComponent,
     TurmaEditComponent,
 
+    VestibulandoListComponent,
+    VestibulandoViewComponent,
+    VestibulandoAddComponent,
+    VestibulandoEditComponent,
+
     VestibularListComponent,
     VestibularViewComponent,
     VestibularAddComponent,
@@ -138,6 +149,7 @@ import { VestibularService } from './domain/vestibular/service/service';
 	OfertaCursoService,
 	OfertaDisciplinaService,
 	TurmaService,
+	VestibulandoService,
 	VestibularService,
   ],
   bootstrap: [AppComponent]

@@ -46,6 +46,11 @@ import { TurmaViewComponent } from './domain/turma/component/view/component';
 import { TurmaAddComponent } from './domain/turma/component/add/component';
 import { TurmaEditComponent } from './domain/turma/component/edit/component';
 
+import { VestibulandoListComponent } from './domain/vestibulando/component/list/component';
+import { VestibulandoViewComponent } from './domain/vestibulando/component/view/component';
+import { VestibulandoAddComponent } from './domain/vestibulando/component/add/component';
+import { VestibulandoEditComponent } from './domain/vestibulando/component/edit/component';
+
 import { VestibularListComponent } from './domain/vestibular/component/list/component';
 import { VestibularViewComponent } from './domain/vestibular/component/view/component';
 import { VestibularAddComponent } from './domain/vestibular/component/add/component';
@@ -105,6 +110,12 @@ const routes: Routes = [
   { path: 'turma/view/:id', component: TurmaViewComponent },
   { path: 'turma/add', component: TurmaAddComponent },
   { path: 'turma/edit/:id', component: TurmaEditComponent },
+
+  { path: 'vestibulando', component: VestibulandoListComponent },
+  { path: 'vestibulando/list', component: VestibulandoListComponent },
+  { path: 'vestibulando/view/:id', component: VestibulandoViewComponent },
+  { path: 'vestibulando/add', component: VestibulandoAddComponent },
+  { path: 'vestibulando/edit/:id', component: VestibulandoEditComponent },
 
   { path: 'vestibular', component: VestibularListComponent },
   { path: 'vestibular/list', component: VestibularListComponent },
