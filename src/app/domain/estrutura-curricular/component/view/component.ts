@@ -7,20 +7,36 @@ import { EstruturaCurricular } from '../../entity/entity';
 import { EstruturaCurricularDto } from '../../dto/dto';
 import { EstruturaCurricularService } from '../../service/service';
 
+import { Disciplina } from '../../../disciplina/entity/entity';
+import { DisciplinaService } from '../../../disciplina/service/service';
+
 @Component({
-  selector: 'app-estrutura-curricular-view',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-estrutura-curricular-view',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class EstruturaCurricularViewComponent extends AbstractViewComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> implements OnInit {
 
-  constructor(protected service: EstruturaCurricularService,
-    protected router: Router, protected route: ActivatedRoute) {
-	super(service, router, route, 'estrutura-curricular');
-  }
+	listSelectedDisciplina!: Disciplina[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	constructor(protected service: EstruturaCurricularService, protected disciplinaService: DisciplinaService,
+		protected router: Router, protected route: ActivatedRoute) {
+		super(service, router, route, 'estrutura-curricular');
+		this.disciplinaService = disciplinaService;
+	}
+
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.service.findById(this.id).subscribe(data => {
+			console.log(data)
+			this.entity = this.service.makeEntityFromDto(data);
+		}, error => console.log(error));
+
+		this.service.findAllDisciplinaById(this.id).subscribe(data => {
+			console.log(data)
+			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => console.log(error));
+	}
 
 }

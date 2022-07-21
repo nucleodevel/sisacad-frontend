@@ -8,6 +8,16 @@
 				<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
 					is required</div>
 			</div>
+
+			<div>
+				<label><b>Estruturas curriculares: </b></label> <select multiple
+					[(ngModel)]="listSelectedEstruturaCurricular" class="form-control"
+					name="estruturaCurricular" #estruturaCurricular="ngModel"
+					[compareWith]="compareEstruturaCurricular">
+					<option *ngFor="let item of listEstruturaCurricular" [ngValue]="item">{{item.toString()}}</option>
+				</select>
+			</div>
+			
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"

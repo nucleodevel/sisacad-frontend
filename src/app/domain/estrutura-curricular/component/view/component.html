@@ -14,8 +14,26 @@
 			<div>
 				<label><b>Curso: </b></label> {{ entity.curso.toString() }}
 			</div>
+			<div>
+				<label><b>Disciplinas: </b></label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nome</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedDisciplina">
+							<td>{{ item.id }}</td>
+							<td>{{ item.nome }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
-			style="margin-right: 10px">Voltar</button> <br>
+			style="margin-right: 10px">Voltar</button>
+		<br>
 	</div>
 </div>

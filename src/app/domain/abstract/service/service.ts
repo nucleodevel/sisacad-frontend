@@ -31,14 +31,6 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
     return entities;
   }
 
-  public findById(id: number) {
-    return this.http.get<DTO>(this.apiUrl + '/' + id);
-  }
-
-  public findAll(): Observable<DTO[]> {
-    return this.http.get<DTO[]>(this.apiUrl);
-  }
-
   public insert(dto: DTO) {
     return this.http.post<DTO>(this.apiUrl, dto);
   }
@@ -50,4 +42,13 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
   public delete(id: number) {
     return this.http.delete<DTO>(this.apiUrl + '/' + id);
   }
+
+  public findById(id: number) {
+    return this.http.get<DTO>(this.apiUrl + '/' + id);
+  }
+
+  public findAll(): Observable<DTO[]> {
+    return this.http.get<DTO[]>(this.apiUrl);
+  }
+
 }

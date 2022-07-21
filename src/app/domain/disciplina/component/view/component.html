@@ -8,6 +8,27 @@
 			<div>
 				<label><b>Nome: </b></label> {{ entity.nome }}
 			</div>
+			<div>
+				<label><b>Estruturas curriculares: </b></label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Ano de início</th>
+							<th scope="col">Ano de término</th>
+							<th scope="col">Curso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedEstruturaCurricular">
+							<td>{{ item.id }}</td>
+							<td>{{ item.anoInicio }}</td>
+							<td>{{ item.anoTermino }}</td>
+							<td>{{ item.curso.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
 			style="margin-right: 10px">Voltar</button> <br>
