@@ -28,11 +28,6 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 	ngOnInit() {
 		super.ngOnInitSuper();
 
-		this.service.findById(this.id).subscribe(data => {
-			console.log(data)
-			this.entity = this.service.makeEntityFromDto(data);
-		}, error => console.log(error));
-
 		this.service.findAllEstruturaCurricularById(this.id).subscribe(data => {
 			console.log(data)
 			this.listSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);

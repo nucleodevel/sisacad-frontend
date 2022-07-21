@@ -7,20 +7,31 @@ import { Turma } from '../../entity/entity';
 import { TurmaDto } from '../../dto/dto';
 import { TurmaService } from '../../service/service';
 
+import { OfertaDisciplina } from '../../../oferta-disciplina/entity/entity';
+import { OfertaDisciplinaService } from '../../../oferta-disciplina/service/service';
+
 @Component({
-  selector: 'app-turma-view',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-turma-view',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, TurmaService> implements OnInit {
 
-  constructor(protected service: TurmaService,
-    protected router: Router, protected route: ActivatedRoute) {
-	super(service, router, route, 'turma');
-  }
+	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
+		protected router: Router, protected route: ActivatedRoute) {
+		super(service, router, route, 'turma');
+		this.ofertaDisciplinaService = ofertaDisciplinaService;
+	}
+
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
+			console.log(data)
+			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => console.log(error));
+	}
 
 }

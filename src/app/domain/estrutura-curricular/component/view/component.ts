@@ -28,11 +28,6 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 	ngOnInit() {
 		super.ngOnInitSuper();
 
-		this.service.findById(this.id).subscribe(data => {
-			console.log(data)
-			this.entity = this.service.makeEntityFromDto(data);
-		}, error => console.log(error));
-
 		this.service.findAllDisciplinaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
