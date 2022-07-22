@@ -11,6 +11,39 @@
 			<div>
 				<label><b>Docente: </b></label> {{ entity.docente.toString() }}
 			</div>
+			<div>
+				<label><b>Turmas: </b></label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Oferta de curso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedTurma">
+							<td>{{ item.ofertaCurso.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<label><b>Discentes: </b></label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Vestibulando</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedDiscente">
+							<td>{{ item.id }}</td>
+							<td>{{ item.vestibulando.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
 			style="margin-right: 10px">Voltar</button> <br>

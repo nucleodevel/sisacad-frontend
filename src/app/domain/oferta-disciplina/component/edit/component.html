@@ -23,6 +23,24 @@
 				<div [hidden]="!docente.pristine" class="alert alert-danger">Docente
 					is required</div>
 			</div>
+
+			<div>
+				<label><b>Turmas: </b></label> <select multiple
+					[(ngModel)]="listSelectedTurma" class="form-control"
+					name="turma" #turma="ngModel"
+					[compareWith]="compareTurma">
+					<option *ngFor="let item of listTurma" [ngValue]="item">{{item.toString()}}</option>
+				</select>
+			</div>
+
+			<div>
+				<label><b>Discentes: </b></label> <select multiple
+					[(ngModel)]="listSelectedDiscente" class="form-control"
+					name="discente" #discente="ngModel"
+					[compareWith]="compareDiscente">
+					<option *ngFor="let item of listDiscente" [ngValue]="item">{{item.toString()}}</option>
+				</select>
+			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
