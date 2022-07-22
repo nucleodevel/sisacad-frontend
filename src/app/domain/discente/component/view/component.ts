@@ -7,20 +7,31 @@ import { Discente } from '../../entity/entity';
 import { DiscenteDto } from '../../dto/dto';
 import { DiscenteService } from '../../service/service';
 
+import { OfertaDisciplina } from '../../../oferta-disciplina/entity/entity';
+import { OfertaDisciplinaService } from '../../../oferta-disciplina/service/service';
+
 @Component({
-  selector: 'app-discente-view',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-discente-view',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class DiscenteViewComponent extends AbstractViewComponent<Discente, DiscenteDto, DiscenteService> implements OnInit {
 
-  constructor(protected service: DiscenteService,
-    protected router: Router, protected route: ActivatedRoute) {
-	super(service, router, route, 'discente');
-  }
+	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	constructor(protected service: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
+		protected router: Router, protected route: ActivatedRoute) {
+		super(service, router, route, 'discente');
+		this.ofertaDisciplinaService = ofertaDisciplinaService;
+	}
+
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
+			console.log(data)
+			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => console.log(error));
+	}
 
 }

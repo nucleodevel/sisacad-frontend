@@ -12,6 +12,15 @@
 				<div [hidden]="!vestibulando.pristine" class="alert alert-danger">Vestibulando
 					is required</div>
 			</div>
+
+			<div>
+				<label><b>Ofertas de disciplinas: </b></label> <select multiple
+					[(ngModel)]="listSelectedOfertaDisciplina" class="form-control"
+					name="ofertaDisciplina" #ofertaDisciplina="ngModel"
+					[compareWith]="compareOfertaDisciplina">
+					<option *ngFor="let item of listOfertaDisciplina" [ngValue]="item">{{item.toString()}}</option>
+				</select>
+			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
