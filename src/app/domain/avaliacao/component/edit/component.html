@@ -1,41 +1,44 @@
 <div class="card my-5">
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-		
-			<div class="form-group">
-				<label for="descricao">Descrição</label> <input type="text"
-					[(ngModel)]="entity.descricao" class="form-control" id="descricao"
-					name="descricao" required #descricao="ngModel">
-				<div [hidden]="!descricao.pristine" class="alert alert-danger">Descrição
-					pendente</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Oferta de disciplina</label>
+					<div>{{ entity.ofertaDisciplina.toString() }}</div>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="descricao">Descrição</label> <input type="text"
+						[(ngModel)]="entity.descricao" class="form-control" id="descricao"
+						name="descricao" required #descricao="ngModel">
+					<div [hidden]="!descricao.pristine" class="alert alert-danger">Descrição
+						pendente</div>
+				</div>
 			</div>
-		
-			<div class="form-group">
-				<label for="inicio">Início</label> <input type="text"
-					[(ngModel)]="entity.inicio" class="form-control" id="inicio"
-					name="inicio" required #inicio="ngModel">
-				<div [hidden]="!inicio.pristine" class="alert alert-danger">Data de início
-					pendente</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="inicio">Início</label> <input type="text"
+						[(ngModel)]="entity.inicio" class="form-control" id="inicio"
+						name="inicio" required #inicio="ngModel">
+					<div [hidden]="!inicio.pristine" class="alert alert-danger">Data
+						hora de início pendente</div>
+				</div>
+
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="termino">Término</label> <input type="text"
+						[(ngModel)]="entity.termino" class="form-control" id="termino"
+						name="termino" required #termino="ngModel">
+					<div [hidden]="!termino.pristine" class="alert alert-danger">Data
+						hora de término pendente</div>
+				</div>
 			</div>
-			
-			<div class="form-group">
-				<label for="termino">Término</label> <input type="text"
-					[(ngModel)]="entity.termino" class="form-control" id="termino"
-					name="termino" required #termino="ngModel">
-				<div [hidden]="!termino.pristine" class="alert alert-danger">Data de término
-					pendente</div>
-			</div>
-			
-			<div class="form-group">
-				<label>Oferta de disciplina</label>
-				<div>{{entity.ofertaDisciplina.toString()}}</div>
-			</div>
-			
+
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"
 				style="margin-right: 10px">Cancelar</button>
-				
+
 		</form>
 	</div>
 </div>

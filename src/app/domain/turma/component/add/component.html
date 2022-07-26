@@ -1,23 +1,26 @@
 <div class="card my-5">
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-			
-			<div class="form-group">
-			    <label for="ofertaCurso">Oferta de Curso</label>
-				<select [(ngModel)]="entity.ofertaCurso" class="form-control" name="ofertaCurso" required
-					#ofertaCurso="ngModel" [compareWith]="compareOfertaCurso">
-					<option *ngFor="let ofertaCurso of listaOfertaCurso"
-						[ngValue]="ofertaCurso">{{ofertaCurso.toString()}}</option>
-				</select>
-				<div [hidden]="!ofertaCurso.pristine" class="alert alert-danger">Oferta de Curso
-					pendente</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label for="ofertaCurso">Oferta de Curso</label> <select
+						[(ngModel)]="entity.ofertaCurso" class="form-control"
+						name="ofertaCurso" required #ofertaCurso="ngModel"
+						[compareWith]="compareOfertaCurso">
+						<option *ngFor="let ofertaCurso of listaOfertaCurso"
+							[ngValue]="ofertaCurso">{{ofertaCurso.toString()}}</option>
+					</select>
+					<div [hidden]="!ofertaCurso.pristine" class="alert alert-danger">Oferta
+						de Curso pendente</div>
+				</div>
 			</div>
-			
+
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"
 				style="margin-right: 10px">Cancelar</button>
-				
+
 		</form>
 	</div>
 </div>

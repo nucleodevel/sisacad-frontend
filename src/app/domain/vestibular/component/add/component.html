@@ -1,13 +1,17 @@
 <div class="card my-5">
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-			<div class="form-group">
-				<label for="ano">Ano</label> <input type="text"
-					[(ngModel)]="entity.ano" class="form-control" id="ano"
-					name="ano" required #ano="ngModel">
-				<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
-					pendente</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label for="ano">Ano</label> <input type="text"
+						[(ngModel)]="entity.ano" class="form-control" id="ano" name="ano"
+						required #ano="ngModel">
+					<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
+						pendente</div>
+				</div>
 			</div>
+
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"

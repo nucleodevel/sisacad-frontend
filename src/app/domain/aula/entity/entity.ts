@@ -8,6 +8,6 @@ export class Aula extends AbstractEntity {
   ofertaDisciplina!: OfertaDisciplina;
 
   toString(): string {
-	return this.ofertaDisciplina.toString(); 
+	return this.ofertaDisciplina.toString() + " - " + this.inicio + "-" + this.termino; 
   }
 }

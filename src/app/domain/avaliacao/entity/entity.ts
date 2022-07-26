@@ -9,6 +9,6 @@ export class Avaliacao extends AbstractEntity {
   ofertaDisciplina!: OfertaDisciplina;
 
   toString(): string {
-	return this.ofertaDisciplina.toString() + "/" + this.descricao; 
+	return this.ofertaDisciplina.toString() + " - " + this.descricao; 
   }
 }

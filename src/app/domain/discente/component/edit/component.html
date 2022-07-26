@@ -2,18 +2,20 @@
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
-			<div class="form-group">
-				<label>Vestibulando</label>
-				<div>{{entity.vestibulando.toString()}}</div>
-			</div>
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Vestibulando</label>
+					<div>{{entity.vestibulando.toString()}}</div>
+				</div>
 
-			<div>
-				<label>Ofertas de disciplinas</label> <select multiple
-					[(ngModel)]="listSelectedOfertaDisciplina" class="form-control"
-					name="ofertaDisciplina" #ofertaDisciplina="ngModel"
-					[compareWith]="compareOfertaDisciplina">
-					<option *ngFor="let item of listOfertaDisciplina" [ngValue]="item">{{item.toString()}}</option>
-				</select>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Ofertas de disciplinas</label> <select multiple
+						[(ngModel)]="listSelectedOfertaDisciplina" class="form-control"
+						name="ofertaDisciplina" #ofertaDisciplina="ngModel"
+						[compareWith]="compareOfertaDisciplina">
+						<option *ngFor="let item of listOfertaDisciplina" [ngValue]="item">{{item.toString()}}</option>
+					</select>
+				</div>
 			</div>
 
 			<button type="submit" [disabled]="!entityForm.form.valid"
