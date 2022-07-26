@@ -3,19 +3,19 @@
 		<hr />
 		<div *ngIf="entity">
 			<div>
-				<label><b>ID: </b></label> {{ entity.id }}
+				<label>ID:</label><span>{{ entity.id }}</span>
 			</div>
 			<div>
-				<label><b>Ano de início: </b></label> {{ entity.anoInicio }}
+				<label>Ano de início:</label><span>{{ entity.anoInicio }}</span>
 			</div>
 			<div>
-				<label><b>Ano de término: </b></label> {{ entity.anoTermino }}
+				<label>Ano de término:</label><span>{{ entity.anoTermino }}</span>
 			</div>
 			<div>
-				<label><b>Curso: </b></label> {{ entity.curso.toString() }}
+				<label>Curso:</label><span>{{ entity.curso.toString() }}</span>
 			</div>
 			<div>
-				<label><b>Disciplinas: </b></label>
+				<label>Disciplinas</label>
 				<table class="table table-bordered table-striped">
 					<thead class="thead-dark">
 						<tr>

@@ -5,9 +5,9 @@
 			<div class="form-group">
 				<label for="conceitoFinal">Conceito Final</label> <input type="number"
 					[(ngModel)]="entity.conceitoFinal" class="form-control" id="conceitoFinal"
-					name="conceitoFinal" placeholder="Enter your name" required #conceitoFinal="ngModel">
+					name="conceitoFinal" required #conceitoFinal="ngModel">
 				<div [hidden]="!conceitoFinal.pristine" class="alert alert-danger">Conceito Final
-					is required</div>
+					pendente</div>
 			</div>
 			<div class="form-group">
 			    <label for="vestibulando">Vestibulando</label>
@@ -17,7 +17,7 @@
 						[ngValue]="vestibulando">{{vestibulando.toString()}}</option>
 				</select>
 				<div [hidden]="!vestibulando.pristine" class="alert alert-danger">Vestibulando
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

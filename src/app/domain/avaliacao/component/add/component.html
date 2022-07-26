@@ -5,25 +5,25 @@
 			<div class="form-group">
 				<label for="descricao">Descrição</label> <input type="text"
 					[(ngModel)]="entity.descricao" class="form-control" id="descricao"
-					name="descricao" placeholder="Enter your name" required #descricao="ngModel">
+					name="descricao" required #descricao="ngModel">
 				<div [hidden]="!descricao.pristine" class="alert alert-danger">Descrição
-					is required</div>
+					pendente</div>
 			</div>
 		
 			<div class="form-group">
 				<label for="inicio">Início</label> <input type="text"
 					[(ngModel)]="entity.inicio" class="form-control" id="inicio"
-					name="inicio" placeholder="Enter your name" required #inicio="ngModel">
-				<div [hidden]="!inicio.pristine" class="alert alert-danger">Início
-					is required</div>
+					name="inicio" required #inicio="ngModel">
+				<div [hidden]="!inicio.pristine" class="alert alert-danger">Data hora de início
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="termino">Término</label> <input type="text"
 					[(ngModel)]="entity.termino" class="form-control" id="termino"
-					name="termino" placeholder="Enter your name" required #termino="ngModel">
-				<div [hidden]="!termino.pristine" class="alert alert-danger">Término
-					is required</div>
+					name="termino" required #termino="ngModel">
+				<div [hidden]="!termino.pristine" class="alert alert-danger">Data hora de término
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
@@ -34,7 +34,7 @@
 						[ngValue]="ofertaDisciplina">{{ofertaDisciplina.toString()}}</option>
 				</select>
 				<div [hidden]="!ofertaDisciplina.pristine" class="alert alert-danger">Oferta de disciplina
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

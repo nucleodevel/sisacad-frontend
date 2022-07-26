@@ -10,7 +10,7 @@
 						[ngValue]="disciplina">{{disciplina.toString()}}</option>
 				</select>
 				<div [hidden]="!disciplina.pristine" class="alert alert-danger">Disciplina
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
@@ -21,7 +21,7 @@
 						[ngValue]="docente">{{docente.toString()}}</option>
 				</select>
 				<div [hidden]="!docente.pristine" class="alert alert-danger">Docente
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

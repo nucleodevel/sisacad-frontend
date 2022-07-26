@@ -3,13 +3,13 @@
 		<hr />
 		<div *ngIf="entity">
 			<div>
-				<label><b>ID: </b></label> {{ entity.id }}
+				<label>ID:</label><span>{{ entity.id }}</span>
 			</div>
 			<div>
-				<label><b>Avaliação: </b></label> {{ entity.avaliacao.toString() }}
+				<label>Avaliação:</label><span>{{ entity.avaliacao.toString() }}</span>
 			</div>
 			<div>
-				<label><b>Discente: </b></label> {{ entity.discente.toString() }}
+				<label>Discente:</label><span>{{ entity.discente.toString() }}</span>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"

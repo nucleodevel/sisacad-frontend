@@ -3,13 +3,13 @@
 		<hr />
 		<div *ngIf="entity">
 			<div>
-				<label><b>ID: </b></label> {{ entity.id }}
+				<label>ID:</label><span>{{ entity.id }}</span>
 			</div>
 			<div>
-				<label><b>Vestibulando: </b></label> {{ entity.vestibulando.toString() }}
+				<label>Vestibulando:</label><span>{{ entity.vestibulando.toString() }}</span>
 			</div>
 			<div>
-				<label><b>Ofertas de disciplinas: </b></label>
+				<label>Ofertas de disciplinas</label>
 				<table class="table table-bordered table-striped">
 					<thead class="thead-dark">
 						<tr>

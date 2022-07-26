@@ -5,17 +5,17 @@
 			<div class="form-group">
 				<label for="anoInicio">Ano de início</label> <input type="text"
 					[(ngModel)]="entity.anoInicio" class="form-control" id="anoInicio"
-					name="anoInicio" placeholder="Enter your name" required #anoInicio="ngModel">
+					name="anoInicio" required #anoInicio="ngModel">
 				<div [hidden]="!anoInicio.pristine" class="alert alert-danger">Ano de início
-					is required</div>
+					pendente</div>
 			</div>
 		
 			<div class="form-group">
 				<label for="anoTermino">Ano de término</label> <input type="text"
 					[(ngModel)]="entity.anoTermino" class="form-control" id="anoTermino"
-					name="anoTermino" placeholder="Enter your name" required #anoTermino="ngModel">
+					name="anoTermino" required #anoTermino="ngModel">
 				<div [hidden]="!anoTermino.pristine" class="alert alert-danger">Ano de término
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
@@ -26,7 +26,7 @@
 						[ngValue]="curso">{{curso.toString()}}</option>
 				</select>
 				<div [hidden]="!curso.pristine" class="alert alert-danger">Curso
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

@@ -10,7 +10,7 @@
 						[ngValue]="avaliacao">{{avaliacao.toString()}}</option>
 				</select>
 				<div [hidden]="!avaliacao.pristine" class="alert alert-danger">Avaliação
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
@@ -21,7 +21,7 @@
 						[ngValue]="discente">{{discente.toString()}}</option>
 				</select>
 				<div [hidden]="!discente.pristine" class="alert alert-danger">Discente
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

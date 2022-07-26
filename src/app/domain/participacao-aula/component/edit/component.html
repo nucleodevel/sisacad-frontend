@@ -10,7 +10,7 @@
 						[ngValue]="aula">{{aula.toString()}}</option>
 				</select>
 				<div [hidden]="!aula.pristine" class="alert alert-danger">Aula
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
@@ -21,7 +21,7 @@
 						[ngValue]="discente">{{discente.toString()}}</option>
 				</select>
 				<div [hidden]="!discente.pristine" class="alert alert-danger">Discente
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

@@ -4,9 +4,9 @@
 			<div class="form-group">
 				<label for="ano">Ano</label> <input type="text"
 					[(ngModel)]="entity.ano" class="form-control" id="ano"
-					name="ano" placeholder="Digite o ano" required #ano="ngModel">
+					name="ano" required #ano="ngModel">
 				<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
-					is required</div>
+					pendente</div>
 			</div>
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>

@@ -1,52 +1,38 @@
 <div class="card my-5">
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-			
+
 			<div class="form-group">
-			    <label for="disciplina">Disciplina</label>
-				<select [(ngModel)]="entity.disciplina" class="form-control" name="disciplina" required
-					#disciplina="ngModel" [compareWith]="compareDisciplina">
-					<option *ngFor="let disciplina of listaDisciplina"
-						[ngValue]="disciplina">{{disciplina.toString()}}</option>
-				</select>
-				<div [hidden]="!disciplina.pristine" class="alert alert-danger">Disciplina
-					is required</div>
+				<label>Disciplina</label>
+				<div>{{entity.disciplina.toString()}}</div>
 			</div>
-			
+
 			<div class="form-group">
-			    <label for="docente">Docente</label>
-				<select [(ngModel)]="entity.docente" class="form-control" name="docente" required
-					#docente="ngModel" [compareWith]="compareDocente">
-					<option *ngFor="let docente of listaDocente"
-						[ngValue]="docente">{{docente.toString()}}</option>
-				</select>
-				<div [hidden]="!docente.pristine" class="alert alert-danger">Docente
-					is required</div>
+				<label>Docente</label>
+				<div>{{entity.docente.toString()}}</div>
 			</div>
 
 			<div>
-				<label><b>Turmas: </b></label> <select multiple
-					[(ngModel)]="listSelectedTurma" class="form-control"
-					name="turma" #turma="ngModel"
-					[compareWith]="compareTurma">
+				<label>Turmas</label> <select multiple
+					[(ngModel)]="listSelectedTurma" class="form-control" name="turma"
+					#turma="ngModel" [compareWith]="compareTurma">
 					<option *ngFor="let item of listTurma" [ngValue]="item">{{item.toString()}}</option>
 				</select>
 			</div>
 
 			<div>
-				<label><b>Discentes: </b></label> <select multiple
+				<label>Discentes</label> <select multiple
 					[(ngModel)]="listSelectedDiscente" class="form-control"
-					name="discente" #discente="ngModel"
-					[compareWith]="compareDiscente">
+					name="discente" #discente="ngModel" [compareWith]="compareDiscente">
 					<option *ngFor="let item of listDiscente" [ngValue]="item">{{item.toString()}}</option>
 				</select>
 			</div>
-			
+
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"
 				style="margin-right: 10px">Cancelar</button>
-				
+
 		</form>
 	</div>
 </div>

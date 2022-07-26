@@ -5,9 +5,9 @@
 			<div class="form-group">
 				<label for="nome">Nome</label> <input type="text"
 					[(ngModel)]="entity.nome" class="form-control" id="nome"
-					name="nome" placeholder="Enter your name" required #nome="ngModel">
+					name="nome" required #nome="ngModel">
 				<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
-					is required</div>
+					pendente</div>
 			</div>
 			<div class="form-group">
 			    <label for="ofertaCurso">Oferta de Curso</label>
@@ -17,7 +17,7 @@
 						[ngValue]="ofertaCurso">{{ofertaCurso.toString()}}</option>
 				</select>
 				<div [hidden]="!ofertaCurso.pristine" class="alert alert-danger">Oferta de Curso
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

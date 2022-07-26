@@ -3,19 +3,22 @@
 		<hr />
 		<div *ngIf="entity">
 			<div>
-				<label><b>ID: </b></label> {{ entity.id }}
+				<label>ID:</label><span>{{ entity.id }}</span>
 			</div>
 			<div>
-				<label><b>Ano: </b></label> {{ entity.ano }}
+				<label>Ano:</label><span>{{ entity.ano }}</span>
 			</div>
 			<div>
-				<label><b>Vestibular: </b></label> {{ entity.vestibular.toString() }}
+				<label>Vestibular:</label><span>{{
+					entity.vestibular.toString() }}</span>
 			</div>
 			<div>
-				<label><b>Estrutura Curricular: </b></label> {{ entity.estruturaCurricular.toString() }}
+				<label>Estrutura Curricular:</label><span>{{
+					entity.estruturaCurricular.toString() }}</span>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
-			style="margin-right: 10px">Voltar</button> <br>
+			style="margin-right: 10px">Voltar</button>
+		<br>
 	</div>
 </div>

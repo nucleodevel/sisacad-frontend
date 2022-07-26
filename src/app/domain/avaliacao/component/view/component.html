@@ -3,22 +3,24 @@
 		<hr />
 		<div *ngIf="entity">
 			<div>
-				<label><b>ID: </b></label> {{ entity.id }}
+				<label>ID:</label><span>{{ entity.id }}</span>
 			</div>
 			<div>
-				<label><b>Descrição: </b></label> {{ entity.descricao }}
+				<label>Descrição:</label><span>{{ entity.descricao }}</span>
 			</div>
 			<div>
-				<label><b>Início: </b></label> {{ entity.inicio }}
+				<label>Início:</label><span>{{ entity.inicio }}</span>
 			</div>
 			<div>
-				<label><b>Término: </b></label> {{ entity.termino }}
+				<label>Término:</label><span>{{ entity.termino }}</span>
 			</div>
 			<div>
-				<label><b>Oferta de Disciplina: </b></label> {{ entity.ofertaDisciplina.toString() }}
+				<label>Oferta de Disciplina:</label><span>{{
+					entity.ofertaDisciplina.toString() }}</span>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
-			style="margin-right: 10px">Voltar</button> <br>
+			style="margin-right: 10px">Voltar</button>
+		<br>
 	</div>
 </div>

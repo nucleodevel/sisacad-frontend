@@ -5,28 +5,22 @@
 			<div class="form-group">
 				<label for="inicio">Início</label> <input type="text"
 					[(ngModel)]="entity.inicio" class="form-control" id="inicio"
-					name="inicio" placeholder="Enter your name" required #inicio="ngModel">
-				<div [hidden]="!inicio.pristine" class="alert alert-danger">Início
-					is required</div>
+					name="inicio" required #inicio="ngModel">
+				<div [hidden]="!inicio.pristine" class="alert alert-danger">Data de hora de início
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="termino">Término</label> <input type="text"
 					[(ngModel)]="entity.termino" class="form-control" id="termino"
-					name="termino" placeholder="Enter your name" required #termino="ngModel">
-				<div [hidden]="!termino.pristine" class="alert alert-danger">Término
-					is required</div>
+					name="termino" required #termino="ngModel">
+				<div [hidden]="!termino.pristine" class="alert alert-danger">Data e hora de término
+					pendente</div>
 			</div>
 			
 			<div class="form-group">
-			    <label for="ofertaDisciplina">Oferta de Curso</label>
-				<select [(ngModel)]="entity.ofertaDisciplina" class="form-control" name="ofertaDisciplina" required
-					#ofertaDisciplina="ngModel" [compareWith]="compareOfertaDisciplina">
-					<option *ngFor="let ofertaDisciplina of listaOfertaDisciplina"
-						[ngValue]="ofertaDisciplina">{{ofertaDisciplina.toString()}}</option>
-				</select>
-				<div [hidden]="!ofertaDisciplina.pristine" class="alert alert-danger">Oferta de disciplina
-					is required</div>
+				<label>Oferta de disciplina</label>
+				<div>{{entity.ofertaDisciplina.toString()}}</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"

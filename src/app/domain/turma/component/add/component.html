@@ -10,7 +10,7 @@
 						[ngValue]="ofertaCurso">{{ofertaCurso.toString()}}</option>
 				</select>
 				<div [hidden]="!ofertaCurso.pristine" class="alert alert-danger">Oferta de Curso
-					is required</div>
+					pendente</div>
 			</div>
 			
 			<button type="submit" [disabled]="!entityForm.form.valid"
