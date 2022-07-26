@@ -1,35 +1,44 @@
 <div class="card my-5">
 	<div class="card-body">
-		<hr />
 		<div *ngIf="entity">
-			<div>
-				<label>ID:</label><span>{{ entity.id }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-3 col-md-12">
+					<label>ID</label>
+					<div>{{entity.id}}</div>
+				</div>
+				<div class="form-group col-lg-9 col-md-12">
+					<label>Curso:</label>
+					<div>{{ entity.curso.toString() }}</div>
+				</div>
 			</div>
-			<div>
-				<label>Ano de início:</label><span>{{ entity.anoInicio }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Ano de início:</label>
+					<div>{{ entity.anoInicio }}</div>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Ano de término:</label>
+					<div>{{ entity.anoTermino }}</div>
+				</div>
 			</div>
-			<div>
-				<label>Ano de término:</label><span>{{ entity.anoTermino }}</span>
-			</div>
-			<div>
-				<label>Curso:</label><span>{{ entity.curso.toString() }}</span>
-			</div>
-			<div>
-				<label>Disciplinas</label>
-				<table class="table table-bordered table-striped">
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Nome</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let item of listSelectedDisciplina">
-							<td>{{ item.id }}</td>
-							<td>{{ item.nome }}</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label>Disciplinas</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedDisciplina">
+								<td>{{ item.id }}</td>
+								<td>{{ item.nome }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"

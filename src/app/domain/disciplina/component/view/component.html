@@ -1,36 +1,42 @@
 <div class="card my-5">
 	<div class="card-body">
-		<hr />
 		<div *ngIf="entity">
-			<div>
-				<label>ID:</label><span>{{ entity.id }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-3 col-md-12">
+					<label>ID</label>
+					<div>{{entity.id}}</div>
+				</div>
+				<div class="form-group col-lg-9 col-md-12">
+					<label>Nome:</label>
+					<div>{{ entity.nome }}</div>
+				</div>
 			</div>
-			<div>
-				<label>Nome:</label><span>{{ entity.nome }}</span>
-			</div>
-			<div>
-				<label>Estruturas curriculares:</label>
-				<table class="table table-bordered table-striped">
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Ano de início</th>
-							<th scope="col">Ano de término</th>
-							<th scope="col">Curso</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let item of listSelectedEstruturaCurricular">
-							<td>{{ item.id }}</td>
-							<td>{{ item.anoInicio }}</td>
-							<td>{{ item.anoTermino }}</td>
-							<td>{{ item.curso.toString() }}</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label>Estruturas curriculares:</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Ano de início</th>
+								<th scope="col">Ano de término</th>
+								<th scope="col">Curso</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedEstruturaCurricular">
+								<td>{{ item.id }}</td>
+								<td>{{ item.anoInicio }}</td>
+								<td>{{ item.anoTermino }}</td>
+								<td>{{ item.curso.toString() }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
-			style="margin-right: 10px">Voltar</button> <br>
+			style="margin-right: 10px">Voltar</button>
+		<br>
 	</div>
 </div>

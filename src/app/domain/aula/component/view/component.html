@@ -1,19 +1,25 @@
 <div class="card my-5">
 	<div class="card-body">
-		<hr />
 		<div *ngIf="entity">
-			<div>
-				<label>ID:</label><span>{{ entity.id }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label>ID</label>
+					<div>{{entity.id}}</div>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Oferta de disciplina</label>
+					<div>{{entity.ofertaDisciplina.toString()}}</div>
+				</div>
 			</div>
-			<div>
-				<label>Início:</label><span>{{ entity.inicio }}</span>
-			</div>
-			<div>
-				<label>Término:</label><span>{{ entity.termino }}</span>
-			</div>
-			<div>
-				<label>Oferta de Disciplina:</label><span>{{
-					entity.ofertaDisciplina.toString() }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Início</label>
+					<div>{{entity.inicio}}</div>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Término</label>
+					<div>{{entity.termino}}</div>
+				</div>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"

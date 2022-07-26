@@ -7,14 +7,14 @@
 					<label>Oferta de disciplina</label>
 					<div>{{entity.ofertaDisciplina.toString()}}</div>
 				</div>
-				<div class="form-group col-lg-3 col-md-6">
+				<div class="form-group col-lg-3 col-md-12">
 					<label for="inicio">Início</label> <input type="text"
 						[(ngModel)]="entity.inicio" class="form-control" id="inicio"
 						name="inicio" required #inicio="ngModel">
 					<div [hidden]="!inicio.pristine" class="alert alert-danger">Data
 						de hora de início pendente</div>
 				</div>
-				<div class="form-group col-lg-3 col-md-6">
+				<div class="form-group col-lg-3 col-md-12">
 					<label for="termino">Término</label> <input type="text"
 						[(ngModel)]="entity.termino" class="form-control" id="termino"
 						name="termino" required #termino="ngModel">

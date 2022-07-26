@@ -1,18 +1,23 @@
 <div class="card my-5">
 	<div class="card-body">
-		<hr />
 		<div *ngIf="entity">
-			<div>
-				<label>ID:</label><span>{{ entity.id }}</span>
-			</div>
-			<div>
-				<label>Avaliação:</label><span>{{ entity.avaliacao.toString() }}</span>
-			</div>
-			<div>
-				<label>Discente:</label><span>{{ entity.discente.toString() }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-2 col-md-12">
+					<label>ID</label>
+					<div>{{entity.id}}</div>
+				</div>
+				<div class="form-group col-lg-5 col-md-12">
+					<label>Avaliação:</label>
+					<div>{{ entity.avaliacao.toString() }}</div>
+				</div>
+				<div class="form-group col-lg-5 col-md-12">
+					<label>Discente:</label>
+					<div>{{ entity.discente.toString() }}</div>
+				</div>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
-			style="margin-right: 10px">Voltar</button> <br>
+			style="margin-right: 10px">Voltar</button>
+		<br>
 	</div>
 </div>

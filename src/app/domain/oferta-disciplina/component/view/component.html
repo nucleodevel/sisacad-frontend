@@ -1,50 +1,57 @@
 <div class="card my-5">
 	<div class="card-body">
-		<hr />
 		<div *ngIf="entity">
-			<div>
-				<label>ID:</label><span>{{ entity.id }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-2 col-md-12">
+					<label>ID</label>
+					<div>{{entity.id}}</div>
+				</div>
+				<div class="form-group col-lg-5 col-md-12">
+					<label>Disciplina:</label>
+					<div>{{ entity.disciplina.toString() }}</div>
+				</div>
+				<div class="form-group col-lg-5 col-md-12">
+					<label>Docente:</label>
+					<div>{{ entity.docente.toString() }}</div>
+				</div>
 			</div>
-			<div>
-				<label>Disciplina:</label><span>{{
-					entity.disciplina.toString() }}</span>
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label>Turmas</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Oferta de curso</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedTurma">
+								<td>{{ item.id }}</td>
+								<td>{{ item.ofertaCurso.toString() }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			<div>
-				<label>Docente:</label><span>{{ entity.docente.toString() }}</span>
-			</div>
-			<div>
-				<label>Turmas</label>
-				<table class="table table-bordered table-striped">
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Oferta de curso</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let item of listSelectedTurma">
-							<td>{{ item.id }}</td>
-							<td>{{ item.ofertaCurso.toString() }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div>
-				<label>Discentes</label>
-				<table class="table table-bordered table-striped">
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Vestibulando</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let item of listSelectedDiscente">
-							<td>{{ item.id }}</td>
-							<td>{{ item.vestibulando.toString() }}</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label>Discentes</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Vestibulando</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedDiscente">
+								<td>{{ item.id }}</td>
+								<td>{{ item.vestibulando.toString() }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<button (click)="list()" type="button" class="btn btn-danger"
