@@ -1,4 +1,10 @@
 <div class="card my-5">
+
+	<div *ngIf="loading">loading...</div>
+	<div *ngIf="errorMessage" class="alert alert-danger">
+		<strong>Erro!</strong> {{errorMessage | json}}
+	</div>
+	
 	<div class="card-body">
 		<a routerLink="/{{ routerPrefix }}/add" class="btn btn-success"
 			style="margin-bottom: 10px">Novo</a>
