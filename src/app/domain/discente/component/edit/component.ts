@@ -36,24 +36,30 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 
 		this.vestibulandoService.findAll().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 	}
 
 	onSubmit() {
 		var listDeleteOfertaDisciplina: OfertaDisciplina[] = [];
 		var listInsertOfertaDisciplina: OfertaDisciplina[] = [];
 		var dto = this.service.newDtoInstance();
-		
+
 		dto.copyFromEntity(this.entity);
 		this.service.update(this.id, dto).subscribe();
 
@@ -64,7 +70,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listDeleteOfertaDisciplina.push(oldItem);
 			}
@@ -77,7 +83,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listInsertOfertaDisciplina.push(item);
 			}

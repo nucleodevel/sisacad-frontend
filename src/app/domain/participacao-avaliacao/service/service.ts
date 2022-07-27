@@ -11,36 +11,36 @@ import { DiscenteService } from '../../discente/service/service';
 @Injectable()
 export class ParticipacaoAvaliacaoService extends AbstractService<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto> {
 
-  private static readonly apiUrl = 'http://localhost:8080/';
-  private static readonly apiPath = 'participacao-avaliacao';
+	private static readonly apiUrl = 'http://localhost:8080/';
+	private static readonly apiPath = 'participacao-avaliacao';
 
-  constructor(protected httpClient: HttpClient, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
-    super(httpClient, ParticipacaoAvaliacaoService.apiUrl + ParticipacaoAvaliacaoService.apiPath);
-  }
+	constructor(protected httpClient: HttpClient, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
+		super(httpClient, ParticipacaoAvaliacaoService.apiUrl + ParticipacaoAvaliacaoService.apiPath);
+	}
 
-  newEntityInstance(): ParticipacaoAvaliacao {
-	return new ParticipacaoAvaliacao();
-  }
+	newEntityInstance(): ParticipacaoAvaliacao {
+		return new ParticipacaoAvaliacao();
+	}
 
-  newDtoInstance(): ParticipacaoAvaliacaoDto {
-	return new ParticipacaoAvaliacaoDto();
-  }
+	newDtoInstance(): ParticipacaoAvaliacaoDto {
+		return new ParticipacaoAvaliacaoDto();
+	}
 
-  makeEntityFromDto(dto: ParticipacaoAvaliacaoDto): ParticipacaoAvaliacao {
-    var entity = this.newEntityInstance();
-    
-    entity.id = dto.id;
+	makeEntityFromDto(dto: ParticipacaoAvaliacaoDto): ParticipacaoAvaliacao {
+		var entity = this.newEntityInstance();
 
-	this.avaliacaoService.findById(dto.avaliacao).subscribe(data => {
-      console.log(data)
-      entity.avaliacao = this.avaliacaoService.makeEntityFromDto(data);
-    }, error => console.log(error));
+		entity.id = dto.id;
 
-	this.discenteService.findById(dto.discente).subscribe(data => {
-      console.log(data)
-      entity.discente = this.discenteService.makeEntityFromDto(data);
-    }, error => console.log(error));
+		this.avaliacaoService.findById(dto.avaliacao).subscribe(data => {
+			console.log(data)
+			entity.avaliacao = this.avaliacaoService.makeEntityFromDto(data);
+		});
 
-    return entity;
-  }
+		this.discenteService.findById(dto.discente).subscribe(data => {
+			console.log(data)
+			entity.discente = this.discenteService.makeEntityFromDto(data);
+		});
+
+		return entity;
+	}
 }

@@ -11,29 +11,31 @@ import { OfertaDisciplina } from '../../../oferta-disciplina/entity/entity';
 import { OfertaDisciplinaService } from '../../../oferta-disciplina/service/service';
 
 @Component({
-  selector: 'app-avaliacao-add',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-avaliacao-add',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class AvaliacaoAddComponent extends AbstractAddComponent<Avaliacao, AvaliacaoDto, AvaliacaoService> implements OnInit {
-	
-  listaOfertaDisciplina!: OfertaDisciplina[];
 
-  constructor(protected service: AvaliacaoService, protected router: Router, 
-      protected route: ActivatedRoute, protected ofertaDisciplinaService: OfertaDisciplinaService) {
-	super(service, router, route, 'avaliacao');
-  }
+	listaOfertaDisciplina!: OfertaDisciplina[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.ofertaDisciplinaService.findAll().subscribe(data => {
-	  this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: AvaliacaoService, protected router: Router,
+		protected route: ActivatedRoute, protected ofertaDisciplinaService: OfertaDisciplinaService) {
+		super(service, router, route, 'avaliacao');
+	}
 
-  compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.ofertaDisciplinaService.findAll().subscribe(data => {
+			this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {
+		return o1.compare(o2);
+	}
 
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+
+import { map, catchError } from 'rxjs/operators';
 
 import { AbstractService } from '../../abstract/service/service';
 import { EstruturaCurricular } from '../entity/entity';
@@ -38,20 +40,32 @@ export class EstruturaCurricularService extends AbstractService<EstruturaCurricu
 		this.cursoService.findById(dto.curso).subscribe(data => {
 			console.log(data)
 			entity.curso = this.cursoService.makeEntityFromDto(data);
-		}, error => console.log(error));
+		});
 
 		return entity;
 	}
 
 	public findAllDisciplinaById(id: number): Observable<DisciplinaDto[]> {
-		return this.http.get<DisciplinaDto[]>(this.apiUrl + '/' + id + "/disciplina");
+		return this.http.get<DisciplinaDto[]>(this.apiUrl + '/' + id + "/disciplina").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 
 	public deleteDisciplina(id: number, subId: number) {
-		return this.http.delete<number>(this.apiUrl + '/' + id + "/disciplina/" + subId);
+		return this.http.delete<number>(this.apiUrl + '/' + id + "/disciplina/" + subId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 
 	public insertDisciplina(id: number, subId: number) {
-		return this.http.post<number>(this.apiUrl + '/' + id + "/disciplina/" + subId, subId);
+		return this.http.post<number>(this.apiUrl + '/' + id + "/disciplina/" + subId, subId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 }

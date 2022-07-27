@@ -31,7 +31,9 @@ export class DiscenteViewComponent extends AbstractViewComponent<Discente, Disce
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 	}
 
 }

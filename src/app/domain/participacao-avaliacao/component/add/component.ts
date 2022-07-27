@@ -14,38 +14,42 @@ import { Discente } from '../../../discente/entity/entity';
 import { DiscenteService } from '../../../discente/service/service';
 
 @Component({
-  selector: 'app-participacao-avaliacao-add',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-participacao-avaliacao-add',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> implements OnInit {
-	
-  listaAvaliacao!: Avaliacao[];
-  listaDiscente!: Discente[];
 
-  constructor(protected service: ParticipacaoAvaliacaoService, protected router: Router, 
-      protected route: ActivatedRoute, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
-	super(service, router, route, 'participacao-avaliacao');
-  }
+	listaAvaliacao!: Avaliacao[];
+	listaDiscente!: Discente[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.avaliacaoService.findAll().subscribe(data => {
-	  this.listaAvaliacao = this.avaliacaoService.makeEntityArrayFromDtoArray(data);
-    });
-	
-	this.discenteService.findAll().subscribe(data => {
-	  this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: ParticipacaoAvaliacaoService, protected router: Router,
+		protected route: ActivatedRoute, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
+		super(service, router, route, 'participacao-avaliacao');
+	}
 
-  compareAvaliacao(o1: Avaliacao, o2: Avaliacao) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
 
-  compareDiscente(o1: Discente, o2: Discente) {
-	return o1.compare(o2);
-  }
+		this.avaliacaoService.findAll().subscribe(data => {
+			this.listaAvaliacao = this.avaliacaoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+
+		this.discenteService.findAll().subscribe(data => {
+			this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareAvaliacao(o1: Avaliacao, o2: Avaliacao) {
+		return o1.compare(o2);
+	}
+
+	compareDiscente(o1: Discente, o2: Discente) {
+		return o1.compare(o2);
+	}
 
 }

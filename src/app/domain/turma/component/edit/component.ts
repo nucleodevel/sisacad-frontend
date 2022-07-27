@@ -25,7 +25,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 	listOldSelectedOfertaDisciplina!: OfertaDisciplina[];
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
-	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService, 
+	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected router: Router, protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
 		super(service, router, route, 'turma');
 		this.ofertaDisciplinaService = ofertaDisciplinaService;
@@ -36,24 +36,30 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 	}
 
 	onSubmit() {
 		var listDeleteOfertaDisciplina: OfertaDisciplina[] = [];
 		var listInsertOfertaDisciplina: OfertaDisciplina[] = [];
 		var dto = this.service.newDtoInstance();
-		
+
 		dto.copyFromEntity(this.entity);
 		this.service.update(this.id, dto).subscribe();
 
@@ -64,7 +70,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listDeleteOfertaDisciplina.push(oldItem);
 			}
@@ -77,7 +83,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listInsertOfertaDisciplina.push(item);
 			}

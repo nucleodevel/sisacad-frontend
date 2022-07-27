@@ -14,38 +14,42 @@ import { EstruturaCurricular } from '../../../estrutura-curricular/entity/entity
 import { EstruturaCurricularService } from '../../../estrutura-curricular/service/service';
 
 @Component({
-  selector: 'app-oferta-curso-edit',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-oferta-curso-edit',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class OfertaCursoEditComponent extends AbstractEditComponent<OfertaCurso, OfertaCursoDto, OfertaCursoService> implements OnInit {
-	
-  listaVestibular!: Vestibular[];
-  listaEstruturaCurricular!: EstruturaCurricular[];
 
-  constructor(protected service: OfertaCursoService, protected router: Router, protected route: ActivatedRoute, 
-      protected vestibularService: VestibularService, protected estruturaCurricularService: EstruturaCurricularService) {
-	super(service, router, route, 'oferta-curso');
-  }
+	listaVestibular!: Vestibular[];
+	listaEstruturaCurricular!: EstruturaCurricular[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.vestibularService.findAll().subscribe(data => {
-	  this.listaVestibular = this.vestibularService.makeEntityArrayFromDtoArray(data);
-    });
-	
-	this.estruturaCurricularService.findAll().subscribe(data => {
-	  this.listaEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: OfertaCursoService, protected router: Router, protected route: ActivatedRoute,
+		protected vestibularService: VestibularService, protected estruturaCurricularService: EstruturaCurricularService) {
+		super(service, router, route, 'oferta-curso');
+	}
 
-  compareVestibular(o1: Vestibular, o2: Vestibular) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
 
-  compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {
-	return o1.compare(o2);
-  }
+		this.vestibularService.findAll().subscribe(data => {
+			this.listaVestibular = this.vestibularService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+
+		this.estruturaCurricularService.findAll().subscribe(data => {
+			this.listaEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareVestibular(o1: Vestibular, o2: Vestibular) {
+		return o1.compare(o2);
+	}
+
+	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {
+		return o1.compare(o2);
+	}
 
 }

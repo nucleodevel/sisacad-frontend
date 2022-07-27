@@ -10,32 +10,32 @@ import { VestibulandoService } from '../../vestibulando/service/service';
 @Injectable()
 export class AvaliacaoVestibulandoService extends AbstractService<AvaliacaoVestibulando, AvaliacaoVestibulandoDto> {
 
-  private static readonly apiUrl = 'http://localhost:8080/';
-  private static readonly apiPath = 'avaliacao-vestibulando';
+	private static readonly apiUrl = 'http://localhost:8080/';
+	private static readonly apiPath = 'avaliacao-vestibulando';
 
-  constructor(protected httpClient: HttpClient, protected vestibulandoService: VestibulandoService) {
-    super(httpClient, AvaliacaoVestibulandoService.apiUrl + AvaliacaoVestibulandoService.apiPath);
-  }
+	constructor(protected httpClient: HttpClient, protected vestibulandoService: VestibulandoService) {
+		super(httpClient, AvaliacaoVestibulandoService.apiUrl + AvaliacaoVestibulandoService.apiPath);
+	}
 
-  newEntityInstance(): AvaliacaoVestibulando {
-	return new AvaliacaoVestibulando();
-  }
+	newEntityInstance(): AvaliacaoVestibulando {
+		return new AvaliacaoVestibulando();
+	}
 
-  newDtoInstance(): AvaliacaoVestibulandoDto {
-	return new AvaliacaoVestibulandoDto();
-  }
+	newDtoInstance(): AvaliacaoVestibulandoDto {
+		return new AvaliacaoVestibulandoDto();
+	}
 
-  makeEntityFromDto(dto: AvaliacaoVestibulandoDto): AvaliacaoVestibulando {
-    var entity = this.newEntityInstance();
-    
-    entity.id = dto.id;
-    entity.conceitoFinal = dto.conceitoFinal;
+	makeEntityFromDto(dto: AvaliacaoVestibulandoDto): AvaliacaoVestibulando {
+		var entity = this.newEntityInstance();
 
-	this.vestibulandoService.findById(dto.vestibulando).subscribe(data => {
-      console.log(data)
-      entity.vestibulando = this.vestibulandoService.makeEntityFromDto(data);
-    }, error => console.log(error));
+		entity.id = dto.id;
+		entity.conceitoFinal = dto.conceitoFinal;
 
-    return entity;
-  }
+		this.vestibulandoService.findById(dto.vestibulando).subscribe(data => {
+			console.log(data)
+			entity.vestibulando = this.vestibulandoService.makeEntityFromDto(data);
+		});
+
+		return entity;
+	}
 }

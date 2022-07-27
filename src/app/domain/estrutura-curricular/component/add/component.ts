@@ -11,29 +11,31 @@ import { Curso } from '../../../curso/entity/entity';
 import { CursoService } from '../../../curso/service/service';
 
 @Component({
-  selector: 'app-estrutura-curricular-add',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-estrutura-curricular-add',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class EstruturaCurricularAddComponent extends AbstractAddComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> implements OnInit {
-	
-  listaCurso!: Curso[];
 
-  constructor(protected service: EstruturaCurricularService, protected router: Router, 
-      protected route: ActivatedRoute, protected cursoService: CursoService) {
-	super(service, router, route, 'estrutura-curricular');
-  }
+	listaCurso!: Curso[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.cursoService.findAll().subscribe(data => {
-	  this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: EstruturaCurricularService, protected router: Router,
+		protected route: ActivatedRoute, protected cursoService: CursoService) {
+		super(service, router, route, 'estrutura-curricular');
+	}
 
-  compareCurso(o1: Curso, o2: Curso) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.cursoService.findAll().subscribe(data => {
+			this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareCurso(o1: Curso, o2: Curso) {
+		return o1.compare(o2);
+	}
 
 }

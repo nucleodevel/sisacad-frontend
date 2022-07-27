@@ -11,29 +11,31 @@ import { Vestibulando } from '../../../vestibulando/entity/entity';
 import { VestibulandoService } from '../../../vestibulando/service/service';
 
 @Component({
-  selector: 'app-discente-add',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-discente-add',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class DiscenteAddComponent extends AbstractAddComponent<Discente, DiscenteDto, DiscenteService> implements OnInit {
-	
-  listaVestibulando!: Vestibulando[];
 
-  constructor(protected service: DiscenteService, protected router: Router, 
-      protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
-	super(service, router, route, 'discente');
-  }
+	listaVestibulando!: Vestibulando[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.vestibulandoService.findAll().subscribe(data => {
-	  this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: DiscenteService, protected router: Router,
+		protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
+		super(service, router, route, 'discente');
+	}
 
-  compareVestibulando(o1: Vestibulando, o2: Vestibulando) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.vestibulandoService.findAll().subscribe(data => {
+			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {
+		return o1.compare(o2);
+	}
 
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+
+import { map, catchError } from 'rxjs/operators';
 
 import { AbstractService } from '../../abstract/service/service';
 import { Disciplina } from '../entity/entity';
@@ -36,14 +38,26 @@ export class DisciplinaService extends AbstractService<Disciplina, DisciplinaDto
 	}
 
 	public findAllEstruturaCurricularById(id: number): Observable<EstruturaCurricularDto[]> {
-		return this.http.get<EstruturaCurricularDto[]>(this.apiUrl + '/' + id + "/estrutura-curricular");
+		return this.http.get<EstruturaCurricularDto[]>(this.apiUrl + '/' + id + "/estrutura-curricular").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 
 	public deleteEstruturaCurricular(id: number, subId: number) {
-		return this.http.delete<number>(this.apiUrl + '/' + id + "/estrutura-curricular/" + subId);
+		return this.http.delete<number>(this.apiUrl + '/' + id + "/estrutura-curricular/" + subId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 
 	public insertEstruturaCurricular(id: number, subId: number) {
-		return this.http.post<number>(this.apiUrl + '/' + id + "/estrutura-curricular/" + subId, subId);
+		return this.http.post<number>(this.apiUrl + '/' + id + "/estrutura-curricular/" + subId, subId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 }

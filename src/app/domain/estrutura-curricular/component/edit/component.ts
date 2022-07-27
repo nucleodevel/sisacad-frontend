@@ -36,24 +36,30 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 
 		this.cursoService.findAll().subscribe(data => {
 			this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.service.findAllDisciplinaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listOldSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 	}
 
 	onSubmit() {
 		var listDeleteDisciplina: Disciplina[] = [];
 		var listInsertDisciplina: Disciplina[] = [];
 		var dto = this.service.newDtoInstance();
-		
+
 		dto.copyFromEntity(this.entity);
 		this.service.update(this.id, dto).subscribe();
 
@@ -64,7 +70,7 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listDeleteDisciplina.push(oldItem);
 			}
@@ -77,7 +83,7 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listInsertDisciplina.push(item);
 			}

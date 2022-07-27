@@ -35,8 +35,8 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 	listOldSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
-	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService, 
-		protected router: Router, protected route: ActivatedRoute, 
+	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService,
+		protected router: Router, protected route: ActivatedRoute,
 		protected disciplinaService: DisciplinaService, protected docenteService: DocenteService) {
 		super(service, router, route, 'oferta-disciplina');
 		this.turmaService = turmaService;
@@ -48,42 +48,54 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.docenteService.findAll().subscribe(data => {
 			this.listaDocente = this.docenteService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.turmaService.findAll().subscribe(data => {
 			this.listTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.service.findAllTurmaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listOldSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 
 		this.discenteService.findAll().subscribe(data => {
 			this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
 		});
 
 		this.service.findAllDiscenteById(this.id).subscribe(data => {
 			console.log(data)
 			this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 	}
 
 	onSubmit() {
 		var listDeleteTurma: Turma[] = [];
 		var listInsertTurma: Turma[] = [];
-		
+
 		var listDeleteDiscente: Discente[] = [];
 		var listInsertDiscente: Discente[] = [];
-		
+
 		var dto = this.service.newDtoInstance();
-		
+
 		dto.copyFromEntity(this.entity);
 		this.service.update(this.id, dto).subscribe();
 
@@ -94,7 +106,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listDeleteTurma.push(oldItem);
 			}
@@ -107,7 +119,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listInsertTurma.push(item);
 			}
@@ -128,7 +140,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listDeleteDiscente.push(oldItem);
 			}
@@ -141,7 +153,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 					exists = true;
 				}
 			});
-			
+
 			if (!exists) {
 				listInsertDiscente.push(item);
 			}

@@ -35,7 +35,7 @@ export class AulaService extends AbstractService<Aula, AulaDto> {
 	this.ofertaDisciplinaService.findById(dto.ofertaDisciplina).subscribe(data => {
       console.log(data)
       entity.ofertaDisciplina = this.ofertaDisciplinaService.makeEntityFromDto(data);
-    }, error => console.log(error));
+    });
 
     return entity;
   }

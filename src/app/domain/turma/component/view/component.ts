@@ -31,7 +31,9 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
 			console.log(data)
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => console.log(error));
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
 	}
 
 }

@@ -10,34 +10,34 @@ import { OfertaDisciplinaService } from '../../oferta-disciplina/service/service
 @Injectable()
 export class AvaliacaoService extends AbstractService<Avaliacao, AvaliacaoDto> {
 
-  private static readonly apiUrl = 'http://localhost:8080/';
-  private static readonly apiPath = 'avaliacao';
+	private static readonly apiUrl = 'http://localhost:8080/';
+	private static readonly apiPath = 'avaliacao';
 
-  constructor(protected httpClient: HttpClient, protected ofertaDisciplinaService: OfertaDisciplinaService) {
-    super(httpClient, AvaliacaoService.apiUrl + AvaliacaoService.apiPath);
-  }
+	constructor(protected httpClient: HttpClient, protected ofertaDisciplinaService: OfertaDisciplinaService) {
+		super(httpClient, AvaliacaoService.apiUrl + AvaliacaoService.apiPath);
+	}
 
-  newEntityInstance(): Avaliacao {
-	return new Avaliacao();
-  }
+	newEntityInstance(): Avaliacao {
+		return new Avaliacao();
+	}
 
-  newDtoInstance(): AvaliacaoDto {
-	return new AvaliacaoDto();
-  }
+	newDtoInstance(): AvaliacaoDto {
+		return new AvaliacaoDto();
+	}
 
-  makeEntityFromDto(dto: AvaliacaoDto): Avaliacao {
-    var entity = this.newEntityInstance();
-    
-    entity.id = dto.id;
-    entity.descricao = dto.descricao;
-    entity.inicio = dto.inicio;
-    entity.termino = dto.termino;
+	makeEntityFromDto(dto: AvaliacaoDto): Avaliacao {
+		var entity = this.newEntityInstance();
 
-	this.ofertaDisciplinaService.findById(dto.ofertaDisciplina).subscribe(data => {
-      console.log(data)
-      entity.ofertaDisciplina = this.ofertaDisciplinaService.makeEntityFromDto(data);
-    }, error => console.log(error));
+		entity.id = dto.id;
+		entity.descricao = dto.descricao;
+		entity.inicio = dto.inicio;
+		entity.termino = dto.termino;
 
-    return entity;
-  }
+		this.ofertaDisciplinaService.findById(dto.ofertaDisciplina).subscribe(data => {
+			console.log(data)
+			entity.ofertaDisciplina = this.ofertaDisciplinaService.makeEntityFromDto(data);
+		});
+
+		return entity;
+	}
 }

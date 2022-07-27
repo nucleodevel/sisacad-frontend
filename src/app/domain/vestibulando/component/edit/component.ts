@@ -11,29 +11,31 @@ import { OfertaCurso } from '../../../oferta-curso/entity/entity';
 import { OfertaCursoService } from '../../../oferta-curso/service/service';
 
 @Component({
-  selector: 'app-vestibulando-edit',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-vestibulando-edit',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class VestibulandoEditComponent extends AbstractEditComponent<Vestibulando, VestibulandoDto, VestibulandoService> implements OnInit {
-	
-  listaOfertaCurso!: OfertaCurso[];
 
-  constructor(protected service: VestibulandoService, protected router: Router, 
-      protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
-	super(service, router, route, 'vestibulando');
-  }
+	listaOfertaCurso!: OfertaCurso[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.ofertaCursoService.findAll().subscribe(data => {
-	  this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: VestibulandoService, protected router: Router,
+		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
+		super(service, router, route, 'vestibulando');
+	}
 
-  compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.ofertaCursoService.findAll().subscribe(data => {
+			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {
+		return o1.compare(o2);
+	}
 
 }

@@ -14,38 +14,42 @@ import { Discente } from '../../../discente/entity/entity';
 import { DiscenteService } from '../../../discente/service/service';
 
 @Component({
-  selector: 'app-participacao-aula-edit',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-participacao-aula-edit',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
 export class ParticipacaoAulaEditComponent extends AbstractEditComponent<ParticipacaoAula, ParticipacaoAulaDto, ParticipacaoAulaService> implements OnInit {
-	
-  listaAula!: Aula[];
-  listaDiscente!: Discente[];
 
-  constructor(protected service: ParticipacaoAulaService, protected router: Router, 
-      protected route: ActivatedRoute, protected aulaService: AulaService, protected discenteService: DiscenteService) {
-	super(service, router, route, 'participacao-aula');
-  }
+	listaAula!: Aula[];
+	listaDiscente!: Discente[];
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-	
-	this.aulaService.findAll().subscribe(data => {
-	  this.listaAula = this.aulaService.makeEntityArrayFromDtoArray(data);
-    });
-	
-	this.discenteService.findAll().subscribe(data => {
-	  this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-    });
-  }
+	constructor(protected service: ParticipacaoAulaService, protected router: Router,
+		protected route: ActivatedRoute, protected aulaService: AulaService, protected discenteService: DiscenteService) {
+		super(service, router, route, 'participacao-aula');
+	}
 
-  compareAula(o1: Aula, o2: Aula) {
-	return o1.compare(o2);
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
 
-  compareDiscente(o1: Discente, o2: Discente) {
-	return o1.compare(o2);
-  }
+		this.aulaService.findAll().subscribe(data => {
+			this.listaAula = this.aulaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+
+		this.discenteService.findAll().subscribe(data => {
+			this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error.error.msg);
+		});
+	}
+
+	compareAula(o1: Aula, o2: Aula) {
+		return o1.compare(o2);
+	}
+
+	compareDiscente(o1: Discente, o2: Discente) {
+		return o1.compare(o2);
+	}
 
 }
