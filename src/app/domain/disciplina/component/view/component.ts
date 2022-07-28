@@ -29,7 +29,7 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 		super.ngOnInitSuper();
 
 		this.service.findAllEstruturaCurricularById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error.error.msg);

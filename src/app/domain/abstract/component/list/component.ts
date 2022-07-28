@@ -45,7 +45,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 
 	remove(id: number) {
 		this.service.delete(id).subscribe(data => {
-			console.log(data);
+			console.log(data);;
 			this.reloadData();
 		}, error => {
 			this.setErrorMessage(error.error.msg);
@@ -59,7 +59,6 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 	}
 
 	setErrorMessage(errorMessage: string) {
-		console.error('error caught in component')
 		this.errorMessage = errorMessage;
 		this.loading = false;
 	}

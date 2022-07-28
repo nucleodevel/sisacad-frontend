@@ -36,7 +36,7 @@ export class DiscenteService extends AbstractService<Discente, DiscenteDto> {
 		entity.id = dto.id;
 
 		this.vestibulandoService.findById(dto.vestibulando).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.vestibulando = this.vestibulandoService.makeEntityFromDto(data);
 		});
 

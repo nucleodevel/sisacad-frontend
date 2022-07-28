@@ -4,29 +4,31 @@
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage | json}}
 	</div>
-	
+
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
-			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
-					<label for="ofertaCurso">Oferta de Curso</label>
-					<div>{{entity.ofertaCurso.toString()}}</div>
-				</div>
-				<div class="form-group col-lg-6 col-md-12">
-					<label for="nome">Nome</label> <input type="text"
-						[(ngModel)]="entity.nome" class="form-control" id="nome"
-						name="nome" required #nome="ngModel">
-					<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
-						pendente</div>
+			<div *ngIf="entity">
+				<div class="form-row">
+					<div class="form-group col-lg-6 col-md-12">
+						<label for="ofertaCurso">Oferta de Curso</label>
+						<div>{{entity.ofertaCurso.toString()}}</div>
+					</div>
+					<div class="form-group col-lg-6 col-md-12">
+						<label for="nome">Nome</label> <input type="text"
+							[(ngModel)]="entity.nome" class="form-control" id="nome"
+							name="nome" required #nome="ngModel">
+						<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
+							pendente</div>
+					</div>
 				</div>
 			</div>
-			
+
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
 			<button (click)="list()" type="button" class="btn btn-danger"
 				style="margin-right: 10px">Cancelar</button>
-				
+
 		</form>
 	</div>
 </div>

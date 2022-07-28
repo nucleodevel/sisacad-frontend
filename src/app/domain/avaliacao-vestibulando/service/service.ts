@@ -32,7 +32,7 @@ export class AvaliacaoVestibulandoService extends AbstractService<AvaliacaoVesti
 		entity.conceitoFinal = dto.conceitoFinal;
 
 		this.vestibulandoService.findById(dto.vestibulando).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.vestibulando = this.vestibulandoService.makeEntityFromDto(data);
 		});
 

@@ -32,7 +32,7 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 		entity.nome = dto.nome;
 
 		this.ofertaCursoService.findById(dto.ofertaCurso).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.ofertaCurso = this.ofertaCursoService.makeEntityFromDto(data);
 		});
 

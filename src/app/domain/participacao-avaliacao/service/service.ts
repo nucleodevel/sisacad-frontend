@@ -32,12 +32,12 @@ export class ParticipacaoAvaliacaoService extends AbstractService<ParticipacaoAv
 		entity.id = dto.id;
 
 		this.avaliacaoService.findById(dto.avaliacao).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.avaliacao = this.avaliacaoService.makeEntityFromDto(data);
 		});
 
 		this.discenteService.findById(dto.discente).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.discente = this.discenteService.makeEntityFromDto(data);
 		});
 

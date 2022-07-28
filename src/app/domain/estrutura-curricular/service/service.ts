@@ -38,7 +38,7 @@ export class EstruturaCurricularService extends AbstractService<EstruturaCurricu
 		entity.anoTermino = dto.anoTermino;
 
 		this.cursoService.findById(dto.curso).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.curso = this.cursoService.makeEntityFromDto(data);
 		});
 

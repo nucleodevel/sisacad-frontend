@@ -30,7 +30,7 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 		this.id = this.route.snapshot.params['id'];
 
 		this.service.findById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.entity = this.service.makeEntityFromDto(data);
 		}, error => {
 			this.setErrorMessage(error.error.msg);
@@ -52,7 +52,6 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 	}
 
 	setErrorMessage(errorMessage: string) {
-		console.error('error caught in component')
 		this.errorMessage = errorMessage;
 		this.loading = false;
 	}

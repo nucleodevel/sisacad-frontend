@@ -44,7 +44,6 @@ export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends
 	}
 
 	setErrorMessage(errorMessage: string) {
-		console.error('error caught in component')
 		this.errorMessage = errorMessage;
 		this.loading = false;
 	}

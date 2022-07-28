@@ -37,7 +37,7 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 		});
 
 		this.service.findAllEstruturaCurricularById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listOldSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {

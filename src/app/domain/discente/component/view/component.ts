@@ -29,7 +29,7 @@ export class DiscenteViewComponent extends AbstractViewComponent<Discente, Disce
 		super.ngOnInitSuper();
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error.error.msg);

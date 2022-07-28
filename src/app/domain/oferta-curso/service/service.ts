@@ -34,12 +34,12 @@ export class OfertaCursoService extends AbstractService<OfertaCurso, OfertaCurso
 		entity.ano = dto.ano;
 
 		this.vestibularService.findById(dto.vestibular).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.vestibular = this.vestibularService.makeEntityFromDto(data);
 		});
 
 		this.estruturaCurricularService.findById(dto.estruturaCurricular).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			entity.estruturaCurricular = this.estruturaCurricularService.makeEntityFromDto(data);
 		});
 

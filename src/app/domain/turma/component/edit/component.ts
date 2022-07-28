@@ -47,7 +47,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		});
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {

@@ -4,26 +4,30 @@
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage | json}}
 	</div>
-	
+
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
-					<label for="nome">Nome</label> <input type="text"
-						[(ngModel)]="entity.nome" class="form-control" id="nome"
-						name="nome" required #nome="ngModel">
-					<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
-						pendente</div>
-				</div>
 
-				<div class="form-group col-lg-6 col-md-12">
-					<label>Estruturas curriculares</label> <select multiple
-						[(ngModel)]="listSelectedEstruturaCurricular" class="form-control"
-						name="estruturaCurricular" #estruturaCurricular="ngModel"
-						[compareWith]="compareEstruturaCurricular">
-						<option *ngFor="let item of listEstruturaCurricular"
-							[ngValue]="item">{{item.toString()}}</option>
-					</select>
+			<div *ngIf="entity">
+				<div class="form-row">
+					<div class="form-group col-lg-6 col-md-12">
+						<label for="nome">Nome</label> <input type="text"
+							[(ngModel)]="entity.nome" class="form-control" id="nome"
+							name="nome" required #nome="ngModel">
+						<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
+							pendente</div>
+					</div>
+
+					<div class="form-group col-lg-6 col-md-12">
+						<label>Estruturas curriculares</label> <select multiple
+							[(ngModel)]="listSelectedEstruturaCurricular"
+							class="form-control" name="estruturaCurricular"
+							#estruturaCurricular="ngModel"
+							[compareWith]="compareEstruturaCurricular">
+							<option *ngFor="let item of listEstruturaCurricular"
+								[ngValue]="item">{{item.toString()}}</option>
+						</select>
+					</div>
 				</div>
 			</div>
 

@@ -47,7 +47,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		});
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {

@@ -65,7 +65,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		});
 
 		this.service.findAllTurmaById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listOldSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
@@ -79,7 +79,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		});
 
 		this.service.findAllDiscenteById(this.id).subscribe(data => {
-			console.log(data)
+			console.log(data);
 			this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
