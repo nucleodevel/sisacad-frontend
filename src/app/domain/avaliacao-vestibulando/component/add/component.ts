@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../abstract/component/add/component';
@@ -15,7 +15,7 @@ import { VestibulandoService } from '../../../vestibulando/service/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> implements OnInit {
+export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> {
 
 	listaVestibulando!: Vestibulando[];
 
@@ -30,7 +30,7 @@ export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<Aval
 		this.vestibulandoService.findAll().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

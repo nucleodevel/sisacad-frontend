@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../abstract/component/list/component';
@@ -8,19 +8,19 @@ import { TurmaDto } from '../../dto/dto';
 import { TurmaService } from '../../service/service';
 
 @Component({
-  selector: 'app-turma-list',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-turma-list',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
-export class TurmaListComponent extends AbstractListComponent<Turma, TurmaDto, TurmaService> implements OnInit {
+export class TurmaListComponent extends AbstractListComponent<Turma, TurmaDto, TurmaService> {
 
-  constructor(protected service: TurmaService,
-    protected router: Router) {
-	super(service, router, 'turma');
-  }
+	constructor(protected service: TurmaService,
+		protected router: Router) {
+		super(service, router, 'turma');
+	}
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+	}
 
 }

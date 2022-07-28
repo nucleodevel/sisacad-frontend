@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../abstract/component/list/component';
@@ -8,19 +8,19 @@ import { EstruturaCurricularDto } from '../../dto/dto';
 import { EstruturaCurricularService } from '../../service/service';
 
 @Component({
-  selector: 'app-estrutura-curricular-list',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-estrutura-curricular-list',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
-export class EstruturaCurricularListComponent extends AbstractListComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> implements OnInit {
+export class EstruturaCurricularListComponent extends AbstractListComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
 
-  constructor(protected service: EstruturaCurricularService,
-    protected router: Router) {
-	super(service, router, 'estrutura-curricular');
-  }
+	constructor(protected service: EstruturaCurricularService,
+		protected router: Router) {
+		super(service, router, 'estrutura-curricular');
+	}
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+	}
 
 }

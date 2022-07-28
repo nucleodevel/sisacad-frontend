@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../abstract/component/edit/component';
@@ -18,7 +18,7 @@ import { OfertaDisciplinaService } from '../../../oferta-disciplina/service/serv
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, TurmaService> implements OnInit {
+export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, TurmaService> {
 
 	listaOfertaCurso!: OfertaCurso[];
 	listOfertaDisciplina!: OfertaDisciplina[];
@@ -37,13 +37,13 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
@@ -51,7 +51,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

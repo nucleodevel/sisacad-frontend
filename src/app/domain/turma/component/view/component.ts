@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../abstract/component/view/component';
@@ -15,7 +15,7 @@ import { OfertaDisciplinaService } from '../../../oferta-disciplina/service/serv
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, TurmaService> implements OnInit {
+export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, TurmaService> {
 
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
@@ -32,7 +32,7 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 			console.log(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

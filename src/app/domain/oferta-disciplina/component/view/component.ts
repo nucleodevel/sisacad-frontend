@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../abstract/component/view/component';
@@ -18,11 +18,11 @@ import { DiscenteService } from '../../../discente/service/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> implements OnInit {
+export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> {
 
 	listSelectedTurma!: Turma[];
 	listSelectedDiscente!: Discente[];
-	
+
 	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService,
 		protected router: Router, protected route: ActivatedRoute) {
 		super(service, router, route, 'oferta-disciplina');
@@ -37,14 +37,14 @@ export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaD
 			console.log(data);
 			this.listSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.service.findAllDiscenteById(this.id).subscribe(data => {
 			console.log(data);
 			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

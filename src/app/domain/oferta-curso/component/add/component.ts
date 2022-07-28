@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../abstract/component/add/component';
@@ -18,7 +18,7 @@ import { EstruturaCurricularService } from '../../../estrutura-curricular/servic
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, OfertaCursoDto, OfertaCursoService> implements OnInit {
+export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, OfertaCursoDto, OfertaCursoService> {
 
 	listaVestibular!: Vestibular[];
 	listaEstruturaCurricular!: EstruturaCurricular[];
@@ -34,13 +34,13 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 		this.vestibularService.findAll().subscribe(data => {
 			this.listaVestibular = this.vestibularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.estruturaCurricularService.findAll().subscribe(data => {
 			this.listaEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

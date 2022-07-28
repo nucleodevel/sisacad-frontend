@@ -2,10 +2,12 @@
 
 	<div *ngIf="loading">loading...</div>
 	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage | json}}
+		<strong>Erro!</strong> {{errorMessage}} <a
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+			style="margin-left: 10px">Voltar</a>
 	</div>
-	
-	<div class="card-body">
+
+	<div class="card-body" *ngIf="entity">
 		<div *ngIf="entity">
 			<div class="form-row">
 				<div class="form-group col-lg-3 col-md-12">
@@ -41,8 +43,7 @@
 				</div>
 			</div>
 		</div>
-		<button (click)="list()" type="button" class="btn btn-danger"
-			style="margin-right: 10px">Voltar</button>
-		<br>
+		<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+			style="margin-left: 10px">Cancelar</a> <br>
 	</div>
 </div>

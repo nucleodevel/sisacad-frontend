@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../abstract/component/view/component';
@@ -15,7 +15,7 @@ import { DisciplinaService } from '../../../disciplina/service/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class EstruturaCurricularViewComponent extends AbstractViewComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> implements OnInit {
+export class EstruturaCurricularViewComponent extends AbstractViewComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
 
 	listSelectedDisciplina!: Disciplina[];
 
@@ -32,7 +32,7 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 			console.log(data);
 			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

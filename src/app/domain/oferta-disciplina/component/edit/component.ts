@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../abstract/component/edit/component';
@@ -24,7 +24,7 @@ import { DiscenteService } from '../../../discente/service/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> implements OnInit {
+export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> {
 
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
@@ -49,19 +49,19 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.docenteService.findAll().subscribe(data => {
 			this.listaDocente = this.docenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.turmaService.findAll().subscribe(data => {
 			this.listTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.service.findAllTurmaById(this.id).subscribe(data => {
@@ -69,13 +69,13 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 			this.listOldSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.discenteService.findAll().subscribe(data => {
 			this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.service.findAllDiscenteById(this.id).subscribe(data => {
@@ -83,7 +83,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 			this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

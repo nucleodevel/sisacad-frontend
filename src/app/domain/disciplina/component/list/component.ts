@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../abstract/component/list/component';
@@ -8,19 +8,19 @@ import { DisciplinaDto } from '../../dto/dto';
 import { DisciplinaService } from '../../service/service';
 
 @Component({
-  selector: 'app-disciplina-list',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-disciplina-list',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
-export class DisciplinaListComponent extends AbstractListComponent<Disciplina, DisciplinaDto, DisciplinaService> implements OnInit {
+export class DisciplinaListComponent extends AbstractListComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
-  constructor(protected service: DisciplinaService,
-    protected router: Router) {
-	super(service, router, 'disciplina');
-  }
+	constructor(protected service: DisciplinaService,
+		protected router: Router) {
+		super(service, router, 'disciplina');
+	}
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+	}
 
 }

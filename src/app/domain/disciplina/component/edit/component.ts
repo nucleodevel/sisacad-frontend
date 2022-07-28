@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../abstract/component/edit/component';
@@ -15,7 +15,7 @@ import { EstruturaCurricularService } from '../../../estrutura-curricular/servic
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, DisciplinaDto, DisciplinaService> implements OnInit {
+export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
 	listEstruturaCurricular!: EstruturaCurricular[];
 	listOldSelectedEstruturaCurricular!: EstruturaCurricular[];
@@ -33,7 +33,7 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 		this.estruturaCurricularService.findAll().subscribe(data => {
 			this.listEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.service.findAllEstruturaCurricularById(this.id).subscribe(data => {
@@ -41,7 +41,7 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 			this.listOldSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

@@ -2,10 +2,12 @@
 
 	<div *ngIf="loading">loading...</div>
 	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage | json}}
+		<strong>Erro!</strong> {{errorMessage}} <a
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+			style="margin-left: 10px">Voltar</a>
 	</div>
-	
-	<div class="card-body">
+
+	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
 			<div class="form-row">
@@ -35,8 +37,8 @@
 
 			<button type="submit" [disabled]="!entityForm.form.valid"
 				class="btn btn-success" style="margin-right: 10px">Salvar</button>
-			<button (click)="list()" type="button" class="btn btn-danger"
-				style="margin-right: 10px">Cancelar</button>
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+				style="margin-left: 10px">Cancelar</a>
 
 		</form>
 	</div>

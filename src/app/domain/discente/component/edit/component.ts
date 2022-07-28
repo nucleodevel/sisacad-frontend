@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../abstract/component/edit/component';
@@ -18,7 +18,7 @@ import { OfertaDisciplinaService } from '../../../oferta-disciplina/service/serv
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class DiscenteEditComponent extends AbstractEditComponent<Discente, DiscenteDto, DiscenteService> implements OnInit {
+export class DiscenteEditComponent extends AbstractEditComponent<Discente, DiscenteDto, DiscenteService> {
 
 	listaVestibulando!: Vestibulando[];
 	listOfertaDisciplina!: OfertaDisciplina[];
@@ -37,13 +37,13 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		this.vestibulandoService.findAll().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
@@ -51,7 +51,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

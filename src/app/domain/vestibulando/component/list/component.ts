@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../abstract/component/list/component';
@@ -8,19 +8,19 @@ import { VestibulandoDto } from '../../dto/dto';
 import { VestibulandoService } from '../../service/service';
 
 @Component({
-  selector: 'app-vestibulando-list',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+	selector: 'app-vestibulando-list',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
 })
-export class VestibulandoListComponent extends AbstractListComponent<Vestibulando, VestibulandoDto, VestibulandoService> implements OnInit {
+export class VestibulandoListComponent extends AbstractListComponent<Vestibulando, VestibulandoDto, VestibulandoService> {
 
-  constructor(protected service: VestibulandoService,
-    protected router: Router) {
-	super(service, router, 'vestibulando');
-  }
+	constructor(protected service: VestibulandoService,
+		protected router: Router) {
+		super(service, router, 'vestibulando');
+	}
 
-  ngOnInit() {
-	super.ngOnInitSuper();
-  }
+	ngOnInit() {
+		super.ngOnInitSuper();
+	}
 
 }

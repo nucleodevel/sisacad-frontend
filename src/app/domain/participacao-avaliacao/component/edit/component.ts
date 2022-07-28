@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../abstract/component/edit/component';
@@ -18,7 +18,7 @@ import { DiscenteService } from '../../../discente/service/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class ParticipacaoAvaliacaoEditComponent extends AbstractEditComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> implements OnInit {
+export class ParticipacaoAvaliacaoEditComponent extends AbstractEditComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
 
 	listaAvaliacao!: Avaliacao[];
 	listaDiscente!: Discente[];
@@ -34,13 +34,13 @@ export class ParticipacaoAvaliacaoEditComponent extends AbstractEditComponent<Pa
 		this.avaliacaoService.findAll().subscribe(data => {
 			this.listaAvaliacao = this.avaliacaoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 
 		this.discenteService.findAll().subscribe(data => {
 			this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

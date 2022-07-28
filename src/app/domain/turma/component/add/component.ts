@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../abstract/component/add/component';
@@ -15,7 +15,7 @@ import { OfertaCursoService } from '../../../oferta-curso/service/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, TurmaService> implements OnInit {
+export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, TurmaService> {
 
 	listaOfertaCurso!: OfertaCurso[];
 
@@ -30,7 +30,7 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
 	}
 

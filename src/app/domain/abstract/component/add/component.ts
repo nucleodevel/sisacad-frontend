@@ -1,28 +1,18 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { AbstractComponent } from '../abstract/component';
 
 import { AbstractEntity } from '../../entity/entity';
 import { AbstractDto } from '../../dto/dto';
 import { AbstractService } from '../../service/service';
 
-export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
-
-	protected service: S;
-	protected router: Router;
-	protected route: ActivatedRoute;
-
-	loading: boolean = false;
-	errorMessage: string = "";
-
-	routerPrefix: string;
+export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>>
+	extends AbstractComponent<E, DTO, S> {
 
 	entity!: E;
 
 	constructor(service: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
-		this.service = service;
-		this.router = router;
-		this.route = route;
-		this.routerPrefix = routerPrefix;
+		super(service, router, route, routerPrefix);
 	}
 
 	ngOnInitSuper() {
@@ -33,19 +23,10 @@ export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends
 		var dto = this.service.newDtoInstance();
 		dto.copyFromEntity(this.entity);
 		this.service.insert(dto).subscribe(result => {
-			this.list()
+			this.list();
 		}, error => {
-			this.setErrorMessage(error.error.msg);
+			this.setErrorMessage(error);
 		});
-	}
-
-	list() {
-		this.router.navigate(['/' + this.routerPrefix + '/list']);
-	}
-
-	setErrorMessage(errorMessage: string) {
-		this.errorMessage = errorMessage;
-		this.loading = false;
 	}
 
 }
