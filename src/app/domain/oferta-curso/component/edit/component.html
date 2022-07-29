@@ -9,31 +9,29 @@
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-
-			<div *ngIf="entity">
-				<div class="form-row">
-					<div class="form-group col-lg-4 col-md-12">
-						<label>Estrutura Curricular</label>
-						<div>{{entity.estruturaCurricular.toString()}}</div>
-					</div>
-					<div class="form-group col-lg-4 col-md-12">
-						<label>Vestibular</label>
-						<div>{{entity.vestibular.toString()}}</div>
-					</div>
-					<div class="form-group col-lg-4 col-md-12">
-						<label for="ano">Ano da oferta</label> <input type="text"
-							[(ngModel)]="entity.ano" class="form-control" id="ano" name="ano"
-							required #ano="ngModel">
-						<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
-							pendente</div>
-					</div>
+			<div class="form-row">
+				<div class="form-group col-lg-4 col-md-12">
+					<label>Estrutura Curricular</label>
+					<div>{{entity.estruturaCurricular.toString()}}</div>
+				</div>
+				<div class="form-group col-lg-4 col-md-12">
+					<label>Vestibular</label>
+					<div>{{entity.vestibular.toString()}}</div>
+				</div>
+				<div class="form-group col-lg-4 col-md-12">
+					<label for="ano">Ano da oferta</label> <input type="text"
+						[(ngModel)]="entity.ano" class="form-control" id="ano" name="ano"
+						required #ano="ngModel">
+					<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
+						pendente</div>
 				</div>
 			</div>
-
-			<button type="submit" [disabled]="!entityForm.form.valid"
-				class="btn btn-success" style="margin-right: 10px">Salvar</button>
-			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-				style="margin-left: 10px">Cancelar</a>
+			<div class="form-row">
+				<button type="submit" [disabled]="!entityForm.form.valid"
+					class="btn btn-success" style="margin-right: 10px">Salvar</button>
+				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+					style="margin-left: 10px">Cancelar</a>
+			</div>
 		</form>
 	</div>
 </div>

@@ -8,61 +8,61 @@
 	</div>
 
 	<div class="card-body" *ngIf="entity">
-		<div *ngIf="entity">
-			<div class="form-row">
-				<div class="form-group col-lg-2 col-md-12">
-					<label>ID</label>
-					<div>{{entity.id}}</div>
-				</div>
-				<div class="form-group col-lg-5 col-md-12">
-					<label>Disciplina:</label>
-					<div>{{ entity.disciplina.toString() }}</div>
-				</div>
-				<div class="form-group col-lg-5 col-md-12">
-					<label>Docente:</label>
-					<div>{{ entity.docente.toString() }}</div>
-				</div>
+		<div class="form-row">
+			<div class="form-group col-lg-2 col-md-12">
+				<label>ID</label>
+				<div>{{entity.id}}</div>
 			</div>
-			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label>Turmas</label>
-					<table class="table table-bordered table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Oferta de curso</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of listSelectedTurma">
-								<td>{{ item.id }}</td>
-								<td>{{ item.ofertaCurso.toString() }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div class="form-group col-lg-5 col-md-12">
+				<label>Disciplina:</label>
+				<div>{{ entity.disciplina.toString() }}</div>
 			</div>
-			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label>Discentes</label>
-					<table class="table table-bordered table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Vestibulando</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of listSelectedDiscente">
-								<td>{{ item.id }}</td>
-								<td>{{ item.vestibulando.toString() }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div class="form-group col-lg-5 col-md-12">
+				<label>Docente:</label>
+				<div>{{ entity.docente.toString() }}</div>
 			</div>
 		</div>
-		<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Cancelar</a> <br>
+		<div class="form-row">
+			<div class="form-group col-lg-12">
+				<label>Turmas</label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Oferta de curso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedTurma">
+							<td>{{ item.id }}</td>
+							<td>{{ item.ofertaCurso.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-lg-12">
+				<label>Discentes</label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Vestibulando</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedDiscente">
+							<td>{{ item.id }}</td>
+							<td>{{ item.vestibulando.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-row">
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+				style="margin-left: 10px">Voltar</a>
+		</div>
 	</div>
 </div>

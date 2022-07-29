@@ -32,6 +32,7 @@ export class DisciplinaService extends AbstractService<Disciplina, DisciplinaDto
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.codigo = dto.codigo;
 		entity.nome = dto.nome;
 
 		return entity;

@@ -8,19 +8,19 @@
 	</div>
 
 	<div class="card-body" *ngIf="entity">
-		<div *ngIf="entity">
-			<div class="form-row">
-				<div class="form-group col-lg-3 col-md-12">
-					<label>ID</label>
-					<div>{{entity.id}}</div>
-				</div>
-				<div class="form-group col-lg-9 col-md-12">
-					<label>Ano:</label>
-					<div>{{ entity.ano }}</div>
-				</div>
+		<div class="form-row">
+			<div class="form-group col-lg-3 col-md-12">
+				<label>ID</label>
+				<div>{{entity.id}}</div>
+			</div>
+			<div class="form-group col-lg-9 col-md-12">
+				<label>Ano:</label>
+				<div>{{ entity.ano }}</div>
 			</div>
 		</div>
-		<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Cancelar</a> <br>
+		<div class="form-row">
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+				style="margin-left: 10px">Voltar</a>
+		</div>
 	</div>
 </div>

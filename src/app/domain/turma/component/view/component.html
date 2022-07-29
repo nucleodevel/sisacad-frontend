@@ -8,40 +8,40 @@
 	</div>
 
 	<div class="card-body" *ngIf="entity">
-		<div *ngIf="entity">
-			<div class="form-row">
-				<div class="form-group col-lg-3 col-md-12">
-					<label>ID</label>
-					<div>{{entity.id}}</div>
-				</div>
-				<div class="form-group col-lg-9 col-md-12">
-					<label>Oferta de Curso:</label>
-					<div>{{ entity.ofertaCurso.toString() }}</div>
-				</div>
+		<div class="form-row">
+			<div class="form-group col-lg-3 col-md-12">
+				<label>ID</label>
+				<div>{{entity.id}}</div>
 			</div>
-			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label>Ofertas de disciplinas:</label>
-					<table class="table table-bordered table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Disciplina</th>
-								<th scope="col">Docente</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of listSelectedOfertaDisciplina">
-								<td>{{ item.id }}</td>
-								<td>{{ item.disciplina.toString() }}</td>
-								<td>{{ item.docente.toString() }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div class="form-group col-lg-9 col-md-12">
+				<label>Oferta de Curso:</label>
+				<div>{{ entity.ofertaCurso.toString() }}</div>
 			</div>
 		</div>
-		<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Cancelar</a> <br>
+		<div class="form-row">
+			<div class="form-group col-lg-12">
+				<label>Ofertas de disciplinas:</label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Disciplina</th>
+							<th scope="col">Docente</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedOfertaDisciplina">
+							<td>{{ item.id }}</td>
+							<td>{{ item.disciplina.toString() }}</td>
+							<td>{{ item.docente.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-row">
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+				style="margin-left: 10px">Voltar</a>
+		</div>
 	</div>
 </div>

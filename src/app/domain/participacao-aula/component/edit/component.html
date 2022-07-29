@@ -9,37 +9,34 @@
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="aula">Aula</label> <select [(ngModel)]="entity.aula"
+						class="form-control" name="aula" required #aula="ngModel"
+						[compareWith]="compareAula">
+						<option *ngFor="let aula of listaAula" [ngValue]="aula">{{aula.toString()}}</option>
+					</select>
+					<div [hidden]="!aula.pristine" class="alert alert-danger">Aula
+						pendente</div>
+				</div>
 
-			<div *ngIf="entity">
-				<div class="form-row">
-					<div class="form-group col-lg-6 col-md-12">
-						<label for="aula">Aula</label> <select [(ngModel)]="entity.aula"
-							class="form-control" name="aula" required #aula="ngModel"
-							[compareWith]="compareAula">
-							<option *ngFor="let aula of listaAula" [ngValue]="aula">{{aula.toString()}}</option>
-						</select>
-						<div [hidden]="!aula.pristine" class="alert alert-danger">Aula
-							pendente</div>
-					</div>
-
-					<div class="form-group col-lg-6 col-md-12">
-						<label for="discente">Discente</label> <select
-							[(ngModel)]="entity.discente" class="form-control"
-							name="discente" required #discente="ngModel"
-							[compareWith]="compareDiscente">
-							<option *ngFor="let discente of listaDiscente"
-								[ngValue]="discente">{{discente.toString()}}</option>
-						</select>
-						<div [hidden]="!discente.pristine" class="alert alert-danger">Discente
-							pendente</div>
-					</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="discente">Discente</label> <select
+						[(ngModel)]="entity.discente" class="form-control" name="discente"
+						required #discente="ngModel" [compareWith]="compareDiscente">
+						<option *ngFor="let discente of listaDiscente"
+							[ngValue]="discente">{{discente.toString()}}</option>
+					</select>
+					<div [hidden]="!discente.pristine" class="alert alert-danger">Discente
+						pendente</div>
 				</div>
 			</div>
-
-			<button type="submit" [disabled]="!entityForm.form.valid"
-				class="btn btn-success" style="margin-right: 10px">Salvar</button>
-			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-				style="margin-left: 10px">Cancelar</a>
+			<div class="form-row">
+				<button type="submit" [disabled]="!entityForm.form.valid"
+					class="btn btn-success" style="margin-right: 10px">Salvar</button>
+				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+					style="margin-left: 10px">Cancelar</a>
+			</div>
 
 		</form>
 	</div>

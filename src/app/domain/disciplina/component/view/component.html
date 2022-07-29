@@ -8,42 +8,46 @@
 	</div>
 
 	<div class="card-body" *ngIf="entity">
-		<div *ngIf="entity">
-			<div class="form-row">
-				<div class="form-group col-lg-3 col-md-12">
-					<label>ID</label>
-					<div>{{entity.id}}</div>
-				</div>
-				<div class="form-group col-lg-9 col-md-12">
-					<label>Nome:</label>
-					<div>{{ entity.nome }}</div>
-				</div>
+		<div class="form-row">
+			<div class="form-group col-lg-2 col-md-12">
+				<label>ID</label>
+				<div>{{entity.id}}</div>
 			</div>
-			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label>Estruturas curriculares:</label>
-					<table class="table table-bordered table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Ano de início</th>
-								<th scope="col">Ano de término</th>
-								<th scope="col">Curso</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of listSelectedEstruturaCurricular">
-								<td>{{ item.id }}</td>
-								<td>{{ item.anoInicio }}</td>
-								<td>{{ item.anoTermino }}</td>
-								<td>{{ item.curso.toString() }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div class="form-group col-lg-4 col-md-12">
+				<label>Código:</label>
+				<div>{{ entity.codigo }}</div>
+			</div>
+			<div class="form-group col-lg-6 col-md-12">
+				<label>Nome:</label>
+				<div>{{ entity.nome }}</div>
 			</div>
 		</div>
-		<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Cancelar</a> <br>
+		<div class="form-row">
+			<div class="form-group col-lg-12">
+				<label>Estruturas curriculares:</label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Ano de início</th>
+							<th scope="col">Ano de término</th>
+							<th scope="col">Curso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedEstruturaCurricular">
+							<td>{{ item.id }}</td>
+							<td>{{ item.anoInicio }}</td>
+							<td>{{ item.anoTermino }}</td>
+							<td>{{ item.curso.toString() }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-row">
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+				style="margin-left: 10px">Voltar</a>
+		</div>
 	</div>
 </div>

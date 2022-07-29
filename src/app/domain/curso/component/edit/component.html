@@ -9,22 +9,21 @@
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
-
-			<div *ngIf="entity">
-				<div class="form-row">
-					<div class="form-group col-lg-12">
-						<label for="nome">Nome</label> <input type="text"
-							[(ngModel)]="entity.nome" class="form-control" id="nome"
-							name="nome" required #nome="ngModel">
-						<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
-							pendente</div>
-					</div>
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label for="nome">Nome</label> <input type="text"
+						[(ngModel)]="entity.nome" class="form-control" id="nome"
+						name="nome" required #nome="ngModel">
+					<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
+						pendente</div>
 				</div>
 			</div>
-			<button type="submit" [disabled]="!entityForm.form.valid"
-				class="btn btn-success" style="margin-right: 10px">Salvar</button>
-			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-				style="margin-left: 10px">Cancelar</a>
+			<div class="form-row">
+				<button type="submit" [disabled]="!entityForm.form.valid"
+					class="btn btn-success" style="margin-right: 10px">Salvar</button>
+				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
+					style="margin-left: 10px">Cancelar</a>
+			</div>
 		</form>
 	</div>
 </div>
