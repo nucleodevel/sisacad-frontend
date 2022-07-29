@@ -10,12 +10,19 @@
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-2 col-md-12">
+					<label for="codigo">Código</label> <input type="text"
+						[(ngModel)]="entity.codigo" class="form-control" id="codigo"
+						name="codigo" required #codigo="ngModel">
+					<div [hidden]="!codigo.pristine" class="alert alert-danger">Código
+						pendente</div>
+				</div>
+				<div class="form-group col-lg-5 col-md-12">
 					<label>Disciplina</label>
 					<div>{{entity.disciplina.toString()}}</div>
 				</div>
 
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-5 col-md-12">
 					<label>Docente</label>
 					<div>{{entity.docente.toString()}}</div>
 				</div>

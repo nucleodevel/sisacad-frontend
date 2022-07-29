@@ -34,6 +34,7 @@ export class TurmaService extends AbstractService<Turma, TurmaDto> {
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.codigo = dto.codigo;
 
 		this.ofertaCursoService.findById(dto.ofertaCurso).subscribe(data => {
 			console.log(data);

@@ -3,9 +3,10 @@ import { AbstractEntity } from '../../abstract/entity/entity';
 import { OfertaCurso } from '../../oferta-curso/entity/entity';
 
 export class Turma extends AbstractEntity {
-  ofertaCurso!: OfertaCurso;
+	codigo!: string;
+	ofertaCurso!: OfertaCurso;
 
-  toString(): string {
-	return this.ofertaCurso.toString(); 
-  }
+	toString(): string {
+		return this.codigo + ' - ' + this.ofertaCurso.toString();
+	}
 }

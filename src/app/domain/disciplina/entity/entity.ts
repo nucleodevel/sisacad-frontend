@@ -5,6 +5,6 @@ export class Disciplina extends AbstractEntity {
 	nome!: string;
 
 	toString(): string {
-		return this.nome + ' - ' + this.nome;
+		return this.codigo + ' - ' + this.nome;
 	}
 }

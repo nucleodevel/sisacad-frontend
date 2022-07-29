@@ -11,7 +11,14 @@
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
 			<div class="form-row">
-				<div class="form-group col-lg-12">
+				<div class="form-group col-lg-4 col-md-12">
+					<label for="codigo">Código</label> <input type="text"
+						[(ngModel)]="entity.codigo" class="form-control" id="codigo"
+						name="codigo" required #codigo="ngModel">
+					<div [hidden]="!codigo.pristine" class="alert alert-danger">Código
+						pendente</div>
+				</div>
+				<div class="form-group col-lg-8 col-md-12">
 					<label for="ofertaCurso">Oferta de Curso</label> <select
 						[(ngModel)]="entity.ofertaCurso" class="form-control"
 						name="ofertaCurso" required #ofertaCurso="ngModel"
