@@ -8,27 +8,28 @@ import { DocenteDto } from '../dto/dto';
 @Injectable()
 export class DocenteService extends AbstractService<Docente, DocenteDto> {
 
-  private static readonly apiUrl = 'http://localhost:8080/';
-  private static readonly apiPath = 'docente';
+	private static readonly apiUrl = 'http://localhost:8080/';
+	private static readonly apiPath = 'docente';
 
-  constructor(protected httpClient: HttpClient) {
-    super(httpClient, DocenteService.apiUrl + DocenteService.apiPath);
-  }
+	constructor(protected httpClient: HttpClient) {
+		super(httpClient, DocenteService.apiUrl + DocenteService.apiPath);
+	}
 
-  newEntityInstance(): Docente {
-	return new Docente();
-  }
+	newEntityInstance(): Docente {
+		return new Docente();
+	}
 
-  newDtoInstance(): DocenteDto {
-	return new DocenteDto();
-  }
+	newDtoInstance(): DocenteDto {
+		return new DocenteDto();
+	}
 
-  makeEntityFromDto(dto: DocenteDto): Docente {
-    var entity = this.newEntityInstance();
-    
-    entity.id = dto.id;
-    entity.nome = dto.nome;
+	makeEntityFromDto(dto: DocenteDto): Docente {
+		var entity = this.newEntityInstance();
 
-    return entity;
-  }
+		entity.id = dto.id;
+		entity.cpf = dto.cpf;
+		entity.nome = dto.nome;
+
+		return entity;
+	}
 }

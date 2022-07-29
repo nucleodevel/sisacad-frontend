@@ -6,7 +6,7 @@
 			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
 			style="margin-left: 10px">Voltar</a>
 	</div>
-	
+
 	<div class="card-body" *ngIf="entities">
 		<a routerLink="/{{ routerPrefix }}/add" class="btn btn-success"
 			style="margin-bottom: 10px">Novo</a>
@@ -14,6 +14,7 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">#</th>
+					<th scope="col">CPF</th>
 					<th scope="col">Nome</th>
 					<th scope="col">Oferta de Curso</th>
 					<th scope="col">Ações</th>
@@ -22,6 +23,7 @@
 			<tbody>
 				<tr *ngFor="let entity of entities">
 					<td>{{ entity.id }}</td>
+					<td>{{ entity.cpf }}</td>
 					<td>{{ entity.nome }}</td>
 					<td>{{ entity.ofertaCurso.toString() }}</td>
 					<td><a routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"

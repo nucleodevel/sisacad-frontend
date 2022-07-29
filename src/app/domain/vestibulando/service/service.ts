@@ -29,6 +29,7 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.cpf = dto.cpf;
 		entity.nome = dto.nome;
 
 		this.ofertaCursoService.findById(dto.ofertaCurso).subscribe(data => {
