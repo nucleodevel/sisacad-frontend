@@ -31,6 +31,7 @@ export class OfertaCursoService extends AbstractService<OfertaCurso, OfertaCurso
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.codigo = dto.codigo;
 		entity.ano = dto.ano;
 
 		this.vestibularService.findById(dto.vestibular).subscribe(data => {
