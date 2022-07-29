@@ -25,6 +25,11 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	abstract ngOnInitSuper(): void;
 
 	setErrorMessage(error: any) {
+		if (error == null) {
+			this.errorMessage = "";
+			return;
+		}
+		
 		var errorMessage: string = JSON.stringify(error);
 		if (error.hasOwnProperty('error')) {
 			if (error.error.hasOwnProperty('msg')) {

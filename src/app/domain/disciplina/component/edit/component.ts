@@ -51,7 +51,6 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 		var dto = this.service.newDtoInstance();
 
 		dto.copyFromEntity(this.entity);
-		this.service.update(this.id, dto).subscribe();
 
 		this.listOldSelectedEstruturaCurricular.forEach(oldItem => {
 			var exists = false;
@@ -86,8 +85,12 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 		listInsertEstruturaCurricular.forEach(item => {
 			this.service.insertEstruturaCurricular(this.id, item.id).subscribe();
 		});
-
-		this.list();
+		
+		this.service.update(this.id, dto).subscribe(data => {
+			this.list();
+		}, error => {
+			this.setErrorMessage(error);
+		});
 	}
 
 	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {

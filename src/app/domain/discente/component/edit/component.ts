@@ -61,7 +61,6 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		var dto = this.service.newDtoInstance();
 
 		dto.copyFromEntity(this.entity);
-		this.service.update(this.id, dto).subscribe();
 
 		this.listOldSelectedOfertaDisciplina.forEach(oldItem => {
 			var exists = false;
@@ -96,8 +95,12 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		listInsertOfertaDisciplina.forEach(item => {
 			this.service.insertOfertaDisciplina(this.id, item.id).subscribe();
 		});
-
-		this.list();
+		
+		this.service.update(this.id, dto).subscribe(data => {
+			this.list();
+		}, error => {
+			this.setErrorMessage(error);
+		});
 	}
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {

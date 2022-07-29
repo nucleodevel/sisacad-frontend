@@ -8,27 +8,28 @@ import { CursoDto } from '../dto/dto';
 @Injectable()
 export class CursoService extends AbstractService<Curso, CursoDto> {
 
-  private static readonly apiUrl = 'http://localhost:8080/';
-  private static readonly apiPath = 'curso';
+	private static readonly apiUrl = 'http://localhost:8080/';
+	private static readonly apiPath = 'curso';
 
-  constructor(protected httpClient: HttpClient) {
-    super(httpClient, CursoService.apiUrl + CursoService.apiPath);
-  }
+	constructor(protected httpClient: HttpClient) {
+		super(httpClient, CursoService.apiUrl + CursoService.apiPath);
+	}
 
-  newEntityInstance(): Curso {
-	return new Curso();
-  }
+	newEntityInstance(): Curso {
+		return new Curso();
+	}
 
-  newDtoInstance(): CursoDto {
-	return new CursoDto();
-  }
+	newDtoInstance(): CursoDto {
+		return new CursoDto();
+	}
 
-  makeEntityFromDto(dto: CursoDto): Curso {
-    var entity = this.newEntityInstance();
-    
-    entity.id = dto.id;
-    entity.nome = dto.nome;
+	makeEntityFromDto(dto: CursoDto): Curso {
+		var entity = this.newEntityInstance();
 
-    return entity;
-  }
+		entity.id = dto.id;
+		entity.codigo = dto.codigo;
+		entity.nome = dto.nome;
+
+		return entity;
+	}
 }

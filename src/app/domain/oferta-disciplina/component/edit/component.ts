@@ -97,7 +97,6 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		var dto = this.service.newDtoInstance();
 
 		dto.copyFromEntity(this.entity);
-		this.service.update(this.id, dto).subscribe();
 
 		this.listOldSelectedTurma.forEach(oldItem => {
 			var exists = false;
@@ -166,8 +165,12 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		listInsertDiscente.forEach(item => {
 			this.service.insertDiscente(this.id, item.id).subscribe();
 		});
-
-		this.list();
+		
+		this.service.update(this.id, dto).subscribe(data => {
+			this.list();
+		}, error => {
+			this.setErrorMessage(error);
+		});
 	}
 
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {

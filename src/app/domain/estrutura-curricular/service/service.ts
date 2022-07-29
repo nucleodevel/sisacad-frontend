@@ -34,6 +34,7 @@ export class EstruturaCurricularService extends AbstractService<EstruturaCurricu
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.codigo = dto.codigo;
 		entity.anoInicio = dto.anoInicio;
 		entity.anoTermino = dto.anoTermino;
 
