@@ -29,6 +29,27 @@
 			</div>
 		</div>
 		<div class="form-row">
+			<div class="form-group col-lg-12">
+				<label>Participações de discentes:</label>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nome</th>
+							<th scope="col">CPF</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of listSelectedParticipacaoAula">
+							<td>{{ item.id }}</td>
+							<td>{{ item.discente.vestibulando.nome }}</td>
+							<td>{{ item.discente.vestibulando.cpf }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-row">
 			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
 				style="margin-left: 10px">Voltar</a>
 		</div>

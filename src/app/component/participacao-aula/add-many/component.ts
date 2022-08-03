@@ -80,7 +80,6 @@ export class ParticipacaoAulaAddManyComponent extends AbstractAddComponent<Parti
 		});
 
 		listDeleteDiscente.forEach(item => {
-			var dto!: ParticipacaoAulaDto;
 
 			this.service.findByAulaAndDiscente(this.selectedAula.id, item.id).subscribe(data => {
 				if (data.id != null) {

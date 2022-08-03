@@ -7,8 +7,14 @@ import { Aula } from '../../../domain/aula/entity';
 import { AulaDto } from '../../../dto/aula/dto';
 import { AulaService } from '../../../service/aula/service';
 
+import { Discente } from '../../../domain/discente/entity';
+import { DiscenteService } from '../../../service/discente/service';
+
 import { OfertaDisciplina } from '../../../domain/oferta-disciplina/entity';
 import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/service';
+
+import { ParticipacaoAulaDto } from '../../../dto/participacao-aula/dto';
+import { ParticipacaoAulaService } from '../../../service/participacao-aula/service';
 
 @Component({
 	selector: 'app-aula-edit',
@@ -19,19 +25,109 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
+	listDiscente!: Discente[];
+	listOldSelectedDiscente!: Discente[];
+	listSelectedDiscente!: Discente[];
+
 	constructor(protected service: AulaService, protected router: Router,
-		protected route: ActivatedRoute, protected ofertaDisciplinaService: OfertaDisciplinaService) {
+		protected route: ActivatedRoute, protected discenteService: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
+		protected participacaoAulaService: ParticipacaoAulaService) {
 		super(service, router, route, 'aula');
 	}
 
 	ngOnInit() {
-		super.ngOnInitSuper();
+		this.id = this.route.snapshot.params['id'];
 
-		this.ofertaDisciplinaService.findAll().subscribe(data => {
-			this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		this.service.findById(this.id).subscribe(data => {
+			console.log(data);
+			this.entity = this.service.makeEntityFromDto(data);
+
+			this.listDiscente = [];
+			this.listOldSelectedDiscente = [];
+			this.listSelectedDiscente = [];
+
+			this.ofertaDisciplinaService.findAllDiscenteById(data.ofertaDisciplina).subscribe(result => {
+				this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
+			}, error => {
+				this.setErrorMessage(error);
+			});
+
+
+			this.service.findAllDiscenteParticipanteById(this.entity.id).subscribe(result => {
+				this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
+				this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
+			}, error => {
+				this.setErrorMessage(error);
+			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	onSubmit() {
+
+		var listDeleteDiscente: Discente[] = [];
+		var listInsertDiscente: Discente[] = [];
+
+		this.listOldSelectedDiscente.forEach(oldItem => {
+			var exists = false;
+			this.listSelectedDiscente.forEach(item => {
+				if (oldItem.id == item.id) {
+					exists = true;
+				}
+			});
+
+			if (!exists) {
+				listDeleteDiscente.push(oldItem);
+			}
+		});
+
+		this.listSelectedDiscente.forEach(item => {
+			var exists = false;
+			this.listOldSelectedDiscente.forEach(oldItem => {
+				if (oldItem.id == item.id) {
+					exists = true;
+				}
+			});
+
+			if (!exists) {
+				listInsertDiscente.push(item);
+			}
+		});
+
+		listDeleteDiscente.forEach(item => {
+
+			this.participacaoAulaService.findByAulaAndDiscente(this.entity.id, item.id).subscribe(data => {
+				if (data.id != null) {
+					this.participacaoAulaService.delete(data.id).subscribe(data => {
+
+					}, error => {
+						this.setErrorMessage(error);
+					});
+				}
+			}, error => {
+				this.setErrorMessage(error);
+			});
+		});
+
+		listInsertDiscente.forEach(item => {
+			var participacaoAulaDto: ParticipacaoAulaDto = new ParticipacaoAulaDto();
+			participacaoAulaDto.aula = this.entity.id;
+			participacaoAulaDto.discente = item.id;
+
+			this.participacaoAulaService.insert(participacaoAulaDto).subscribe(data => {
+
+			}, error => {
+				this.setErrorMessage(error);
+			});
+		});
+
+		this.list();
+
+	}
+
+	compareDiscente(o1: Discente, o2: Discente) {
+		return o1.compare(o2);
 	}
 
 	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {

@@ -11,10 +11,10 @@
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-row">
 				<div class="form-group col-lg-6 col-md-12">
-					<label for="ofertaDisciplina">Oferta de Curso</label> <select
+					<label for="ofertaDisciplina">Oferta de disciplina</label> <select
 						[(ngModel)]="entity.ofertaDisciplina" class="form-control"
 						name="ofertaDisciplina" required #ofertaDisciplina="ngModel"
-						[compareWith]="compareOfertaDisciplina">
+						[compareWith]="compareOfertaDisciplina" (ngModelChange)="onOfertaDisciplinaChange($event)">
 						<option *ngFor="let ofertaDisciplina of listaOfertaDisciplina"
 							[ngValue]="ofertaDisciplina">{{ofertaDisciplina.toString()}}</option>
 					</select>
@@ -37,6 +37,19 @@
 						e hora de término pendente</div>
 				</div>
 			</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-12">
+					<label for="discente">Discente</label> <select multiple
+						[(ngModel)]="listSelectedDiscente" class="form-control"
+						name="discente" #discente="ngModel"
+						[compareWith]="compareDiscente">
+						<option *ngFor="let discente of listDiscente"
+							[ngValue]="discente">{{discente.vestibulando.nome}} - {{discente.vestibulando.cpf}}</option>
+					</select>
+				</div>
+			</div>
+			
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>
