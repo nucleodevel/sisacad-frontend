@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+
+import { map, catchError } from 'rxjs/operators';
 
 import { AbstractService } from '../../abstract/service/service';
 import { ParticipacaoAula } from '../entity/entity';
@@ -42,5 +45,13 @@ export class ParticipacaoAulaService extends AbstractService<ParticipacaoAula, P
 		});
 
 		return entity;
+	}
+
+	public findByAulaAndDiscente(aulaId: number, discenteId: number): Observable<ParticipacaoAulaDto> {
+		return this.http.get<ParticipacaoAulaDto>(this.apiUrl + '/aula/' + aulaId + '/discente/' + discenteId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 }

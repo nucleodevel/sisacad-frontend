@@ -54,6 +54,7 @@ import { OfertaDisciplinaEditComponent } from './domain/oferta-disciplina/compon
 import { ParticipacaoAulaListComponent } from './domain/participacao-aula/component/list/component';
 import { ParticipacaoAulaViewComponent } from './domain/participacao-aula/component/view/component';
 import { ParticipacaoAulaAddComponent } from './domain/participacao-aula/component/add/component';
+import { ParticipacaoAulaAddManyComponent } from './domain/participacao-aula/component/add-many/component'; 
 import { ParticipacaoAulaEditComponent } from './domain/participacao-aula/component/edit/component';
 
 import { ParticipacaoAvaliacaoListComponent } from './domain/participacao-avaliacao/component/list/component';
@@ -141,6 +142,7 @@ const routes: Routes = [
   { path: 'participacao-aula/list', component: ParticipacaoAulaListComponent },
   { path: 'participacao-aula/view/:id', component: ParticipacaoAulaViewComponent },
   { path: 'participacao-aula/add', component: ParticipacaoAulaAddComponent },
+  { path: 'participacao-aula/add-many', component: ParticipacaoAulaAddManyComponent },
   { path: 'participacao-aula/edit/:id', component: ParticipacaoAulaEditComponent },
 
   { path: 'participacao-avaliacao', component: ParticipacaoAvaliacaoListComponent },
