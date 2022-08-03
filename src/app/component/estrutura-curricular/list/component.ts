@@ -1,0 +1,26 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AbstractListComponent } from '../../../component/abstract/list/component';
+
+import { EstruturaCurricular } from '../../../domain/estrutura-curricular/entity';
+import { EstruturaCurricularDto } from '../../../dto/estrutura-curricular/dto';
+import { EstruturaCurricularService } from '../../../service/estrutura-curricular/service';
+
+@Component({
+	selector: 'app-estrutura-curricular-list',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
+})
+export class EstruturaCurricularListComponent extends AbstractListComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	constructor(protected service: EstruturaCurricularService,
+		protected router: Router) {
+		super(service, router, 'estrutura-curricular');
+	}
+
+	ngOnInit() {
+		super.ngOnInitSuper();
+	}
+
+}

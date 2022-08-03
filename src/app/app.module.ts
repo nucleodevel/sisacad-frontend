@@ -7,96 +7,96 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AulaListComponent } from './domain/aula/component/list/component';
-import { AulaViewComponent } from './domain/aula/component/view/component';
-import { AulaAddComponent } from './domain/aula/component/add/component'; 
-import { AulaEditComponent } from './domain/aula/component/edit/component';
-import { AulaService } from './domain/aula/service/service';
+import { AulaListComponent } from './component/aula/list/component';
+import { AulaViewComponent } from './component/aula/view/component';
+import { AulaAddComponent } from './component/aula/add/component'; 
+import { AulaEditComponent } from './component/aula/edit/component';
+import { AulaService } from './service/aula/service';
 
-import { AvaliacaoListComponent } from './domain/avaliacao/component/list/component';
-import { AvaliacaoViewComponent } from './domain/avaliacao/component/view/component';
-import { AvaliacaoAddComponent } from './domain/avaliacao/component/add/component'; 
-import { AvaliacaoEditComponent } from './domain/avaliacao/component/edit/component';
-import { AvaliacaoService } from './domain/avaliacao/service/service';
+import { AvaliacaoListComponent } from './component/avaliacao/list/component';
+import { AvaliacaoViewComponent } from './component/avaliacao/view/component';
+import { AvaliacaoAddComponent } from './component/avaliacao/add/component'; 
+import { AvaliacaoEditComponent } from './component/avaliacao/edit/component';
+import { AvaliacaoService } from './service/avaliacao/service';
 
-import { AvaliacaoVestibulandoListComponent } from './domain/avaliacao-vestibulando/component/list/component';
-import { AvaliacaoVestibulandoViewComponent } from './domain/avaliacao-vestibulando/component/view/component';
-import { AvaliacaoVestibulandoAddComponent } from './domain/avaliacao-vestibulando/component/add/component'; 
-import { AvaliacaoVestibulandoEditComponent } from './domain/avaliacao-vestibulando/component/edit/component';
-import { AvaliacaoVestibulandoService } from './domain/avaliacao-vestibulando/service/service';
+import { AvaliacaoVestibulandoListComponent } from './component/avaliacao-vestibulando/list/component';
+import { AvaliacaoVestibulandoViewComponent } from './component/avaliacao-vestibulando/view/component';
+import { AvaliacaoVestibulandoAddComponent } from './component/avaliacao-vestibulando/add/component'; 
+import { AvaliacaoVestibulandoEditComponent } from './component/avaliacao-vestibulando/edit/component';
+import { AvaliacaoVestibulandoService } from './service/avaliacao-vestibulando/service';
 
-import { CursoListComponent } from './domain/curso/component/list/component';
-import { CursoViewComponent } from './domain/curso/component/view/component';
-import { CursoAddComponent } from './domain/curso/component/add/component'; 
-import { CursoEditComponent } from './domain/curso/component/edit/component';
-import { CursoService } from './domain/curso/service/service';
+import { CursoListComponent } from './component/curso/list/component';
+import { CursoViewComponent } from './component/curso/view/component';
+import { CursoAddComponent } from './component/curso/add/component'; 
+import { CursoEditComponent } from './component/curso/edit/component';
+import { CursoService } from './service/curso/service';
 
-import { DiscenteListComponent } from './domain/discente/component/list/component';
-import { DiscenteViewComponent } from './domain/discente/component/view/component';
-import { DiscenteAddComponent } from './domain/discente/component/add/component'; 
-import { DiscenteEditComponent } from './domain/discente/component/edit/component';
-import { DiscenteService } from './domain/discente/service/service';
+import { DiscenteListComponent } from './component/discente/list/component';
+import { DiscenteViewComponent } from './component/discente/view/component';
+import { DiscenteAddComponent } from './component/discente/add/component'; 
+import { DiscenteEditComponent } from './component/discente/edit/component';
+import { DiscenteService } from './service/discente/service';
 
-import { DisciplinaListComponent } from './domain/disciplina/component/list/component';
-import { DisciplinaViewComponent } from './domain/disciplina/component/view/component';
-import { DisciplinaAddComponent } from './domain/disciplina/component/add/component'; 
-import { DisciplinaEditComponent } from './domain/disciplina/component/edit/component';
-import { DisciplinaService } from './domain/disciplina/service/service';
+import { DisciplinaListComponent } from './component/disciplina/list/component';
+import { DisciplinaViewComponent } from './component/disciplina/view/component';
+import { DisciplinaAddComponent } from './component/disciplina/add/component'; 
+import { DisciplinaEditComponent } from './component/disciplina/edit/component';
+import { DisciplinaService } from './service/disciplina/service';
 
-import { DocenteListComponent } from './domain/docente/component/list/component';
-import { DocenteViewComponent } from './domain/docente/component/view/component';
-import { DocenteAddComponent } from './domain/docente/component/add/component'; 
-import { DocenteEditComponent } from './domain/docente/component/edit/component';
-import { DocenteService } from './domain/docente/service/service';
+import { DocenteListComponent } from './component/docente/list/component';
+import { DocenteViewComponent } from './component/docente/view/component';
+import { DocenteAddComponent } from './component/docente/add/component'; 
+import { DocenteEditComponent } from './component/docente/edit/component';
+import { DocenteService } from './service/docente/service';
 
-import { EstruturaCurricularListComponent } from './domain/estrutura-curricular/component/list/component';
-import { EstruturaCurricularViewComponent } from './domain/estrutura-curricular/component/view/component';
-import { EstruturaCurricularAddComponent } from './domain/estrutura-curricular/component/add/component'; 
-import { EstruturaCurricularEditComponent } from './domain/estrutura-curricular/component/edit/component';
-import { EstruturaCurricularService } from './domain/estrutura-curricular/service/service';
+import { EstruturaCurricularListComponent } from './component/estrutura-curricular/list/component';
+import { EstruturaCurricularViewComponent } from './component/estrutura-curricular/view/component';
+import { EstruturaCurricularAddComponent } from './component/estrutura-curricular/add/component'; 
+import { EstruturaCurricularEditComponent } from './component/estrutura-curricular/edit/component';
+import { EstruturaCurricularService } from './service/estrutura-curricular/service';
 
-import { OfertaCursoListComponent } from './domain/oferta-curso/component/list/component';
-import { OfertaCursoViewComponent } from './domain/oferta-curso/component/view/component';
-import { OfertaCursoAddComponent } from './domain/oferta-curso/component/add/component'; 
-import { OfertaCursoEditComponent } from './domain/oferta-curso/component/edit/component';
-import { OfertaCursoService } from './domain/oferta-curso/service/service';
+import { OfertaCursoListComponent } from './component/oferta-curso/list/component';
+import { OfertaCursoViewComponent } from './component/oferta-curso/view/component';
+import { OfertaCursoAddComponent } from './component/oferta-curso/add/component'; 
+import { OfertaCursoEditComponent } from './component/oferta-curso/edit/component';
+import { OfertaCursoService } from './service/oferta-curso/service';
 
-import { OfertaDisciplinaListComponent } from './domain/oferta-disciplina/component/list/component';
-import { OfertaDisciplinaViewComponent } from './domain/oferta-disciplina/component/view/component';
-import { OfertaDisciplinaAddComponent } from './domain/oferta-disciplina/component/add/component'; 
-import { OfertaDisciplinaEditComponent } from './domain/oferta-disciplina/component/edit/component';
-import { OfertaDisciplinaService } from './domain/oferta-disciplina/service/service';
+import { OfertaDisciplinaListComponent } from './component/oferta-disciplina/list/component';
+import { OfertaDisciplinaViewComponent } from './component/oferta-disciplina/view/component';
+import { OfertaDisciplinaAddComponent } from './component/oferta-disciplina/add/component'; 
+import { OfertaDisciplinaEditComponent } from './component/oferta-disciplina/edit/component';
+import { OfertaDisciplinaService } from './service/oferta-disciplina/service';
 
-import { ParticipacaoAulaListComponent } from './domain/participacao-aula/component/list/component';
-import { ParticipacaoAulaViewComponent } from './domain/participacao-aula/component/view/component';
-import { ParticipacaoAulaAddComponent } from './domain/participacao-aula/component/add/component'; 
-import { ParticipacaoAulaAddManyComponent } from './domain/participacao-aula/component/add-many/component'; 
-import { ParticipacaoAulaEditComponent } from './domain/participacao-aula/component/edit/component';
-import { ParticipacaoAulaService } from './domain/participacao-aula/service/service';
+import { ParticipacaoAulaListComponent } from './component/participacao-aula/list/component';
+import { ParticipacaoAulaViewComponent } from './component/participacao-aula/view/component';
+import { ParticipacaoAulaAddComponent } from './component/participacao-aula/add/component'; 
+import { ParticipacaoAulaAddManyComponent } from './component/participacao-aula/add-many/component'; 
+import { ParticipacaoAulaEditComponent } from './component/participacao-aula/edit/component';
+import { ParticipacaoAulaService } from './service/participacao-aula/service';
 
-import { ParticipacaoAvaliacaoListComponent } from './domain/participacao-avaliacao/component/list/component';
-import { ParticipacaoAvaliacaoViewComponent } from './domain/participacao-avaliacao/component/view/component';
-import { ParticipacaoAvaliacaoAddComponent } from './domain/participacao-avaliacao/component/add/component'; 
-import { ParticipacaoAvaliacaoEditComponent } from './domain/participacao-avaliacao/component/edit/component';
-import { ParticipacaoAvaliacaoService } from './domain/participacao-avaliacao/service/service';
+import { ParticipacaoAvaliacaoListComponent } from './component/participacao-avaliacao/list/component';
+import { ParticipacaoAvaliacaoViewComponent } from './component/participacao-avaliacao/view/component';
+import { ParticipacaoAvaliacaoAddComponent } from './component/participacao-avaliacao/add/component'; 
+import { ParticipacaoAvaliacaoEditComponent } from './component/participacao-avaliacao/edit/component';
+import { ParticipacaoAvaliacaoService } from './service/participacao-avaliacao/service';
 
-import { TurmaListComponent } from './domain/turma/component/list/component';
-import { TurmaViewComponent } from './domain/turma/component/view/component';
-import { TurmaAddComponent } from './domain/turma/component/add/component'; 
-import { TurmaEditComponent } from './domain/turma/component/edit/component';
-import { TurmaService } from './domain/turma/service/service';
+import { TurmaListComponent } from './component/turma/list/component';
+import { TurmaViewComponent } from './component/turma/view/component';
+import { TurmaAddComponent } from './component/turma/add/component'; 
+import { TurmaEditComponent } from './component/turma/edit/component';
+import { TurmaService } from './service/turma/service';
 
-import { VestibulandoListComponent } from './domain/vestibulando/component/list/component';
-import { VestibulandoViewComponent } from './domain/vestibulando/component/view/component';
-import { VestibulandoAddComponent } from './domain/vestibulando/component/add/component'; 
-import { VestibulandoEditComponent } from './domain/vestibulando/component/edit/component';
-import { VestibulandoService } from './domain/vestibulando/service/service';
+import { VestibulandoListComponent } from './component/vestibulando/list/component';
+import { VestibulandoViewComponent } from './component/vestibulando/view/component';
+import { VestibulandoAddComponent } from './component/vestibulando/add/component'; 
+import { VestibulandoEditComponent } from './component/vestibulando/edit/component';
+import { VestibulandoService } from './service/vestibulando/service';
 
-import { VestibularListComponent } from './domain/vestibular/component/list/component';
-import { VestibularViewComponent } from './domain/vestibular/component/view/component';
-import { VestibularAddComponent } from './domain/vestibular/component/add/component'; 
-import { VestibularEditComponent } from './domain/vestibular/component/edit/component';
-import { VestibularService } from './domain/vestibular/service/service';
+import { VestibularListComponent } from './component/vestibular/list/component';
+import { VestibularViewComponent } from './component/vestibular/view/component';
+import { VestibularAddComponent } from './component/vestibular/add/component'; 
+import { VestibularEditComponent } from './component/vestibular/edit/component';
+import { VestibularService } from './service/vestibular/service';
 
 @NgModule({
   declarations: [

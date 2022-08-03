@@ -1,0 +1,39 @@
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { AbstractViewComponent } from '../../../component/abstract/view/component';
+
+import { EstruturaCurricular } from '../../../domain/estrutura-curricular/entity';
+import { EstruturaCurricularDto } from '../../../dto/estrutura-curricular/dto';
+import { EstruturaCurricularService } from '../../../service/estrutura-curricular/service';
+
+import { Disciplina } from '../../../domain/disciplina/entity';
+import { DisciplinaService } from '../../../service/disciplina/service';
+
+@Component({
+	selector: 'app-estrutura-curricular-view',
+	templateUrl: './component.html',
+	styleUrls: ['./component.css']
+})
+export class EstruturaCurricularViewComponent extends AbstractViewComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	listSelectedDisciplina!: Disciplina[];
+
+	constructor(protected service: EstruturaCurricularService, protected disciplinaService: DisciplinaService,
+		protected router: Router, protected route: ActivatedRoute) {
+		super(service, router, route, 'estrutura-curricular');
+		this.disciplinaService = disciplinaService;
+	}
+
+	ngOnInit() {
+		super.ngOnInitSuper();
+
+		this.service.findAllDisciplinaById(this.id).subscribe(data => {
+			console.log(data);
+			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+		}, error => {
+			this.setErrorMessage(error);
+		});
+	}
+
+}
