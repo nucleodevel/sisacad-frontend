@@ -37,8 +37,6 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		protected route: ActivatedRoute,
 		protected disciplinaService: DisciplinaService, protected docenteService: DocenteService) {
 		super(service, route, 'oferta-disciplina');
-		this.turmaService = turmaService;
-		this.discenteService = discenteService;
 	}
 
 	ngOnInit() {

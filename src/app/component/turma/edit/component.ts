@@ -29,7 +29,6 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
 		super(service, route, 'turma');
-		this.ofertaDisciplinaService = ofertaDisciplinaService;
 	}
 
 	ngOnInit() {

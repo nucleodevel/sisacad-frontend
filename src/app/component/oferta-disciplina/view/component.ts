@@ -26,8 +26,6 @@ export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaD
 	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'oferta-disciplina');
-		this.turmaService = turmaService;
-		this.discenteService = discenteService;
 	}
 
 	ngOnInit() {

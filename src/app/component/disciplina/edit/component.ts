@@ -20,7 +20,6 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'disciplina');
-		this.estruturaCurricularService = estruturaCurricularService;
 	}
 
 	ngOnInit() {

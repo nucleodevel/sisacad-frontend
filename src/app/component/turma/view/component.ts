@@ -22,7 +22,6 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'turma');
-		this.ofertaDisciplinaService = ofertaDisciplinaService;
 	}
 
 	ngOnInit() {

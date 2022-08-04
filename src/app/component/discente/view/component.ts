@@ -22,7 +22,6 @@ export class DiscenteViewComponent extends AbstractViewComponent<Discente, Disce
 	constructor(protected service: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'discente');
-		this.ofertaDisciplinaService = ofertaDisciplinaService;
 	}
 
 	ngOnInit() {

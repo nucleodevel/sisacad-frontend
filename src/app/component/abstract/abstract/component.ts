@@ -9,21 +9,15 @@ import { AbstractService } from '../../../service/abstract/service';
 
 export abstract class AbstractComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 
-	protected service: S;
 	protected _router!: Router;
-	protected route: ActivatedRoute;
 
 	private _dateUtil!: DateUtil;
-
-	routerPrefix: string;
 
 	loading: boolean = false;
 	errorMessage: string = "";
 
-	constructor(service: S, route: ActivatedRoute, routerPrefix: string) {
-		this.service = service;
-		this.route = route;
-		this.routerPrefix = routerPrefix;
+	constructor(protected service: S, protected route: ActivatedRoute, public routerPrefix: string) {
+
 	}
 
 	get router(): Router {

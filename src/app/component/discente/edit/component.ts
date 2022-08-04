@@ -29,7 +29,6 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 	constructor(protected service: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
 		super(service, route, 'discente');
-		this.ofertaDisciplinaService = ofertaDisciplinaService;
 	}
 
 	ngOnInit() {

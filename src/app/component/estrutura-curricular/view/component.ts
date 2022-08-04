@@ -22,7 +22,6 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 	constructor(protected service: EstruturaCurricularService, protected disciplinaService: DisciplinaService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'estrutura-curricular');
-		this.disciplinaService = disciplinaService;
 	}
 
 	ngOnInit() {
