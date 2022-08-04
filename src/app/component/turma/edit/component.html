@@ -22,16 +22,52 @@
 					<div>{{entity.ofertaCurso.toString()}}</div>
 				</div>
 			</div>
+
 			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label>Ofertas de disciplinas</label> <select multiple
-						[(ngModel)]="listSelectedOfertaDisciplina" class="form-control"
-						name="ofertaDisciplina" #ofertaDisciplina="ngModel"
-						[compareWith]="compareOfertaDisciplina">
-						<option *ngFor="let item of listOfertaDisciplina" [ngValue]="item">{{item.toString()}}</option>
-					</select>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Ofertas de disciplinas disponíveis</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Disciplina</th>
+								<th scope="col">Docente</th>
+								<th scope="col">#</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listNotSelectedOfertaDisciplina; let i=index">
+								<td>{{ item.disciplina.toString() }}</td>
+								<td>{{ item.docente.toString() }}</td>
+								<td><button (click)="setOfertaDisciplinaAsSelected(i)"
+										class="btn btn-danger">
+										&gt;</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Ofertas de disciplinas atribuídas</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Disciplina</th>
+								<th scope="col">Docente</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedOfertaDisciplina; let i=index">
+								<td><button (click)="setOfertaDisciplinaAsNotSelected(i)"
+										class="btn btn-danger">
+										&lt; </button></td>
+								<td>{{ item.disciplina.toString() }}</td>
+								<td>{{ item.docente.toString() }}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
+			
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>

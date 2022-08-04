@@ -27,6 +27,7 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 
 	listDiscente!: Discente[];
 	listOldSelectedDiscente!: Discente[];
+	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
 	constructor(protected service: AulaService, protected router: Router,
@@ -44,6 +45,7 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 
 			this.listDiscente = [];
 			this.listOldSelectedDiscente = [];
+			this.listNotSelectedDiscente = [];
 			this.listSelectedDiscente = [];
 
 			this.ofertaDisciplinaService.findAllDiscenteById(data.ofertaDisciplina).subscribe(result => {
@@ -56,6 +58,19 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 			this.service.findAllDiscenteParticipanteById(this.entity.id).subscribe(result => {
 				this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
 				this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
+
+				this.listDiscente.forEach(item => {
+					var exists = false;
+					this.listSelectedDiscente.forEach(slctItem => {
+						if (item.id == slctItem.id) {
+							exists = true;
+						}
+					});
+
+					if (!exists) {
+						this.listNotSelectedDiscente.push(item);
+					}
+				});
 			}, error => {
 				this.setErrorMessage(error);
 			});
@@ -124,6 +139,18 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 
 		this.list();
 
+	}
+	
+	setDiscenteAsSelected(index: number) {
+		var item = this.listNotSelectedDiscente[index];
+		this.listSelectedDiscente.push(item);
+		this.listNotSelectedDiscente.splice(index, 1);
+	}
+	
+	setDiscenteAsNotSelected(index: number) {
+		var item = this.listSelectedDiscente[index];
+		this.listNotSelectedDiscente.push(item);
+		this.listSelectedDiscente.splice(index, 1);
 	}
 
 	compareDiscente(o1: Discente, o2: Discente) {

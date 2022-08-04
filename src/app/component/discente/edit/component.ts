@@ -23,6 +23,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 	listaVestibulando!: Vestibulando[];
 	listOfertaDisciplina!: OfertaDisciplina[];
 	listOldSelectedOfertaDisciplina!: OfertaDisciplina[];
+	listNotSelectedOfertaDisciplina!: OfertaDisciplina[];
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
 	constructor(protected service: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
@@ -33,6 +34,11 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+
+		this.listOfertaDisciplina = [];
+		this.listOldSelectedOfertaDisciplina = [];
+		this.listNotSelectedOfertaDisciplina = [];
+		this.listSelectedOfertaDisciplina = [];
 
 		this.vestibulandoService.findAll().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
@@ -50,6 +56,19 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 			console.log(data);
 			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+
+			this.listOfertaDisciplina.forEach(item => {
+				var exists = false;
+				this.listSelectedOfertaDisciplina.forEach(slctItem => {
+					if (item.id == slctItem.id) {
+						exists = true;
+					}
+				});
+
+				if (!exists) {
+					this.listNotSelectedOfertaDisciplina.push(item);
+				}
+			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
@@ -101,6 +120,18 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	setOfertaDisciplinaAsSelected(index: number) {
+		var item = this.listNotSelectedOfertaDisciplina[index];
+		this.listSelectedOfertaDisciplina.push(item);
+		this.listNotSelectedOfertaDisciplina.splice(index, 1);
+	}
+
+	setOfertaDisciplinaAsNotSelected(index: number) {
+		var item = this.listSelectedOfertaDisciplina[index];
+		this.listNotSelectedOfertaDisciplina.push(item);
+		this.listSelectedOfertaDisciplina.splice(index, 1);
 	}
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {

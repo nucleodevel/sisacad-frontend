@@ -32,17 +32,50 @@
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label for="discente">Discente</label> <select multiple
-						[(ngModel)]="listSelectedDiscente" class="form-control"
-						name="discente" #discente="ngModel"
-						[compareWith]="compareDiscente">
-						<option *ngFor="let discente of listDiscente"
-							[ngValue]="discente">{{discente.vestibulando.nome}} - {{discente.vestibulando.cpf}}</option>
-					</select>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Discentes ausentes</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">CPF</th>
+								<th scope="col">#</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listNotSelectedDiscente; let i=index">
+								<td>{{ item.vestibulando.nome }}</td>
+								<td>{{ item.vestibulando.cpf }}</td>
+								<td><button (click)="setDiscenteAsSelected(i)"
+										class="btn btn-danger">
+										&gt;</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Discentes presentes</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+								<th scope="col">CPF</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedDiscente; let i=index">
+								<td><button (click)="setDiscenteAsNotSelected(i)"
+										class="btn btn-danger">
+										&lt; </button></td>
+								<td>{{ item.vestibulando.nome }}</td>
+								<td>{{ item.vestibulando.cpf }}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
-			
+
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>

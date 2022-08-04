@@ -23,6 +23,7 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 	listaCurso!: Curso[];
 	listDisciplina!: Disciplina[];
 	listOldSelectedDisciplina!: Disciplina[];
+	listNotSelectedDisciplina!: Disciplina[];
 	listSelectedDisciplina!: Disciplina[];
 
 	constructor(protected service: EstruturaCurricularService, protected disciplinaService: DisciplinaService,
@@ -33,6 +34,11 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+
+		this.listDisciplina = [];
+		this.listOldSelectedDisciplina = [];
+		this.listNotSelectedDisciplina = [];
+		this.listSelectedDisciplina = [];
 
 		this.cursoService.findAll().subscribe(data => {
 			this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
@@ -50,6 +56,19 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 			console.log(data);
 			this.listOldSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+
+			this.listDisciplina.forEach(item => {
+				var exists = false;
+				this.listSelectedDisciplina.forEach(slctItem => {
+					if (item.id == slctItem.id) {
+						exists = true;
+					}
+				});
+
+				if (!exists) {
+					this.listNotSelectedDisciplina.push(item);
+				}
+			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
@@ -101,6 +120,18 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	setDisciplinaAsSelected(index: number) {
+		var item = this.listNotSelectedDisciplina[index];
+		this.listSelectedDisciplina.push(item);
+		this.listNotSelectedDisciplina.splice(index, 1);
+	}
+
+	setDisciplinaAsNotSelected(index: number) {
+		var item = this.listSelectedDisciplina[index];
+		this.listNotSelectedDisciplina.push(item);
+		this.listSelectedDisciplina.splice(index, 1);
 	}
 
 	compareCurso(o1: Curso, o2: Curso) {

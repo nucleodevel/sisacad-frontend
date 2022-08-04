@@ -40,15 +40,44 @@
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-lg-12">
-					<label>Disciplinas</label> <select multiple
-						[(ngModel)]="listSelectedDisciplina" class="form-control"
-						name="disciplina" #disciplina="ngModel"
-						[compareWith]="compareDisciplina">
-						<option *ngFor="let item of listDisciplina" [ngValue]="item">{{item.toString()}}</option>
-					</select>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Disciplinas disponíveis</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">#</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listNotSelectedDisciplina; let i=index">
+								<td>{{ item.nome }}</td>
+								<td><button (click)="setDisciplinaAsSelected(i)"
+										class="btn btn-danger">&gt;</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Disciplinas atribuídas</label>
+					<table class="table table-bordered table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listSelectedDisciplina; let i=index">
+								<td><button (click)="setDisciplinaAsNotSelected(i)"
+										class="btn btn-danger">&lt;</button></td>
+								<td>{{ item.nome }}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
+
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>

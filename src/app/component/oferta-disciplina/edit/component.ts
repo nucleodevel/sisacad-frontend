@@ -28,11 +28,9 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
-	listTurma!: Turma[];
-	listOldSelectedTurma!: Turma[];
-	listSelectedTurma!: Turma[];
 	listDiscente!: Discente[];
 	listOldSelectedDiscente!: Discente[];
+	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
 	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService,
@@ -46,6 +44,11 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 	ngOnInit() {
 		super.ngOnInitSuper();
 
+		this.listDiscente = [];
+		this.listOldSelectedDiscente = [];
+		this.listNotSelectedDiscente = [];
+		this.listSelectedDiscente = [];
+
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
@@ -54,20 +57,6 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 		this.docenteService.findAll().subscribe(data => {
 			this.listaDocente = this.docenteService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setErrorMessage(error);
-		});
-
-		this.turmaService.findAll().subscribe(data => {
-			this.listTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setErrorMessage(error);
-		});
-
-		this.service.findAllTurmaById(this.id).subscribe(data => {
-			console.log(data);
-			this.listOldSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
-			this.listSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
@@ -82,14 +71,25 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 			console.log(data);
 			this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
+
+			this.listDiscente.forEach(item => {
+				var exists = false;
+				this.listSelectedDiscente.forEach(slctItem => {
+					if (item.id == slctItem.id) {
+						exists = true;
+					}
+				});
+
+				if (!exists) {
+					this.listNotSelectedDiscente.push(item);
+				}
+			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
 	}
 
 	onSubmit() {
-		var listDeleteTurma: Turma[] = [];
-		var listInsertTurma: Turma[] = [];
 
 		var listDeleteDiscente: Discente[] = [];
 		var listInsertDiscente: Discente[] = [];
@@ -97,40 +97,6 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		var dto = this.service.newDtoInstance();
 
 		dto.copyFromEntity(this.entity);
-
-		this.listOldSelectedTurma.forEach(oldItem => {
-			var exists = false;
-			this.listSelectedTurma.forEach(item => {
-				if (oldItem.id == item.id) {
-					exists = true;
-				}
-			});
-
-			if (!exists) {
-				listDeleteTurma.push(oldItem);
-			}
-		});
-
-		this.listSelectedTurma.forEach(item => {
-			var exists = false;
-			this.listOldSelectedTurma.forEach(oldItem => {
-				if (oldItem.id == item.id) {
-					exists = true;
-				}
-			});
-
-			if (!exists) {
-				listInsertTurma.push(item);
-			}
-		});
-
-		listDeleteTurma.forEach(item => {
-			this.service.deleteTurma(this.id, item.id).subscribe();
-		});
-
-		listInsertTurma.forEach(item => {
-			this.service.insertTurma(this.id, item.id).subscribe();
-		});
 
 		this.listOldSelectedDiscente.forEach(oldItem => {
 			var exists = false;
@@ -171,6 +137,18 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	setDiscenteAsSelected(index: number) {
+		var item = this.listNotSelectedDiscente[index];
+		this.listSelectedDiscente.push(item);
+		this.listNotSelectedDiscente.splice(index, 1);
+	}
+
+	setDiscenteAsNotSelected(index: number) {
+		var item = this.listSelectedDiscente[index];
+		this.listNotSelectedDiscente.push(item);
+		this.listSelectedDiscente.splice(index, 1);
 	}
 
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {

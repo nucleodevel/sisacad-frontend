@@ -70,7 +70,6 @@ import { OfertaDisciplinaService } from './service/oferta-disciplina/service';
 import { ParticipacaoAulaListComponent } from './component/participacao-aula/list/component';
 import { ParticipacaoAulaViewComponent } from './component/participacao-aula/view/component';
 import { ParticipacaoAulaAddComponent } from './component/participacao-aula/add/component'; 
-import { ParticipacaoAulaAddManyComponent } from './component/participacao-aula/add-many/component'; 
 import { ParticipacaoAulaEditComponent } from './component/participacao-aula/edit/component';
 import { ParticipacaoAulaService } from './service/participacao-aula/service';
 
@@ -155,7 +154,6 @@ import { VestibularService } from './service/vestibular/service';
     ParticipacaoAulaListComponent,
     ParticipacaoAulaViewComponent,
     ParticipacaoAulaAddComponent,
-	ParticipacaoAulaAddManyComponent,
     ParticipacaoAulaEditComponent,
 
     ParticipacaoAvaliacaoListComponent,
