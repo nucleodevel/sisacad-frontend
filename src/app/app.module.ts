@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -96,6 +96,10 @@ import { VestibularViewComponent } from './component/vestibular/view/component';
 import { VestibularAddComponent } from './component/vestibular/add/component'; 
 import { VestibularEditComponent } from './component/vestibular/edit/component';
 import { VestibularService } from './service/vestibular/service';
+
+
+export let AppInjector: Injector;
+
 
 @NgModule({
   declarations: [
@@ -202,4 +206,10 @@ import { VestibularService } from './service/vestibular/service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+	
+  constructor(private injector: Injector) {
+    AppInjector = this.injector;
+  }
+
+}

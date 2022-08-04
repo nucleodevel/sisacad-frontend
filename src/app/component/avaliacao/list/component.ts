@@ -14,8 +14,7 @@ import { AvaliacaoService } from '../../../service/avaliacao/service';
 })
 export class AvaliacaoListComponent extends AbstractListComponent<Avaliacao, AvaliacaoDto, AvaliacaoService> {
 
-	constructor(protected service: AvaliacaoService,
-		protected router: Router) {
+	constructor(protected service: AvaliacaoService, protected router: Router) {
 		super(service, router, 'avaliacao');
 	}
 

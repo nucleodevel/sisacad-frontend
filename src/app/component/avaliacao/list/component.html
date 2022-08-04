@@ -25,8 +25,8 @@
 				<tr *ngFor="let entity of entities">
 					<td>{{ entity.id }}</td>
 					<td>{{ entity.descricao }}</td>
-					<td>{{ entity.inicio }}</td>
-					<td>{{ entity.termino }}</td>
+					<td>{{ dateUtil.getStringFromDate(entity.inicio) }}</td>
+					<td>{{ dateUtil.getStringFromDate(entity.termino) }}</td>
 					<td>{{ entity.ofertaDisciplina.toString() }}</td>
 					<td><a routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"
 						class="btn btn-info" style="margin-left: 10px">Ver</a> <a

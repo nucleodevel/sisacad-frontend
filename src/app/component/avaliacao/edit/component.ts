@@ -19,8 +19,8 @@ export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, Ava
 
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
-	constructor(protected service: AvaliacaoService, protected router: Router,
-		protected route: ActivatedRoute, protected ofertaDisciplinaService: OfertaDisciplinaService) {
+	constructor(protected service: AvaliacaoService, protected router: Router, protected route: ActivatedRoute,
+		protected ofertaDisciplinaService: OfertaDisciplinaService) {
 		super(service, router, route, 'avaliacao');
 	}
 

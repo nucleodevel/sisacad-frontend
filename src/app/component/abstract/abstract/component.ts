@@ -1,4 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppInjector } from '../../../app.module';
+
+import { DateUtil } from '../../../util/date';
 
 import { AbstractEntity } from '../../../domain/abstract/entity';
 import { AbstractDto } from '../../../dto/abstract/dto';
@@ -9,6 +12,8 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	protected service: S;
 	protected router: Router;
 	protected route: ActivatedRoute;
+	
+	private _dateUtil!: DateUtil;
 
 	routerPrefix: string;
 
@@ -20,6 +25,13 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 		this.router = router;
 		this.route = route;
 		this.routerPrefix = routerPrefix;
+	}
+
+	get dateUtil(): DateUtil {
+		if (!this._dateUtil) {
+			this._dateUtil = AppInjector.get(DateUtil);
+		}
+		return this._dateUtil;
 	}
 
 	abstract ngOnInitSuper(): void;

@@ -31,8 +31,9 @@ export class AvaliacaoService extends AbstractService<Avaliacao, AvaliacaoDto> {
 
 		entity.id = dto.id;
 		entity.descricao = dto.descricao;
-		entity.inicio = dto.inicio;
-		entity.termino = dto.termino;
+
+		entity.inicio = new Date(dto.inicio);
+		entity.termino = new Date(dto.termino);
 
 		this.ofertaDisciplinaService.findById(dto.ofertaDisciplina).subscribe(data => {
 			console.log(data);

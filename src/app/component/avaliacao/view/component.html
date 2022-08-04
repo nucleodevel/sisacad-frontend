@@ -25,11 +25,11 @@
 			</div>
 			<div class="form-group col-lg-3 col-md-12">
 				<label>Início</label>
-				<div>{{ entity.inicio }}</div>
+				<div>{{ dateUtil.getStringFromDate(entity.inicio) }}</div>
 			</div>
 			<div class="form-group col-lg-3 col-md-12">
 				<label>Término</label>
-				<div>{{ entity.termino }}</div>
+				<div>{{ dateUtil.getStringFromDate(entity.termino) }}</div>
 			</div>
 		</div>
 		<div class="form-row">
