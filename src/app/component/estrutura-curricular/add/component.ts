@@ -19,9 +19,9 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 
 	listaCurso!: Curso[];
 
-	constructor(protected service: EstruturaCurricularService, protected router: Router,
+	constructor(protected service: EstruturaCurricularService,
 		protected route: ActivatedRoute, protected cursoService: CursoService) {
-		super(service, router, route, 'estrutura-curricular');
+		super(service, route, 'estrutura-curricular');
 	}
 
 	ngOnInit() {

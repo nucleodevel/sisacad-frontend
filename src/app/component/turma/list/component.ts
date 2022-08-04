@@ -15,8 +15,8 @@ import { TurmaService } from '../../../service/turma/service';
 export class TurmaListComponent extends AbstractListComponent<Turma, TurmaDto, TurmaService> {
 
 	constructor(protected service: TurmaService,
-		protected router: Router) {
-		super(service, router, 'turma');
+		) {
+		super(service, 'turma');
 	}
 
 	ngOnInit() {

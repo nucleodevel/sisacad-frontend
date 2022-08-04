@@ -27,8 +27,8 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
 	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
-		protected router: Router, protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
-		super(service, router, route, 'turma');
+		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
+		super(service, route, 'turma');
 		this.ofertaDisciplinaService = ofertaDisciplinaService;
 	}
 

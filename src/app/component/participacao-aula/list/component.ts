@@ -15,8 +15,8 @@ import { ParticipacaoAulaService } from '../../../service/participacao-aula/serv
 export class ParticipacaoAulaListComponent extends AbstractListComponent<ParticipacaoAula, ParticipacaoAulaDto, ParticipacaoAulaService> {
 
 	constructor(protected service: ParticipacaoAulaService,
-		protected router: Router) {
-		super(service, router, 'participacao-aula');
+		) {
+		super(service, 'participacao-aula');
 	}
 
 	ngOnInit() {

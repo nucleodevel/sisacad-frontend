@@ -23,9 +23,9 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 	listaAula!: Aula[];
 	listaDiscente!: Discente[];
 
-	constructor(protected service: ParticipacaoAulaService, protected router: Router,
+	constructor(protected service: ParticipacaoAulaService,
 		protected route: ActivatedRoute, protected aulaService: AulaService, protected discenteService: DiscenteService) {
-		super(service, router, route, 'participacao-aula');
+		super(service, route, 'participacao-aula');
 	}
 
 	ngOnInit() {

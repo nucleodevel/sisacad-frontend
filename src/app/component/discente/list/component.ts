@@ -15,8 +15,8 @@ import { DiscenteService } from '../../../service/discente/service';
 export class DiscenteListComponent extends AbstractListComponent<Discente, DiscenteDto, DiscenteService> {
 
 	constructor(protected service: DiscenteService,
-		protected router: Router) {
-		super(service, router, 'discente');
+		) {
+		super(service, 'discente');
 	}
 
 	ngOnInit() {

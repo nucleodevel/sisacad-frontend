@@ -19,9 +19,9 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 
 	listaVestibulando!: Vestibulando[];
 
-	constructor(protected service: DiscenteService, protected router: Router,
+	constructor(protected service: DiscenteService,
 		protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
-		super(service, router, route, 'discente');
+		super(service, route, 'discente');
 	}
 
 	ngOnInit() {

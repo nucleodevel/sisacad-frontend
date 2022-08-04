@@ -23,9 +23,9 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
 
-	constructor(protected service: OfertaDisciplinaService, protected router: Router,
+	constructor(protected service: OfertaDisciplinaService,
 		protected route: ActivatedRoute, protected disciplinaService: DisciplinaService, protected docenteService: DocenteService) {
-		super(service, router, route, 'oferta-disciplina');
+		super(service, route, 'oferta-disciplina');
 	}
 
 	ngOnInit() {

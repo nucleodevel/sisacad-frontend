@@ -15,8 +15,8 @@ import { EstruturaCurricularService } from '../../../service/estrutura-curricula
 export class EstruturaCurricularListComponent extends AbstractListComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
 
 	constructor(protected service: EstruturaCurricularService,
-		protected router: Router) {
-		super(service, router, 'estrutura-curricular');
+		) {
+		super(service, 'estrutura-curricular');
 	}
 
 	ngOnInit() {

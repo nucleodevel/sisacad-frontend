@@ -20,8 +20,8 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 	listSelectedEstruturaCurricular!: EstruturaCurricular[];
 
 	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'disciplina');
+		protected route: ActivatedRoute) {
+		super(service, route, 'disciplina');
 		this.estruturaCurricularService = estruturaCurricularService;
 	}
 

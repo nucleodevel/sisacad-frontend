@@ -19,9 +19,9 @@ export class AvaliacaoVestibulandoEditComponent extends AbstractEditComponent<Av
 
 	listaVestibulando!: Vestibulando[];
 
-	constructor(protected service: AvaliacaoVestibulandoService, protected router: Router,
+	constructor(protected service: AvaliacaoVestibulandoService,
 		protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
-		super(service, router, route, 'avaliacao-vestibulando');
+		super(service, route, 'avaliacao-vestibulando');
 	}
 
 	ngOnInit() {

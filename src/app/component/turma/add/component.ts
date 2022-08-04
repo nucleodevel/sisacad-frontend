@@ -19,9 +19,9 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 
 	listaOfertaCurso!: OfertaCurso[];
 
-	constructor(protected service: TurmaService, protected router: Router,
+	constructor(protected service: TurmaService,
 		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
-		super(service, router, route, 'turma');
+		super(service, route, 'turma');
 	}
 
 	ngOnInit() {

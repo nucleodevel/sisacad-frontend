@@ -10,9 +10,9 @@ import { AbstractService } from '../../../service/abstract/service';
 export abstract class AbstractComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 
 	protected service: S;
-	protected router: Router;
+	protected _router!: Router;
 	protected route: ActivatedRoute;
-	
+
 	private _dateUtil!: DateUtil;
 
 	routerPrefix: string;
@@ -20,11 +20,17 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	loading: boolean = false;
 	errorMessage: string = "";
 
-	constructor(service: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
+	constructor(service: S, route: ActivatedRoute, routerPrefix: string) {
 		this.service = service;
-		this.router = router;
 		this.route = route;
 		this.routerPrefix = routerPrefix;
+	}
+
+	get router(): Router {
+		if (!this._router) {
+			this._router = AppInjector.get(Router);
+		}
+		return this._router;
 	}
 
 	get dateUtil(): DateUtil {
@@ -41,7 +47,7 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 			this.errorMessage = "";
 			return;
 		}
-		
+
 		var errorMessage: string = JSON.stringify(error);
 		if (error.hasOwnProperty('error')) {
 			if (error.error.hasOwnProperty('msg')) {

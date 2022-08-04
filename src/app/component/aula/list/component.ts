@@ -14,8 +14,8 @@ import { AulaService } from '../../../service/aula/service';
 })
 export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, AulaService> {
 
-	constructor(protected service: AulaService, protected router: Router) {
-		super(service, router, 'aula');
+	constructor(protected service: AulaService) {
+		super(service, 'aula');
 	}
 
 	ngOnInit() {

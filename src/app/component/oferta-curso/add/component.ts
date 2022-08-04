@@ -23,9 +23,9 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 	listaVestibular!: Vestibular[];
 	listaEstruturaCurricular!: EstruturaCurricular[];
 
-	constructor(protected service: OfertaCursoService, protected router: Router, protected route: ActivatedRoute,
+	constructor(protected service: OfertaCursoService, protected route: ActivatedRoute,
 		protected vestibularService: VestibularService, protected estruturaCurricularService: EstruturaCurricularService) {
-		super(service, router, route, 'oferta-curso');
+		super(service, route, 'oferta-curso');
 	}
 
 	ngOnInit() {

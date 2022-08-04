@@ -15,8 +15,8 @@ import { DocenteService } from '../../../service/docente/service';
 export class DocenteListComponent extends AbstractListComponent<Docente, DocenteDto, DocenteService> {
 
 	constructor(protected service: DocenteService,
-		protected router: Router) {
-		super(service, router, 'docente');
+		) {
+		super(service, 'docente');
 	}
 
 	ngOnInit() {

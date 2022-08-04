@@ -11,8 +11,8 @@ export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends
 
 	entity!: E;
 
-	constructor(service: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
-		super(service, router, route, routerPrefix);
+	constructor(service: S, route: ActivatedRoute, routerPrefix: string) {
+		super(service, route, routerPrefix);
 	}
 
 	ngOnInitSuper() {

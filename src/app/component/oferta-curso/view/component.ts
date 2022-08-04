@@ -15,8 +15,8 @@ import { OfertaCursoService } from '../../../service/oferta-curso/service';
 export class OfertaCursoViewComponent extends AbstractViewComponent<OfertaCurso, OfertaCursoDto, OfertaCursoService> {
 
 	constructor(protected service: OfertaCursoService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'oferta-curso');
+		protected route: ActivatedRoute) {
+		super(service, route, 'oferta-curso');
 	}
 
 	ngOnInit() {

@@ -15,8 +15,8 @@ import { VestibulandoService } from '../../../service/vestibulando/service';
 export class VestibulandoListComponent extends AbstractListComponent<Vestibulando, VestibulandoDto, VestibulandoService> {
 
 	constructor(protected service: VestibulandoService,
-		protected router: Router) {
-		super(service, router, 'vestibulando');
+		) {
+		super(service, 'vestibulando');
 	}
 
 	ngOnInit() {

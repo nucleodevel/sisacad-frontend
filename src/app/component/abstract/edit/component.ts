@@ -12,8 +12,8 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 	id!: number;
 	entity!: E;
 
-	constructor(service: S, router: Router, route: ActivatedRoute, routerPrefix: string) {
-		super(service, router, route, routerPrefix);
+	constructor(service: S, route: ActivatedRoute, routerPrefix: string) {
+		super(service, route, routerPrefix);
 	}
 
 	ngOnInitSuper() {

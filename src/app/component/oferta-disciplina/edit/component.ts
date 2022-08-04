@@ -34,9 +34,9 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 	listSelectedDiscente!: Discente[];
 
 	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService,
-		protected router: Router, protected route: ActivatedRoute,
+		protected route: ActivatedRoute,
 		protected disciplinaService: DisciplinaService, protected docenteService: DocenteService) {
-		super(service, router, route, 'oferta-disciplina');
+		super(service, route, 'oferta-disciplina');
 		this.turmaService = turmaService;
 		this.discenteService = discenteService;
 	}

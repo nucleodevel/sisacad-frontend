@@ -19,9 +19,9 @@ export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, Ava
 
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
-	constructor(protected service: AvaliacaoService, protected router: Router, protected route: ActivatedRoute,
+	constructor(protected service: AvaliacaoService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
-		super(service, router, route, 'avaliacao');
+		super(service, route, 'avaliacao');
 	}
 
 	ngOnInit() {

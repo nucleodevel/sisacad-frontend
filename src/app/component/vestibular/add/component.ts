@@ -15,8 +15,8 @@ import { VestibularService } from '../../../service/vestibular/service';
 export class VestibularAddComponent extends AbstractAddComponent<Vestibular, VestibularDto, VestibularService> {
 
 	constructor(protected service: VestibularService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'vestibular');
+		protected route: ActivatedRoute) {
+		super(service, route, 'vestibular');
 	}
 
 	ngOnInit() {

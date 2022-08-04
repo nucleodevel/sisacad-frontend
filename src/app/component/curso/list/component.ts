@@ -15,8 +15,8 @@ import { CursoService } from '../../../service/curso/service';
 export class CursoListComponent extends AbstractListComponent<Curso, CursoDto, CursoService> {
 
 	constructor(protected service: CursoService,
-		protected router: Router) {
-		super(service, router, 'curso');
+		) {
+		super(service, 'curso');
 	}
 
 	ngOnInit() {

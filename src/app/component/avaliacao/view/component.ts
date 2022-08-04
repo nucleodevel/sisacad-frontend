@@ -14,8 +14,8 @@ import { AvaliacaoService } from '../../../service/avaliacao/service';
 })
 export class AvaliacaoViewComponent extends AbstractViewComponent<Avaliacao, AvaliacaoDto, AvaliacaoService> {
 
-	constructor(protected service: AvaliacaoService, protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'avaliacao');
+	constructor(protected service: AvaliacaoService, protected route: ActivatedRoute) {
+		super(service, route, 'avaliacao');
 	}
 
 	ngOnInit() {

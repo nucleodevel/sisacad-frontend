@@ -29,10 +29,10 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
-	constructor(protected service: AulaService, protected router: Router,
+	constructor(protected service: AulaService,
 		protected route: ActivatedRoute, protected discenteService: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected participacaoAulaService: ParticipacaoAulaService) {
-		super(service, router, route, 'aula');
+		super(service, route, 'aula');
 	}
 
 	ngOnInit() {

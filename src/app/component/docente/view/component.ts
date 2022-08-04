@@ -15,8 +15,8 @@ import { DocenteService } from '../../../service/docente/service';
 export class DocenteViewComponent extends AbstractViewComponent<Docente, DocenteDto, DocenteService> {
 
 	constructor(protected service: DocenteService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'docente');
+		protected route: ActivatedRoute) {
+		super(service, route, 'docente');
 	}
 
 	ngOnInit() {

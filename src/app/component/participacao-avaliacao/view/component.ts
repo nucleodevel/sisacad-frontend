@@ -15,8 +15,8 @@ import { ParticipacaoAvaliacaoService } from '../../../service/participacao-aval
 export class ParticipacaoAvaliacaoViewComponent extends AbstractViewComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
 
 	constructor(protected service: ParticipacaoAvaliacaoService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'participacao-avaliacao');
+		protected route: ActivatedRoute) {
+		super(service, route, 'participacao-avaliacao');
 	}
 
 	ngOnInit() {

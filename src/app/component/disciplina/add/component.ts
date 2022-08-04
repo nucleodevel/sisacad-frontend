@@ -15,8 +15,8 @@ import { DisciplinaService } from '../../../service/disciplina/service';
 export class DisciplinaAddComponent extends AbstractAddComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
 	constructor(protected service: DisciplinaService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'disciplina');
+		protected route: ActivatedRoute) {
+		super(service, route, 'disciplina');
 	}
 
 	ngOnInit() {

@@ -21,8 +21,8 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 	listSelectedParticipacaoAula!: ParticipacaoAula[];
 
 	constructor(protected service: AulaService, protected participacaoAulaService: ParticipacaoAulaService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'aula');
+		protected route: ActivatedRoute) {
+		super(service, route, 'aula');
 	}
 
 	ngOnInit() {

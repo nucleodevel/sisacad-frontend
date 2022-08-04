@@ -23,9 +23,9 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 	listaAvaliacao!: Avaliacao[];
 	listaDiscente!: Discente[];
 
-	constructor(protected service: ParticipacaoAvaliacaoService, protected router: Router,
+	constructor(protected service: ParticipacaoAvaliacaoService,
 		protected route: ActivatedRoute, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
-		super(service, router, route, 'participacao-avaliacao');
+		super(service, route, 'participacao-avaliacao');
 	}
 
 	ngOnInit() {

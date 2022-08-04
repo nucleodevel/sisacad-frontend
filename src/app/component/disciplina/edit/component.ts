@@ -18,8 +18,8 @@ import { EstruturaCurricularService } from '../../../service/estrutura-curricula
 export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
 	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'disciplina');
+		protected route: ActivatedRoute) {
+		super(service, route, 'disciplina');
 		this.estruturaCurricularService = estruturaCurricularService;
 	}
 

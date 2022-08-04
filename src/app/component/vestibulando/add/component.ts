@@ -19,9 +19,9 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 
 	listaOfertaCurso!: OfertaCurso[];
 
-	constructor(protected service: VestibulandoService, protected router: Router,
+	constructor(protected service: VestibulandoService,
 		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
-		super(service, router, route, 'vestibulando');
+		super(service, route, 'vestibulando');
 	}
 
 	ngOnInit() {

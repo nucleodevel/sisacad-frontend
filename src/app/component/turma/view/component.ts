@@ -20,8 +20,8 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
 	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'turma');
+		protected route: ActivatedRoute) {
+		super(service, route, 'turma');
 		this.ofertaDisciplinaService = ofertaDisciplinaService;
 	}
 

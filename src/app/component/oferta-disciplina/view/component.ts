@@ -24,8 +24,8 @@ export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaD
 	listSelectedDiscente!: Discente[];
 
 	constructor(protected service: OfertaDisciplinaService, protected turmaService: TurmaService, protected discenteService: DiscenteService,
-		protected router: Router, protected route: ActivatedRoute) {
-		super(service, router, route, 'oferta-disciplina');
+		protected route: ActivatedRoute) {
+		super(service, route, 'oferta-disciplina');
 		this.turmaService = turmaService;
 		this.discenteService = discenteService;
 	}
