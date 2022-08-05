@@ -29,16 +29,20 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: VestibulandoDto) {
 
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {

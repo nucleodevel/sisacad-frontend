@@ -29,16 +29,20 @@ export class AvaliacaoAddComponent extends AbstractAddComponent<Avaliacao, Avali
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {

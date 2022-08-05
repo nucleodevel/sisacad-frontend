@@ -29,17 +29,21 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
 
-		this.service.findAllEstruturaCurricularById(this.id).subscribe(data => {
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional(dto: DisciplinaDto) {
+
+		this.service.findAllEstruturaCurricularById(dto.id).subscribe(data => {
 			console.log(data);
 			this.listSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 }

@@ -14,9 +14,12 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 	constructor(service: S, routerPrefix: string) {
 		super(service, {} as ActivatedRoute, routerPrefix);
 	}
+	
+	abstract ngOnInitSuperAdditional(): void;
 
 	ngOnInitSuper() {
 		this.reloadData();
+		this.ngOnInitSuperAdditional();
 	}
 
 	reloadData() {

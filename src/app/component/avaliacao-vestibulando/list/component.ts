@@ -27,7 +27,11 @@ export class AvaliacaoVestibulandoListComponent extends AbstractListComponent<Av
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+		
 	}
 
 }

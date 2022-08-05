@@ -33,6 +33,13 @@ export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaD
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: OfertaDisciplinaDto) {
 
 		this.service.findAllTurmaById(this.id).subscribe(data => {
 			console.log(data);
@@ -47,10 +54,7 @@ export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaD
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 }

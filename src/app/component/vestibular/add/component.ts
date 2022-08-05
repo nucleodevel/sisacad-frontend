@@ -27,7 +27,11 @@ export class VestibularAddComponent extends AbstractAddComponent<Vestibular, Ves
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+		
 	}
 
 }

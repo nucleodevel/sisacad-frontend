@@ -26,7 +26,11 @@ export class AvaliacaoListComponent extends AbstractListComponent<Avaliacao, Ava
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+		
 	}
 
 }

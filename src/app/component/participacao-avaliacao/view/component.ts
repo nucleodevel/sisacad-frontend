@@ -27,7 +27,11 @@ export class ParticipacaoAvaliacaoViewComponent extends AbstractViewComponent<Pa
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: ParticipacaoAvaliacaoDto) {
+		
 	}
 
 }

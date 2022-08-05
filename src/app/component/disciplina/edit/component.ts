@@ -30,7 +30,11 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional(dto: DisciplinaDto) {
+		
 	}
 
 	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {

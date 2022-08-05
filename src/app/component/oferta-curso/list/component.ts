@@ -27,7 +27,11 @@ export class OfertaCursoListComponent extends AbstractListComponent<OfertaCurso,
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+		
 	}
 
 }

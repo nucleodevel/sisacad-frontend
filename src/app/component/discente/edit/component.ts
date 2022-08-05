@@ -36,6 +36,13 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: DiscenteDto) {
 
 		this.listOfertaDisciplina = [];
 		this.listOldSelectedOfertaDisciplina = [];
@@ -50,34 +57,30 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setErrorMessage(error);
-		});
 
-		this.service.findAllOfertaDisciplinaById(this.id).subscribe(data => {
-			console.log(data);
-			this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-			this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+			this.service.findAllOfertaDisciplinaById(dto.id).subscribe(data => {
+				console.log(data);
+				this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+				this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 
-			this.listOfertaDisciplina.forEach(item => {
-				var exists = false;
-				this.listSelectedOfertaDisciplina.forEach(slctItem => {
-					if (item.id == slctItem.id) {
-						exists = true;
+				this.listOfertaDisciplina.forEach(item => {
+					var exists = false;
+					this.listSelectedOfertaDisciplina.forEach(slctItem => {
+						if (item.id == slctItem.id) {
+							exists = true;
+						}
+					});
+
+					if (!exists) {
+						this.listNotSelectedOfertaDisciplina.push(item);
 					}
 				});
-
-				if (!exists) {
-					this.listNotSelectedOfertaDisciplina.push(item);
-				}
+			}, error => {
+				this.setErrorMessage(error);
 			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

@@ -27,7 +27,11 @@ export class CursoListComponent extends AbstractListComponent<Curso, CursoDto, C
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+		
 	}
 
 }

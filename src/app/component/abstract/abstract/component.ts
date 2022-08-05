@@ -34,6 +34,10 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	}
 
 	abstract ngOnInitSuper(): void;
+	
+	ngAfterViewInitSuper(loader: ElementRef, bodyCard: ElementRef) {
+		this.hideloader(loader, bodyCard);
+	}
 
 	setErrorMessage(error: any) {
 		if (error == null) {
@@ -64,7 +68,13 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	}
 
 	async hideloader(loader: ElementRef, bodyCard: ElementRef) {
-		await this.delay(1000);
+		await this.delay(500);
+		loader.nativeElement.style.display = 'none';
+		bodyCard.nativeElement.style.display = 'block';
+	}
+
+	async hideloaderAndDelay(loader: ElementRef, bodyCard: ElementRef, delay: number) {
+		await this.delay(delay);
 		loader.nativeElement.style.display = 'none';
 		bodyCard.nativeElement.style.display = 'block';
 	}

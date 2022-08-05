@@ -15,13 +15,15 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 	constructor(service: S, route: ActivatedRoute, routerPrefix: string) {
 		super(service, route, routerPrefix);
 	}
+	
+	abstract ngOnInitSuperAdditional(dto: DTO): void;
 
 	ngOnInitSuper() {
 		this.id = this.route.snapshot.params['id'];
 
-		this.service.findById(this.id).subscribe(data => {
-			console.log(data);
-			this.entity = this.service.makeEntityFromDto(data);
+		this.service.findById(this.id).subscribe(dto => {
+			this.ngOnInitSuperAdditional(dto);			
+			this.entity = this.service.makeEntityFromDto(dto);
 		}, error => {
 			this.setErrorMessage(error);
 		});

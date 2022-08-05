@@ -27,7 +27,11 @@ export class DocenteAddComponent extends AbstractAddComponent<Docente, DocenteDt
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+	
 	}
 
 }

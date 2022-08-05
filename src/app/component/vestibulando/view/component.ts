@@ -27,7 +27,11 @@ export class VestibulandoViewComponent extends AbstractViewComponent<Vestibuland
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: VestibulandoDto) {
+		
 	}
 
 }

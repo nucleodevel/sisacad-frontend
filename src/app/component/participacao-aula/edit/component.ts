@@ -33,6 +33,13 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: ParticipacaoAulaDto) {
 
 		this.aulaService.findAll().subscribe(data => {
 			this.listaAula = this.aulaService.makeEntityArrayFromDtoArray(data);
@@ -45,10 +52,7 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 	compareAula(o1: Aula, o2: Aula) {

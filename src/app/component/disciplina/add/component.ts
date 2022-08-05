@@ -27,7 +27,11 @@ export class DisciplinaAddComponent extends AbstractAddComponent<Disciplina, Dis
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+	
 	}
 
 }

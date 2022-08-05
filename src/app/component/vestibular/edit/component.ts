@@ -27,7 +27,11 @@ export class VestibularEditComponent extends AbstractEditComponent<Vestibular, V
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: VestibularDto) {
+		
 	}
 
 }

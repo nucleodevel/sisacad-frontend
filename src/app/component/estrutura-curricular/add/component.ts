@@ -29,16 +29,20 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
 
 		this.cursoService.findAll().subscribe(data => {
 			this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+	
 	}
 
 	compareCurso(o1: Curso, o2: Curso) {

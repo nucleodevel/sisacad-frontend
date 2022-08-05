@@ -44,6 +44,13 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: OfertaDisciplinaDto) {
 
 		this.listDiscente = [];
 		this.listOldSelectedDiscente = [];
@@ -64,34 +71,31 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 		this.discenteService.findAll().subscribe(data => {
 			this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setErrorMessage(error);
-		});
 
-		this.service.findAllDiscenteById(this.id).subscribe(data => {
-			console.log(data);
-			this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
+			this.service.findAllDiscenteById(dto.id).subscribe(data => {
+				console.log(data);
+				this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
+				this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 
-			this.listDiscente.forEach(item => {
-				var exists = false;
-				this.listSelectedDiscente.forEach(slctItem => {
-					if (item.id == slctItem.id) {
-						exists = true;
+				this.listDiscente.forEach(item => {
+					var exists = false;
+					this.listSelectedDiscente.forEach(slctItem => {
+						if (item.id == slctItem.id) {
+							exists = true;
+						}
+					});
+
+					if (!exists) {
+						this.listNotSelectedDiscente.push(item);
 					}
 				});
-
-				if (!exists) {
-					this.listNotSelectedDiscente.push(item);
-				}
+			}, error => {
+				this.setErrorMessage(error);
 			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
 
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

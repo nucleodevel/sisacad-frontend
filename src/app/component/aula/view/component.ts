@@ -30,17 +30,21 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
 
-		this.service.findAllParticipacaoAulaById(this.id).subscribe(data => {
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: AulaDto) {
+
+		this.service.findAllParticipacaoAulaById(dto.id).subscribe(data => {
 			console.log(data);
 			this.listSelectedParticipacaoAula = this.participacaoAulaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 }

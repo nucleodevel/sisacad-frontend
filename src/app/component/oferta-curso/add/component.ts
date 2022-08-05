@@ -33,6 +33,13 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
 
 		this.vestibularService.findAll().subscribe(data => {
 			this.listaVestibular = this.vestibularService.makeEntityArrayFromDtoArray(data);
@@ -45,10 +52,7 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 	compareVestibular(o1: Vestibular, o2: Vestibular) {

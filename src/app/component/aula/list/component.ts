@@ -26,7 +26,11 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 	}
 
 	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
+		
 	}
 
 }

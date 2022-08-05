@@ -29,16 +29,20 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
 
 		this.vestibulandoService.findAll().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+	
 	}
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {

@@ -9,6 +9,6 @@ export class OfertaDisciplina extends AbstractEntity {
 	docente!: Docente;
 
 	toString(): string {
-		return this.id + " - " + this.codigo;
+		return this.id + " - " + this.codigo + " - " + this.disciplina.nome;
 	}
 }

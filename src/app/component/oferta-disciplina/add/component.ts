@@ -33,6 +33,13 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+	
+	ngOnInitSuperAdditional() {
 
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
@@ -45,10 +52,7 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {

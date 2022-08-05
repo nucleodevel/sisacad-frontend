@@ -36,6 +36,13 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: EstruturaCurricularDto) {
 
 		this.listDisciplina = [];
 		this.listOldSelectedDisciplina = [];
@@ -50,34 +57,31 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setErrorMessage(error);
-		});
 
-		this.service.findAllDisciplinaById(this.id).subscribe(data => {
-			console.log(data);
-			this.listOldSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
-			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+			this.service.findAllDisciplinaById(dto.id).subscribe(data => {
+				console.log(data);
+				this.listOldSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
+				this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 
-			this.listDisciplina.forEach(item => {
-				var exists = false;
-				this.listSelectedDisciplina.forEach(slctItem => {
-					if (item.id == slctItem.id) {
-						exists = true;
+				this.listDisciplina.forEach(item => {
+					var exists = false;
+					this.listSelectedDisciplina.forEach(slctItem => {
+						if (item.id == slctItem.id) {
+							exists = true;
+						}
+					});
+
+					if (!exists) {
+						this.listNotSelectedDisciplina.push(item);
 					}
 				});
-
-				if (!exists) {
-					this.listNotSelectedDisciplina.push(item);
-				}
+			}, error => {
+				this.setErrorMessage(error);
 			});
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
 
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

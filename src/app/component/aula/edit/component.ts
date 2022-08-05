@@ -40,25 +40,24 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 	}
 
 	ngOnInit() {
-		this.id = this.route.snapshot.params['id'];
+		this.ngOnInitSuper();
+	}
 
-		this.service.findById(this.id).subscribe(data => {
-			console.log(data);
-			this.entity = this.service.makeEntityFromDto(data);
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
 
-			this.listDiscente = [];
-			this.listOldSelectedDiscente = [];
-			this.listNotSelectedDiscente = [];
-			this.listSelectedDiscente = [];
+	ngOnInitSuperAdditional(dto: AulaDto) {
 
-			this.ofertaDisciplinaService.findAllDiscenteById(data.ofertaDisciplina).subscribe(result => {
-				this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
-			}, error => {
-				this.setErrorMessage(error);
-			});
+		this.listDiscente = [];
+		this.listOldSelectedDiscente = [];
+		this.listNotSelectedDiscente = [];
+		this.listSelectedDiscente = [];
 
+		this.ofertaDisciplinaService.findAllDiscenteById(dto.ofertaDisciplina).subscribe(result => {
+			this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
 
-			this.service.findAllDiscenteParticipanteById(this.entity.id).subscribe(result => {
+			this.service.findAllDiscenteParticipanteById(dto.id).subscribe(result => {
 				this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
 				this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(result);
 
@@ -80,10 +79,6 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

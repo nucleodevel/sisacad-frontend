@@ -29,6 +29,13 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
+	}
+
+	ngOnInitSuperAdditional(dto: EstruturaCurricularDto) {
 
 		this.service.findAllDisciplinaById(this.id).subscribe(data => {
 			console.log(data);
@@ -36,10 +43,7 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	}
-
-	ngAfterViewInit() {
-		this.hideloader(this.loader, this.bodyCard);
+		
 	}
 
 }
