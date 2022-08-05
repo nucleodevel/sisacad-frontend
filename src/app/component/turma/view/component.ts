@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -22,8 +22,9 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
-	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: TurmaService, protected route: ActivatedRoute,
+		protected ofertaDisciplinaService: OfertaDisciplinaService) {
+
 		super(service, route, 'turma');
 	}
 
@@ -43,7 +44,7 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 	}
 
 	ngOnInitSuperAdditional(dto: TurmaDto) {
-		
+
 	}
 
 }

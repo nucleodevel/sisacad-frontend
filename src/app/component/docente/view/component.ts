@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -17,8 +17,7 @@ export class DocenteViewComponent extends AbstractViewComponent<Docente, Docente
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: DocenteService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: DocenteService, protected route: ActivatedRoute) {
 		super(service, route, 'docente');
 	}
 
@@ -29,9 +28,9 @@ export class DocenteViewComponent extends AbstractViewComponent<Docente, Docente
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional(dto: DocenteDto) {
-		
+
 	}
 
 }

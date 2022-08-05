@@ -26,8 +26,10 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 	listaAvaliacao!: Avaliacao[];
 	listaDiscente!: Discente[];
 
-	constructor(protected service: ParticipacaoAvaliacaoService,
-		protected route: ActivatedRoute, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
+	constructor(protected service: ParticipacaoAvaliacaoService, protected route: ActivatedRoute,
+		protected avaliacaoService: AvaliacaoService,
+		protected discenteService: DiscenteService) {
+
 		super(service, route, 'participacao-avaliacao');
 	}
 
@@ -38,7 +40,7 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.avaliacaoService.findAll().subscribe(data => {
@@ -52,7 +54,7 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareAvaliacao(o1: Avaliacao, o2: Avaliacao) {

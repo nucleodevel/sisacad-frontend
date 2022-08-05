@@ -22,8 +22,9 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 
 	listaCurso!: Curso[];
 
-	constructor(protected service: EstruturaCurricularService,
-		protected route: ActivatedRoute, protected cursoService: CursoService) {
+	constructor(protected service: EstruturaCurricularService, protected route: ActivatedRoute,
+		protected cursoService: CursoService) {
+
 		super(service, route, 'estrutura-curricular');
 	}
 
@@ -34,7 +35,7 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.cursoService.findAll().subscribe(data => {
@@ -42,7 +43,7 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	
+
 	}
 
 	compareCurso(o1: Curso, o2: Curso) {

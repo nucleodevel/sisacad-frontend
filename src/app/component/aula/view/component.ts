@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -8,7 +8,6 @@ import { AulaDto } from '../../../dto/aula/dto';
 import { AulaService } from '../../../service/aula/service';
 
 import { ParticipacaoAula } from '../../../domain/participacao-aula/entity';
-import { ParticipacaoAulaDto } from '../../../dto/participacao-aula/dto';
 import { ParticipacaoAulaService } from '../../../service/participacao-aula/service';
 
 @Component({
@@ -20,11 +19,12 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
-	
+
 	listSelectedParticipacaoAula!: ParticipacaoAula[];
 
-	constructor(protected service: AulaService, protected participacaoAulaService: ParticipacaoAulaService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: AulaService, protected route: ActivatedRoute,
+		protected participacaoAulaService: ParticipacaoAulaService) {
+
 		super(service, route, 'aula');
 	}
 
@@ -44,7 +44,7 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 }

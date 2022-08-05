@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../component/abstract/list/component';
 
@@ -28,9 +27,9 @@ export class AvaliacaoListComponent extends AbstractListComponent<Avaliacao, Ava
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
-		
+
 	}
 
 }

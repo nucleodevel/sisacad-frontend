@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -17,8 +17,7 @@ export class ParticipacaoAvaliacaoViewComponent extends AbstractViewComponent<Pa
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: ParticipacaoAvaliacaoService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: ParticipacaoAvaliacaoService, protected route: ActivatedRoute) {
 		super(service, route, 'participacao-avaliacao');
 	}
 
@@ -31,7 +30,7 @@ export class ParticipacaoAvaliacaoViewComponent extends AbstractViewComponent<Pa
 	}
 
 	ngOnInitSuperAdditional(dto: ParticipacaoAvaliacaoDto) {
-		
+
 	}
 
 }

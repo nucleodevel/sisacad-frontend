@@ -27,7 +27,9 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 	listaEstruturaCurricular!: EstruturaCurricular[];
 
 	constructor(protected service: OfertaCursoService, protected route: ActivatedRoute,
-		protected vestibularService: VestibularService, protected estruturaCurricularService: EstruturaCurricularService) {
+		protected estruturaCurricularService: EstruturaCurricularService,
+		protected vestibularService: VestibularService) {
+
 		super(service, route, 'oferta-curso');
 	}
 
@@ -38,7 +40,7 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.vestibularService.findAll().subscribe(data => {
@@ -52,7 +54,7 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareVestibular(o1: Vestibular, o2: Vestibular) {

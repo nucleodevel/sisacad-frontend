@@ -29,8 +29,10 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 	listNotSelectedDisciplina!: Disciplina[];
 	listSelectedDisciplina!: Disciplina[];
 
-	constructor(protected service: EstruturaCurricularService, protected disciplinaService: DisciplinaService,
-		protected route: ActivatedRoute, protected cursoService: CursoService) {
+	constructor(protected service: EstruturaCurricularService, protected route: ActivatedRoute,
+		protected cursoService: CursoService,
+		protected disciplinaService: DisciplinaService) {
+
 		super(service, route, 'estrutura-curricular');
 	}
 

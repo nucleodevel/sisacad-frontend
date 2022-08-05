@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -22,8 +22,9 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 
 	listSelectedDisciplina!: Disciplina[];
 
-	constructor(protected service: EstruturaCurricularService, protected disciplinaService: DisciplinaService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: EstruturaCurricularService, protected route: ActivatedRoute,
+		protected disciplinaService: DisciplinaService) {
+
 		super(service, route, 'estrutura-curricular');
 	}
 
@@ -43,7 +44,7 @@ export class EstruturaCurricularViewComponent extends AbstractViewComponent<Estr
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 }

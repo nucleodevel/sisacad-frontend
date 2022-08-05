@@ -27,7 +27,9 @@ export class OfertaCursoEditComponent extends AbstractEditComponent<OfertaCurso,
 	listaEstruturaCurricular!: EstruturaCurricular[];
 
 	constructor(protected service: OfertaCursoService, protected route: ActivatedRoute,
-		protected vestibularService: VestibularService, protected estruturaCurricularService: EstruturaCurricularService) {
+		protected estruturaCurricularService: EstruturaCurricularService,
+		protected vestibularService: VestibularService) {
+
 		super(service, route, 'oferta-curso');
 	}
 
@@ -52,7 +54,7 @@ export class OfertaCursoEditComponent extends AbstractEditComponent<OfertaCurso,
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareVestibular(o1: Vestibular, o2: Vestibular) {

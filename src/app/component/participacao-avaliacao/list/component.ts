@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../component/abstract/list/component';
 
@@ -17,8 +16,7 @@ export class ParticipacaoAvaliacaoListComponent extends AbstractListComponent<Pa
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: ParticipacaoAvaliacaoService,
-		) {
+	constructor(protected service: ParticipacaoAvaliacaoService) {
 		super(service, 'participacao-avaliacao');
 	}
 
@@ -29,9 +27,9 @@ export class ParticipacaoAvaliacaoListComponent extends AbstractListComponent<Pa
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
-		
+
 	}
 
 }

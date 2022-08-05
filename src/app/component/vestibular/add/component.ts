@@ -17,8 +17,7 @@ export class VestibularAddComponent extends AbstractAddComponent<Vestibular, Ves
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: VestibularService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: VestibularService, protected route: ActivatedRoute) {
 		super(service, route, 'vestibular');
 	}
 
@@ -29,9 +28,9 @@ export class VestibularAddComponent extends AbstractAddComponent<Vestibular, Ves
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
-		
+
 	}
 
 }

@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../component/abstract/list/component';
 
@@ -17,8 +16,7 @@ export class OfertaDisciplinaListComponent extends AbstractListComponent<OfertaD
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: OfertaDisciplinaService,
-		) {
+	constructor(protected service: OfertaDisciplinaService) {
 		super(service, 'oferta-disciplina');
 	}
 
@@ -29,9 +27,9 @@ export class OfertaDisciplinaListComponent extends AbstractListComponent<OfertaD
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
-		
+
 	}
 
 }

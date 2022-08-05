@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -22,8 +22,9 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 
 	listSelectedEstruturaCurricular!: EstruturaCurricular[];
 
-	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: DisciplinaService, protected route: ActivatedRoute,
+		protected estruturaCurricularService: EstruturaCurricularService) {
+
 		super(service, route, 'disciplina');
 	}
 
@@ -34,7 +35,7 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional(dto: DisciplinaDto) {
 
 		this.service.findAllEstruturaCurricularById(dto.id).subscribe(data => {
@@ -43,7 +44,7 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 }

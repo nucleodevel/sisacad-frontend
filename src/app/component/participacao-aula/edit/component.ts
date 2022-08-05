@@ -26,8 +26,10 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 	listaAula!: Aula[];
 	listaDiscente!: Discente[];
 
-	constructor(protected service: ParticipacaoAulaService,
-		protected route: ActivatedRoute, protected aulaService: AulaService, protected discenteService: DiscenteService) {
+	constructor(protected service: ParticipacaoAulaService, protected route: ActivatedRoute,
+		protected aulaService: AulaService,
+		protected discenteService: DiscenteService) {
+
 		super(service, route, 'participacao-aula');
 	}
 
@@ -52,7 +54,7 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareAula(o1: Aula, o2: Aula) {

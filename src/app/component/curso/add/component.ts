@@ -17,8 +17,7 @@ export class CursoAddComponent extends AbstractAddComponent<Curso, CursoDto, Cur
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: CursoService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: CursoService, protected route: ActivatedRoute) {
 		super(service, route, 'curso');
 	}
 
@@ -29,9 +28,9 @@ export class CursoAddComponent extends AbstractAddComponent<Curso, CursoDto, Cur
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
-	
+
 	}
 
 }

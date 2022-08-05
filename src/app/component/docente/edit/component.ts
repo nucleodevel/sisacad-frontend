@@ -17,8 +17,7 @@ export class DocenteEditComponent extends AbstractEditComponent<Docente, Docente
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: DocenteService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: DocenteService, protected route: ActivatedRoute) {
 		super(service, route, 'docente');
 	}
 
@@ -29,9 +28,9 @@ export class DocenteEditComponent extends AbstractEditComponent<Docente, Docente
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional(dto: DocenteDto) {
-		
+
 	}
 
 }

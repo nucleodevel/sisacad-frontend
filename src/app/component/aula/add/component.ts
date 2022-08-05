@@ -25,16 +25,18 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
-	
+
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
 	listDiscente!: Discente[];
 	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
-	constructor(protected service: AulaService,
-		protected route: ActivatedRoute, protected discenteService: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
+	constructor(protected service: AulaService, protected route: ActivatedRoute,
+		protected discenteService: DiscenteService,
+		protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected participacaoAulaService: ParticipacaoAulaService) {
+
 		super(service, route, 'aula');
 	}
 
@@ -45,7 +47,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
@@ -53,7 +55,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	onSubmit() {
@@ -76,7 +78,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 					this.setErrorMessage(error);
 				});
 			});
-			
+
 		}, error => {
 			this.setErrorMessage(error);
 		});
@@ -98,13 +100,13 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 			this.setErrorMessage(error);
 		});
 	}
-	
+
 	setDiscenteAsSelected(index: number) {
 		var item = this.listNotSelectedDiscente[index];
 		this.listSelectedDiscente.push(item);
 		this.listNotSelectedDiscente.splice(index, 1);
 	}
-	
+
 	setDiscenteAsNotSelected(index: number) {
 		var item = this.listSelectedDiscente[index];
 		this.listNotSelectedDiscente.push(item);

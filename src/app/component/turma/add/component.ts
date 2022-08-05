@@ -22,8 +22,9 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 
 	listaOfertaCurso!: OfertaCurso[];
 
-	constructor(protected service: TurmaService,
-		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
+	constructor(protected service: TurmaService, protected route: ActivatedRoute,
+		protected ofertaCursoService: OfertaCursoService) {
+
 		super(service, route, 'turma');
 	}
 
@@ -34,7 +35,7 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.ofertaCursoService.findAll().subscribe(data => {
@@ -42,7 +43,7 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {

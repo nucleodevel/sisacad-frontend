@@ -33,9 +33,11 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
-	constructor(protected service: AulaService,
-		protected route: ActivatedRoute, protected discenteService: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
+	constructor(protected service: AulaService, protected route: ActivatedRoute, 
+		protected discenteService: DiscenteService, 
+		protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected participacaoAulaService: ParticipacaoAulaService) {
+			
 		super(service, route, 'aula');
 	}
 

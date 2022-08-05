@@ -26,8 +26,10 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
 
-	constructor(protected service: OfertaDisciplinaService,
-		protected route: ActivatedRoute, protected disciplinaService: DisciplinaService, protected docenteService: DocenteService) {
+	constructor(protected service: OfertaDisciplinaService, protected route: ActivatedRoute,
+		protected disciplinaService: DisciplinaService,
+		protected docenteService: DocenteService) {
+
 		super(service, route, 'oferta-disciplina');
 	}
 
@@ -38,7 +40,7 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.disciplinaService.findAll().subscribe(data => {
@@ -52,7 +54,7 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {

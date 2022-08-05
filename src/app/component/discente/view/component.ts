@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
 
@@ -22,8 +22,9 @@ export class DiscenteViewComponent extends AbstractViewComponent<Discente, Disce
 
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
-	constructor(protected service: DiscenteService, protected ofertaDisciplinaService: OfertaDisciplinaService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: DiscenteService, protected route: ActivatedRoute,
+		protected ofertaDisciplinaService: OfertaDisciplinaService) {
+
 		super(service, route, 'discente');
 	}
 
@@ -43,7 +44,7 @@ export class DiscenteViewComponent extends AbstractViewComponent<Discente, Disce
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 }

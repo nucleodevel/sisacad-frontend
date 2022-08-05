@@ -22,8 +22,9 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 
 	listaVestibulando!: Vestibulando[];
 
-	constructor(protected service: DiscenteService,
-		protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
+	constructor(protected service: DiscenteService, protected route: ActivatedRoute,
+		protected vestibulandoService: VestibulandoService) {
+
 		super(service, route, 'discente');
 	}
 
@@ -34,7 +35,7 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.vestibulandoService.findAll().subscribe(data => {
@@ -42,7 +43,7 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 		}, error => {
 			this.setErrorMessage(error);
 		});
-	
+
 	}
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {

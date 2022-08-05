@@ -20,8 +20,9 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: DisciplinaService, protected route: ActivatedRoute,
+		protected estruturaCurricularService: EstruturaCurricularService) {
+
 		super(service, route, 'disciplina');
 	}
 
@@ -32,9 +33,9 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional(dto: DisciplinaDto) {
-		
+
 	}
 
 	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {

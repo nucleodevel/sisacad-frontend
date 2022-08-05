@@ -26,8 +26,10 @@ export class ParticipacaoAulaAddComponent extends AbstractAddComponent<Participa
 	listaAula!: Aula[];
 	listaDiscente!: Discente[];
 
-	constructor(protected service: ParticipacaoAulaService,
-		protected route: ActivatedRoute, protected aulaService: AulaService, protected discenteService: DiscenteService) {
+	constructor(protected service: ParticipacaoAulaService, protected route: ActivatedRoute,
+		protected aulaService: AulaService,
+		protected discenteService: DiscenteService) {
+
 		super(service, route, 'participacao-aula');
 	}
 
@@ -38,7 +40,7 @@ export class ParticipacaoAulaAddComponent extends AbstractAddComponent<Participa
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.aulaService.findAll().subscribe(data => {
@@ -52,7 +54,7 @@ export class ParticipacaoAulaAddComponent extends AbstractAddComponent<Participa
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareAula(o1: Aula, o2: Aula) {

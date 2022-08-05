@@ -17,8 +17,7 @@ export class VestibularEditComponent extends AbstractEditComponent<Vestibular, V
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: VestibularService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: VestibularService, protected route: ActivatedRoute) {
 		super(service, route, 'vestibular');
 	}
 
@@ -31,7 +30,7 @@ export class VestibularEditComponent extends AbstractEditComponent<Vestibular, V
 	}
 
 	ngOnInitSuperAdditional(dto: VestibularDto) {
-		
+
 	}
 
 }

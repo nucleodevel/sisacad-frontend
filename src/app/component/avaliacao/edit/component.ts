@@ -24,6 +24,7 @@ export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, Ava
 
 	constructor(protected service: AvaliacaoService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
+
 		super(service, route, 'avaliacao');
 	}
 
@@ -36,13 +37,13 @@ export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, Ava
 	}
 
 	ngOnInitSuperAdditional(dto: AvaliacaoDto) {
-		
+
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
 			this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {

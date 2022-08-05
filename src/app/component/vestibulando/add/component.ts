@@ -22,8 +22,9 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 
 	listaOfertaCurso!: OfertaCurso[];
 
-	constructor(protected service: VestibulandoService,
-		protected route: ActivatedRoute, protected ofertaCursoService: OfertaCursoService) {
+	constructor(protected service: VestibulandoService, protected route: ActivatedRoute,
+		protected ofertaCursoService: OfertaCursoService) {
+
 		super(service, route, 'vestibulando');
 	}
 
@@ -34,7 +35,7 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.ofertaCursoService.findAll().subscribe(data => {
@@ -42,7 +43,7 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {

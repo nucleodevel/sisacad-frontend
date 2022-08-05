@@ -22,8 +22,9 @@ export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<Aval
 
 	listaVestibulando!: Vestibulando[];
 
-	constructor(protected service: AvaliacaoVestibulandoService,
-		protected route: ActivatedRoute, protected vestibulandoService: VestibulandoService) {
+	constructor(protected service: AvaliacaoVestibulandoService, protected route: ActivatedRoute,
+		protected vestibulandoService: VestibulandoService) {
+
 		super(service, route, 'avaliacao-vestibulando');
 	}
 
@@ -34,7 +35,7 @@ export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<Aval
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.vestibulandoService.findAll().subscribe(data => {
@@ -42,7 +43,7 @@ export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<Aval
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {

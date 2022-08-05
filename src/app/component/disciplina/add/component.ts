@@ -17,8 +17,7 @@ export class DisciplinaAddComponent extends AbstractAddComponent<Disciplina, Dis
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
-	constructor(protected service: DisciplinaService,
-		protected route: ActivatedRoute) {
+	constructor(protected service: DisciplinaService, protected route: ActivatedRoute) {
 		super(service, route, 'disciplina');
 	}
 
@@ -29,9 +28,9 @@ export class DisciplinaAddComponent extends AbstractAddComponent<Disciplina, Dis
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
-	
+
 	}
 
 }

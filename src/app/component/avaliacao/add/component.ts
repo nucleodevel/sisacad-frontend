@@ -24,6 +24,7 @@ export class AvaliacaoAddComponent extends AbstractAddComponent<Avaliacao, Avali
 
 	constructor(protected service: AvaliacaoService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
+
 		super(service, route, 'avaliacao');
 	}
 
@@ -34,7 +35,7 @@ export class AvaliacaoAddComponent extends AbstractAddComponent<Avaliacao, Avali
 	ngAfterViewInit() {
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
-	
+
 	ngOnInitSuperAdditional() {
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
@@ -42,7 +43,7 @@ export class AvaliacaoAddComponent extends AbstractAddComponent<Avaliacao, Avali
 		}, error => {
 			this.setErrorMessage(error);
 		});
-		
+
 	}
 
 	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {
