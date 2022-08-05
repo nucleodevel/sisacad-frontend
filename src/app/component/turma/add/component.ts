@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -17,6 +17,9 @@ import { OfertaCursoService } from '../../../service/oferta-curso/service';
 })
 export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, TurmaService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listaOfertaCurso!: OfertaCurso[];
 
 	constructor(protected service: TurmaService,
@@ -32,6 +35,10 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
@@ -17,6 +17,9 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, TurmaService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
 	constructor(protected service: TurmaService, protected ofertaDisciplinaService: OfertaDisciplinaService,
@@ -33,6 +36,10 @@ export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, T
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 }

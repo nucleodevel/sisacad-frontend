@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -19,6 +19,9 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 	styleUrls: ['./component.css']
 })
 export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, TurmaService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaOfertaCurso!: OfertaCurso[];
 	listOfertaDisciplina!: OfertaDisciplina[];
@@ -71,6 +74,10 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

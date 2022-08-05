@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -17,6 +17,9 @@ import { CursoService } from '../../../service/curso/service';
 })
 export class EstruturaCurricularAddComponent extends AbstractAddComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listaCurso!: Curso[];
 
 	constructor(protected service: EstruturaCurricularService,
@@ -32,6 +35,10 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareCurso(o1: Curso, o2: Curso) {

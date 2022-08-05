@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
@@ -17,6 +17,9 @@ import { EstruturaCurricularService } from '../../../service/estrutura-curricula
 })
 export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listSelectedEstruturaCurricular!: EstruturaCurricular[];
 
 	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
@@ -33,6 +36,10 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -19,6 +19,9 @@ import { DisciplinaService } from '../../../service/disciplina/service';
 	styleUrls: ['./component.css']
 })
 export class EstruturaCurricularEditComponent extends AbstractEditComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaCurso!: Curso[];
 	listDisciplina!: Disciplina[];
@@ -71,6 +74,10 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

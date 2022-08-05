@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -19,6 +19,9 @@ import { DiscenteService } from '../../../service/discente/service';
 	styleUrls: ['./component.css']
 })
 export class ParticipacaoAulaAddComponent extends AbstractAddComponent<ParticipacaoAula, ParticipacaoAulaDto, ParticipacaoAulaService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaAula!: Aula[];
 	listaDiscente!: Discente[];
@@ -42,6 +45,10 @@ export class ParticipacaoAulaAddComponent extends AbstractAddComponent<Participa
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareAula(o1: Aula, o2: Aula) {

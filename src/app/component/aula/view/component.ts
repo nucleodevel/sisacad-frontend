@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractViewComponent } from '../../../component/abstract/view/component';
@@ -17,6 +17,9 @@ import { ParticipacaoAulaService } from '../../../service/participacao-aula/serv
 	styleUrls: ['./component.css']
 })
 export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, AulaService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 	
 	listSelectedParticipacaoAula!: ParticipacaoAula[];
 
@@ -34,6 +37,10 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 }

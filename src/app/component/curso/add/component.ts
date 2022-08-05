@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -14,6 +14,9 @@ import { CursoService } from '../../../service/curso/service';
 })
 export class CursoAddComponent extends AbstractAddComponent<Curso, CursoDto, CursoService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	constructor(protected service: CursoService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'curso');
@@ -21,6 +24,10 @@ export class CursoAddComponent extends AbstractAddComponent<Curso, CursoDto, Cur
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 }

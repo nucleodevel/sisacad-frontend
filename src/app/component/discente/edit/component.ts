@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -19,6 +19,9 @@ import { VestibulandoService } from '../../../service/vestibulando/service';
 	styleUrls: ['./component.css']
 })
 export class DiscenteEditComponent extends AbstractEditComponent<Discente, DiscenteDto, DiscenteService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibulando!: Vestibulando[];
 	listOfertaDisciplina!: OfertaDisciplina[];
@@ -71,6 +74,10 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AbstractListComponent } from '../../../component/abstract/list/component';
@@ -14,6 +14,9 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class OfertaDisciplinaListComponent extends AbstractListComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	constructor(protected service: OfertaDisciplinaService,
 		) {
 		super(service, 'oferta-disciplina');
@@ -21,6 +24,10 @@ export class OfertaDisciplinaListComponent extends AbstractListComponent<OfertaD
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 }

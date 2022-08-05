@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -17,6 +17,9 @@ import { EstruturaCurricularService } from '../../../service/estrutura-curricula
 })
 export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	constructor(protected service: DisciplinaService, protected estruturaCurricularService: EstruturaCurricularService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'disciplina');
@@ -24,6 +27,10 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {

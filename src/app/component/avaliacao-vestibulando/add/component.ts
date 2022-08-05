@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -17,6 +17,9 @@ import { VestibulandoService } from '../../../service/vestibulando/service';
 })
 export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listaVestibulando!: Vestibulando[];
 
 	constructor(protected service: AvaliacaoVestibulandoService,
@@ -32,6 +35,10 @@ export class AvaliacaoVestibulandoAddComponent extends AbstractAddComponent<Aval
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {

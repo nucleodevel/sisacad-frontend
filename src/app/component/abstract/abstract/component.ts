@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppInjector } from '../../../app.module';
 
@@ -10,10 +11,8 @@ import { AbstractService } from '../../../service/abstract/service';
 export abstract class AbstractComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 
 	protected _router!: Router;
-
 	private _dateUtil!: DateUtil;
 
-	loading: boolean = false;
 	errorMessage: string = "";
 
 	constructor(protected service: S, protected route: ActivatedRoute, public routerPrefix: string) {
@@ -58,11 +57,20 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 		console.error(JSON.stringify(errorMessage));
 
 		this.errorMessage = errorMessage;
-		this.loading = false;
 	}
 
 	list() {
 		this.router.navigate(['/' + this.routerPrefix + '/list']);
+	}
+
+	async hideloader(loader: ElementRef, bodyCard: ElementRef) {
+		await this.delay(1000);
+		loader.nativeElement.style.display = 'none';
+		bodyCard.nativeElement.style.display = 'block';
+	}
+
+	delay(ms: number) {
+		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
 }

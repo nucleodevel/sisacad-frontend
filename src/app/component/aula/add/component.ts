@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -23,6 +23,9 @@ import { ParticipacaoAulaService } from '../../../service/participacao-aula/serv
 })
 export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+	
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
 	listDiscente!: Discente[];
@@ -43,6 +46,10 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {

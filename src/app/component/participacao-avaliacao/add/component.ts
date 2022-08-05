@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -19,6 +19,9 @@ import { DiscenteService } from '../../../service/discente/service';
 	styleUrls: ['./component.css']
 })
 export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaAvaliacao!: Avaliacao[];
 	listaDiscente!: Discente[];
@@ -42,6 +45,10 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareAvaliacao(o1: Avaliacao, o2: Avaliacao) {

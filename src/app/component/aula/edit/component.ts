@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -22,6 +22,9 @@ import { ParticipacaoAulaService } from '../../../service/participacao-aula/serv
 	styleUrls: ['./component.css']
 })
 export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, AulaService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
@@ -77,6 +80,10 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	onSubmit() {
@@ -140,13 +147,13 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 		super.onSubmit();
 
 	}
-	
+
 	setDiscenteAsSelected(index: number) {
 		var item = this.listNotSelectedDiscente[index];
 		this.listSelectedDiscente.push(item);
 		this.listNotSelectedDiscente.splice(index, 1);
 	}
-	
+
 	setDiscenteAsNotSelected(index: number) {
 		var item = this.listSelectedDiscente[index];
 		this.listNotSelectedDiscente.push(item);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -19,6 +19,9 @@ import { VestibularService } from '../../../service/vestibular/service';
 	styleUrls: ['./component.css']
 })
 export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, OfertaCursoDto, OfertaCursoService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibular!: Vestibular[];
 	listaEstruturaCurricular!: EstruturaCurricular[];
@@ -42,6 +45,10 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareVestibular(o1: Vestibular, o2: Vestibular) {

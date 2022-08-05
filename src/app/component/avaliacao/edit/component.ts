@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -17,6 +17,9 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, AvaliacaoDto, AvaliacaoService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listaOfertaDisciplina!: OfertaDisciplina[];
 
 	constructor(protected service: AvaliacaoService, protected route: ActivatedRoute,
@@ -32,6 +35,10 @@ export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, Ava
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {

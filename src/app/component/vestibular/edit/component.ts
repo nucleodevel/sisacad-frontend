@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -14,6 +14,9 @@ import { VestibularService } from '../../../service/vestibular/service';
 })
 export class VestibularEditComponent extends AbstractEditComponent<Vestibular, VestibularDto, VestibularService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	constructor(protected service: VestibularService,
 		protected route: ActivatedRoute) {
 		super(service, route, 'vestibular');
@@ -21,6 +24,10 @@ export class VestibularEditComponent extends AbstractEditComponent<Vestibular, V
 
 	ngOnInit() {
 		super.ngOnInitSuper();
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 }

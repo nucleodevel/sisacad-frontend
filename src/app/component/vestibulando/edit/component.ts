@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
@@ -17,6 +17,9 @@ import { OfertaCursoService } from '../../../service/oferta-curso/service';
 })
 export class VestibulandoEditComponent extends AbstractEditComponent<Vestibulando, VestibulandoDto, VestibulandoService> {
 
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
 	listaOfertaCurso!: OfertaCurso[];
 
 	constructor(protected service: VestibulandoService,
@@ -32,6 +35,10 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {

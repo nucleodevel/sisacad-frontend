@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
@@ -19,6 +19,9 @@ import { DocenteService } from '../../../service/docente/service';
 	styleUrls: ['./component.css']
 })
 export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> {
+
+	@ViewChild('loader') loader!: ElementRef;
+	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
@@ -42,6 +45,10 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 		}, error => {
 			this.setErrorMessage(error);
 		});
+	}
+
+	ngAfterViewInit() {
+		this.hideloader(this.loader, this.bodyCard);
 	}
 
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {

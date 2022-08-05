@@ -1,6 +1,10 @@
-<div class="card my-5">
+<div class="d-flex justify-content-center">
+	<div class="spinner-border" role="status" #loader>
+		<span class="sr-only"></span>
+	</div>
+</div>
 
-	<div *ngIf="loading">loading...</div>
+<div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
 			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
@@ -52,8 +56,7 @@
 								<td>{{ item.vestibulando.nome }}</td>
 								<td>{{ item.vestibulando.cpf }}</td>
 								<td><button (click)="setDiscenteAsSelected(i)"
-										class="btn btn-danger">
-										&gt;</button></td>
+										class="btn btn-danger">&gt;</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -71,8 +74,7 @@
 						<tbody>
 							<tr *ngFor="let item of listSelectedDiscente; let i=index">
 								<td><button (click)="setDiscenteAsNotSelected(i)"
-										class="btn btn-danger">
-										&lt; </button></td>
+										class="btn btn-danger">&lt;</button></td>
 								<td>{{ item.vestibulando.nome }}</td>
 								<td>{{ item.vestibulando.cpf }}</td>
 							</tr>
