@@ -137,7 +137,7 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 			});
 		});
 
-		this.list();
+		super.onSubmit();
 
 	}
 	

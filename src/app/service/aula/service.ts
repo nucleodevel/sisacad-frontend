@@ -37,8 +37,9 @@ export class AulaService extends AbstractService<Aula, AulaDto> {
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
-		entity.inicio = dto.inicio;
-		entity.termino = dto.termino;
+
+		entity.inicio = new Date(dto.inicio);
+		entity.termino = new Date(dto.termino);
 
 		this.ofertaDisciplinaService.findById(dto.ofertaDisciplina).subscribe(data => {
 			console.log(data);

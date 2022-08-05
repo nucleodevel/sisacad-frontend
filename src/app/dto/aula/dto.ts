@@ -8,9 +8,9 @@ export class AulaDto extends AbstractDto<Aula> {
 
 	copyFromEntity(entity: Aula) {
 		this.id = entity.id;
-
-		this.inicio = entity.inicio;
-		this.termino = entity.termino;
+		
+		this.inicio = entity.inicio.getTime();
+		this.termino = entity.termino.getTime();
 
 		if (entity.ofertaDisciplina != null) {
 			this.ofertaDisciplina = entity.ofertaDisciplina.id;
