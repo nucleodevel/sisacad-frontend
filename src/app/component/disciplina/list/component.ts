@@ -13,12 +13,24 @@ import { DisciplinaService } from '../../../service/disciplina/service';
 })
 export class DisciplinaListComponent extends AbstractListComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DisciplinaService) {
 		super(service, 'disciplina');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

@@ -11,14 +11,27 @@ import { EstruturaCurricularService } from '../../../service/estrutura-curricula
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class EstruturaCurricularListComponent extends AbstractListComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+export class EstruturaCurricularListComponent 
+	extends AbstractListComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: EstruturaCurricularService) {
 		super(service, 'estrutura-curricular');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

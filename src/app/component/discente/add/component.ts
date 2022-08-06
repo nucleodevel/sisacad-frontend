@@ -17,16 +17,28 @@ import { VestibulandoService } from '../../../service/vestibulando/service';
 })
 export class DiscenteAddComponent extends AbstractAddComponent<Discente, DiscenteDto, DiscenteService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibulando!: Vestibulando[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DiscenteService, protected route: ActivatedRoute,
 		protected vestibulandoService: VestibulandoService) {
 
 		super(service, route, 'discente');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -45,6 +57,10 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {
 		return o1.compare(o2);

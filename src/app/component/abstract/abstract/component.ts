@@ -11,14 +11,26 @@ import { AbstractService } from '../../../service/abstract/service';
 
 export abstract class AbstractComponent<E extends AbstractEntity, DTO extends AbstractDto<E>, S extends AbstractService<E, DTO>> {
 
+	/*
+	 * Attributes
+	 */
+
 	protected _router!: Router;
 	private _dateUtil!: DateUtil;
 
 	errorMessage: string = "";
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: S, protected route: ActivatedRoute, public routerPrefix: string) {
 
 	}
+
+	/*
+	 * Getters
+	 */
 
 	get router(): Router {
 		if (!this._router) {
@@ -34,10 +46,42 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 		return this._dateUtil;
 	}
 
+	/*
+	 * Component methods
+	 */
+
 	abstract ngOnInitSuper(): void;
-	
+
 	ngAfterViewInitSuper(loader: ElementRef, bodyCard: ElementRef) {
 		this.hideloader(loader, bodyCard);
+	}
+
+	/*
+	 * Redirect
+	 */
+
+	list() {
+		this.router.navigate(['/' + this.routerPrefix + '/list']);
+	}
+
+	/*
+	 * Auxiliares
+	 */
+
+	async hideloader(loader: ElementRef, bodyCard: ElementRef) {
+		await this.delay(500);
+		loader.nativeElement.style.display = 'none';
+		bodyCard.nativeElement.style.display = 'block';
+	}
+
+	async hideloaderAndDelay(loader: ElementRef, bodyCard: ElementRef, delay: number) {
+		await this.delay(delay);
+		loader.nativeElement.style.display = 'none';
+		bodyCard.nativeElement.style.display = 'block';
+	}
+
+	delay(ms: number) {
+		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
 	setErrorMessage(error: any) {
@@ -62,26 +106,6 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 		console.error(JSON.stringify(errorMessage));
 
 		this.errorMessage = errorMessage;
-	}
-
-	list() {
-		this.router.navigate(['/' + this.routerPrefix + '/list']);
-	}
-
-	async hideloader(loader: ElementRef, bodyCard: ElementRef) {
-		await this.delay(500);
-		loader.nativeElement.style.display = 'none';
-		bodyCard.nativeElement.style.display = 'block';
-	}
-
-	async hideloaderAndDelay(loader: ElementRef, bodyCard: ElementRef, delay: number) {
-		await this.delay(delay);
-		loader.nativeElement.style.display = 'none';
-		bodyCard.nativeElement.style.display = 'block';
-	}
-
-	delay(ms: number) {
-		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
 }

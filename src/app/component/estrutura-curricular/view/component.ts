@@ -15,18 +15,31 @@ import { DisciplinaService } from '../../../service/disciplina/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class EstruturaCurricularViewComponent extends AbstractViewComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+export class EstruturaCurricularViewComponent 
+	extends AbstractViewComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listSelectedDisciplina!: Disciplina[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: EstruturaCurricularService, protected route: ActivatedRoute,
 		protected disciplinaService: DisciplinaService) {
 
 		super(service, route, 'estrutura-curricular');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

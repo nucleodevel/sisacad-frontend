@@ -17,16 +17,28 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class DiscenteViewComponent extends AbstractViewComponent<Discente, DiscenteDto, DiscenteService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DiscenteService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
 
 		super(service, route, 'discente');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

@@ -17,16 +17,28 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class TurmaViewComponent extends AbstractViewComponent<Turma, TurmaDto, TurmaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: TurmaService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
 
 		super(service, route, 'turma');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

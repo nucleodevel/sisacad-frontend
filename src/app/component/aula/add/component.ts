@@ -23,6 +23,10 @@ import { ParticipacaoAulaService } from '../../../service/participacao-aula/serv
 })
 export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
@@ -32,6 +36,10 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: AulaService, protected route: ActivatedRoute,
 		protected discenteService: DiscenteService,
 		protected ofertaDisciplinaService: OfertaDisciplinaService,
@@ -39,6 +47,10 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 
 		super(service, route, 'aula');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -87,6 +99,10 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 
 	}
 
+	/*
+	 * Form events
+	 */
+
 	onOfertaDisciplinaChange(ofertaDisciplina: OfertaDisciplina) {
 
 		this.listDiscente = [];
@@ -112,6 +128,10 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 		this.listNotSelectedDiscente.push(item);
 		this.listSelectedDiscente.splice(index, 1);
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareDiscente(o1: Discente, o2: Discente) {
 		return o1.compare(o2);

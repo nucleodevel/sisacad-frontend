@@ -15,18 +15,31 @@ import { VestibulandoService } from '../../../service/vestibulando/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class AvaliacaoVestibulandoEditComponent extends AbstractEditComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> {
+export class AvaliacaoVestibulandoEditComponent
+	extends AbstractEditComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibulando!: Vestibulando[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: AvaliacaoVestibulandoService, protected route: ActivatedRoute,
 		protected vestibulandoService: VestibulandoService) {
 
 		super(service, route, 'avaliacao-vestibulando');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -45,6 +58,10 @@ export class AvaliacaoVestibulandoEditComponent extends AbstractEditComponent<Av
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {
 		return o1.compare(o2);

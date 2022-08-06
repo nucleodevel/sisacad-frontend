@@ -13,12 +13,24 @@ import { AulaService } from '../../../service/aula/service';
 })
 export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, AulaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: AulaService) {
 		super(service, 'aula');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

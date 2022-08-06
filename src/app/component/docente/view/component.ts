@@ -14,12 +14,24 @@ import { DocenteService } from '../../../service/docente/service';
 })
 export class DocenteViewComponent extends AbstractViewComponent<Docente, DocenteDto, DocenteService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DocenteService, protected route: ActivatedRoute) {
 		super(service, route, 'docente');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

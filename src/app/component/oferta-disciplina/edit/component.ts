@@ -26,6 +26,10 @@ import { TurmaService } from '../../../service/turma/service';
 })
 export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
@@ -36,6 +40,10 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 	listNotSelectedDiscente!: Discente[];
 	listSelectedDiscente!: Discente[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: OfertaDisciplinaService, protected route: ActivatedRoute,
 		protected discenteService: DiscenteService,
 		protected disciplinaService: DisciplinaService,
@@ -44,6 +52,10 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 		super(service, route, 'oferta-disciplina');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -151,6 +163,10 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		});
 	}
 
+	/*
+	 * Form events
+	 */
+
 	setDiscenteAsSelected(index: number) {
 		var item = this.listNotSelectedDiscente[index];
 		this.listSelectedDiscente.push(item);
@@ -163,6 +179,14 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		this.listSelectedDiscente.splice(index, 1);
 	}
 
+	/*
+	 * Compare methods
+	 */
+
+	compareDiscente(o1: Discente, o2: Discente) {
+		return o1.compare(o2);
+	}
+
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {
 		return o1.compare(o2);
 	}
@@ -172,10 +196,6 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 	}
 
 	compareTurma(o1: Turma, o2: Turma) {
-		return o1.compare(o2);
-	}
-
-	compareDiscente(o1: Discente, o2: Discente) {
 		return o1.compare(o2);
 	}
 

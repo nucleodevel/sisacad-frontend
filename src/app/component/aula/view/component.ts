@@ -17,16 +17,28 @@ import { ParticipacaoAulaService } from '../../../service/participacao-aula/serv
 })
 export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, AulaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listSelectedParticipacaoAula!: ParticipacaoAula[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: AulaService, protected route: ActivatedRoute,
 		protected participacaoAulaService: ParticipacaoAulaService) {
 
 		super(service, route, 'aula');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

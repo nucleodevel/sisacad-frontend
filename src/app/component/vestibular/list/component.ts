@@ -13,12 +13,24 @@ import { VestibularService } from '../../../service/vestibular/service';
 })
 export class VestibularListComponent extends AbstractListComponent<Vestibular, VestibularDto, VestibularService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: VestibularService) {
 		super(service, 'vestibular');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

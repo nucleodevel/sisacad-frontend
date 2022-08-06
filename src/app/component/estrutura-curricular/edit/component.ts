@@ -18,7 +18,12 @@ import { DisciplinaService } from '../../../service/disciplina/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class EstruturaCurricularEditComponent extends AbstractEditComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+export class EstruturaCurricularEditComponent 
+	extends AbstractEditComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
@@ -29,12 +34,20 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 	listNotSelectedDisciplina!: Disciplina[];
 	listSelectedDisciplina!: Disciplina[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: EstruturaCurricularService, protected route: ActivatedRoute,
 		protected cursoService: CursoService,
 		protected disciplinaService: DisciplinaService) {
 
 		super(service, route, 'estrutura-curricular');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -134,6 +147,10 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 		});
 	}
 
+	/*
+	 * Form events
+	 */
+
 	setDisciplinaAsSelected(index: number) {
 		var item = this.listNotSelectedDisciplina[index];
 		this.listSelectedDisciplina.push(item);
@@ -145,6 +162,10 @@ export class EstruturaCurricularEditComponent extends AbstractEditComponent<Estr
 		this.listNotSelectedDisciplina.push(item);
 		this.listSelectedDisciplina.splice(index, 1);
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareCurso(o1: Curso, o2: Curso) {
 		return o1.compare(o2);

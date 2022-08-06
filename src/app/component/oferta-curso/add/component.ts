@@ -20,11 +20,19 @@ import { VestibularService } from '../../../service/vestibular/service';
 })
 export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, OfertaCursoDto, OfertaCursoService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibular!: Vestibular[];
 	listaEstruturaCurricular!: EstruturaCurricular[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: OfertaCursoService, protected route: ActivatedRoute,
 		protected estruturaCurricularService: EstruturaCurricularService,
@@ -32,6 +40,10 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 
 		super(service, route, 'oferta-curso');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -57,11 +69,15 @@ export class OfertaCursoAddComponent extends AbstractAddComponent<OfertaCurso, O
 
 	}
 
-	compareVestibular(o1: Vestibular, o2: Vestibular) {
+	/*
+	 * Compare methods
+	 */
+
+	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {
 		return o1.compare(o2);
 	}
 
-	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {
+	compareVestibular(o1: Vestibular, o2: Vestibular) {
 		return o1.compare(o2);
 	}
 

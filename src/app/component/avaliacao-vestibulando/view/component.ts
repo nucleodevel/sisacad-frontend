@@ -12,14 +12,27 @@ import { AvaliacaoVestibulandoService } from '../../../service/avaliacao-vestibu
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class AvaliacaoVestibulandoViewComponent extends AbstractViewComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> {
+export class AvaliacaoVestibulandoViewComponent
+	extends AbstractViewComponent<AvaliacaoVestibulando, AvaliacaoVestibulandoDto, AvaliacaoVestibulandoService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: AvaliacaoVestibulandoService, protected route: ActivatedRoute) {
 		super(service, route, 'avaliacao-vestibulando');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

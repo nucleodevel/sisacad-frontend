@@ -17,16 +17,28 @@ import { OfertaCursoService } from '../../../service/oferta-curso/service';
 })
 export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, TurmaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaOfertaCurso!: OfertaCurso[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: TurmaService, protected route: ActivatedRoute,
 		protected ofertaCursoService: OfertaCursoService) {
 
 		super(service, route, 'turma');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -45,6 +57,10 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {
 		return o1.compare(o2);

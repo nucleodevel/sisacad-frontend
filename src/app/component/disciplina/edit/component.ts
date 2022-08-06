@@ -17,14 +17,26 @@ import { EstruturaCurricularService } from '../../../service/estrutura-curricula
 })
 export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, DisciplinaDto, DisciplinaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DisciplinaService, protected route: ActivatedRoute,
 		protected estruturaCurricularService: EstruturaCurricularService) {
 
 		super(service, route, 'disciplina');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -37,6 +49,10 @@ export class DisciplinaEditComponent extends AbstractEditComponent<Disciplina, D
 	ngOnInitSuperAdditional(dto: DisciplinaDto) {
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareEstruturaCurricular(o1: EstruturaCurricular, o2: EstruturaCurricular) {
 		return o1.compare(o2);

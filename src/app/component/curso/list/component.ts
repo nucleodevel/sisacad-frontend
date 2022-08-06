@@ -13,12 +13,24 @@ import { CursoService } from '../../../service/curso/service';
 })
 export class CursoListComponent extends AbstractListComponent<Curso, CursoDto, CursoService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: CursoService) {
 		super(service, 'curso');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

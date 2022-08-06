@@ -20,6 +20,10 @@ import { VestibulandoService } from '../../../service/vestibulando/service';
 })
 export class DiscenteEditComponent extends AbstractEditComponent<Discente, DiscenteDto, DiscenteService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
@@ -29,12 +33,20 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 	listNotSelectedOfertaDisciplina!: OfertaDisciplina[];
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: DiscenteService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected vestibulandoService: VestibulandoService) {
 
 		super(service, route, 'discente');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -133,6 +145,10 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		});
 	}
 
+	/*
+	 * Form events
+	 */
+
 	setOfertaDisciplinaAsSelected(index: number) {
 		var item = this.listNotSelectedOfertaDisciplina[index];
 		this.listSelectedOfertaDisciplina.push(item);
@@ -145,11 +161,15 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		this.listSelectedOfertaDisciplina.splice(index, 1);
 	}
 
-	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {
+	/*
+	 * Compare methods
+	 */
+
+	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {
 		return o1.compare(o2);
 	}
 
-	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {
+	compareVestibulando(o1: Vestibulando, o2: Vestibulando) {
 		return o1.compare(o2);
 	}
 

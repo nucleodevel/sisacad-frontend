@@ -20,11 +20,19 @@ import { DiscenteService } from '../../../service/discente/service';
 })
 export class ParticipacaoAulaEditComponent extends AbstractEditComponent<ParticipacaoAula, ParticipacaoAulaDto, ParticipacaoAulaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaAula!: Aula[];
 	listaDiscente!: Discente[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: ParticipacaoAulaService, protected route: ActivatedRoute,
 		protected aulaService: AulaService,
@@ -32,6 +40,10 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 
 		super(service, route, 'participacao-aula');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -56,6 +68,10 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareAula(o1: Aula, o2: Aula) {
 		return o1.compare(o2);

@@ -13,12 +13,24 @@ import { TurmaService } from '../../../service/turma/service';
 })
 export class TurmaListComponent extends AbstractListComponent<Turma, TurmaDto, TurmaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: TurmaService) {
 		super(service, 'turma');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

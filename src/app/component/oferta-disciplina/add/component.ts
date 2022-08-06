@@ -20,11 +20,19 @@ import { DocenteService } from '../../../service/docente/service';
 })
 export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDisciplina, OfertaDisciplinaDto, OfertaDisciplinaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: OfertaDisciplinaService, protected route: ActivatedRoute,
 		protected disciplinaService: DisciplinaService,
@@ -32,6 +40,10 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 
 		super(service, route, 'oferta-disciplina');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -56,6 +68,10 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {
 		return o1.compare(o2);

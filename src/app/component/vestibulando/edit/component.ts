@@ -17,16 +17,28 @@ import { OfertaCursoService } from '../../../service/oferta-curso/service';
 })
 export class VestibulandoEditComponent extends AbstractEditComponent<Vestibulando, VestibulandoDto, VestibulandoService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaOfertaCurso!: OfertaCurso[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: VestibulandoService, protected route: ActivatedRoute,
 		protected ofertaCursoService: OfertaCursoService) {
 
 		super(service, route, 'vestibulando');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -45,6 +57,10 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {
 		return o1.compare(o2);

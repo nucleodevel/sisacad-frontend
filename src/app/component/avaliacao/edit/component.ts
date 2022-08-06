@@ -17,16 +17,28 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, AvaliacaoDto, AvaliacaoService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaOfertaDisciplina!: OfertaDisciplina[];
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: AvaliacaoService, protected route: ActivatedRoute,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
 
 		super(service, route, 'avaliacao');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		this.ngOnInitSuper();
@@ -45,6 +57,10 @@ export class AvaliacaoEditComponent extends AbstractEditComponent<Avaliacao, Ava
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareOfertaDisciplina(o1: OfertaDisciplina, o2: OfertaDisciplina) {
 		return o1.compare(o2);

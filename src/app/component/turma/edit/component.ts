@@ -20,6 +20,10 @@ import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/serv
 })
 export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, TurmaService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
@@ -29,12 +33,20 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 	listNotSelectedOfertaDisciplina!: OfertaDisciplina[];
 	listSelectedOfertaDisciplina!: OfertaDisciplina[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: TurmaService, protected route: ActivatedRoute,
 		protected ofertaCursoService: OfertaCursoService,
 		protected ofertaDisciplinaService: OfertaDisciplinaService) {
 
 		super(service, route, 'turma');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -134,6 +146,10 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		});
 	}
 
+	/*
+	 * Form events
+	 */
+
 	setOfertaDisciplinaAsSelected(index: number) {
 		var item = this.listNotSelectedOfertaDisciplina[index];
 		this.listSelectedOfertaDisciplina.push(item);
@@ -145,6 +161,10 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		this.listNotSelectedOfertaDisciplina.push(item);
 		this.listSelectedOfertaDisciplina.splice(index, 1);
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareOfertaCurso(o1: OfertaCurso, o2: OfertaCurso) {
 		return o1.compare(o2);

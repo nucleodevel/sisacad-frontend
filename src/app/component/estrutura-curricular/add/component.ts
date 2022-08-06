@@ -15,18 +15,31 @@ import { CursoService } from '../../../service/curso/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class EstruturaCurricularAddComponent extends AbstractAddComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+export class EstruturaCurricularAddComponent 
+	extends AbstractAddComponent<EstruturaCurricular, EstruturaCurricularDto, EstruturaCurricularService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaCurso!: Curso[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: EstruturaCurricularService, protected route: ActivatedRoute,
 		protected cursoService: CursoService) {
 
 		super(service, route, 'estrutura-curricular');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -45,6 +58,10 @@ export class EstruturaCurricularAddComponent extends AbstractAddComponent<Estrut
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareCurso(o1: Curso, o2: Curso) {
 		return o1.compare(o2);

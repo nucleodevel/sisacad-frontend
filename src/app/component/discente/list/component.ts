@@ -13,12 +13,24 @@ import { DiscenteService } from '../../../service/discente/service';
 })
 export class DiscenteListComponent extends AbstractListComponent<Discente, DiscenteDto, DiscenteService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DiscenteService) {
 		super(service, 'discente');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

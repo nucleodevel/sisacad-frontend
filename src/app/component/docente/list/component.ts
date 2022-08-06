@@ -13,12 +13,24 @@ import { DocenteService } from '../../../service/docente/service';
 })
 export class DocenteListComponent extends AbstractListComponent<Docente, DocenteDto, DocenteService> {
 
+	/*
+	 * Attributes
+	 */
+
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
+
+	/*
+	 * Constructors
+	 */
 
 	constructor(protected service: DocenteService) {
 		super(service, 'docente');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

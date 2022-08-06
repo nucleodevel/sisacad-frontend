@@ -11,14 +11,27 @@ import { ParticipacaoAvaliacaoService } from '../../../service/participacao-aval
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class ParticipacaoAvaliacaoListComponent extends AbstractListComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
+export class ParticipacaoAvaliacaoListComponent 
+	extends AbstractListComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: ParticipacaoAvaliacaoService) {
 		super(service, 'participacao-avaliacao');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();

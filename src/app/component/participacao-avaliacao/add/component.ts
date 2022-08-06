@@ -18,7 +18,12 @@ import { DiscenteService } from '../../../service/discente/service';
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
+export class ParticipacaoAvaliacaoAddComponent 
+	extends AbstractAddComponent<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto, ParticipacaoAvaliacaoService> {
+
+	/*
+	 * Attributes
+	 */
 
 	@ViewChild('loader') loader!: ElementRef;
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
@@ -26,12 +31,20 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 	listaAvaliacao!: Avaliacao[];
 	listaDiscente!: Discente[];
 
+	/*
+	 * Constructors
+	 */
+
 	constructor(protected service: ParticipacaoAvaliacaoService, protected route: ActivatedRoute,
 		protected avaliacaoService: AvaliacaoService,
 		protected discenteService: DiscenteService) {
 
 		super(service, route, 'participacao-avaliacao');
 	}
+
+	/*
+	 * Component methods
+	 */
 
 	ngOnInit() {
 		super.ngOnInitSuper();
@@ -56,6 +69,10 @@ export class ParticipacaoAvaliacaoAddComponent extends AbstractAddComponent<Part
 		});
 
 	}
+
+	/*
+	 * Compare methods
+	 */
 
 	compareAvaliacao(o1: Avaliacao, o2: Avaliacao) {
 		return o1.compare(o2);
