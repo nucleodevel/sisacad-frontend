@@ -11,17 +11,33 @@ export class DateUtil {
 	}
 
 	getStringFromDate(item: Date): string {
+		return DateUtil.getStaticStringFromDate(item);
+	}
+
+	getDateFromString(item: string): Date {
+		return DateUtil.getStaticDateFromString(item);
+	}
+
+	getStringFromDatetime(item: Date): string {
+		return DateUtil.getStaticStringFromDatetime(item);
+	}
+
+	getDatetimeFromString(item: string): Date {
+		return DateUtil.getStaticDatetimeFromString(item);
+	}
+
+	static getStaticStringFromDate(item: Date): string {
 		return item.getFullYear()
 			+ '-' + String(item.getMonth() + 1).padStart(2, '0')
 			+ '-' + String(item.getDate()).padStart(2, '0');
 	}
 
-	getDateFromString(item: string): Date {
+	static getStaticDateFromString(item: string): Date {
 		var parts = item.split("-");
 		return new Date(Number(+parts[0]), Number(parts[1]) - 1, Number(+parts[2]));
 	}
 
-	getStringFromDatetime(item: Date): string {
+	static getStaticStringFromDatetime(item: Date): string {
 		return item.getFullYear()
 			+ '-' + String(item.getMonth() + 1).padStart(2, '0')
 			+ '-' + String(item.getDate()).padStart(2, '0')
@@ -30,7 +46,7 @@ export class DateUtil {
 			+ ':' + String(item.getSeconds()).padStart(2, '0');
 	}
 
-	getDatetimeFromString(item: string): Date {
+	static getStaticDatetimeFromString(item: string): Date {
 		var parts = item.includes("T") ? item.split("T") : item.split(" ");
 
 		var dateParts = parts[0].split("-");

@@ -1,5 +1,7 @@
 import { AbstractEntity } from '../abstract/entity';
 
+import { DateUtil } from '../../util/date';
+
 import { OfertaDisciplina } from '../oferta-disciplina/entity';
 
 export class Aula extends AbstractEntity {
@@ -8,6 +10,7 @@ export class Aula extends AbstractEntity {
 	ofertaDisciplina!: OfertaDisciplina;
 
 	toString(): string {
-		return this.ofertaDisciplina.toString() + " - " + this.inicio + "-" + this.termino;
+		return this.ofertaDisciplina.toString() + " - " + DateUtil.getStaticStringFromDatetime(this.inicio)
+			+ "-" + DateUtil.getStaticStringFromDatetime(this.termino);
 	}
 }
