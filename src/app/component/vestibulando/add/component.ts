@@ -7,6 +7,10 @@ import { Vestibulando } from '../../../domain/vestibulando/entity';
 import { VestibulandoDto } from '../../../dto/vestibulando/dto';
 import { VestibulandoService } from '../../../service/vestibulando/service';
 
+import { AvaliacaoVestibulando } from '../../../domain/avaliacao-vestibulando/entity';
+import { AvaliacaoVestibulandoDto } from '../../../dto/avaliacao-vestibulando/dto';
+import { AvaliacaoVestibulandoService } from '../../../service/avaliacao-vestibulando/service';
+
 import { OfertaCurso } from '../../../domain/oferta-curso/entity';
 import { OfertaCursoService } from '../../../service/oferta-curso/service';
 
@@ -26,11 +30,16 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 
 	listaOfertaCurso!: OfertaCurso[];
 
+	avaliacaoVestibulando!: AvaliacaoVestibulando;
+
+	preencherAvaliacao = false;
+
 	/*
 	 * Constructors
 	 */
 
 	constructor(protected service: VestibulandoService, protected route: ActivatedRoute,
+		protected avaliacaoVestibulandoService: AvaliacaoVestibulandoService,
 		protected ofertaCursoService: OfertaCursoService) {
 
 		super(service, route, 'vestibulando');
@@ -50,12 +59,37 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 
 	ngOnInitSuperAdditional() {
 
+		this.avaliacaoVestibulando = new AvaliacaoVestibulando();
+
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
 
+	}
+
+	onSubmit() {
+		var dto = this.service.newDtoInstance();
+		dto.copyFromEntity(this.entity);
+		this.service.insert(dto).subscribe(result => {
+			if (!this.preencherAvaliacao) {
+				this.list();
+			} else {
+				var avaliacaoVestibulandoDto = new AvaliacaoVestibulandoDto();
+				avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
+
+				avaliacaoVestibulandoDto.vestibulando = dto.id;
+				this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
+					this.list();
+				}, error => {
+					this.setErrorMessage(error);
+				});
+			}
+
+		}, error => {
+			this.setErrorMessage(error);
+		});
 	}
 
 	/*

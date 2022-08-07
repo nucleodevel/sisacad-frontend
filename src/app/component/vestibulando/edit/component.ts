@@ -8,6 +8,7 @@ import { VestibulandoDto } from '../../../dto/vestibulando/dto';
 import { VestibulandoService } from '../../../service/vestibulando/service';
 
 import { AvaliacaoVestibulando } from '../../../domain/avaliacao-vestibulando/entity';
+import { AvaliacaoVestibulandoDto } from '../../../dto/avaliacao-vestibulando/dto';
 import { AvaliacaoVestibulandoService } from '../../../service/avaliacao-vestibulando/service';
 
 import { OfertaCurso } from '../../../domain/oferta-curso/entity';
@@ -30,6 +31,8 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 	listaOfertaCurso!: OfertaCurso[];
 
 	avaliacaoVestibulando!: AvaliacaoVestibulando;
+
+	preencherAvaliacao = false;
 
 	/*
 	 * Constructors
@@ -59,6 +62,10 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 		this.avaliacaoVestibulandoService.findByVestibulando(dto.id).subscribe(data => {
 			if (data) {
 				this.avaliacaoVestibulando = this.avaliacaoVestibulandoService.makeEntityFromDto(data);
+				this.preencherAvaliacao = true;
+			} else {
+				this.avaliacaoVestibulando = new AvaliacaoVestibulando();
+				this.preencherAvaliacao = false;
 			}
 		}, error => {
 			this.setErrorMessage(error);
@@ -76,25 +83,27 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 		var dto = this.service.newDtoInstance();
 		dto.copyFromEntity(this.entity);
 		this.service.update(this.id, dto).subscribe(result => {
-			var avaliacaoVestibulandoDto = this.avaliacaoVestibulandoService.newDtoInstance();
-			avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
-
-			if (avaliacaoVestibulandoDto.id) {
-				this.avaliacaoVestibulandoService.update(avaliacaoVestibulandoDto.id, avaliacaoVestibulandoDto).subscribe(avResult => {
-					this.list();
-				}, error => {
-					this.setErrorMessage(error);
-				});
+			if (!this.preencherAvaliacao) {
+				this.list();
 			} else {
-				avaliacaoVestibulandoDto.vestibulando = dto.id;
-				this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
-					this.list();
-				}, error => {
-					this.setErrorMessage(error);
-				});
-			}
+				var avaliacaoVestibulandoDto = new AvaliacaoVestibulandoDto();
+				avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
 
-			this.list();
+				if (avaliacaoVestibulandoDto.id) {
+					this.avaliacaoVestibulandoService.update(avaliacaoVestibulandoDto.id, avaliacaoVestibulandoDto).subscribe(avResult => {
+						this.list();
+					}, error => {
+						this.setErrorMessage(error);
+					});
+				} else {
+					avaliacaoVestibulandoDto.vestibulando = dto.id;
+					this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
+						this.list();
+					}, error => {
+						this.setErrorMessage(error);
+					});
+				}
+			}
 		}, error => {
 			this.setErrorMessage(error);
 		});
