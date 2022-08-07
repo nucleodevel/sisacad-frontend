@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+
+import { catchError } from 'rxjs/operators';
 
 import { AbstractService } from '../abstract/service';
 
@@ -30,6 +33,9 @@ export class AvaliacaoVestibulandoService extends AbstractService<AvaliacaoVesti
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.conceitoBiologicas = dto.conceitoBiologicas;
+		entity.conceitoExatas = dto.conceitoExatas;
+		entity.conceitoHumanas = dto.conceitoHumanas;
 		entity.conceitoFinal = dto.conceitoFinal;
 
 		this.vestibulandoService.findById(dto.vestibulando).subscribe(data => {
@@ -38,5 +44,13 @@ export class AvaliacaoVestibulandoService extends AbstractService<AvaliacaoVesti
 		});
 
 		return entity;
+	}
+
+	public findByVestibulando(vestibulandoId: number): Observable<AvaliacaoVestibulandoDto> {
+		return this.http.get<AvaliacaoVestibulandoDto>(this.apiUrl + "/vestibulando/" + vestibulandoId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 }

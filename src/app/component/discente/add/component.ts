@@ -25,9 +25,8 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibulando!: Vestibulando[];
-	listaVestibulandoAutocomplete!: Vestibulando[];
 
-	lastkeydown1: number = 0;
+	vestibulandoCpf!: string;
 
 	/*
 	 * Constructors
@@ -65,26 +64,23 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 	 * Form events
 	 */
 
-	keyUpVestibulando($event: any) {
-		let userId = (<HTMLInputElement>document.getElementById('userIdFirstWay')).value;
-		this.listaVestibulandoAutocomplete = [];
-
-		if (userId.length > 2) {
-			if ($event.timeStamp - this.lastkeydown1 > 200) {
-				this.listaVestibulandoAutocomplete = this.searchFromArray(this.listaVestibulando, userId);
-			}
+	onSearchVestibulandoCpf(vestibulandoCpf: any) {
+		
+		this.entity = this.service.newEntityInstance();
+		
+		var exists = false;
+		this.listaVestibulando.forEach((item) => {
+			if (item.cpf === vestibulandoCpf) {
+				this.entity.vestibulando = item;
+				
+				exists = true;
+			}	
+		});
+		
+		if (!exists) {
+			this.setErrorMessage("Não há vestibulando com este CPF ou já é discente matriculado!");
 		}
 	}
-
-	searchFromArray(arr: any, regex: any) {
-		let matches = [], i;
-		for (i = 0; i < arr.length; i++) {
-			if (arr[i].match(regex)) {
-				matches.push(arr[i]);
-			}
-		}
-		return matches;
-	};
 
 	/*
 	 * Compare methods

@@ -8,23 +8,17 @@
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
 			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Voltar</a>
+			>Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
-		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
+		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-row">
 				<div class="form-group col-lg-12">
-					<label for="vestibulando">Vestibulando</label> <select
-						[(ngModel)]="entity.vestibulando" class="form-control"
-						name="vestibulando" required #vestibulando="ngModel"
-						[compareWith]="compareVestibulando">
-						<option *ngFor="let vestibulando of listaVestibulando"
-							[ngValue]="vestibulando">{{vestibulando.toString()}}</option>
-					</select>
-					<div [hidden]="!vestibulando.pristine" class="alert alert-danger">Vestibulando
-						pendente</div>
+					<label for="cpf">CPF do vestibulando</label> <input type="text"
+						[(ngModel)]="vestibulandoCpf" class="form-control" id="cpf"
+						name="cpf" required #cpf="ngModel">
 				</div>
 			</div>
 			<div id="vestibulando" *ngIf="entity.vestibulando">
@@ -64,10 +58,14 @@
 			</div>
 
 			<div class="form-row">
-				<button type="submit" [disabled]="!entityForm.form.valid"
-					class="btn btn-success" style="margin-right: 10px">Salvar</button>
+				<button type="button" *ngIf="!entity.vestibulando"
+					(click)="onSearchVestibulandoCpf(vestibulandoCpf)"
+					class="btn btn-success">Buscar</button>
+				<button type="submit" *ngIf="entity.vestibulando"
+					[disabled]="!entityForm.form.valid" class="btn btn-success"
+					style="margin-right: 10px">Salvar</button>
 				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-					style="margin-left: 10px">Cancelar</a>
+					>Cancelar</a>
 			</div>
 
 		</form>

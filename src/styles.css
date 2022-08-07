@@ -6,6 +6,17 @@ label {
 	margin-right: .7em;
 }
 
+legend {
+	display: block;
+	color: #842029;
+	text-align: center;
+	width: 100%;
+}
+
+a.btn, button.btn {
+	margin-right: 10px;
+}
+
 #bodyCard {
 	display: none;
 }

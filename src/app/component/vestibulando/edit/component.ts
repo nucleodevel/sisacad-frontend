@@ -7,6 +7,9 @@ import { Vestibulando } from '../../../domain/vestibulando/entity';
 import { VestibulandoDto } from '../../../dto/vestibulando/dto';
 import { VestibulandoService } from '../../../service/vestibulando/service';
 
+import { AvaliacaoVestibulando } from '../../../domain/avaliacao-vestibulando/entity';
+import { AvaliacaoVestibulandoService } from '../../../service/avaliacao-vestibulando/service';
+
 import { OfertaCurso } from '../../../domain/oferta-curso/entity';
 import { OfertaCursoService } from '../../../service/oferta-curso/service';
 
@@ -26,11 +29,14 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 
 	listaOfertaCurso!: OfertaCurso[];
 
+	avaliacaoVestibulando!: AvaliacaoVestibulando;
+
 	/*
 	 * Constructors
 	 */
 
 	constructor(protected service: VestibulandoService, protected route: ActivatedRoute,
+		protected avaliacaoVestibulandoService: AvaliacaoVestibulandoService,
 		protected ofertaCursoService: OfertaCursoService) {
 
 		super(service, route, 'vestibulando');
@@ -50,12 +56,48 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 
 	ngOnInitSuperAdditional(dto: VestibulandoDto) {
 
+		this.avaliacaoVestibulandoService.findByVestibulando(dto.id).subscribe(data => {
+			if (data) {
+				this.avaliacaoVestibulando = this.avaliacaoVestibulandoService.makeEntityFromDto(data);
+			}
+		}, error => {
+			this.setErrorMessage(error);
+		});
+
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
 
+	}
+
+	onSubmit() {
+		var dto = this.service.newDtoInstance();
+		dto.copyFromEntity(this.entity);
+		this.service.update(this.id, dto).subscribe(result => {
+			var avaliacaoVestibulandoDto = this.avaliacaoVestibulandoService.newDtoInstance();
+			avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
+
+			if (avaliacaoVestibulandoDto.id) {
+				this.avaliacaoVestibulandoService.update(avaliacaoVestibulandoDto.id, avaliacaoVestibulandoDto).subscribe(avResult => {
+					this.list();
+				}, error => {
+					this.setErrorMessage(error);
+				});
+			} else {
+				avaliacaoVestibulandoDto.vestibulando = dto.id;
+				this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
+					this.list();
+				}, error => {
+					this.setErrorMessage(error);
+				});
+			}
+
+			this.list();
+		}, error => {
+			this.setErrorMessage(error);
+		});
 	}
 
 	/*

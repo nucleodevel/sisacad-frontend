@@ -73,12 +73,4 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 		);
 	}
 
-	public findAllIsNotDiscente(): Observable<DTO[]> {
-		return this.http.get<DTO[]>(this.apiUrl + "/is-not-discente").pipe(
-			catchError(err => {
-				return throwError(err);
-			})
-		);
-	}
-
 }

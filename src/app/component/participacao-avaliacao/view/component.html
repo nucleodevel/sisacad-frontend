@@ -7,8 +7,7 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -17,18 +16,23 @@
 				<label>ID</label>
 				<div>{{entity.id}}</div>
 			</div>
-			<div class="form-group col-lg-5 col-md-12">
+			<div class="form-group col-lg-10 col-md-12">
 				<label>Avaliação:</label>
 				<div>{{ entity.avaliacao.toString() }}</div>
 			</div>
-			<div class="form-group col-lg-5 col-md-12">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-lg-8 col-md-12">
 				<label>Discente:</label>
 				<div>{{ entity.discente.toString() }}</div>
 			</div>
+			<div class="form-group col-lg-4 col-md-12">
+				<label>Conceito Final:</label>
+				<div>{{ entity.conceitoFinal }}</div>
+			</div>
 		</div>
 		<div class="form-row">
-			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-				style="margin-left: 10px">Voltar</a>
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 		</div>
 	</div>
 </div>

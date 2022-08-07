@@ -31,6 +31,7 @@ export class ParticipacaoAvaliacaoService extends AbstractService<ParticipacaoAv
 		var entity = this.newEntityInstance();
 
 		entity.id = dto.id;
+		entity.conceitoFinal = dto.conceitoFinal;
 
 		this.avaliacaoService.findById(dto.avaliacao).subscribe(data => {
 			console.log(data);

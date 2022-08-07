@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+
+import { catchError } from 'rxjs/operators';
 
 import { AbstractService } from '../abstract/service';
 
@@ -42,5 +45,13 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 		});
 
 		return entity;
+	}
+
+	public findAllIsNotDiscente(): Observable<VestibulandoDto[]> {
+		return this.http.get<VestibulandoDto[]>(this.apiUrl + "/is-not-discente").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
 	}
 }

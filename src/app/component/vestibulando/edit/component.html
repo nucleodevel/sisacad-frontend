@@ -8,7 +8,7 @@
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
 			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			style="margin-left: 10px">Voltar</a>
+			>Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -65,12 +65,53 @@
 						pendentes</div>
 				</div>
 			</div>
+			<fieldset>
+				<legend>Avaliação</legend>
+				<div class="form-row">
+					<div class="form-group col-lg-3 col-md-12">
+						<label for="conceitoBiologicas">Conceito
+							Biológicas</label> <input type="number" step=".01"
+							[(ngModel)]="avaliacaoVestibulando.conceitoBiologicas"
+							class="form-control" id="conceitoBiologicas"
+							name="conceitoBiologicas" required #conceitoBiologicas="ngModel">
+						<div [hidden]="!conceitoBiologicas.pristine"
+							class="alert alert-danger">Conceito Biológicas pendente</div>
+					</div>
+					<div class="form-group col-lg-3 col-md-12">
+						<label for="conceitoExatas">Conceito Exatas</label> <input
+							type="number" step=".01"
+							[(ngModel)]="avaliacaoVestibulando.conceitoExatas"
+							class="form-control" id="conceitoExatas" name="conceitoExatas"
+							required #conceitoExatas="ngModel">
+						<div [hidden]="!conceitoExatas.pristine"
+							class="alert alert-danger">Conceito Exatas pendente</div>
+					</div>
+					<div class="form-group col-lg-3 col-md-12">
+						<label for="conceitoHumanas">Conceito Humanas</label>
+						<input type="number" step=".01"
+							[(ngModel)]="avaliacaoVestibulando.conceitoHumanas"
+							class="form-control" id="conceitoHumanas" name="conceitoHumanas"
+							required #conceitoHumanas="ngModel">
+						<div [hidden]="!conceitoHumanas.pristine"
+							class="alert alert-danger">Conceito Humanas pendente</div>
+					</div>
+					<div class="form-group col-lg-3 col-md-12">
+						<label for="conceitoFinal">Conceito Final</label> <input
+							type="number" step=".01"
+							[(ngModel)]="avaliacaoVestibulando.conceitoFinal"
+							class="form-control" id="conceitoFinal" name="conceitoFinal"
+							required #conceitoFinal="ngModel">
+						<div [hidden]="!conceitoFinal.pristine" class="alert alert-danger">Conceito
+							Final pendente</div>
+					</div>
+				</div>
+			</fieldset>
 
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>
 				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-					style="margin-left: 10px">Cancelar</a>
+					>Cancelar</a>
 			</div>
 
 		</form>
