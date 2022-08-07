@@ -25,6 +25,9 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 	@ViewChild('bodyCard') bodyCard!: ElementRef;
 
 	listaVestibulando!: Vestibulando[];
+	listaVestibulandoAutocomplete!: Vestibulando[];
+
+	lastkeydown1: number = 0;
 
 	/*
 	 * Constructors
@@ -50,13 +53,38 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 
 	ngOnInitSuperAdditional() {
 
-		this.vestibulandoService.findAll().subscribe(data => {
+		this.vestibulandoService.findAllIsNotDiscente().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setErrorMessage(error);
 		});
 
 	}
+
+	/*
+	 * Form events
+	 */
+
+	keyUpVestibulando($event: any) {
+		let userId = (<HTMLInputElement>document.getElementById('userIdFirstWay')).value;
+		this.listaVestibulandoAutocomplete = [];
+
+		if (userId.length > 2) {
+			if ($event.timeStamp - this.lastkeydown1 > 200) {
+				this.listaVestibulandoAutocomplete = this.searchFromArray(this.listaVestibulando, userId);
+			}
+		}
+	}
+
+	searchFromArray(arr: any, regex: any) {
+		let matches = [], i;
+		for (i = 0; i < arr.length; i++) {
+			if (arr[i].match(regex)) {
+				matches.push(arr[i]);
+			}
+		}
+		return matches;
+	};
 
 	/*
 	 * Compare methods

@@ -13,10 +13,35 @@
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+		
 			<div class="form-row">
 				<div class="form-group col-lg-12">
-					<label>Vestibulando</label>
-					<div>{{entity.vestibulando.toString()}}</div>
+					<label>Oferta de Curso:</label>
+					<div>{{ entity.vestibulando.ofertaCurso.toString() }}</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-lg-2 col-md-12">
+					<label>CPF:</label>
+					<div>{{ entity.vestibulando.cpf }}</div>
+				</div>
+				<div class="form-group col-lg-8 col-md-12">
+					<label>Nome:</label>
+					<div>{{ entity.vestibulando.nome }}</div>
+				</div>
+				<div class="form-group col-lg-2 col-md-12">
+					<label>Data de nascimento:</label>
+					<div>{{ dateUtil.getStringFromDate(entity.vestibulando.dataNascimento) }}</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Endereço:</label>
+					<div class="text-with-break-lines">{{ entity.vestibulando.endereco }}</div>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label>Telefones:</label>
+					<div class="text-with-break-lines">{{ entity.vestibulando.telefones }}</div>
 				</div>
 			</div>
 
@@ -32,12 +57,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let item of listNotSelectedOfertaDisciplina; let i=index">
+							<tr
+								*ngFor="let item of listNotSelectedOfertaDisciplina; let i=index">
 								<td>{{ item.disciplina.toString() }}</td>
 								<td>{{ item.docente.toString() }}</td>
 								<td><button (click)="setOfertaDisciplinaAsSelected(i)"
-										class="btn btn-danger">
-										&gt;</button></td>
+										class="btn btn-danger">&gt;</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -53,10 +78,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let item of listSelectedOfertaDisciplina; let i=index">
+							<tr
+								*ngFor="let item of listSelectedOfertaDisciplina; let i=index">
 								<td><button (click)="setOfertaDisciplinaAsNotSelected(i)"
-										class="btn btn-danger">
-										&lt; </button></td>
+										class="btn btn-danger">&lt;</button></td>
 								<td>{{ item.disciplina.toString() }}</td>
 								<td>{{ item.docente.toString() }}</td>
 							</tr>

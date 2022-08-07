@@ -9,3 +9,7 @@ label {
 #bodyCard {
 	display: none;
 }
+
+.text-with-break-lines {
+    white-space: pre-wrap;
+}

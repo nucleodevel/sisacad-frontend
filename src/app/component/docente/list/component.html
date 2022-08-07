@@ -10,7 +10,7 @@
 			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
 			style="margin-left: 10px">Voltar</a>
 	</div>
-	
+
 	<div class="card-body" *ngIf="entities">
 		<a routerLink="/{{ routerPrefix }}/add" class="btn btn-success"
 			style="margin-bottom: 10px">Novo</a>
@@ -20,6 +20,7 @@
 					<th scope="col">#</th>
 					<th scope="col">CPF</th>
 					<th scope="col">Nome</th>
+					<th scope="col">Data de nascimento</th>
 					<th scope="col">Ações</th>
 				</tr>
 			</thead>
@@ -28,6 +29,7 @@
 					<td>{{ entity.id }}</td>
 					<td>{{ entity.cpf }}</td>
 					<td>{{ entity.nome }}</td>
+					<td>{{ dateUtil.getStringFromDate(entity.dataNascimento) }}</td>
 					<td><a routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"
 						class="btn btn-info" style="margin-left: 10px">Ver</a> <a
 						routerLink="/{{ routerPrefix }}/edit/{{ entity.id }}"

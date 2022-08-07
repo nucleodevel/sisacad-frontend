@@ -15,25 +15,57 @@
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
 			<div class="form-row">
-				<div class="form-group col-lg-5 col-md-12">
+				<div class="form-group col-lg-8 col-md-12">
 					<label for="ofertaCurso">Oferta de Curso</label>
 					<div>{{entity.ofertaCurso.toString()}}</div>
 				</div>
-				<div class="form-group col-lg-2 col-md-12">
+				<div class="form-group col-lg-4 col-md-12">
 					<label for="cpf">CPF</label> <input type="text"
 						[(ngModel)]="entity.cpf" class="form-control" id="cpf" name="cpf"
 						required #cpf="ngModel">
 					<div [hidden]="!cpf.pristine" class="alert alert-danger">CPF
 						pendente</div>
 				</div>
-				<div class="form-group col-lg-5 col-md-12">
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-8 col-md-12">
 					<label for="nome">Nome</label> <input type="text"
 						[(ngModel)]="entity.nome" class="form-control" id="nome"
 						name="nome" required #nome="ngModel">
 					<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
 						pendente</div>
 				</div>
+				<div class="form-group col-lg-4 col-md-12">
+					<label for="dataNascimento">Data de Nascimento</label> <input
+						type="date" [ngModel]="entity.dataNascimento | date:'yyyy-MM-dd'"
+						(ngModelChange)="entity.dataNascimento = dateUtil.getDateFromString($event)"
+						class="form-control" id="dataNascimento" name="dataNascimento"
+						required #dataNascimento="ngModel">
+					<div [hidden]="!dataNascimento.pristine" class="alert alert-danger">Data
+						de nascimento pendente</div>
+				</div>
 			</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="endereco">Endereço</label>
+					<textarea [(ngModel)]="entity.endereco" class="form-control"
+						id="endereco" name="endereco" rows="5" required
+						#endereco="ngModel"></textarea>
+					<div [hidden]="!endereco.pristine" class="alert alert-danger">Endereço
+						pendente</div>
+				</div>
+				<div class="form-group col-lg-6 col-md-12">
+					<label for="telefones">Telefones</label>
+					<textarea [(ngModel)]="entity.telefones" class="form-control"
+						id="telefones" name="telefones" rows="5" required
+						#telefones="ngModel"></textarea>
+					<div [hidden]="!telefones.pristine" class="alert alert-danger">Telefones
+						pendentes</div>
+				</div>
+			</div>
+
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>

@@ -30,6 +30,9 @@ export class DocenteService extends AbstractService<Docente, DocenteDto> {
 		entity.id = dto.id;
 		entity.cpf = dto.cpf;
 		entity.nome = dto.nome;
+		entity.dataNascimento = new Date(dto.dataNascimento);
+		entity.endereco = dto.endereco;
+		entity.telefones = dto.telefones;
 
 		return entity;
 	}
