@@ -79,7 +79,7 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 				var avaliacaoVestibulandoDto = new AvaliacaoVestibulandoDto();
 				avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
 
-				avaliacaoVestibulandoDto.vestibulando = dto.id;
+				avaliacaoVestibulandoDto.vestibulando = result.id;
 				this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
 					this.list();
 				}, error => {
