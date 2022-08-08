@@ -68,4 +68,12 @@ export class TurmaService extends AbstractService<Turma, TurmaDto> {
 			})
 		);
 	}
+
+	public findByOfertaCurso(ofertaCursoId: number): Observable<TurmaDto> {
+		return this.http.get<TurmaDto>(this.apiUrl + "/oferta-curso/" + ofertaCursoId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
 }

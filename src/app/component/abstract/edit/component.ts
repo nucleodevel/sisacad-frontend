@@ -34,8 +34,8 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 		this.id = this.route.snapshot.params['id'];
 
 		this.service.findById(this.id).subscribe(dto => {
-			this.ngOnInitSuperAdditional(dto);
 			this.entity = this.service.makeEntityFromDto(dto);
+			this.ngOnInitSuperAdditional(dto);
 		}, error => {
 			this.setErrorMessage(error);
 		});
