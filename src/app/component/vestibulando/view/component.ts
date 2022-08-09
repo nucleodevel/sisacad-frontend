@@ -57,7 +57,7 @@ export class VestibulandoViewComponent extends AbstractViewComponent<Vestibuland
 				this.avaliacaoVestibulando = new AvaliacaoVestibulando();
 			}
 		}, error => {
-			this.setErrorMessage(error);
+			// this.setErrorMessage(error);
 		});
 
 	}

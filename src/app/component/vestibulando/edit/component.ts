@@ -68,7 +68,9 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 				this.preencherAvaliacao = false;
 			}
 		}, error => {
-			this.setErrorMessage(error);
+			// this.setErrorMessage(error);
+			this.avaliacaoVestibulando = new AvaliacaoVestibulando();
+			this.preencherAvaliacao = false;
 		});
 
 		this.ofertaCursoService.findAll().subscribe(data => {
