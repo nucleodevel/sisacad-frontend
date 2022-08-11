@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HomeComponent } from './component/home/component';
+
 import { AulaListComponent } from './component/aula/list/component';
 import { AulaViewComponent } from './component/aula/view/component';
 import { AulaAddComponent } from './component/aula/add/component'; 
@@ -104,6 +106,8 @@ export let AppInjector: Injector;
 @NgModule({
   declarations: [
     AppComponent,
+	
+	HomeComponent,	
 
     AulaListComponent,
     AulaViewComponent,

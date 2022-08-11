@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HomeComponent } from './component/home/component';
+
 import { AulaListComponent } from './component/aula/list/component';
 import { AulaViewComponent } from './component/aula/view/component';
 import { AulaAddComponent } from './component/aula/add/component';
@@ -77,6 +79,9 @@ import { VestibularAddComponent } from './component/vestibular/add/component';
 import { VestibularEditComponent } from './component/vestibular/edit/component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },	
+	
   { path: 'aula', component: AulaListComponent },
   { path: 'aula/list', component: AulaListComponent },
   { path: 'aula/view/:id', component: AulaViewComponent },
