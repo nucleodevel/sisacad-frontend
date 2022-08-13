@@ -6,6 +6,6 @@ import { Injectable } from '@angular/core';
 
 export class AppConfigUtil {
 
-	public static API_ENDPOINT="http://200.145.6.226:8080/";
+	public static API_ENDPOINT="http://api-endpoint:port/";
 	
 }
