@@ -14,11 +14,10 @@ import { EstruturaCurricularDto } from '../../dto/estrutura-curricular/dto';
 @Injectable()
 export class DisciplinaService extends AbstractService<Disciplina, DisciplinaDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'disciplina';
 
 	constructor(protected httpClient: HttpClient) {
-		super(httpClient, DisciplinaService.apiUrl + DisciplinaService.apiPath);
+		super(httpClient, DisciplinaService.apiPath);
 	}
 
 	newEntityInstance(): Disciplina {

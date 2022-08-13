@@ -18,11 +18,10 @@ import { DiscenteDto } from '../../dto/discente/dto';
 @Injectable()
 export class AulaService extends AbstractService<Aula, AulaDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'aula';
 
 	constructor(protected httpClient: HttpClient, protected ofertaDisciplinaService: OfertaDisciplinaService) {
-		super(httpClient, AulaService.apiUrl + AulaService.apiPath);
+		super(httpClient, AulaService.apiPath);
 	}
 
 	newEntityInstance(): Aula {

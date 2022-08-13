@@ -9,11 +9,10 @@ import { VestibularDto } from '../../dto/vestibular/dto';
 @Injectable()
 export class VestibularService extends AbstractService<Vestibular, VestibularDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'vestibular';
 
 	constructor(protected httpClient: HttpClient) {
-		super(httpClient, VestibularService.apiUrl + VestibularService.apiPath);
+		super(httpClient, VestibularService.apiPath);
 	}
 
 	newEntityInstance(): Vestibular {

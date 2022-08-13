@@ -14,11 +14,10 @@ import { OfertaCursoService } from '../../service/oferta-curso/service';
 @Injectable()
 export class VestibulandoService extends AbstractService<Vestibulando, VestibulandoDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'vestibulando';
 
 	constructor(protected httpClient: HttpClient, protected ofertaCursoService: OfertaCursoService) {
-		super(httpClient, VestibulandoService.apiUrl + VestibulandoService.apiPath);
+		super(httpClient, VestibulandoService.apiPath);
 	}
 
 	newEntityInstance(): Vestibulando {

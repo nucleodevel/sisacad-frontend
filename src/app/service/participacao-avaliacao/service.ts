@@ -12,11 +12,10 @@ import { DiscenteService } from '../../service/discente/service';
 @Injectable()
 export class ParticipacaoAvaliacaoService extends AbstractService<ParticipacaoAvaliacao, ParticipacaoAvaliacaoDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'participacao-avaliacao';
 
 	constructor(protected httpClient: HttpClient, protected avaliacaoService: AvaliacaoService, protected discenteService: DiscenteService) {
-		super(httpClient, ParticipacaoAvaliacaoService.apiUrl + ParticipacaoAvaliacaoService.apiPath);
+		super(httpClient, ParticipacaoAvaliacaoService.apiPath);
 	}
 
 	newEntityInstance(): ParticipacaoAvaliacao {

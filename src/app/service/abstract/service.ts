@@ -3,6 +3,8 @@ import { Observable, throwError } from 'rxjs';
 
 import { catchError } from 'rxjs/operators';
 
+import { AppConfigUtil } from '../../util/app-config';
+
 import { AbstractEntity } from '../../domain/abstract/entity';
 import { AbstractDto } from '../../dto/abstract/dto';
 
@@ -10,10 +12,11 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 
 	protected http: HttpClient;
 	protected apiUrl: string;
+	protected apiEndpoint: string = AppConfigUtil.API_ENDPOINT;
 
-	constructor(http: HttpClient, apiUrl: string) {
+	constructor(http: HttpClient, apiPath: string) {
 		this.http = http;
-		this.apiUrl = apiUrl;
+		this.apiUrl = this.apiEndpoint + apiPath;
 	}
 
 	abstract newEntityInstance(): E;

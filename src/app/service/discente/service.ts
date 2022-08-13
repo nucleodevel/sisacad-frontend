@@ -16,11 +16,10 @@ import { OfertaDisciplinaDto } from '../../dto/oferta-disciplina/dto';
 @Injectable()
 export class DiscenteService extends AbstractService<Discente, DiscenteDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'discente';
 
 	constructor(protected httpClient: HttpClient, protected vestibulandoService: VestibulandoService) {
-		super(httpClient, DiscenteService.apiUrl + DiscenteService.apiPath);
+		super(httpClient, DiscenteService.apiPath);
 	}
 
 	newEntityInstance(): Discente {

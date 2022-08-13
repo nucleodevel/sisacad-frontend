@@ -16,11 +16,10 @@ import { OfertaDisciplinaDto } from '../../dto/oferta-disciplina/dto';
 @Injectable()
 export class TurmaService extends AbstractService<Turma, TurmaDto> {
 
-	private static readonly apiUrl = 'http://localhost:8080/';
 	private static readonly apiPath = 'turma';
 
 	constructor(protected httpClient: HttpClient, protected ofertaCursoService: OfertaCursoService) {
-		super(httpClient, TurmaService.apiUrl + TurmaService.apiPath);
+		super(httpClient, TurmaService.apiPath);
 	}
 
 	newEntityInstance(): Turma {
