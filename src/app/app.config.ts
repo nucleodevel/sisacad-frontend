@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 
-export class AppConfigUtil {
+export class AppConfig {
 
 	public static API_ENDPOINT="http://api-endpoint:port/";
 	
