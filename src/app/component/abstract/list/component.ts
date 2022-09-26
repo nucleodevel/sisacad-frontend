@@ -36,7 +36,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 
 	protected remove(id: number) {
 		this.service.delete(id).subscribe(data => {
-			console.log(data);;
+			console.log(data);
 			this.reloadData();
 		}, error => {
 			this.setErrorMessage(error);

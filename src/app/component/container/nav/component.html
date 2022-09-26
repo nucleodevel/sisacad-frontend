@@ -15,6 +15,8 @@
 			<li><a *ngIf="!authenticationService.isUserLoggedIn()"
 				routerLink="/login" class="nav-link">Login</a></li>
 			<li><a *ngIf="authenticationService.isUserLoggedIn()"
+				routerLink="/user" class="nav-link">Meu perfil</a></li>
+			<li><a *ngIf="authenticationService.isUserLoggedIn()"
 				routerLink="/logout" class="nav-link">LogOut</a></li>
 			<li *ngIf="authenticationService.isUserLoggedIn()" ngbDropdown
 				class="nav-item dropdown"><a ngbDropdownToggle

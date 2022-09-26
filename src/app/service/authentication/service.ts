@@ -1,22 +1,44 @@
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { map, catchError } from 'rxjs/operators';
+
+import { AppConfig } from '../../app.config';
+
+import { UsuarioDto } from '../../dto/usuario/dto';
 
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthenticationService {
+	
+	protected apiEndpoint: string = AppConfig.API_ENDPOINT;
 
-	constructor() { }
+	constructor(public http: HttpClient) { 
+		
+	}
 
 	authenticate(username: string, password: string) {
-		console.log(username);
-		if (username === "user01" && password === "password01") {
-			console.log(username);
-			localStorage.setItem('username', username)
-			return true;
-		} else {
-			return false;
-		}
+		const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+		return this.http.get<UsuarioDto>(AppConfig.API_ENDPOINT + 'auth/validate', { headers }).pipe(
+			map(
+				userData => {
+					localStorage.setItem('username', userData.username);
+					localStorage.setItem('password', userData.password);
+					localStorage.setItem('roles', userData.roles);
+					
+					let authString = 'Basic ' + btoa(username + ':' + password);
+					localStorage.setItem('basicauth', authString);
+				}
+			),
+			catchError(err => {
+				return throwError(err);
+			})
+
+		);
 	}
 
 	isUserLoggedIn() {
@@ -26,6 +48,8 @@ export class AuthenticationService {
 	}
 
 	logOut() {
-		localStorage.removeItem('username')
+		localStorage.removeItem('username');
+		localStorage.removeItem('password');
+		localStorage.removeItem('roles');
 	}
 }

@@ -1,12 +1,15 @@
 import { AbstractEntity } from '../abstract/entity';
 
-import { OfertaCurso } from '../oferta-curso/entity';
-
-export class User extends AbstractEntity {
+export class Usuario extends AbstractEntity {
 	username!: string;
 	password!: string;
+	roles!: string;
 
 	toString(): string {
 		return this.username;
+	}
+	
+	getListRole(): string[] {
+		return this.roles.split(',');
 	}
 }
