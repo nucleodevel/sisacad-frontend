@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 
 import { NavComponent } from './component/container/nav/component';
 
-import { HomeComponent } from './component/home/component';
+import { HomeComponent } from './component/container/home/component';
 import { LoginComponent } from './component/authentication/login/component';
 import { LogoutComponent } from './component/authentication/logout/component';
 import { UserComponent } from './component/authentication/user/component';

@@ -5,7 +5,7 @@ import { AuthenticationService } from '../../../service/authentication/service';
 import { Usuario } from '../../../domain/usuario/entity';
 
 @Component({
-	selector: 'app-login',
+	selector: 'authentication-login',
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
