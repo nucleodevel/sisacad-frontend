@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 import { catchError } from 'rxjs/operators';
@@ -14,9 +14,22 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 	protected apiUrl: string;
 	protected apiEndpoint: string = AppConfig.API_ENDPOINT;
 
+	protected httpHeaders: any;
+
 	constructor(http: HttpClient, apiPath: string) {
 		this.http = http;
 		this.apiUrl = this.apiEndpoint + apiPath;
+		
+		var username = localStorage.getItem("username"); 
+		if (username == null || username == '') {
+			localStorage.setItem('username', 'user01');
+			localStorage.setItem('password', 'password01');
+		}
+		
+		username = localStorage.getItem("username");
+		var password = localStorage.getItem("password");
+		
+		this.httpHeaders = new HttpHeaders({ Authorization: 'Basic ' + btoa(username +  ':' + password) })
 	}
 
 	abstract newEntityInstance(): E;
@@ -37,7 +50,8 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 	}
 
 	public insert(dto: DTO) {
-		return this.http.post<DTO>(this.apiUrl, dto).pipe(
+		const headers = this.httpHeaders;
+		return this.http.post<DTO>(this.apiUrl, dto, {headers}).pipe(
 			catchError(err => {
 				return throwError(err);
 			})
@@ -45,7 +59,8 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 	}
 
 	public update(id: number, dto: DTO) {
-		return this.http.put<DTO>(this.apiUrl + '/' + id, dto).pipe(
+		const headers = this.httpHeaders;
+		return this.http.put<DTO>(this.apiUrl + '/' + id, dto, {headers}).pipe(
 			catchError(err => {
 				return throwError(err);
 			})
@@ -53,7 +68,8 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 	}
 
 	public delete(id: number) {
-		return this.http.delete<DTO>(this.apiUrl + '/' + id).pipe(
+		const headers = this.httpHeaders;
+		return this.http.delete<DTO>(this.apiUrl + '/' + id, {headers}).pipe(
 			catchError(err => {
 				return throwError(err);
 			})
@@ -61,7 +77,8 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 	}
 
 	public findById(id: number) {
-		return this.http.get<DTO>(this.apiUrl + '/' + id).pipe(
+		const headers = this.httpHeaders;
+		return this.http.get<DTO>(this.apiUrl + '/' + id, {headers}).pipe(
 			catchError(err => {
 				return throwError(err);
 			})
@@ -69,7 +86,8 @@ export abstract class AbstractService<E extends AbstractEntity, DTO extends Abst
 	}
 
 	public findAll(): Observable<DTO[]> {
-		return this.http.get<DTO[]>(this.apiUrl).pipe(
+		const headers = this.httpHeaders;
+		return this.http.get<DTO[]>(this.apiUrl, {headers}).pipe(
 			catchError(err => {
 				return throwError(err);
 			})

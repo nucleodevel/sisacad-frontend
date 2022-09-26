@@ -7,7 +7,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NavComponent } from './component/container/nav/component';
+
 import { HomeComponent } from './component/home/component';
+import { LoginComponent } from './component/authentication/login/component';
+import { LogoutComponent } from './component/authentication/logout/component';
 
 import { AulaListComponent } from './component/aula/list/component';
 import { AulaViewComponent } from './component/aula/view/component';
@@ -106,8 +110,12 @@ export let AppInjector: Injector;
 @NgModule({
   declarations: [
     AppComponent,
+    
+    NavComponent,
 	
 	HomeComponent,	
+	LoginComponent,
+	LogoutComponent,
 
     AulaListComponent,
     AulaViewComponent,
