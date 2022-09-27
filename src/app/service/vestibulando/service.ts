@@ -10,13 +10,16 @@ import { Vestibulando } from '../../domain/vestibulando/entity';
 import { VestibulandoDto } from '../../dto/vestibulando/dto';
 
 import { OfertaCursoService } from '../../service/oferta-curso/service';
+import { UsuarioService } from '../../service/usuario/service';
 
 @Injectable()
 export class VestibulandoService extends AbstractService<Vestibulando, VestibulandoDto> {
 
 	private static readonly apiPath = 'vestibulando';
 
-	constructor(protected httpClient: HttpClient, protected ofertaCursoService: OfertaCursoService) {
+	constructor(protected httpClient: HttpClient, protected ofertaCursoService: OfertaCursoService,
+		protected usuarioService: UsuarioService) {
+
 		super(httpClient, VestibulandoService.apiPath);
 	}
 
@@ -33,7 +36,6 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 
 		entity.id = dto.id;
 		entity.cpf = dto.cpf;
-		entity.nome = dto.nome;
 		entity.dataNascimento = new Date(dto.dataNascimento);
 		entity.endereco = dto.endereco;
 		entity.telefones = dto.telefones;
@@ -41,6 +43,11 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 		this.ofertaCursoService.findById(dto.ofertaCurso).subscribe(data => {
 			console.log(data);
 			entity.ofertaCurso = this.ofertaCursoService.makeEntityFromDto(data);
+		});
+
+		this.usuarioService.findById(dto.usuario).subscribe(data => {
+			console.log(data);
+			entity.usuario = this.usuarioService.makeEntityFromDto(data);
 		});
 
 		return entity;

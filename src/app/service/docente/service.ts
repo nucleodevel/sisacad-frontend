@@ -6,12 +6,14 @@ import { AbstractService } from '../abstract/service';
 import { Docente } from '../../domain/docente/entity';
 import { DocenteDto } from '../../dto/docente/dto';
 
+import { UsuarioService } from '../../service/usuario/service';
+
 @Injectable()
 export class DocenteService extends AbstractService<Docente, DocenteDto> {
 
 	private static readonly apiPath = 'docente';
 
-	constructor(protected httpClient: HttpClient) {
+	constructor(protected httpClient: HttpClient, protected usuarioService: UsuarioService) {
 		super(httpClient, DocenteService.apiPath);
 	}
 
@@ -28,10 +30,14 @@ export class DocenteService extends AbstractService<Docente, DocenteDto> {
 
 		entity.id = dto.id;
 		entity.cpf = dto.cpf;
-		entity.nome = dto.nome;
 		entity.dataNascimento = new Date(dto.dataNascimento);
 		entity.endereco = dto.endereco;
 		entity.telefones = dto.telefones;
+
+		this.usuarioService.findById(dto.usuario).subscribe(data => {
+			console.log(data);
+			entity.usuario = this.usuarioService.makeEntityFromDto(data);
+		});
 
 		return entity;
 	}

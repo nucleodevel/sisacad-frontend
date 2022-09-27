@@ -7,8 +7,7 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			>Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -46,7 +45,7 @@
 					<tbody>
 						<tr *ngFor="let item of listSelectedParticipacaoAula">
 							<td>{{ item.id }}</td>
-							<td>{{ item.discente.vestibulando.nome }}</td>
+							<td>{{ item.discente.vestibulando.usuario.nome }}</td>
 							<td>{{ item.discente.vestibulando.cpf }}</td>
 						</tr>
 					</tbody>
@@ -54,8 +53,7 @@
 			</div>
 		</div>
 		<div class="form-row">
-			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-				>Voltar</a>
+			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 		</div>
 	</div>
 </div>

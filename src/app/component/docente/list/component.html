@@ -7,8 +7,7 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			>Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entities">
@@ -28,14 +27,13 @@
 				<tr *ngFor="let entity of entities">
 					<td>{{ entity.id }}</td>
 					<td>{{ entity.cpf }}</td>
-					<td>{{ entity.nome }}</td>
+					<td>{{ entity.usuario.nome }}</td>
 					<td>{{ dateUtil.getStringFromDate(entity.dataNascimento) }}</td>
 					<td><a routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"
 						class="btn btn-info">Ver</a> <a
 						routerLink="/{{ routerPrefix }}/edit/{{ entity.id }}"
 						class="btn btn-warning">Editar</a>
-						<button (click)="askRemove(entity)" class="btn btn-danger"
-							>Remover</button></td>
+						<button (click)="askRemove(entity)" class="btn btn-danger">Remover</button></td>
 				</tr>
 			</tbody>
 		</table>

@@ -27,6 +27,7 @@ export class AuthenticationService {
 
 		var username = localStorage.getItem("username");
 		var password = localStorage.getItem("password");
+		var nome = localStorage.getItem("nome");
 		var roles = localStorage.getItem("roles");
 
 		if (username != null) {
@@ -37,6 +38,10 @@ export class AuthenticationService {
 
 		if (password != null) {
 			sessionUser.password = password;
+		}
+
+		if (nome != null) {
+			sessionUser.nome = nome;
 		}
 
 		if (roles != null) {
@@ -53,6 +58,7 @@ export class AuthenticationService {
 				userData => {
 					localStorage.setItem('username', userData.username);
 					localStorage.setItem('password', userData.password);
+					localStorage.setItem('nome', userData.nome);
 					localStorage.setItem('roles', userData.roles);
 
 					let authString = 'Basic ' + btoa(username + ':' + password);
@@ -75,6 +81,7 @@ export class AuthenticationService {
 	logOut() {
 		localStorage.removeItem('username');
 		localStorage.removeItem('password');
+		localStorage.removeItem('nome');
 		localStorage.removeItem('roles');
 	}
 

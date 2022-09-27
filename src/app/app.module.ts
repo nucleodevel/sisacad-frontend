@@ -93,6 +93,8 @@ import { TurmaAddComponent } from './component/turma/add/component';
 import { TurmaEditComponent } from './component/turma/edit/component';
 import { TurmaService } from './service/turma/service';
 
+import { UsuarioService } from './service/usuario/service';
+
 import { VestibulandoListComponent } from './component/vestibulando/list/component';
 import { VestibulandoViewComponent } from './component/vestibulando/view/component';
 import { VestibulandoAddComponent } from './component/vestibulando/add/component';
@@ -217,6 +219,7 @@ export let AppInjector: Injector;
 		ParticipacaoAulaService,
 		ParticipacaoAvaliacaoService,
 		TurmaService,
+		UsuarioService,
 		VestibulandoService,
 		VestibularService,
 	],

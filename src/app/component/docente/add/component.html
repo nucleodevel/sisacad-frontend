@@ -7,8 +7,7 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			>Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -24,7 +23,7 @@
 				</div>
 				<div class="form-group col-lg-8 col-md-12">
 					<label for="nome">Nome</label> <input type="text"
-						[(ngModel)]="entity.nome" class="form-control" id="nome"
+						[(ngModel)]="entity.usuario.nome" class="form-control" id="nome"
 						name="nome" required #nome="ngModel">
 					<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
 						pendente</div>
@@ -62,8 +61,7 @@
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>
-				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-					>Cancelar</a>
+				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 	</div>

@@ -7,8 +7,7 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			>Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -53,7 +52,7 @@
 						</thead>
 						<tbody>
 							<tr *ngFor="let item of listNotSelectedDiscente; let i=index">
-								<td>{{ item.vestibulando.nome }}</td>
+								<td>{{ item.vestibulando.usuario.nome }}</td>
 								<td>{{ item.vestibulando.cpf }}</td>
 								<td><button (click)="setDiscenteAsSelected(i)"
 										class="btn btn-danger">&gt;</button></td>
@@ -75,7 +74,7 @@
 							<tr *ngFor="let item of listSelectedDiscente; let i=index">
 								<td><button (click)="setDiscenteAsNotSelected(i)"
 										class="btn btn-danger">&lt;</button></td>
-								<td>{{ item.vestibulando.nome }}</td>
+								<td>{{ item.vestibulando.usuario.nome }}</td>
 								<td>{{ item.vestibulando.cpf }}</td>
 							</tr>
 						</tbody>
@@ -86,8 +85,7 @@
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>
-				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-					>Cancelar</a>
+				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Cancelar</a>
 			</div>
 
 		</form>
