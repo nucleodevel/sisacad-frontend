@@ -52,7 +52,7 @@ export class AuthenticationService {
 	}
 
 	authenticate(username: string, password: string) {
-		const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+		const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password), skip: "true" });
 		return this.http.get<UsuarioDto>(AppConfig.API_ENDPOINT + 'auth/validate', { headers }).pipe(
 			map(
 				userData => {
@@ -60,9 +60,6 @@ export class AuthenticationService {
 					localStorage.setItem('password', userData.password);
 					localStorage.setItem('nome', userData.nome);
 					localStorage.setItem('roles', userData.roles);
-
-					let authString = 'Basic ' + btoa(username + ':' + password);
-					localStorage.setItem('basicauth', authString);
 				}
 			),
 			catchError(err => {
