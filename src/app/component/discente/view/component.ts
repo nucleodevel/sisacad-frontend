@@ -59,4 +59,12 @@ export class DiscenteViewComponent extends AbstractViewComponent<Discente, Disce
 
 	}
 
+	/*
+	 * Permissions
+	 */
+
+	public canList(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_GRADUACAO', 'ROLE_DOCENTE']);
+	}
+
 }

@@ -7,8 +7,7 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			>Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -26,8 +25,8 @@
 			<div class="form-row">
 				<button type="submit" [disabled]="!entityForm.form.valid"
 					class="btn btn-success" style="margin-right: 10px">Salvar</button>
-				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-					>Cancelar</a>
+				<a *ngIf="canList()" routerLink="/{{ routerPrefix }}/list"
+					class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 	</div>

@@ -50,7 +50,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 	}
 
 	/*
-	 * Redirect
+	 * Auxiliares
 	 */
 
 	reloadData() {

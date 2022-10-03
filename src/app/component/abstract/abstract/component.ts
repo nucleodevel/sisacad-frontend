@@ -5,6 +5,8 @@ import { AppInjector } from '../../../app.module';
 
 import { DateUtil } from '../../../util/date';
 
+import { AuthenticationService } from '../../../service/authentication/service';
+
 import { AbstractEntity } from '../../../domain/abstract/entity';
 import { AbstractDto } from '../../../dto/abstract/dto';
 import { AbstractService } from '../../../service/abstract/service';
@@ -17,6 +19,8 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 
 	protected _router!: Router;
 	private _dateUtil!: DateUtil;
+
+	private _authenticationService!: AuthenticationService;
 
 	errorMessage: string = "";
 
@@ -46,6 +50,13 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 		return this._dateUtil;
 	}
 
+	get authenticationService(): AuthenticationService {
+		if (!this._authenticationService) {
+			this._authenticationService = AppInjector.get(AuthenticationService);
+		}
+		return this._authenticationService;
+	}
+
 	/*
 	 * Component methods
 	 */
@@ -54,6 +65,30 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 
 	ngAfterViewInitSuper(loader: ElementRef, bodyCard: ElementRef) {
 		this.hideloader(loader, bodyCard);
+	}
+
+	/*
+	 * Permissions
+	 */
+
+	public canList(): boolean {
+		return this.authenticationService.hasAnyRole(["ROLE_ADMIN"]);
+	}
+
+	public canView(): boolean {
+		return this.authenticationService.hasAnyRole(["ROLE_ADMIN"]);
+	}
+
+	public canAdd(): boolean {
+		return this.authenticationService.hasAnyRole(["ROLE_ADMIN"]);
+	}
+
+	public canEdit(): boolean {
+		return this.authenticationService.hasAnyRole(["ROLE_ADMIN"]);
+	}
+
+	public canRemove(): boolean {
+		return this.authenticationService.hasAnyRole(["ROLE_ADMIN"]);
 	}
 
 	/*

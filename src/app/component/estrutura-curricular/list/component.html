@@ -7,13 +7,12 @@
 <div class="card my-5" id="bodyCard" #bodyCard>
 	<div *ngIf="errorMessage" class="alert alert-danger">
 		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger"
-			>Voltar</a>
+			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 	</div>
-	
+
 	<div class="card-body" *ngIf="entities">
-		<a routerLink="/{{ routerPrefix }}/add" class="btn btn-success"
-			style="margin-bottom: 10px">Novo</a>
+		<a *ngIf="canAdd()" routerLink="/{{ routerPrefix }}/add"
+			class="btn btn-success" style="margin-bottom: 10px">Novo</a>
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -32,12 +31,13 @@
 					<td>{{ entity.anoInicio }}</td>
 					<td>{{ entity.anoTermino }}</td>
 					<td>{{ entity.curso.toString() }}</td>
-					<td><a routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"
-						class="btn btn-info">Ver</a> <a
+					<td><a *ngIf="canView()"
+						routerLink="/{{ routerPrefix }}/view/{{ entity.id }}"
+						class="btn btn-info">Ver</a> <a *ngIf="canEdit()"
 						routerLink="/{{ routerPrefix }}/edit/{{ entity.id }}"
 						class="btn btn-warning">Editar</a>
-						<button (click)="askRemove(entity)" class="btn btn-danger"
-							>Remover</button></td>
+						<button *ngIf="canRemove()" (click)="askRemove(entity)"
+							class="btn btn-danger">Remover</button></td>
 				</tr>
 			</tbody>
 		</table>

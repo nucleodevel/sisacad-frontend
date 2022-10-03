@@ -63,7 +63,8 @@
 				<button type="submit" *ngIf="entity.vestibulando"
 					[disabled]="!entityForm.form.valid" class="btn btn-success"
 					style="margin-right: 10px">Salvar</button>
-				<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Cancelar</a>
+				<a *ngIf="canList()" routerLink="/{{ routerPrefix }}/list"
+					class="btn btn-danger">Cancelar</a>
 			</div>
 
 		</form>

@@ -82,7 +82,7 @@ export class AuthenticationService {
 		localStorage.removeItem('roles');
 	}
 
-	hasRole(role: string) {
+	hasRole(role: string): boolean {
 		var sessionUser = this.getSessionUser();
 
 		if (sessionUser != null && sessionUser.getListRole() != null && sessionUser.getListRole().length > 0) {
@@ -90,6 +90,21 @@ export class AuthenticationService {
 		}
 
 		return false;
+	}
+
+	hasAnyRole(roles: string[]): boolean {
+		var sessionUser = this.getSessionUser()!;
+
+		var hasRole = false;
+		if (sessionUser != null && sessionUser.getListRole() != null && sessionUser.getListRole().length > 0) {
+			roles.forEach(role => {
+				if (!hasRole && sessionUser.getListRole().includes(role)) {
+					hasRole = true;
+				}
+			});
+		}
+
+		return hasRole;
 	}
 
 }

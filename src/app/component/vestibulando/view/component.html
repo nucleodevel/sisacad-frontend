@@ -67,7 +67,7 @@
 				</div>
 			</div>
 		</fieldset>
-		<div class="form-row">
+		<div class="form-row" *ngIf="canList()">
 			<a routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
 		</div>
 	</div>
