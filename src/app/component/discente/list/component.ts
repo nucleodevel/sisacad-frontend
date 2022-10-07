@@ -2,8 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { AbstractListComponent } from '../../../component/abstract/list/component';
 
-import { AuthenticationService } from '../../../service/authentication/service';
-
 import { Discente } from '../../../domain/discente/entity';
 import { DiscenteDto } from '../../../dto/discente/dto';
 import { DiscenteService } from '../../../service/discente/service';
@@ -54,7 +52,7 @@ export class DiscenteListComponent extends AbstractListComponent<Discente, Disce
 	 */
 
 	public canView(): boolean {
-		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_GRADUACAO', 'ROLE_DOCENTE']);
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO', 'ROLE_DOCENTE']);
 	}
 
 	public canAdd(): boolean {
@@ -97,19 +95,19 @@ export class DiscenteListComponent extends AbstractListComponent<Discente, Disce
 		} else if (this.authenticationService.hasRole('ROLE_DISCENTE')) {
 			var username = localStorage.getItem("username")!;
 
-			this.docenteService.findByUsername(username).subscribe(dataDocente => {
-				var listDocente = this.docenteService.makeEntityArrayFromDtoArray(dataDocente);
-				var docente = listDocente.length == 0 ? null : listDocente[0];
+			this.service.findByUsername(username).subscribe(data => {
+				var listItem = this.service.makeEntityArrayFromDtoArray(data);
+				var item = listItem.length == 0 ? null : listItem[0];
 
-				if (docente == null) {
+				if (item == null) {
 					this.entities = [];
 				} else {
-					this.router.navigate(['/' + this.routerPrefix + '/view/' + docente.id]);
+					this.router.navigate(['/' + this.routerPrefix + '/view/' + item.id]);
 				}
 
 
-			}, errorDocente => {
-				this.setErrorMessage(errorDocente);
+			}, error => {
+				this.setErrorMessage(error);
 			});
 
 		}

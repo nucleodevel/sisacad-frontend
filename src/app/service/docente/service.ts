@@ -9,6 +9,7 @@ import { AbstractService } from '../abstract/service';
 import { Docente } from '../../domain/docente/entity';
 import { DocenteDto } from '../../dto/docente/dto';
 
+import { AulaDto } from '../../dto/aula/dto';
 import { DiscenteDto } from '../../dto/discente/dto';
 
 import { UsuarioService } from '../../service/usuario/service';
@@ -48,8 +49,7 @@ export class DocenteService extends AbstractService<Docente, DocenteDto> {
 	}
 
 	public findByUsername(username: string) {
-		const headers = this.httpHeaders;
-		return this.http.get<DocenteDto[]>(this.apiUrl + '/?username=' + username).pipe(
+		return this.http.get<DocenteDto[]>(this.apiUrl + '/by-username/' + username).pipe(
 			catchError(err => {
 				return throwError(err);
 			})
@@ -58,6 +58,14 @@ export class DocenteService extends AbstractService<Docente, DocenteDto> {
 
 	public findAllDiscenteById(id: number): Observable<DiscenteDto[]> {
 		return this.http.get<DiscenteDto[]>(this.apiUrl + '/' + id + "/discente").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
+	public findAllAulaById(id: number): Observable<AulaDto[]> {
+		return this.http.get<AulaDto[]>(this.apiUrl + '/' + id + "/aula").pipe(
 			catchError(err => {
 				return throwError(err);
 			})

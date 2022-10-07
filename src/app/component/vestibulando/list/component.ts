@@ -44,4 +44,48 @@ export class VestibulandoListComponent extends AbstractListComponent<Vestibuland
 
 	}
 
+	/*
+	 * Permissions
+	 */
+
+	public canView(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO']);
+	}
+
+	public canAdd(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO']);
+	}
+
+	public canEdit(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO']);
+	}
+
+	/*
+	 * Auxiliares
+	 */
+
+	reloadData() {
+		if (this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO'])) {
+			super.reloadData();
+		} else if (this.authenticationService.hasRole('ROLE_VESTIBULANDO')) {
+			var username = localStorage.getItem("username")!;
+			console.log("---" + username);
+			this.service.findByUsername(username).subscribe(data => {
+				var listItem = this.service.makeEntityArrayFromDtoArray(data);
+				var item = listItem.length == 0 ? null : listItem[0];
+
+				if (item == null) {
+					this.entities = [];
+				} else {
+					this.router.navigate(['/' + this.routerPrefix + '/view/' + item.id]);
+				}
+
+
+			}, error => {
+				this.setErrorMessage(error);
+			});
+
+		}
+	}
+
 }

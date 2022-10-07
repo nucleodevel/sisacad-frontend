@@ -11,6 +11,7 @@ import { DiscenteDto } from '../../dto/discente/dto';
 
 import { VestibulandoService } from '../../service/vestibulando/service';
 
+import { AulaDto } from '../../dto/aula/dto';
 import { OfertaDisciplinaDto } from '../../dto/oferta-disciplina/dto';
 
 @Injectable()
@@ -43,8 +44,24 @@ export class DiscenteService extends AbstractService<Discente, DiscenteDto> {
 		return entity;
 	}
 
+	public findByUsername(username: string) {
+		return this.http.get<DiscenteDto[]>(this.apiUrl + '/by-username/' + username).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
 	public findAllOfertaDisciplinaById(id: number): Observable<OfertaDisciplinaDto[]> {
 		return this.http.get<OfertaDisciplinaDto[]>(this.apiUrl + '/' + id + "/oferta-disciplina").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
+	public findAllAulaById(id: number): Observable<AulaDto[]> {
+		return this.http.get<AulaDto[]>(this.apiUrl + '/' + id + "/aula").pipe(
 			catchError(err => {
 				return throwError(err);
 			})

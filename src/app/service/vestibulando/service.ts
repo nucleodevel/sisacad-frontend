@@ -53,6 +53,14 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 		return entity;
 	}
 
+	public findByUsername(username: string) {
+		return this.http.get<VestibulandoDto[]>(this.apiUrl + '/by-username/' + username).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
 	public findAllIsNotDiscente(): Observable<VestibulandoDto[]> {
 		return this.http.get<VestibulandoDto[]>(this.apiUrl + "/is-not-discente").pipe(
 			catchError(err => {
