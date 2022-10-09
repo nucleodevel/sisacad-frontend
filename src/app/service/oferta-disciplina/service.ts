@@ -37,6 +37,7 @@ export class OfertaDisciplinaService extends AbstractService<OfertaDisciplina, O
 
 		entity.id = dto.id;
 		entity.codigo = dto.codigo;
+		entity.semestre = dto.semestre;
 
 		this.disciplinaService.findById(dto.disciplina).subscribe(data => {
 			console.log(data);

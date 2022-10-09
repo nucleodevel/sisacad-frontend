@@ -32,7 +32,15 @@
 					<div [hidden]="!disciplina.pristine" class="alert alert-danger">Disciplina
 						pendente</div>
 				</div>
-
+			</div>
+			<div class="form-row">
+				<div class="form-group col-lg-2 col-md-12">
+					<label for="semestre">Semestre</label> <input type="number"
+						[(ngModel)]="entity.semestre" class="form-control" id="semestre"
+						name="semestre" required #semestre="ngModel">
+					<div [hidden]="!semestre.pristine" class="alert alert-danger">Semestre
+						pendente</div>
+				</div>
 				<div class="form-group col-lg-5 col-md-12">
 					<label for="docente">Docente</label> <select
 						[(ngModel)]="entity.docente" class="form-control" name="docente"
