@@ -59,4 +59,12 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 
 	}
 
+	/*
+	 * Permissions
+	 */
+
+	public canList(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO', 'ROLE_DOCENTE', 'ROLE_DISCENTE']);
+	}
+
 }

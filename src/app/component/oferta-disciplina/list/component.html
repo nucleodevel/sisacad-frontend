@@ -1,3 +1,4 @@
+<h3 class="component-title">Listar Ofertas de Disciplinas</h3>
 <div class="d-flex justify-content-center">
 	<div class="spinner-border" role="status" #loader>
 		<span class="sr-only"></span>
@@ -18,7 +19,6 @@
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Código</th>
-					<th scope="col">Semestre</th>
 					<th scope="col">Disciplina</th>
 					<th scope="col">Docente</th>
 					<th scope="col">Ações</th>
@@ -28,7 +28,6 @@
 				<tr *ngFor="let entity of entities">
 					<td>{{ entity.id }}</td>
 					<td>{{ entity.codigo }}</td>
-					<td>{{ entity.semestre }}</td>
 					<td>{{ entity.disciplina.toString() }}</td>
 					<td>{{ entity.docente.toString() }}</td>
 					<td><a *ngIf="canView()"

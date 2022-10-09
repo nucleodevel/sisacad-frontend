@@ -95,6 +95,18 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 		});
 	}
 
+	/*
+	 * Permissions
+	 */
+
+	public canList(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO', 'ROLE_DOCENTE', 'ROLE_DISCENTE']);
+	}
+
+	/*
+	 * Form events
+	 */
+
 	onSubmit() {
 
 		var listDeleteDiscente: Discente[] = [];
@@ -156,10 +168,6 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 		super.onSubmit();
 
 	}
-
-	/*
-	 * Form events
-	 */
 
 	setDiscenteAsSelected(index: number) {
 		var item = this.listNotSelectedDiscente[index];

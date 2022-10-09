@@ -5,7 +5,6 @@ import { Docente } from '../docente/entity';
 
 export class OfertaDisciplina extends AbstractEntity {
 	codigo!: string;
-	semestre!: number;
 	disciplina!: Disciplina;
 	docente!: Docente;
 

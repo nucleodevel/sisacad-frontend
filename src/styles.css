@@ -13,6 +13,12 @@ legend {
 	width: 100%;
 }
 
+.component-title {
+	margin-bottom: 2em;
+	text-align: center;
+	text-decoration: underline;
+}
+
 a.btn, button.btn {
 	margin-right: 10px;
 }

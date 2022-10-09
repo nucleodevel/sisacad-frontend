@@ -98,6 +98,18 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 
 	}
 
+	/*
+	 * Permissions
+	 */
+
+	public canList(): boolean {
+		return this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO', 'ROLE_DOCENTE', 'ROLE_DISCENTE']);
+	}
+
+	/*
+	 * Form events
+	 */
+
 	onSubmit() {
 
 		var entityId: number;
@@ -126,10 +138,6 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 		this.list();
 
 	}
-
-	/*
-	 * Form events
-	 */
 
 	onOfertaDisciplinaChange(ofertaDisciplina: OfertaDisciplina) {
 

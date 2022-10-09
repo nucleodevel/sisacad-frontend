@@ -1,3 +1,4 @@
+<h3 class="component-title">Visualizar Oferta de Disciplina ID {{ entity.id }}</h3>
 <div class="d-flex justify-content-center">
 	<div class="spinner-border" role="status" #loader>
 		<span class="sr-only"></span>
@@ -16,13 +17,9 @@
 				<label>ID</label>
 				<div>{{entity.id}}</div>
 			</div>
-			<div class="form-group col-lg-5 col-md-12">
+			<div class="form-group col-lg-10 col-md-12">
 				<label>Código:</label>
 				<div>{{ entity.codigo }}</div>
-			</div>
-			<div class="form-group col-lg-5 col-md-12">
-				<label>Semestre:</label>
-				<div>{{ entity.semestre }}</div>
 			</div>
 		</div>
 		<div class="form-row">
