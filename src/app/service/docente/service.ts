@@ -11,6 +11,7 @@ import { DocenteDto } from '../../dto/docente/dto';
 
 import { AulaDto } from '../../dto/aula/dto';
 import { DiscenteDto } from '../../dto/discente/dto';
+import { OfertaDisciplinaDto } from '../../dto/oferta-disciplina/dto';
 
 import { UsuarioService } from '../../service/usuario/service';
 
@@ -50,6 +51,14 @@ export class DocenteService extends AbstractService<Docente, DocenteDto> {
 
 	public findByUsername(username: string) {
 		return this.http.get<DocenteDto[]>(this.apiUrl + '/by-username/' + username).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
+	public findAllOfertaDisciplinaById(id: number): Observable<OfertaDisciplinaDto[]> {
+		return this.http.get<OfertaDisciplinaDto[]>(this.apiUrl + '/' + id + "/oferta-disciplina").pipe(
 			catchError(err => {
 				return throwError(err);
 			})

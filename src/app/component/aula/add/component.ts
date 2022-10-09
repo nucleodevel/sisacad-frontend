@@ -10,6 +10,9 @@ import { AulaService } from '../../../service/aula/service';
 import { Discente } from '../../../domain/discente/entity';
 import { DiscenteService } from '../../../service/discente/service';
 
+import { Docente } from '../../../domain/docente/entity';
+import { DocenteService } from '../../../service/docente/service';
+
 import { OfertaDisciplina } from '../../../domain/oferta-disciplina/entity';
 import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/service';
 
@@ -41,6 +44,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 	 */
 
 	constructor(protected service: AulaService, protected route: ActivatedRoute,
+		protected docenteService: DocenteService,
 		protected discenteService: DiscenteService,
 		protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected participacaoAulaService: ParticipacaoAulaService) {
@@ -62,11 +66,35 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 
 	ngOnInitSuperAdditional() {
 
-		this.ofertaDisciplinaService.findAll().subscribe(data => {
-			this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setErrorMessage(error);
-		});
+		if (this.authenticationService.hasAnyRole(['ROLE_ADMIN'])) {
+			this.ofertaDisciplinaService.findAll().subscribe(data => {
+				this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+			}, error => {
+				this.setErrorMessage(error);
+			});
+		} else if (this.authenticationService.hasRole('ROLE_DOCENTE')) {
+			var username = localStorage.getItem("username")!;
+
+			this.docenteService.findByUsername(username).subscribe(dataDocente => {
+				var listDocente = this.docenteService.makeEntityArrayFromDtoArray(dataDocente);
+				var docente = listDocente.length == 0 ? null : listDocente[0];
+
+				if (docente == null) {
+					this.listaOfertaDisciplina = [];
+				} else {
+					this.docenteService.findAllOfertaDisciplinaById(docente.id).subscribe(data => {
+						this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+					}, error => {
+						this.setErrorMessage(error);
+					});
+				}
+
+
+			}, errorDocente => {
+				this.setErrorMessage(errorDocente);
+			});
+
+		}
 
 	}
 

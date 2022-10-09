@@ -28,6 +28,7 @@ export class AuthenticationService {
 		var username = localStorage.getItem("username");
 		var password = localStorage.getItem("password");
 		var nome = localStorage.getItem("nome");
+		var email = localStorage.getItem("email");
 		var roles = localStorage.getItem("roles");
 
 		if (username != null) {
@@ -42,6 +43,10 @@ export class AuthenticationService {
 
 		if (nome != null) {
 			sessionUser.nome = nome;
+		}
+
+		if (email != null) {
+			sessionUser.email = email;
 		}
 
 		if (roles != null) {
@@ -59,6 +64,7 @@ export class AuthenticationService {
 					localStorage.setItem('username', userData.username);
 					localStorage.setItem('password', userData.password);
 					localStorage.setItem('nome', userData.nome);
+					localStorage.setItem('email', userData.email);
 					localStorage.setItem('roles', userData.roles);
 				}
 			),
@@ -79,6 +85,7 @@ export class AuthenticationService {
 		localStorage.removeItem('username');
 		localStorage.removeItem('password');
 		localStorage.removeItem('nome');
+		localStorage.removeItem('email');
 		localStorage.removeItem('roles');
 	}
 
