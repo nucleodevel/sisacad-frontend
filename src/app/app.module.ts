@@ -101,6 +101,9 @@ import { VestibulandoAddComponent } from './component/vestibulando/add/component
 import { VestibulandoEditComponent } from './component/vestibulando/edit/component';
 import { VestibulandoService } from './service/vestibulando/service';
 
+import { VestibulandoUsuarioAddComponent } from './component/vestibulando-usuario/add/component';
+import { VestibulandoUsuarioService } from './service/vestibulando-usuario/service';
+
 import { VestibularListComponent } from './component/vestibular/list/component';
 import { VestibularViewComponent } from './component/vestibular/view/component';
 import { VestibularAddComponent } from './component/vestibular/add/component';
@@ -192,6 +195,8 @@ export let AppInjector: Injector;
 		VestibulandoAddComponent,
 		VestibulandoEditComponent,
 
+		VestibulandoUsuarioAddComponent,
+
 		VestibularListComponent,
 		VestibularViewComponent,
 		VestibularAddComponent,
@@ -221,6 +226,7 @@ export let AppInjector: Injector;
 		TurmaService,
 		UsuarioService,
 		VestibulandoService,
+		VestibulandoUsuarioService,
 		VestibularService,
 	],
 	bootstrap: [AppComponent]

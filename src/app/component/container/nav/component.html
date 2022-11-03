@@ -25,15 +25,15 @@
 				<div ngbDropdownMenu class="dropdown-menu"
 					aria-labelledby="dropdown01">
 					<a *ngIf="isVisibleMenu('ITEM_CURSO')" class="dropdown-item"
-						routerLink="/">Cursos</a> <a
+						routerLink="/curso">Cursos</a> <a
 						*ngIf="isVisibleMenu('ITEM_DISCIPLINA')" class="dropdown-item"
-						routerLink="/">Disciplinas</a> <a
+						routerLink="/disciplina">Disciplinas</a> <a
 						*ngIf="isVisibleMenu('ITEM_ESTRUTURA_CURRICULAR')"
-						class="dropdown-item" routerLink="/">Estruturas Curriculares</a> <a
+						class="dropdown-item" routerLink="/estrutura-curricular">Estruturas Curriculares</a> <a
 						*ngIf="isVisibleMenu('ITEM_OFERTA_DISCIPLINA')"
-						class="dropdown-item" routerLink="/">Ofertas de disciplinas</a> <a
+						class="dropdown-item" routerLink="/oferta-disciplina">Ofertas de disciplinas</a> <a
 						*ngIf="isVisibleMenu('ITEM_TURMA')" class="dropdown-item"
-						routerLink="/">Turmas</a>
+						routerLink="/turma">Turmas</a>
 				</div></li>
 			<li *ngIf="isVisibleMenu('VESTIBULAR')" ngbDropdown
 				class="nav-item dropdown"><a ngbDropdownToggle
@@ -42,13 +42,13 @@
 				<div ngbDropdownMenu class="dropdown-menu"
 					aria-labelledby="dropdown01">
 					<a *ngIf="isVisibleMenu('ITEM_AVALIACAO_VESTIBULANDO')"
-						class="dropdown-item" routerLink="/">Avaliações dos
+						class="dropdown-item" routerLink="/avaliacao-vestibulando">Avaliações dos
 						vestibulandos</a> <a *ngIf="isVisibleMenu('ITEM_OFERTA_CURSO')"
-						class="dropdown-item" routerLink="/">Ofertas de cursos</a> <a
+						class="dropdown-item" routerLink="/oferta-curso">Ofertas de cursos</a> <a
 						*ngIf="isVisibleMenu('ITEM_VESTIBULANDO')" class="dropdown-item"
-						routerLink="/">Vestibulandos</a> <a
+						routerLink="/vestibulando">Vestibulandos</a> <a
 						*ngIf="isVisibleMenu('ITEM_VESTIBULAR')" class="dropdown-item"
-						routerLink="/">Vestibulares</a>
+						routerLink="/vestibular">Vestibulares</a>
 				</div></li>
 			<li *ngIf="isVisibleMenu('GRADUACAO')" ngbDropdown
 				class="nav-item dropdown"><a ngbDropdownToggle
@@ -57,17 +57,17 @@
 				<div ngbDropdownMenu class="dropdown-menu"
 					aria-labelledby="dropdown01">
 					<a *ngIf="isVisibleMenu('ITEM_AULA')" class="dropdown-item"
-						routerLink="/">Aulas</a> <a
+						routerLink="/aula">Aulas</a> <a
 						*ngIf="isVisibleMenu('ITEM_AVALIACAO')" class="dropdown-item"
-						routerLink="/">Avaliações</a> <a
+						routerLink="/avaliacao">Avaliações</a> <a
 						*ngIf="isVisibleMenu('ITEM_DISCENTE')" class="dropdown-item"
-						routerLink="/">Discentes</a> <a
+						routerLink="/discente">Discentes</a> <a
 						*ngIf="isVisibleMenu('ITEM_DOCENTE')" class="dropdown-item"
-						routerLink="/">Docentes</a> <a
+						routerLink="/docente">Docentes</a> <a
 						*ngIf="isVisibleMenu('ITEM_PARTICIPACAO_AULA')"
-						class="dropdown-item" routerLink="/">Participações em aulas</a> <a
+						class="dropdown-item" routerLink="/participacao-aula">Participações em aulas</a> <a
 						*ngIf="isVisibleMenu('ITEM_PARTICIPACAO_AVALIACAO')"
-						class="dropdown-item" routerLink="/">Participações em
+						class="dropdown-item" routerLink="/participacao-avaliacao">Participações em
 						avaliações</a>
 				</div></li>
 		</ul>
