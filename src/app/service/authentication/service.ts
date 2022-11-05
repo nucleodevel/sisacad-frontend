@@ -25,11 +25,11 @@ export class AuthenticationService {
 	getSessionUser() {
 		var sessionUser: Usuario = new Usuario();
 
-		var username = localStorage.getItem("username");
-		var password = localStorage.getItem("password");
-		var nome = localStorage.getItem("nome");
-		var email = localStorage.getItem("email");
-		var roles = localStorage.getItem("roles");
+		var username = sessionStorage.getItem("username");
+		var password = sessionStorage.getItem("password");
+		var nome = sessionStorage.getItem("nome");
+		var email = sessionStorage.getItem("email");
+		var roles = sessionStorage.getItem("roles");
 
 		if (username != null) {
 			sessionUser.username = username;
@@ -61,11 +61,11 @@ export class AuthenticationService {
 		return this.http.get<UsuarioDto>(AppConfig.API_ENDPOINT + 'auth/validate', { headers }).pipe(
 			map(
 				userData => {
-					localStorage.setItem('username', userData.username);
-					localStorage.setItem('password', userData.password);
-					localStorage.setItem('nome', userData.nome);
-					localStorage.setItem('email', userData.email);
-					localStorage.setItem('roles', userData.roles);
+					sessionStorage.setItem('username', userData.username);
+					sessionStorage.setItem('password', userData.password);
+					sessionStorage.setItem('nome', userData.nome);
+					sessionStorage.setItem('email', userData.email);
+					sessionStorage.setItem('roles', userData.roles);
 				}
 			),
 			catchError(err => {
@@ -76,17 +76,17 @@ export class AuthenticationService {
 	}
 
 	isUserLoggedIn() {
-		let user = localStorage.getItem('username')
+		let user = sessionStorage.getItem('username')
 		console.log(!(user === null))
 		return !(user === null)
 	}
 
 	logOut() {
-		localStorage.removeItem('username');
-		localStorage.removeItem('password');
-		localStorage.removeItem('nome');
-		localStorage.removeItem('email');
-		localStorage.removeItem('roles');
+		sessionStorage.removeItem('username');
+		sessionStorage.removeItem('password');
+		sessionStorage.removeItem('nome');
+		sessionStorage.removeItem('email');
+		sessionStorage.removeItem('roles');
 	}
 
 	hasRole(role: string): boolean {

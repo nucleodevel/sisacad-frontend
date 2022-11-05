@@ -12,14 +12,21 @@ export class VestibulandoUsuarioDto extends AbstractDto<VestibulandoUsuario> {
 	copyFromEntity(entity: VestibulandoUsuario) {
 		this.vestibulando = new VestibulandoDto();
 		this.usuario = new UsuarioDto();
-		
+
 		this.id = entity.id;
 
 		this.vestibulando.cpf = entity.vestibulando.cpf;
-		this.vestibulando.dataNascimento = entity.vestibulando.dataNascimento.getTime();
+
+		if (entity.vestibulando.dataNascimento != null) {
+			this.vestibulando.dataNascimento = entity.vestibulando.dataNascimento.getTime();
+		}
+
 		this.vestibulando.endereco = entity.vestibulando.endereco;
 		this.vestibulando.telefones = entity.vestibulando.telefones;
-		this.vestibulando.ofertaCurso = entity.vestibulando.ofertaCurso.id;
+
+		if (entity.vestibulando.ofertaCurso != null) {
+			this.vestibulando.ofertaCurso = entity.vestibulando.ofertaCurso.id;
+		}
 
 		this.usuario.id = entity.usuario.id;
 		this.usuario.username = entity.usuario.username;

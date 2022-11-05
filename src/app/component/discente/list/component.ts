@@ -71,7 +71,7 @@ export class DiscenteListComponent extends AbstractListComponent<Discente, Disce
 		if (this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_GRADUACAO'])) {
 			super.reloadData();
 		} else if (this.authenticationService.hasRole('ROLE_DOCENTE')) {
-			var username = localStorage.getItem("username")!;
+			var username = sessionStorage.getItem("username")!;
 
 			this.docenteService.findByUsername(username).subscribe(dataDocente => {
 				var listDocente = this.docenteService.makeEntityArrayFromDtoArray(dataDocente);
@@ -93,7 +93,7 @@ export class DiscenteListComponent extends AbstractListComponent<Discente, Disce
 			});
 
 		} else if (this.authenticationService.hasRole('ROLE_DISCENTE')) {
-			var username = localStorage.getItem("username")!;
+			var username = sessionStorage.getItem("username")!;
 
 			this.service.findByUsername(username).subscribe(data => {
 				var listItem = this.service.makeEntityArrayFromDtoArray(data);

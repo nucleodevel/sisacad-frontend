@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
 			["PEDAGOGICO", ["ROLE_ADMIN", "ROLE_PEDAGOGICO", "ROLE_GRADUACAO", "ROLE_DISCENTE", "ROLE_DOCENTE", "ROLE_VESTIBULANDO"]],
 			["VESTIBULAR", ["ROLE_ADMIN", "ROLE_PEDAGOGICO", "ROLE_GRADUACAO", "ROLE_DISCENTE", "ROLE_DOCENTE", "ROLE_VESTIBULANDO"]],
 			["GRADUACAO", ["ROLE_ADMIN", "ROLE_PEDAGOGICO", "ROLE_GRADUACAO", "ROLE_DISCENTE", "ROLE_DOCENTE"]],
-			
+
 			["ITEM_AULA", ["ROLE_ADMIN", "ROLE_PEDAGOGICO", "ROLE_GRADUACAO", "ROLE_DISCENTE", "ROLE_DOCENTE"]],
 			["ITEM_AVALIACAO", ["ROLE_ADMIN", "ROLE_PEDAGOGICO", "ROLE_GRADUACAO", "ROLE_DISCENTE", "ROLE_DOCENTE"]],
 			["ITEM_AVALIACAO_VESTIBULANDO", ["ROLE_ADMIN", "ROLE_PEDAGOGICO", "ROLE_GRADUACAO", "ROLE_DISCENTE", "ROLE_VESTIBULANDO"]],
@@ -52,10 +52,12 @@ export class NavComponent implements OnInit {
 			isVisible = this.authenticationService.isUserLoggedIn();
 		} else if (menu == 'LOGOUT') {
 			isVisible = this.authenticationService.isUserLoggedIn();
+		} else if (menu == 'INSCRICAO_VESTIBULAR') {
+			isVisible = !this.authenticationService.isUserLoggedIn();
 		} else if (this.mapMenuRoles.has(menu)) {
 
 			var listMenuRole: string[] = this.mapMenuRoles.get(menu) || [];
-			var sessionRoles = localStorage.getItem("roles");
+			var sessionRoles = sessionStorage.getItem("roles");
 
 			if (listMenuRole != null && sessionRoles != null) {
 				var listSessionRole = sessionRoles.split(",");

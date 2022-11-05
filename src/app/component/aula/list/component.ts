@@ -28,7 +28,7 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 	 */
 
 	constructor(protected service: AulaService, protected docenteService: DocenteService,
-			protected discenteService: DiscenteService) {
+		protected discenteService: DiscenteService) {
 		super(service, 'aula');
 	}
 
@@ -72,7 +72,7 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 		if (this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO'])) {
 			super.reloadData();
 		} else if (this.authenticationService.hasRole('ROLE_DOCENTE')) {
-			var username = localStorage.getItem("username")!;
+			var username = sessionStorage.getItem("username")!;
 
 			this.docenteService.findByUsername(username).subscribe(dataDocente => {
 				var listDocente = this.docenteService.makeEntityArrayFromDtoArray(dataDocente);
@@ -94,7 +94,7 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 			});
 
 		} else if (this.authenticationService.hasRole('ROLE_DISCENTE')) {
-			var username = localStorage.getItem("username")!;
+			var username = sessionStorage.getItem("username")!;
 
 			this.discenteService.findByUsername(username).subscribe(dataDiscente => {
 				var listDiscente = this.discenteService.makeEntityArrayFromDtoArray(dataDiscente);

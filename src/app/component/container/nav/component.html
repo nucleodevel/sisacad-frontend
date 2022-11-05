@@ -18,6 +18,9 @@
 				class="nav-link">Meu perfil</a></li>
 			<li *ngIf="isVisibleMenu('LOGOUT')"><a routerLink="/logout"
 				class="nav-link">LogOut</a></li>
+			<li *ngIf="isVisibleMenu('INSCRICAO_VESTIBULAR')"><a
+				routerLink="/vestibulando-usuario/add" class="nav-link">Inscrição
+					Vestibular</a></li>
 			<li *ngIf="isVisibleMenu('PEDAGOGICO')" ngbDropdown
 				class="nav-item dropdown"><a ngbDropdownToggle
 				class="nav-link dropdown-toggle" id="dropdown01"
@@ -29,11 +32,11 @@
 						*ngIf="isVisibleMenu('ITEM_DISCIPLINA')" class="dropdown-item"
 						routerLink="/disciplina">Disciplinas</a> <a
 						*ngIf="isVisibleMenu('ITEM_ESTRUTURA_CURRICULAR')"
-						class="dropdown-item" routerLink="/estrutura-curricular">Estruturas Curriculares</a> <a
-						*ngIf="isVisibleMenu('ITEM_OFERTA_DISCIPLINA')"
-						class="dropdown-item" routerLink="/oferta-disciplina">Ofertas de disciplinas</a> <a
-						*ngIf="isVisibleMenu('ITEM_TURMA')" class="dropdown-item"
-						routerLink="/turma">Turmas</a>
+						class="dropdown-item" routerLink="/estrutura-curricular">Estruturas
+						Curriculares</a> <a *ngIf="isVisibleMenu('ITEM_OFERTA_DISCIPLINA')"
+						class="dropdown-item" routerLink="/oferta-disciplina">Ofertas
+						de disciplinas</a> <a *ngIf="isVisibleMenu('ITEM_TURMA')"
+						class="dropdown-item" routerLink="/turma">Turmas</a>
 				</div></li>
 			<li *ngIf="isVisibleMenu('VESTIBULAR')" ngbDropdown
 				class="nav-item dropdown"><a ngbDropdownToggle
@@ -42,12 +45,12 @@
 				<div ngbDropdownMenu class="dropdown-menu"
 					aria-labelledby="dropdown01">
 					<a *ngIf="isVisibleMenu('ITEM_AVALIACAO_VESTIBULANDO')"
-						class="dropdown-item" routerLink="/avaliacao-vestibulando">Avaliações dos
-						vestibulandos</a> <a *ngIf="isVisibleMenu('ITEM_OFERTA_CURSO')"
-						class="dropdown-item" routerLink="/oferta-curso">Ofertas de cursos</a> <a
-						*ngIf="isVisibleMenu('ITEM_VESTIBULANDO')" class="dropdown-item"
-						routerLink="/vestibulando">Vestibulandos</a> <a
-						*ngIf="isVisibleMenu('ITEM_VESTIBULAR')" class="dropdown-item"
+						class="dropdown-item" routerLink="/avaliacao-vestibulando">Avaliações
+						dos vestibulandos</a> <a *ngIf="isVisibleMenu('ITEM_OFERTA_CURSO')"
+						class="dropdown-item" routerLink="/oferta-curso">Ofertas de
+						cursos</a> <a *ngIf="isVisibleMenu('ITEM_VESTIBULANDO')"
+						class="dropdown-item" routerLink="/vestibulando">Vestibulandos</a>
+					<a *ngIf="isVisibleMenu('ITEM_VESTIBULAR')" class="dropdown-item"
 						routerLink="/vestibular">Vestibulares</a>
 				</div></li>
 			<li *ngIf="isVisibleMenu('GRADUACAO')" ngbDropdown
@@ -65,10 +68,10 @@
 						*ngIf="isVisibleMenu('ITEM_DOCENTE')" class="dropdown-item"
 						routerLink="/docente">Docentes</a> <a
 						*ngIf="isVisibleMenu('ITEM_PARTICIPACAO_AULA')"
-						class="dropdown-item" routerLink="/participacao-aula">Participações em aulas</a> <a
-						*ngIf="isVisibleMenu('ITEM_PARTICIPACAO_AVALIACAO')"
-						class="dropdown-item" routerLink="/participacao-avaliacao">Participações em
-						avaliações</a>
+						class="dropdown-item" routerLink="/participacao-aula">Participações
+						em aulas</a> <a *ngIf="isVisibleMenu('ITEM_PARTICIPACAO_AVALIACAO')"
+						class="dropdown-item" routerLink="/participacao-avaliacao">Participações
+						em avaliações</a>
 				</div></li>
 		</ul>
 	</div>
