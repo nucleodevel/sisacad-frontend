@@ -54,7 +54,7 @@ export class EstruturaCurricularAddComponent
 		this.cursoService.findAll().subscribe(data => {
 			this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

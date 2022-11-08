@@ -36,10 +36,10 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 
 	protected remove(id: number) {
 		this.service.delete(id).subscribe(data => {
-			console.log(data);
 			this.reloadData();
+			this.setResultMessage("SUCCESS", "Removido com sucesso");
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 
@@ -57,7 +57,7 @@ export abstract class AbstractListComponent<E extends AbstractEntity, DTO extend
 		this.service.findAll().subscribe(data => {
 			this.entities = this.service.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

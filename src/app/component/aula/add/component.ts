@@ -70,7 +70,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 			this.ofertaDisciplinaService.findAll().subscribe(data => {
 				this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		} else if (this.authenticationService.hasRole('ROLE_DOCENTE')) {
 			var username = sessionStorage.getItem("username")!;
@@ -85,13 +85,13 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 					this.docenteService.findAllOfertaDisciplinaById(docente.id).subscribe(data => {
 						this.listaOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				}
 
 
 			}, errorDocente => {
-				this.setErrorMessage(errorDocente);
+				this.setResultMessage("FAILURE", errorDocente);
 			});
 
 		}
@@ -127,12 +127,12 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 				this.participacaoAulaService.insert(participacaoAulaDto).subscribe(data => {
 
 				}, error => {
-					this.setErrorMessage(error);
+					this.setResultMessage("FAILURE", error);
 				});
 			});
 
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.list();
@@ -149,7 +149,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 			this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 			this.listNotSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

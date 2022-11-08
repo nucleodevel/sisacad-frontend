@@ -22,7 +22,8 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 
 	private _authenticationService!: AuthenticationService;
 
-	errorMessage: string = "";
+	resultStatus: string = "";
+	resultMessage: string = "";
 
 	/*
 	 * Constructors
@@ -118,29 +119,44 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	delay(ms: number) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
+	
+	getResultClass() {
+		return this.resultStatus == 'SUCCESS'? 'success' : 'danger';
+	}
+	
+	getResultTitle() {
+		return this.resultStatus == 'SUCCESS'? 'Sucesso' : 'Erro';
+	}
 
-	setErrorMessage(error: any) {
-		if (error == null) {
-			this.errorMessage = "";
+	setResultMessage(status: any, message: any) {
+		this.resultStatus = status;
+		
+		if (message == null) {
+			this.resultMessage = "";
 			return;
 		}
 
-		var errorMessage: string = JSON.stringify(error);
-		if (error.hasOwnProperty('error')) {
-			if (error.error.hasOwnProperty('msg')) {
-				errorMessage = JSON.stringify(error.error.msg);
+		var resultMessage: string = JSON.stringify(message);
+		if (message.hasOwnProperty('error')) {
+			if (message.error.hasOwnProperty('msg')) {
+				resultMessage = JSON.stringify(message.error.msg);
 			}
 		}
 
-		if (error.hasOwnProperty('message')) {
-			if (error.message.includes('0 Unknown Error')) {
-				errorMessage = "Problema na comunicação com o servidor!";
+		if (message.hasOwnProperty('message')) {
+			if (message.message.includes('0 Unknown Error')) {
+				resultMessage = "Problema na comunicação com o servidor!";
 			}
 		}
 
-		console.error(JSON.stringify(errorMessage));
+		console.error(JSON.stringify(resultMessage));
 
-		this.errorMessage = errorMessage;
+		this.resultMessage = resultMessage;
+	}
+	
+	closeResultMessage() {
+		this.resultStatus = "";
+		this.resultMessage = "";
 	}
 
 }

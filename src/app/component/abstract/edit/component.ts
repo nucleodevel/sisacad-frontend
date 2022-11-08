@@ -37,7 +37,7 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 			this.entity = this.service.makeEntityFromDto(dto);
 			this.ngOnInitSuperAdditional(dto);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 
@@ -45,10 +45,21 @@ export abstract class AbstractEditComponent<E extends AbstractEntity, DTO extend
 		var dto = this.service.newDtoInstance();
 		dto.copyFromEntity(this.entity);
 		this.service.update(this.id, dto).subscribe(result => {
-			this.list();
+			this.setResultMessage("SUCCESS", "Editado com sucesso");
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
+	}
+	
+	closeResultMessage() {
+		var redirectToList = this.resultStatus == 'SUCCESS';
+		
+		this.resultStatus = "";
+		this.resultMessage = "";
+		
+		if (redirectToList) {
+			this.list();
+		}
 	}
 
 }

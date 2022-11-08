@@ -54,7 +54,7 @@ export class DisciplinaViewComponent extends AbstractViewComponent<Disciplina, D
 			console.log(data);
 			this.listSelectedEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

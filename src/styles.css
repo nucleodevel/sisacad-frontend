@@ -13,6 +13,10 @@ legend {
 	width: 100%;
 }
 
+.form-group.required label::after {
+	content: " *";
+}
+
 .component-title {
 	margin-bottom: 2em;
 	text-align: center;
@@ -29,4 +33,29 @@ a.btn, button.btn {
 
 .text-with-break-lines {
     white-space: pre-wrap;
+}
+
+body .result-message {
+    position: fixed;       
+    z-index: 105;
+    
+    background-color: rgba(31, 31, 31, 0.95);
+    
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+body .result-message .alert.fixed {
+	margin: 10em;
+	
+	opacity: 1;
+}
+
+body .result-message .alert.fixed .btn-close {
+	position: absolute;
+	
+    right: 10px;
+    top: 10px;
 }

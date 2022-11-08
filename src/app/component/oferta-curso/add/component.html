@@ -6,23 +6,26 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-{{getResultClass()}} fade show fixed">
+			<h4>{{getResultTitle()}}</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
 			<div class="form-row">
-				<div class="form-group col-lg-4 col-md-12">
+				<div class="form-group col-lg-4 col-md-12 required">
 					<label for="codigo">Código</label> <input type="text"
 						[(ngModel)]="entity.codigo" class="form-control" id="codigo"
 						name="codigo" required #codigo="ngModel">
-					<div [hidden]="!codigo.pristine" class="alert alert-danger">Código
-						pendente</div>
 				</div>
-				<div class="form-group col-lg-8 col-md-12">
+				<div class="form-group col-lg-8 col-md-12 required">
 					<label for="estruturaCurricular">Estrutura Curricular</label> <select
 						[(ngModel)]="entity.estruturaCurricular" class="form-control"
 						name="estruturaCurricular" required #estruturaCurricular="ngModel"
@@ -31,12 +34,10 @@
 							*ngFor="let estruturaCurricular of listaEstruturaCurricular"
 							[ngValue]="estruturaCurricular">{{estruturaCurricular}}</option>
 					</select>
-					<div [hidden]="!estruturaCurricular.pristine"
-						class="alert alert-danger">Estrutura Curricular pendente</div>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-lg-8 col-md-12">
+				<div class="form-group col-lg-8 col-md-12 required">
 					<label for="vestibular">Vestibular</label> <select
 						[(ngModel)]="entity.vestibular" class="form-control"
 						name="vestibular" required #vestibular="ngModel"
@@ -44,15 +45,11 @@
 						<option *ngFor="let vestibular of listaVestibular"
 							[ngValue]="vestibular">{{vestibular.toString()}}</option>
 					</select>
-					<div [hidden]="!vestibular.pristine" class="alert alert-danger">Vestibular
-						pendente</div>
 				</div>
-				<div class="form-group col-lg-4 col-md-12">
+				<div class="form-group col-lg-4 col-md-12 required">
 					<label for="ano">Ano da oferta</label> <input type="text"
 						[(ngModel)]="entity.ano" class="form-control" id="ano" name="ano"
 						required #ano="ngModel">
-					<div [hidden]="!ano.pristine" class="alert alert-danger">Ano
-						da oferta pendente</div>
 				</div>
 			</div>
 			<div class="form-row">

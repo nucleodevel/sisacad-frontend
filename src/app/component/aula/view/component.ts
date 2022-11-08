@@ -54,7 +54,7 @@ export class AulaViewComponent extends AbstractViewComponent<Aula, AulaDto, Aula
 			console.log(data);
 			this.listSelectedParticipacaoAula = this.participacaoAulaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

@@ -6,27 +6,28 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-{{getResultClass()}} fade show fixed">
+			<h4>{{getResultTitle()}}</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-row">
-				<div class="form-group col-lg-4 col-md-12">
+				<div class="form-group col-lg-4 col-md-12 required">
 					<label for="codigo">Código</label> <input type="text"
 						[(ngModel)]="entity.codigo" class="form-control" id="codigo"
 						name="codigo" required #codigo="ngModel">
-					<div [hidden]="!codigo.pristine" class="alert alert-danger">Código
-						pendente</div>
 				</div>
-				<div class="form-group col-lg-8 col-md-12">
+				<div class="form-group col-lg-8 col-md-12 required">
 					<label for="nome">Nome</label> <input type="text"
 						[(ngModel)]="entity.nome" class="form-control" id="nome"
 						name="nome" required #nome="ngModel">
-					<div [hidden]="!nome.pristine" class="alert alert-danger">Nome
-						pendente</div>
 				</div>
 			</div>
 			<div class="form-row">

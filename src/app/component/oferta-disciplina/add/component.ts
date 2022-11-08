@@ -58,13 +58,13 @@ export class OfertaDisciplinaAddComponent extends AbstractAddComponent<OfertaDis
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.docenteService.findAll().subscribe(data => {
 			this.listaDocente = this.docenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

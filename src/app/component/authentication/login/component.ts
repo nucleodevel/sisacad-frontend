@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 	password!: string;
 	invalidLogin = false;
 
-	errorMessage: string = "";
+	resultMessage: string = "";
 
 	constructor(private router: Router,
 		private authenticationservice: AuthenticationService) { }
@@ -33,33 +33,37 @@ export class LoginComponent implements OnInit {
 			},
 			error => {
 				this.invalidLogin = true;
-				this.setErrorMessage("Erro no username ou password");
+				this.setResultMessage("Erro no username ou password");
 			}
 		);
 	}
 
-	setErrorMessage(error: any) {
+	setResultMessage(error: any) {
 		if (error == null) {
-			this.errorMessage = "";
+			this.resultMessage = "";
 			return;
 		}
 
-		var errorMessage: string = JSON.stringify(error);
+		var resultMessage: string = JSON.stringify(error);
 		if (error.hasOwnProperty('error')) {
 			if (error.error.hasOwnProperty('msg')) {
-				errorMessage = JSON.stringify(error.error.msg);
+				resultMessage = JSON.stringify(error.error.msg);
 			}
 		}
 
 		if (error.hasOwnProperty('message')) {
 			if (error.message.includes('0 Unknown Error')) {
-				errorMessage = "Problema na comunicação com o servidor!";
+				resultMessage = "Problema na comunicação com o servidor!";
 			}
 		}
 
-		console.error(JSON.stringify(errorMessage));
+		console.error(JSON.stringify(resultMessage));
 
-		this.errorMessage = errorMessage;
+		this.resultMessage = resultMessage;
+	}
+	
+	closeResultMessage() {
+		this.resultMessage = "";
 	}
 
 }

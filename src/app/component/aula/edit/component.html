@@ -6,9 +6,14 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-{{getResultClass()}} fade show fixed">
+			<h4>{{getResultTitle()}}</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
@@ -19,24 +24,20 @@
 					<label>Oferta de disciplina</label>
 					<div>{{entity.ofertaDisciplina.toString()}}</div>
 				</div>
-				<div class="form-group col-lg-3 col-md-12">
+				<div class="form-group col-lg-3 col-md-12 required">
 					<label for="inicio">Início</label> <input type="datetime-local"
 						[ngModel]="entity.inicio | date:'yyyy-MM-dd HH:mm:ss'"
 						(ngModelChange)="entity.inicio = dateUtil.getDatetimeFromString($event)"
 						class="form-control" id="inicio" name="inicio" required
 						#inicio="ngModel">
-					<div [hidden]="!inicio.pristine" class="alert alert-danger">Data
-						hora de início pendente</div>
 				</div>
 
-				<div class="form-group col-lg-3 col-md-12">
+				<div class="form-group col-lg-3 col-md-12 required">
 					<label for="termino">Término</label> <input type="datetime-local"
 						[ngModel]="entity.termino | date:'yyyy-MM-dd HH:mm:ss'"
 						(ngModelChange)="entity.termino = dateUtil.getDatetimeFromString($event)"
 						class="form-control" id="termino" name="termino" required
 						#termino="ngModel">
-					<div [hidden]="!termino.pristine" class="alert alert-danger">Data
-						hora de término pendente</div>
 				</div>
 			</div>
 

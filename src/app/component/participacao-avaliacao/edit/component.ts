@@ -59,13 +59,13 @@ export class ParticipacaoAvaliacaoEditComponent
 		this.avaliacaoService.findAll().subscribe(data => {
 			this.listaAvaliacao = this.avaliacaoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.discenteService.findAll().subscribe(data => {
 			this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

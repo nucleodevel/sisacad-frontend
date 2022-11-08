@@ -67,7 +67,7 @@ export class EstruturaCurricularEditComponent
 		this.cursoService.findAll().subscribe(data => {
 			this.listaCurso = this.cursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.disciplinaService.findAll().subscribe(data => {
@@ -91,10 +91,10 @@ export class EstruturaCurricularEditComponent
 					}
 				});
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -143,7 +143,7 @@ export class EstruturaCurricularEditComponent
 		this.service.update(this.id, dto).subscribe(data => {
 			this.list();
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

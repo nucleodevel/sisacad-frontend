@@ -58,13 +58,13 @@ export class ParticipacaoAulaEditComponent extends AbstractEditComponent<Partici
 		this.aulaService.findAll().subscribe(data => {
 			this.listaAula = this.aulaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.discenteService.findAll().subscribe(data => {
 			this.listaDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

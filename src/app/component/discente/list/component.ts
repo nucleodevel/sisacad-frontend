@@ -83,13 +83,13 @@ export class DiscenteListComponent extends AbstractListComponent<Discente, Disce
 					this.docenteService.findAllDiscenteById(docente.id).subscribe(data => {
 						this.entities = this.service.makeEntityArrayFromDtoArray(data);
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				}
 
 
 			}, errorDocente => {
-				this.setErrorMessage(errorDocente);
+				this.setResultMessage("FAILURE", errorDocente);
 			});
 
 		} else if (this.authenticationService.hasRole('ROLE_DISCENTE')) {
@@ -107,7 +107,7 @@ export class DiscenteListComponent extends AbstractListComponent<Discente, Disce
 
 
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 
 		}

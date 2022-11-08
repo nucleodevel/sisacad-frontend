@@ -66,7 +66,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		this.vestibulandoService.findAll().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
@@ -90,10 +90,10 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 					}
 				});
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 
@@ -141,7 +141,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		this.service.update(this.id, dto).subscribe(data => {
 			this.list();
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

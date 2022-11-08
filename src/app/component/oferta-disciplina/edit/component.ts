@@ -75,13 +75,13 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.docenteService.findAll().subscribe(data => {
 			this.listaDocente = this.docenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.discenteService.findAll().subscribe(data => {
@@ -105,10 +105,10 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 					}
 				});
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -159,7 +159,7 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 		this.service.update(this.id, dto).subscribe(data => {
 			this.list();
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

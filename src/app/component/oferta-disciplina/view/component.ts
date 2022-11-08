@@ -59,14 +59,14 @@ export class OfertaDisciplinaViewComponent extends AbstractViewComponent<OfertaD
 			console.log(data);
 			this.listSelectedTurma = this.turmaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.service.findAllDiscenteById(this.id).subscribe(data => {
 			console.log(data);
 			this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

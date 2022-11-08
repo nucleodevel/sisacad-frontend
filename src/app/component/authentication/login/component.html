@@ -1,26 +1,28 @@
 <h3 class="component-title">Login</h3>
 <div class="card my-5" id="loginCard" #loginCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}}
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-danger fade show fixed">
+			<h4>Erro</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
 			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label for="cpf">Username</label> <input type="text"
 						[(ngModel)]="usuario.username" class="form-control" id="username"
 						name="username" required #username="ngModel">
-					<div [hidden]="!username.pristine" class="alert alert-danger">Username
-						pendente</div>
 				</div>
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label for="password">Password</label> <input type="password"
 						[(ngModel)]="usuario.password" class="form-control" id="password"
 						name="password" required #password="ngModel">
-					<div [hidden]="!password.pristine" class="alert alert-danger">Password
-						pendente</div>
 				</div>
 			</div>
 

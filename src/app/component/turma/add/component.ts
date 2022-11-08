@@ -53,7 +53,7 @@ export class TurmaAddComponent extends AbstractAddComponent<Turma, TurmaDto, Tur
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

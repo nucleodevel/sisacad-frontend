@@ -6,9 +6,13 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-danger fade show fixed">
+			<strong>Erro!</strong> {{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">

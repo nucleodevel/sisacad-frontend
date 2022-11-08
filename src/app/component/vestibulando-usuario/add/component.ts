@@ -59,7 +59,7 @@ export class VestibulandoUsuarioAddComponent extends AbstractAddComponent<Vestib
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -68,10 +68,21 @@ export class VestibulandoUsuarioAddComponent extends AbstractAddComponent<Vestib
 		var dto = this.service.newDtoInstance();
 		dto.copyFromEntity(this.entity);
 		this.service.insert(dto).subscribe(result => {
-			this.router.navigate(['login']);
+			this.setResultMessage("SUCCESS", "Vestibulando inscrito com sucesso!");
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
+	}
+
+	closeResultMessage() {
+		var redirectToList = this.resultStatus == 'SUCCESS';
+
+		this.resultStatus = "";
+		this.resultMessage = "";
+
+		if (redirectToList) {
+			this.router.navigate(['login']);
+		}
 	}
 
 	/*

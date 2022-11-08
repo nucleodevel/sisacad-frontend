@@ -6,16 +6,21 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-{{getResultClass()}} fade show fixed">
+			<h4>{{getResultTitle()}}</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 
 			<div class="form-row">
-				<div class="form-group col-lg-8 col-md-12">
+				<div class="form-group col-lg-8 col-md-12 required">
 					<label for="vestibulando">Vestibulando</label> <select
 						[(ngModel)]="entity.vestibulando" class="form-control"
 						name="vestibulando" required #vestibulando="ngModel"
@@ -23,16 +28,12 @@
 						<option *ngFor="let vestibulando of listaVestibulando"
 							[ngValue]="vestibulando">{{vestibulando.toString()}}</option>
 					</select>
-					<div [hidden]="!vestibulando.pristine" class="alert alert-danger">Vestibulando
-						pendente</div>
 				</div>
-				<div class="form-group col-lg-4 col-md-12">
+				<div class="form-group col-lg-4 col-md-12 required">
 					<label for="conceitoFinal">Conceito Final</label> <input
 						type="number" [(ngModel)]="entity.conceitoFinal"
 						class="form-control" id="conceitoFinal" name="conceitoFinal"
 						required #conceitoFinal="ngModel">
-					<div [hidden]="!conceitoFinal.pristine" class="alert alert-danger">Conceito
-						Final pendente</div>
 				</div>
 			</div>
 			<div class="form-row">

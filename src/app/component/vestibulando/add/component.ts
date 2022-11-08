@@ -64,7 +64,7 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -83,12 +83,12 @@ export class VestibulandoAddComponent extends AbstractAddComponent<Vestibulando,
 				this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
 					this.list();
 				}, error => {
-					this.setErrorMessage(error);
+					this.setResultMessage("FAILURE", error);
 				});
 			}
 
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

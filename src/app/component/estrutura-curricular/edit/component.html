@@ -6,20 +6,23 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-{{getResultClass()}} fade show fixed">
+			<h4>{{getResultTitle()}}</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-row">
-				<div class="form-group col-lg-4 col-md-12">
+				<div class="form-group col-lg-4 col-md-12 required">
 					<label for="codigo">Código</label> <input type="text"
 						[(ngModel)]="entity.codigo" class="form-control" id="codigo"
 						name="codigo" required #codigo="ngModel">
-					<div [hidden]="!codigo.pristine" class="alert alert-danger">Código
-						pendente</div>
 				</div>
 				<div class="form-group col-lg-8 col-md-12">
 					<label>Curso</label>
@@ -27,19 +30,15 @@
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label for="anoInicio">Ano de início</label> <input type="text"
 						[(ngModel)]="entity.anoInicio" class="form-control" id="anoInicio"
 						name="anoInicio" required #anoInicio="ngModel">
-					<div [hidden]="!anoInicio.pristine" class="alert alert-danger">Ano
-						de início pendente</div>
 				</div>
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label for="anoTermino">Ano de término</label> <input type="text"
 						[(ngModel)]="entity.anoTermino" class="form-control"
 						id="anoTermino" name="anoTermino" required #anoTermino="ngModel">
-					<div [hidden]="!anoTermino.pristine" class="alert alert-danger">Ano
-						de término pendente</div>
 				</div>
 			</div>
 

@@ -88,10 +88,10 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 					}
 				});
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 
@@ -145,11 +145,11 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 					this.participacaoAulaService.delete(data.id).subscribe(data => {
 
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				}
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		});
 
@@ -161,7 +161,7 @@ export class AulaEditComponent extends AbstractEditComponent<Aula, AulaDto, Aula
 			this.participacaoAulaService.insert(participacaoAulaDto).subscribe(data => {
 
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		});
 

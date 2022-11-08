@@ -68,7 +68,7 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 				this.preencherAvaliacao = false;
 			}
 		}, error => {
-			// this.setErrorMessage(error);
+			// this.setResultMessage("FAILURE", error);
 			this.avaliacaoVestibulando = new AvaliacaoVestibulando();
 			this.preencherAvaliacao = false;
 		});
@@ -76,7 +76,7 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -95,19 +95,19 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 					this.avaliacaoVestibulandoService.update(avaliacaoVestibulandoDto.id, avaliacaoVestibulandoDto).subscribe(avResult => {
 						this.list();
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				} else {
 					avaliacaoVestibulandoDto.vestibulando = dto.id;
 					this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
 						this.list();
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				}
 			}
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

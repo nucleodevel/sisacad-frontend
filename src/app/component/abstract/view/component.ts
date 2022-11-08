@@ -37,7 +37,7 @@ export abstract class AbstractViewComponent<E extends AbstractEntity, DTO extend
 			this.entity = this.service.makeEntityFromDto(dto);
 			this.ngOnInitSuperAdditional(dto);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 }

@@ -84,13 +84,13 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 					this.docenteService.findAllAulaById(docente.id).subscribe(data => {
 						this.entities = this.service.makeEntityArrayFromDtoArray(data);
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				}
 
 
 			}, errorDocente => {
-				this.setErrorMessage(errorDocente);
+				this.setResultMessage("FAILURE", errorDocente);
 			});
 
 		} else if (this.authenticationService.hasRole('ROLE_DISCENTE')) {
@@ -106,13 +106,13 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 					this.discenteService.findAllAulaById(discente.id).subscribe(data => {
 						this.entities = this.service.makeEntityArrayFromDtoArray(data);
 					}, error => {
-						this.setErrorMessage(error);
+						this.setResultMessage("FAILURE", error);
 					});
 				}
 
 
 			}, errorDiscente => {
-				this.setErrorMessage(errorDiscente);
+				this.setResultMessage("FAILURE", errorDiscente);
 			});
 
 		}

@@ -38,10 +38,21 @@ export abstract class AbstractAddComponent<E extends AbstractEntity, DTO extends
 		var dto = this.service.newDtoInstance();
 		dto.copyFromEntity(this.entity);
 		this.service.insert(dto).subscribe(result => {
-			this.list();
+			this.setResultMessage("SUCCESS", "Criado com sucesso");
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
+	}
+	
+	closeResultMessage() {
+		var redirectToList = this.resultStatus == 'SUCCESS';
+		
+		this.resultStatus = "";
+		this.resultMessage = "";
+		
+		if (redirectToList) {
+			this.list();
+		}
 	}
 
 }

@@ -6,15 +6,20 @@
 </div>
 
 <div class="card my-5" id="bodyCard" #bodyCard>
-	<div *ngIf="errorMessage" class="alert alert-danger">
-		<strong>Erro!</strong> {{errorMessage}} <a
-			routerLink="/{{ routerPrefix }}/list" class="btn btn-danger">Voltar</a>
+
+	<div *ngIf="resultMessage" class="result-message">
+		<div class="alert alert-{{getResultClass()}} fade show fixed">
+			<h4>{{getResultTitle()}}</h4>
+			{{resultMessage}}
+			<button type="button" class="btn-close" aria-label="Close"
+				(click)="closeResultMessage()"></button>
+		</div>
 	</div>
 
 	<div class="card-body" *ngIf="entity">
 		<form (ngSubmit)="onSubmit()" #entityForm="ngForm">
 			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label>Oferta de disciplina</label>
 					<div>{{ entity.ofertaDisciplina.toString() }}</div>
 				</div>
@@ -22,30 +27,24 @@
 					<label for="descricao">Descrição</label> <input type="text"
 						[(ngModel)]="entity.descricao" class="form-control" id="descricao"
 						name="descricao" required #descricao="ngModel">
-					<div [hidden]="!descricao.pristine" class="alert alert-danger">Descrição
-						pendente</div>
 				</div>
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label for="inicio">Início</label> <input type="date"
 						[ngModel]="entity.inicio | date:'yyyy-MM-dd'"
 						(ngModelChange)="entity.inicio = dateUtil.getDateFromString($event)"
 						class="form-control" id="inicio" name="inicio" required
 						#inicio="ngModel">
-					<div [hidden]="!inicio.pristine" class="alert alert-danger">Data
-						hora de início pendente</div>
 				</div>
 
-				<div class="form-group col-lg-6 col-md-12">
+				<div class="form-group col-lg-6 col-md-12 required">
 					<label for="termino">Término</label> <input type="date"
 						[ngModel]="entity.termino | date:'yyyy-MM-dd'"
 						(ngModelChange)="entity.termino = dateUtil.getDateFromString($event)"
 						class="form-control" id="termino" name="termino" required
 						#termino="ngModel">
-					<div [hidden]="!termino.pristine" class="alert alert-danger">Data
-						hora de término pendente</div>
 				</div>
 			</div>
 			<div class="form-row">

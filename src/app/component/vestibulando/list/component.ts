@@ -81,7 +81,7 @@ export class VestibulandoListComponent extends AbstractListComponent<Vestibuland
 
 
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 
 		}

@@ -55,7 +55,7 @@ export class EstruturaCurricularViewComponent
 			console.log(data);
 			this.listSelectedDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}

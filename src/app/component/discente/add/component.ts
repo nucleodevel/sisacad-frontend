@@ -55,7 +55,7 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 		this.vestibulandoService.findAllIsNotDiscente().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -78,7 +78,7 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 		});
 		
 		if (!exists) {
-			this.setErrorMessage("Não há vestibulando com este CPF ou já é discente matriculado!");
+			this.setResultMessage("FAILURE", "Não há vestibulando com este CPF ou já é discente matriculado!");
 		}
 	}
 

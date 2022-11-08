@@ -66,7 +66,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		this.ofertaCursoService.findAll().subscribe(data => {
 			this.listaOfertaCurso = this.ofertaCursoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.ofertaDisciplinaService.findAll().subscribe(data => {
@@ -90,10 +90,10 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 					}
 				});
 			}, error => {
-				this.setErrorMessage(error);
+				this.setResultMessage("FAILURE", error);
 			});
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
@@ -142,7 +142,7 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 		this.service.update(this.id, dto).subscribe(data => {
 			this.list();
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 	}
 

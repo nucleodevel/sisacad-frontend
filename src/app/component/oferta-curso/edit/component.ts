@@ -58,13 +58,13 @@ export class OfertaCursoEditComponent extends AbstractEditComponent<OfertaCurso,
 		this.vestibularService.findAll().subscribe(data => {
 			this.listaVestibular = this.vestibularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 		this.estruturaCurricularService.findAll().subscribe(data => {
 			this.listaEstruturaCurricular = this.estruturaCurricularService.makeEntityArrayFromDtoArray(data);
 		}, error => {
-			this.setErrorMessage(error);
+			this.setResultMessage("FAILURE", error);
 		});
 
 	}
