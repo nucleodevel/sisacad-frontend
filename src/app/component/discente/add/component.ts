@@ -52,7 +52,7 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 
 	ngOnInitSuperAdditional() {
 
-		this.vestibulandoService.findAllIsNotDiscente().subscribe(data => {
+		this.vestibulandoService.findAllAprovadoNotDiscente().subscribe(data => {
 			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
 		}, error => {
 			this.setResultMessage("FAILURE", error);
@@ -65,20 +65,20 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 	 */
 
 	onSearchVestibulandoCpf(vestibulandoCpf: any) {
-		
+
 		this.entity = this.service.newEntityInstance();
-		
+
 		var exists = false;
 		this.listaVestibulando.forEach((item) => {
 			if (item.cpf === vestibulandoCpf) {
 				this.entity.vestibulando = item;
-				
+
 				exists = true;
-			}	
+			}
 		});
-		
+
 		if (!exists) {
-			this.setResultMessage("FAILURE", "Não há vestibulando com este CPF ou já é discente matriculado!");
+			this.setResultMessage("FAILURE", "Ou não há vestibulando com este CPF, ou é um vestibulando não aprovado ou já é discente matriculado!");
 		}
 	}
 

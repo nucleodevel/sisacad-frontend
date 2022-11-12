@@ -61,8 +61,24 @@ export class VestibulandoService extends AbstractService<Vestibulando, Vestibula
 		);
 	}
 
+	public findAllAprovado(): Observable<VestibulandoDto[]> {
+		return this.http.get<VestibulandoDto[]>(this.apiUrl + "/aprovado").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
 	public findAllIsNotDiscente(): Observable<VestibulandoDto[]> {
 		return this.http.get<VestibulandoDto[]>(this.apiUrl + "/is-not-discente").pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
+	public findAllAprovadoNotDiscente(): Observable<VestibulandoDto[]> {
+		return this.http.get<VestibulandoDto[]>(this.apiUrl + "/aprovado-not-discente").pipe(
 			catchError(err => {
 				return throwError(err);
 			})
