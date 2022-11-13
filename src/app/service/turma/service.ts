@@ -75,4 +75,12 @@ export class TurmaService extends AbstractService<Turma, TurmaDto> {
 			})
 		);
 	}
+
+	public findByDiscente(discenteId: number): Observable<TurmaDto> {
+		return this.http.get<TurmaDto>(this.apiUrl + "/discente/" + discenteId).pipe(
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
 }

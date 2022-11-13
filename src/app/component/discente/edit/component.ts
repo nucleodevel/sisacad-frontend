@@ -7,8 +7,13 @@ import { Discente } from '../../../domain/discente/entity';
 import { DiscenteDto } from '../../../dto/discente/dto';
 import { DiscenteService } from '../../../service/discente/service';
 
+import { OfertaCurso } from '../../../domain/oferta-curso/entity';
+import { OfertaCursoService } from '../../../service/oferta-curso/service';
+
 import { OfertaDisciplina } from '../../../domain/oferta-disciplina/entity';
 import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/service';
+
+import { TurmaService } from '../../../service/turma/service';
 
 import { Vestibulando } from '../../../domain/vestibulando/entity';
 import { VestibulandoService } from '../../../service/vestibulando/service';
@@ -38,6 +43,8 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 	 */
 
 	constructor(protected service: DiscenteService, protected route: ActivatedRoute,
+		protected ofertaCursoService: OfertaCursoService,
+		protected turmaService: TurmaService,
 		protected ofertaDisciplinaService: OfertaDisciplinaService,
 		protected vestibulandoService: VestibulandoService) {
 
@@ -63,31 +70,27 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		this.listNotSelectedOfertaDisciplina = [];
 		this.listSelectedOfertaDisciplina = [];
 
-		this.vestibulandoService.findAll().subscribe(data => {
-			this.listaVestibulando = this.vestibulandoService.makeEntityArrayFromDtoArray(data);
-		}, error => {
-			this.setResultMessage("FAILURE", error);
-		});
+		this.turmaService.findByDiscente(dto.id).subscribe(dataTurma => {
+			this.turmaService.findAllOfertaDisciplinaById(dataTurma.id).subscribe(dataListaOfertaDisciplinaByTurma => {
+				this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(dataListaOfertaDisciplinaByTurma);
+				this.service.findAllOfertaDisciplinaById(dto.id).subscribe(dataListaOfertaDisciplinaByDiscente => {
+					this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(dataListaOfertaDisciplinaByDiscente);
+					this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(dataListaOfertaDisciplinaByDiscente);
 
-		this.ofertaDisciplinaService.findAll().subscribe(data => {
-			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+					this.listOfertaDisciplina.forEach(item => {
+						var exists = false;
+						this.listSelectedOfertaDisciplina.forEach(slctItem => {
+							if (item.id == slctItem.id) {
+								exists = true;
+							}
+						});
 
-			this.service.findAllOfertaDisciplinaById(dto.id).subscribe(data => {
-				console.log(data);
-				this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-				this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-
-				this.listOfertaDisciplina.forEach(item => {
-					var exists = false;
-					this.listSelectedOfertaDisciplina.forEach(slctItem => {
-						if (item.id == slctItem.id) {
-							exists = true;
+						if (!exists) {
+							this.listNotSelectedOfertaDisciplina.push(item);
 						}
 					});
-
-					if (!exists) {
-						this.listNotSelectedOfertaDisciplina.push(item);
-					}
+				}, error => {
+					this.setResultMessage("FAILURE", error);
 				});
 			}, error => {
 				this.setResultMessage("FAILURE", error);
@@ -95,6 +98,7 @@ export class DiscenteEditComponent extends AbstractEditComponent<Discente, Disce
 		}, error => {
 			this.setResultMessage("FAILURE", error);
 		});
+
 	}
 
 	onSubmit() {
