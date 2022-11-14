@@ -1,7 +1,6 @@
 import { AbstractEntity } from '../abstract/entity';
 
 export class Usuario extends AbstractEntity {
-	lastAccess!: number;
 	username!: string;
 	password!: string;
 	nome!: string;

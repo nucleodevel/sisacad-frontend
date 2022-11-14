@@ -13,6 +13,7 @@ import { Usuario } from '../../../domain/usuario/entity';
 export class UserComponent implements OnInit {
 
 	user!: Usuario;
+	lastAccess!: Date;
 
 	constructor(private router: Router, private authenticationService: AuthenticationService) {
 
@@ -20,8 +21,14 @@ export class UserComponent implements OnInit {
 
 	ngOnInit() {
 		this.user = this.authenticationService.getSessionUser()!;
+
+		var lastAccessTimestamp = this.authenticationService.getSessionLastAccess();
+
+		if (lastAccessTimestamp != null) {
+			this.lastAccess = new Date(this.authenticationService.getSessionLastAccess());
+		}
 	}
-	
+
 	isAdmin(): boolean {
 		return this.authenticationService.hasRole('ROLE_ADMIN');
 	}

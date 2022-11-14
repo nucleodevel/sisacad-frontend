@@ -40,10 +40,6 @@ export class AuthenticationService {
 			return null;
 		}
 
-		if (lastAccess != null) {
-			sessionUser.lastAccess = lastAccess;
-		}
-
 		if (password != null) {
 			sessionUser.password = password;
 		}
@@ -61,6 +57,10 @@ export class AuthenticationService {
 		}
 
 		return sessionUser;
+	}
+
+	getSessionLastAccess(): number {
+		return +localStorage.getItem('lastAccess')!;
 	}
 
 	getSessionItem(key: string): string {
