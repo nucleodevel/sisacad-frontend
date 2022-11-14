@@ -17,6 +17,7 @@ import { UsuarioDto } from '../../dto/usuario/dto';
 export class AuthenticationService {
 
 	protected apiEndpoint: string = AppConfig.API_ENDPOINT;
+	protected maxAcceptedInactivity: number = 12 * 60 * 60 * 1000;
 
 	constructor(public http: HttpClient) {
 
@@ -25,16 +26,22 @@ export class AuthenticationService {
 	getSessionUser() {
 		var sessionUser: Usuario = new Usuario();
 
-		var username = sessionStorage.getItem("username");
-		var password = sessionStorage.getItem("password");
-		var nome = sessionStorage.getItem("nome");
-		var email = sessionStorage.getItem("email");
-		var roles = sessionStorage.getItem("roles");
+		var lastAccess = +this.getSessionItem('lastAccess');
+
+		var username = this.getSessionItem('username');
+		var password = this.getSessionItem('password');
+		var nome = this.getSessionItem('nome');
+		var email = this.getSessionItem('email');
+		var roles = this.getSessionItem('roles');
 
 		if (username != null) {
 			sessionUser.username = username;
 		} else {
 			return null;
+		}
+
+		if (lastAccess != null) {
+			sessionUser.lastAccess = lastAccess;
 		}
 
 		if (password != null) {
@@ -56,16 +63,27 @@ export class AuthenticationService {
 		return sessionUser;
 	}
 
+	getSessionItem(key: string): string {
+		return localStorage.getItem(key)!;
+	}
+
+	setSessionItem(key: string, value: string) {
+		return localStorage.setItem(key, value);
+	}
+
 	authenticate(username: string, password: string) {
-		const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password), skip: "true" });
+		const now = new Date();
+
+		const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password), skip: 'true' });
 		return this.http.get<UsuarioDto>(AppConfig.API_ENDPOINT + 'auth/validate', { headers }).pipe(
 			map(
 				userData => {
-					sessionStorage.setItem('username', userData.username);
-					sessionStorage.setItem('password', userData.password);
-					sessionStorage.setItem('nome', userData.nome);
-					sessionStorage.setItem('email', userData.email);
-					sessionStorage.setItem('roles', userData.roles);
+					localStorage.setItem('lastAccess', '' + now.getTime());
+					localStorage.setItem('username', userData.username);
+					localStorage.setItem('password', userData.password);
+					localStorage.setItem('nome', userData.nome);
+					localStorage.setItem('email', userData.email);
+					localStorage.setItem('roles', userData.roles);
 				}
 			),
 			catchError(err => {
@@ -76,17 +94,29 @@ export class AuthenticationService {
 	}
 
 	isUserLoggedIn() {
-		let user = sessionStorage.getItem('username')
-		console.log(!(user === null))
-		return !(user === null)
+		let lastAccess = +this.getSessionItem('lastAccess')
+		let username = this.getSessionItem('username')
+
+		const now = new Date();
+
+		var isTimeExpired = lastAccess == null || now.getTime() - lastAccess > this.maxAcceptedInactivity;
+
+		var isLoggedIn = !(username === null) && !isTimeExpired;
+
+		if (isLoggedIn) {
+			this.setSessionItem('lastAccess', '' + now.getTime());
+		}
+
+		return isLoggedIn;
 	}
 
 	logOut() {
-		sessionStorage.removeItem('username');
-		sessionStorage.removeItem('password');
-		sessionStorage.removeItem('nome');
-		sessionStorage.removeItem('email');
-		sessionStorage.removeItem('roles');
+		localStorage.removeItem('lastAccess');
+		localStorage.removeItem('username');
+		localStorage.removeItem('password');
+		localStorage.removeItem('nome');
+		localStorage.removeItem('email');
+		localStorage.removeItem('roles');
 	}
 
 	hasRole(role: string): boolean {

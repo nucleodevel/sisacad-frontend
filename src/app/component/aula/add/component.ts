@@ -73,7 +73,8 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 				this.setResultMessage("FAILURE", error);
 			});
 		} else if (this.authenticationService.hasRole('ROLE_DOCENTE')) {
-			var username = sessionStorage.getItem("username")!;
+			var sessionUser = this.getSessionUser();
+			var username = sessionUser.username;
 
 			this.docenteService.findByUsername(username).subscribe(dataDocente => {
 				var listDocente = this.docenteService.makeEntityArrayFromDtoArray(dataDocente);

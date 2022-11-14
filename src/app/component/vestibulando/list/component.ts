@@ -68,7 +68,9 @@ export class VestibulandoListComponent extends AbstractListComponent<Vestibuland
 		if (this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO'])) {
 			super.reloadData();
 		} else if (this.authenticationService.hasRole('ROLE_VESTIBULANDO')) {
-			var username = sessionStorage.getItem("username")!;
+			var sessionUser = this.getSessionUser();
+			var username = sessionUser.username;
+
 			this.service.findByUsername(username).subscribe(data => {
 				var listItem = this.service.makeEntityArrayFromDtoArray(data);
 				var item = listItem.length == 0 ? null : listItem[0];

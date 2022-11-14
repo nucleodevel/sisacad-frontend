@@ -72,7 +72,8 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 		if (this.authenticationService.hasAnyRole(['ROLE_ADMIN', 'ROLE_PEDAGOGICO', 'ROLE_GRADUACAO'])) {
 			super.reloadData();
 		} else if (this.authenticationService.hasRole('ROLE_DOCENTE')) {
-			var username = sessionStorage.getItem("username")!;
+			var sessionUser = this.getSessionUser();
+			var username = sessionUser.username;
 
 			this.docenteService.findByUsername(username).subscribe(dataDocente => {
 				var listDocente = this.docenteService.makeEntityArrayFromDtoArray(dataDocente);
@@ -94,7 +95,8 @@ export class AulaListComponent extends AbstractListComponent<Aula, AulaDto, Aula
 			});
 
 		} else if (this.authenticationService.hasRole('ROLE_DISCENTE')) {
-			var username = sessionStorage.getItem("username")!;
+			var sessionUser = this.getSessionUser();
+			var username = sessionUser.username;
 
 			this.discenteService.findByUsername(username).subscribe(dataDiscente => {
 				var listDiscente = this.discenteService.makeEntityArrayFromDtoArray(dataDiscente);

@@ -58,6 +58,10 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 		return this._authenticationService;
 	}
 
+	getSessionUser(): any {
+		return this._authenticationService.getSessionUser();
+	}
+
 	/*
 	 * Component methods
 	 */
@@ -119,18 +123,18 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 	delay(ms: number) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
-	
+
 	getResultClass() {
-		return this.resultStatus == 'SUCCESS'? 'success' : 'danger';
+		return this.resultStatus == 'SUCCESS' ? 'success' : 'danger';
 	}
-	
+
 	getResultTitle() {
-		return this.resultStatus == 'SUCCESS'? 'Sucesso' : 'Erro';
+		return this.resultStatus == 'SUCCESS' ? 'Sucesso' : 'Erro';
 	}
 
 	setResultMessage(status: any, message: any) {
 		this.resultStatus = status;
-		
+
 		if (message == null) {
 			this.resultMessage = "";
 			return;
@@ -153,7 +157,7 @@ export abstract class AbstractComponent<E extends AbstractEntity, DTO extends Ab
 
 		this.resultMessage = resultMessage;
 	}
-	
+
 	closeResultMessage() {
 		this.resultStatus = "";
 		this.resultMessage = "";
