@@ -3,16 +3,19 @@ import { ActivatedRoute } from '@angular/router';
 
 import { AbstractAddComponent } from '../../../component/abstract/add/component';
 
+import { DocenteUsuario } from '../../../domain/docente-usuario/entity';
+import { DocenteUsuarioDto } from '../../../dto/docente-usuario/dto';
+import { DocenteUsuarioService } from '../../../service/docente-usuario/service';
+
 import { Docente } from '../../../domain/docente/entity';
-import { DocenteDto } from '../../../dto/docente/dto';
-import { DocenteService } from '../../../service/docente/service';
+import { Usuario } from '../../../domain/usuario/entity';
 
 @Component({
 	selector: 'app-docente-add',
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class DocenteAddComponent extends AbstractAddComponent<Docente, DocenteDto, DocenteService> {
+export class DocenteAddComponent extends AbstractAddComponent<DocenteUsuario, DocenteUsuarioDto, DocenteUsuarioService> {
 
 	/*
 	 * Attributes
@@ -25,7 +28,8 @@ export class DocenteAddComponent extends AbstractAddComponent<Docente, DocenteDt
 	 * Constructors
 	 */
 
-	constructor(protected service: DocenteService, protected route: ActivatedRoute) {
+	constructor(protected service: DocenteUsuarioService, protected route: ActivatedRoute) {
+
 		super(service, route, 'docente');
 	}
 
@@ -43,6 +47,16 @@ export class DocenteAddComponent extends AbstractAddComponent<Docente, DocenteDt
 
 	ngOnInitSuperAdditional() {
 
+	}
+
+	onSubmit() {
+		var dto = this.service.newDtoInstance();
+		dto.copyFromEntity(this.entity);
+		this.service.insert(dto).subscribe(result => {
+			this.setResultMessage("SUCCESS", "Docente inscrito com sucesso!");
+		}, error => {
+			this.setResultMessage("FAILURE", error);
+		});
 	}
 
 }

@@ -31,6 +31,7 @@ export class UsuarioService extends AbstractService<Usuario, UsuarioDto> {
 		entity.password = dto.password;
 		entity.nome = dto.nome;
 		entity.email = dto.email;
+		entity.roles = dto.roles;
 
 		return entity;
 	}

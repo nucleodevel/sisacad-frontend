@@ -69,13 +69,12 @@ export class TurmaEditComponent extends AbstractEditComponent<Turma, TurmaDto, T
 			this.setResultMessage("FAILURE", error);
 		});
 
-		this.ofertaDisciplinaService.findAll().subscribe(data => {
-			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+		this.ofertaDisciplinaService.findAll().subscribe(dataOfertaDisciplina => {
+			this.listOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(dataOfertaDisciplina);
 
-			this.service.findAllOfertaDisciplinaById(dto.id).subscribe(data => {
-				console.log(data);
-				this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
-				this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(data);
+			this.service.findAllOfertaDisciplinaById(dto.id).subscribe(dataOfertaDisciplinaById => {
+				this.listOldSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(dataOfertaDisciplinaById);
+				this.listSelectedOfertaDisciplina = this.ofertaDisciplinaService.makeEntityArrayFromDtoArray(dataOfertaDisciplinaById);
 
 				this.listOfertaDisciplina.forEach(item => {
 					var exists = false;

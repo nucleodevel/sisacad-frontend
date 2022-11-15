@@ -29,9 +29,29 @@
 							[ngValue]="vestibulando">{{vestibulando.toString()}}</option>
 					</select>
 				</div>
-				<div class="form-group col-lg-4 col-md-12 required">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-lg-3 col-md-12 required">
+					<label for="conceitoBiologicas">Conceito Biológicas</label> <input
+						type="number" step=".01" [(ngModel)]="entity.conceitoBiologicas"
+						class="form-control" id="conceitoBiologicas"
+						name="conceitoBiologicas" required #conceitoBiologicas="ngModel">
+				</div>
+				<div class="form-group col-lg-3 col-md-12 required">
+					<label for="conceitoExatas">Conceito Exatas</label> <input
+						type="number" step=".01" [(ngModel)]="entity.conceitoExatas"
+						class="form-control" id="conceitoExatas" name="conceitoExatas"
+						required #conceitoExatas="ngModel">
+				</div>
+				<div class="form-group col-lg-3 col-md-12 required">
+					<label for="conceitoHumanas">Conceito Humanas</label> <input
+						type="number" step=".01" [(ngModel)]="entity.conceitoHumanas"
+						class="form-control" id="conceitoHumanas" name="conceitoHumanas"
+						required #conceitoHumanas="ngModel">
+				</div>
+				<div class="form-group col-lg-3 col-md-12 required">
 					<label for="conceitoFinal">Conceito Final</label> <input
-						type="number" [(ngModel)]="entity.conceitoFinal"
+						type="number" step=".01" [(ngModel)]="entity.conceitoFinal"
 						class="form-control" id="conceitoFinal" name="conceitoFinal"
 						required #conceitoFinal="ngModel">
 				</div>

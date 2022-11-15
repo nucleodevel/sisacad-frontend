@@ -7,9 +7,6 @@ import { OfertaDisciplina } from '../../../domain/oferta-disciplina/entity';
 import { OfertaDisciplinaDto } from '../../../dto/oferta-disciplina/dto';
 import { OfertaDisciplinaService } from '../../../service/oferta-disciplina/service';
 
-import { Discente } from '../../../domain/discente/entity';
-import { DiscenteService } from '../../../service/discente/service';
-
 import { Disciplina } from '../../../domain/disciplina/entity';
 import { DisciplinaService } from '../../../service/disciplina/service';
 
@@ -17,7 +14,6 @@ import { Docente } from '../../../domain/docente/entity';
 import { DocenteService } from '../../../service/docente/service';
 
 import { Turma } from '../../../domain/turma/entity';
-import { TurmaService } from '../../../service/turma/service';
 
 @Component({
 	selector: 'app-oferta-disciplina-edit',
@@ -35,20 +31,14 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 	listaDisciplina!: Disciplina[];
 	listaDocente!: Docente[];
-	listDiscente!: Discente[];
-	listOldSelectedDiscente!: Discente[];
-	listNotSelectedDiscente!: Discente[];
-	listSelectedDiscente!: Discente[];
 
 	/*
 	 * Constructors
 	 */
 
 	constructor(protected service: OfertaDisciplinaService, protected route: ActivatedRoute,
-		protected discenteService: DiscenteService,
 		protected disciplinaService: DisciplinaService,
-		protected docenteService: DocenteService,
-		protected turmaService: TurmaService) {
+		protected docenteService: DocenteService) {
 
 		super(service, route, 'oferta-disciplina');
 	}
@@ -67,11 +57,6 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 
 	ngOnInitSuperAdditional(dto: OfertaDisciplinaDto) {
 
-		this.listDiscente = [];
-		this.listOldSelectedDiscente = [];
-		this.listNotSelectedDiscente = [];
-		this.listSelectedDiscente = [];
-
 		this.disciplinaService.findAll().subscribe(data => {
 			this.listaDisciplina = this.disciplinaService.makeEntityArrayFromDtoArray(data);
 		}, error => {
@@ -84,118 +69,17 @@ export class OfertaDisciplinaEditComponent extends AbstractEditComponent<OfertaD
 			this.setResultMessage("FAILURE", error);
 		});
 
-		this.discenteService.findAll().subscribe(data => {
-			this.listDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-
-			this.service.findAllDiscenteById(dto.id).subscribe(data => {
-				console.log(data);
-				this.listOldSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-				this.listSelectedDiscente = this.discenteService.makeEntityArrayFromDtoArray(data);
-
-				this.listDiscente.forEach(item => {
-					var exists = false;
-					this.listSelectedDiscente.forEach(slctItem => {
-						if (item.id == slctItem.id) {
-							exists = true;
-						}
-					});
-
-					if (!exists) {
-						this.listNotSelectedDiscente.push(item);
-					}
-				});
-			}, error => {
-				this.setResultMessage("FAILURE", error);
-			});
-		}, error => {
-			this.setResultMessage("FAILURE", error);
-		});
-
-	}
-
-	onSubmit() {
-
-		var listDeleteDiscente: Discente[] = [];
-		var listInsertDiscente: Discente[] = [];
-
-		var dto = this.service.newDtoInstance();
-
-		dto.copyFromEntity(this.entity);
-
-		this.listOldSelectedDiscente.forEach(oldItem => {
-			var exists = false;
-			this.listSelectedDiscente.forEach(item => {
-				if (oldItem.id == item.id) {
-					exists = true;
-				}
-			});
-
-			if (!exists) {
-				listDeleteDiscente.push(oldItem);
-			}
-		});
-
-		this.listSelectedDiscente.forEach(item => {
-			var exists = false;
-			this.listOldSelectedDiscente.forEach(oldItem => {
-				if (oldItem.id == item.id) {
-					exists = true;
-				}
-			});
-
-			if (!exists) {
-				listInsertDiscente.push(item);
-			}
-		});
-
-		listDeleteDiscente.forEach(item => {
-			this.service.deleteDiscente(this.id, item.id).subscribe();
-		});
-
-		listInsertDiscente.forEach(item => {
-			this.service.insertDiscente(this.id, item.id).subscribe();
-		});
-
-		this.service.update(this.id, dto).subscribe(data => {
-			this.list();
-		}, error => {
-			this.setResultMessage("FAILURE", error);
-		});
-	}
-
-	/*
-	 * Form events
-	 */
-
-	setDiscenteAsSelected(index: number) {
-		var item = this.listNotSelectedDiscente[index];
-		this.listSelectedDiscente.push(item);
-		this.listNotSelectedDiscente.splice(index, 1);
-	}
-
-	setDiscenteAsNotSelected(index: number) {
-		var item = this.listSelectedDiscente[index];
-		this.listNotSelectedDiscente.push(item);
-		this.listSelectedDiscente.splice(index, 1);
 	}
 
 	/*
 	 * Compare methods
 	 */
 
-	compareDiscente(o1: Discente, o2: Discente) {
-		return o1.compare(o2);
-	}
-
 	compareDisciplina(o1: Disciplina, o2: Disciplina) {
 		return o1.compare(o2);
 	}
 
 	compareDocente(o1: Docente, o2: Docente) {
-		return o1.compare(o2);
-	}
-
-	compareTurma(o1: Turma, o2: Turma) {
 		return o1.compare(o2);
 	}
 

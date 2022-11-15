@@ -3,16 +3,19 @@ import { ActivatedRoute } from '@angular/router';
 
 import { AbstractEditComponent } from '../../../component/abstract/edit/component';
 
+import { DocenteUsuario } from '../../../domain/docente-usuario/entity';
+import { DocenteUsuarioDto } from '../../../dto/docente-usuario/dto';
+import { DocenteUsuarioService } from '../../../service/docente-usuario/service';
+
 import { Docente } from '../../../domain/docente/entity';
-import { DocenteDto } from '../../../dto/docente/dto';
-import { DocenteService } from '../../../service/docente/service';
+import { Usuario } from '../../../domain/usuario/entity';
 
 @Component({
 	selector: 'app-docente-edit',
 	templateUrl: './component.html',
 	styleUrls: ['./component.css']
 })
-export class DocenteEditComponent extends AbstractEditComponent<Docente, DocenteDto, DocenteService> {
+export class DocenteEditComponent extends AbstractEditComponent<DocenteUsuario, DocenteUsuarioDto, DocenteUsuarioService> {
 
 	/*
 	 * Attributes
@@ -25,7 +28,7 @@ export class DocenteEditComponent extends AbstractEditComponent<Docente, Docente
 	 * Constructors
 	 */
 
-	constructor(protected service: DocenteService, protected route: ActivatedRoute) {
+	constructor(protected service: DocenteUsuarioService, protected route: ActivatedRoute) {
 		super(service, route, 'docente');
 	}
 
@@ -41,7 +44,7 @@ export class DocenteEditComponent extends AbstractEditComponent<Docente, Docente
 		this.ngAfterViewInitSuper(this.loader, this.bodyCard);
 	}
 
-	ngOnInitSuperAdditional(dto: DocenteDto) {
+	ngOnInitSuperAdditional() {
 
 	}
 

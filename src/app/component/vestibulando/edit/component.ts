@@ -14,6 +14,10 @@ import { AvaliacaoVestibulandoService } from '../../../service/avaliacao-vestibu
 import { OfertaCurso } from '../../../domain/oferta-curso/entity';
 import { OfertaCursoService } from '../../../service/oferta-curso/service';
 
+import { Usuario } from '../../../domain/usuario/entity';
+import { UsuarioDto } from '../../../dto/usuario/dto';
+import { UsuarioService } from '../../../service/usuario/service';
+
 @Component({
 	selector: 'app-vestibulando-edit',
 	templateUrl: './component.html',
@@ -40,7 +44,8 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 
 	constructor(protected service: VestibulandoService, protected route: ActivatedRoute,
 		protected avaliacaoVestibulandoService: AvaliacaoVestibulandoService,
-		protected ofertaCursoService: OfertaCursoService) {
+		protected ofertaCursoService: OfertaCursoService,
+		protected usuarioService: UsuarioService) {
 
 		super(service, route, 'vestibulando');
 	}
@@ -84,30 +89,47 @@ export class VestibulandoEditComponent extends AbstractEditComponent<Vestibuland
 	onSubmit() {
 		var dto = this.service.newDtoInstance();
 		dto.copyFromEntity(this.entity);
-		this.service.update(this.id, dto).subscribe(result => {
-			if (!this.preencherAvaliacao) {
-				this.list();
-			} else {
-				var avaliacaoVestibulandoDto = new AvaliacaoVestibulandoDto();
-				avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
 
-				if (avaliacaoVestibulandoDto.id) {
-					this.avaliacaoVestibulandoService.update(avaliacaoVestibulandoDto.id, avaliacaoVestibulandoDto).subscribe(avResult => {
-						this.list();
-					}, error => {
-						this.setResultMessage("FAILURE", error);
-					});
+		var usuario = this.entity.usuario;
+		var usuarioDto = new UsuarioDto();
+		usuarioDto.copyFromEntity(usuario);
+
+		this.usuarioService.update(usuario.id, usuarioDto).subscribe(resultUsuario => {
+			this.service.update(this.id, dto).subscribe(result => {
+
+				if (!this.preencherAvaliacao) {
+					if (this.avaliacaoVestibulando.id) {
+						this.avaliacaoVestibulandoService.delete(this.avaliacaoVestibulando.id).subscribe(avResult => {
+							this.setResultMessage("SUCCESS", "Editado com sucesso");
+						}, error => {
+							this.setResultMessage("FAILURE", error);
+						});
+					}
+					this.setResultMessage("SUCCESS", "Editado com sucesso");
 				} else {
-					avaliacaoVestibulandoDto.vestibulando = dto.id;
-					this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
-						this.list();
-					}, error => {
-						this.setResultMessage("FAILURE", error);
-					});
+					var avaliacaoVestibulandoDto = new AvaliacaoVestibulandoDto();
+					avaliacaoVestibulandoDto.copyFromEntity(this.avaliacaoVestibulando);
+
+					if (avaliacaoVestibulandoDto.id) {
+						this.avaliacaoVestibulandoService.update(avaliacaoVestibulandoDto.id, avaliacaoVestibulandoDto).subscribe(avResult => {
+							this.setResultMessage("SUCCESS", "Editado com sucesso");
+						}, error => {
+							this.setResultMessage("FAILURE", error);
+						});
+					} else {
+						avaliacaoVestibulandoDto.vestibulando = dto.id;
+						this.avaliacaoVestibulandoService.insert(avaliacaoVestibulandoDto).subscribe(avResult => {
+							this.setResultMessage("SUCCESS", "Editado com sucesso");
+						}, error => {
+							this.setResultMessage("FAILURE", error);
+						});
+					}
 				}
-			}
-		}, error => {
-			this.setResultMessage("FAILURE", error);
+			}, error => {
+				this.setResultMessage("FAILURE", error);
+			});
+		}, errorUsuario => {
+			this.setResultMessage("FAILURE", errorUsuario);
 		});
 	}
 

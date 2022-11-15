@@ -75,7 +75,6 @@ import { TurmaEditComponent } from './component/turma/edit/component';
 
 import { VestibulandoListComponent } from './component/vestibulando/list/component';
 import { VestibulandoViewComponent } from './component/vestibulando/view/component';
-import { VestibulandoAddComponent } from './component/vestibulando/add/component';
 import { VestibulandoEditComponent } from './component/vestibulando/edit/component';
 
 import { VestibulandoUsuarioAddComponent } from './component/vestibulando-usuario/add/component';
@@ -173,7 +172,6 @@ const routes: Routes = [
 	{ path: 'vestibulando', component: VestibulandoListComponent, canActivate: [AuthGuardService] },
 	{ path: 'vestibulando/list', component: VestibulandoListComponent, canActivate: [AuthGuardService] },
 	{ path: 'vestibulando/view/:id', component: VestibulandoViewComponent, canActivate: [AuthGuardService] },
-	{ path: 'vestibulando/add', component: VestibulandoAddComponent, canActivate: [AuthGuardService] },
 	{ path: 'vestibulando/edit/:id', component: VestibulandoEditComponent, canActivate: [AuthGuardService] },
 
 	{ path: 'vestibulando-usuario/add', component: VestibulandoUsuarioAddComponent },

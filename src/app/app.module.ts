@@ -57,6 +57,8 @@ import { DocenteAddComponent } from './component/docente/add/component';
 import { DocenteEditComponent } from './component/docente/edit/component';
 import { DocenteService } from './service/docente/service';
 
+import { DocenteUsuarioService } from './service/docente-usuario/service';
+
 import { EstruturaCurricularListComponent } from './component/estrutura-curricular/list/component';
 import { EstruturaCurricularViewComponent } from './component/estrutura-curricular/view/component';
 import { EstruturaCurricularAddComponent } from './component/estrutura-curricular/add/component';
@@ -97,7 +99,6 @@ import { UsuarioService } from './service/usuario/service';
 
 import { VestibulandoListComponent } from './component/vestibulando/list/component';
 import { VestibulandoViewComponent } from './component/vestibulando/view/component';
-import { VestibulandoAddComponent } from './component/vestibulando/add/component';
 import { VestibulandoEditComponent } from './component/vestibulando/edit/component';
 import { VestibulandoService } from './service/vestibulando/service';
 
@@ -192,7 +193,6 @@ export let AppInjector: Injector;
 
 		VestibulandoListComponent,
 		VestibulandoViewComponent,
-		VestibulandoAddComponent,
 		VestibulandoEditComponent,
 
 		VestibulandoUsuarioAddComponent,
@@ -218,6 +218,7 @@ export let AppInjector: Injector;
 		DiscenteService,
 		DisciplinaService,
 		DocenteService,
+		DocenteUsuarioService,
 		EstruturaCurricularService,
 		OfertaCursoService,
 		OfertaDisciplinaService,

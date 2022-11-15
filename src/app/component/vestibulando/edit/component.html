@@ -25,9 +25,8 @@
 					<div>{{entity.ofertaCurso.toString()}}</div>
 				</div>
 				<div class="form-group col-lg-4 col-md-12 required">
-					<label for="cpf">CPF</label> <input type="text"
-						[(ngModel)]="entity.cpf" class="form-control" id="cpf" name="cpf"
-						required #cpf="ngModel">
+					<label for="cpf">CPF</label>
+					<div>{{ entity.cpf }}</div>
 				</div>
 			</div>
 
@@ -43,6 +42,27 @@
 						(ngModelChange)="entity.dataNascimento = dateUtil.getDateFromString($event)"
 						class="form-control" id="dataNascimento" name="dataNascimento"
 						required #dataNascimento="ngModel">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-12 col-md-12 required">
+					<label for="email">E-mail</label> <input type="text"
+						[(ngModel)]="entity.usuario.email" class="form-control" id="email"
+						name="email" required #email="ngModel">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-lg-6 col-md-12 required">
+					<label for="username">Username</label> <input type="text"
+						[(ngModel)]="entity.usuario.username" class="form-control"
+						id="username" name="username" required #username="ngModel">
+				</div>
+				<div class="form-group col-lg-6 col-md-12 required">
+					<label for="password">Password</label> <input type="password"
+						[(ngModel)]="entity.usuario.password" class="form-control"
+						id="password" name="password" required #password="ngModel">
 				</div>
 			</div>
 
