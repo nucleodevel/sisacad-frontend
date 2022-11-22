@@ -60,6 +60,16 @@ export class DiscenteAddComponent extends AbstractAddComponent<Discente, Discent
 
 	}
 
+	onSubmit() {
+		var dto = this.service.newDtoInstance();
+		dto.copyFromEntity(this.entity);
+		this.service.insert(dto).subscribe(result => {
+			this.setResultMessage("SUCCESS", "Matriculado com sucesso");
+		}, error => {
+			this.setResultMessage("FAILURE", error);
+		});
+	}
+
 	/*
 	 * Form events
 	 */

@@ -126,7 +126,7 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 				participacaoAulaDto.discente = item.id;
 
 				this.participacaoAulaService.insert(participacaoAulaDto).subscribe(data => {
-
+					this.setResultMessage("SUCCESS", "Registrado com sucesso");
 				}, error => {
 					this.setResultMessage("FAILURE", error);
 				});
@@ -135,8 +135,6 @@ export class AulaAddComponent extends AbstractAddComponent<Aula, AulaDto, AulaSe
 		}, error => {
 			this.setResultMessage("FAILURE", error);
 		});
-
-		this.list();
 
 	}
 
