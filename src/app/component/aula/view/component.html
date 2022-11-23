@@ -37,7 +37,7 @@
 				<div>{{ dateUtil.getStringFromDatetime(entity.termino) }}</div>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="form-row" *ngIf="canViewListParticipacao()">
 			<div class="form-group col-lg-12">
 				<label>Participações de discentes:</label>
 				<table class="table table-bordered table-striped">
